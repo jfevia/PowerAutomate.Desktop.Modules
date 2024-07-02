@@ -1,1 +1,1 @@
-# power-automate-desktop-custom-modules
+# PowerAutomate.Desktop.Modules
