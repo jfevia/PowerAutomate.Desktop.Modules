@@ -4,7 +4,7 @@
 
 using Microsoft.Win32;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32.Internals;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
 
 internal static class RegistryValueOptionsExtensions
 {
@@ -13,7 +13,9 @@ internal static class RegistryValueOptionsExtensions
         var result = RegistryValueOptions.None;
 
         if (options.HasFlag(Abstractions.RegistryValueOptions.DoNotExpandEnvironmentNames))
+        {
             result |= RegistryValueOptions.DoNotExpandEnvironmentNames;
+        }
 
         return result;
     }

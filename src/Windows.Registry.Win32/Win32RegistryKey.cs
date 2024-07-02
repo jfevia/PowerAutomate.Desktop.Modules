@@ -5,7 +5,7 @@
 using Microsoft.Win32;
 using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32.Internals;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
 
 internal sealed class Win32RegistryKey : Win32RegistryKeyItem, IRegistryKey
 {

@@ -9,7 +9,6 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
 
 public interface IRegistryKeyItem : IRegistryItem
 {
-    SafeHandle Handle { get; }
     IRegistryKey? CreateSubKey(string subKey);
     IRegistryKey CreateSubKey(string subKey, bool writable);
     IRegistryKey CreateSubKey(string subKey, bool writable, RegistryOptions options);
@@ -30,4 +29,5 @@ public interface IRegistryKeyItem : IRegistryItem
     IRegistryKey? OpenSubKey(string name);
     void SetValue(string name, object value);
     void SetValue(string name, object value, RegistryValueKind valueKind);
+    SafeHandle Handle { get; }
 }

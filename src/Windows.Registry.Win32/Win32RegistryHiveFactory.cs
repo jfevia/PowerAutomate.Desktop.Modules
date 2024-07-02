@@ -8,7 +8,7 @@ using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
 using RegistryHive = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryHive;
 using RegistryView = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryView;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32.Internals;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
 
 internal sealed class Win32RegistryHiveFactory : IRegistryHiveFactory
 {

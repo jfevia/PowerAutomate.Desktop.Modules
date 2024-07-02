@@ -14,7 +14,7 @@ using RegistryOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstracti
 using RegistryValueKind = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueKind;
 using RegistryValueOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueOptions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32.Internals;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
 
 internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyItem
 {
@@ -94,13 +94,13 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
     public IEnumerable<IRegistryKey> GetSubKeys()
     {
         var registryKeys = _registryKey.GetSubKeyNames()
-            .Select(subKeyName => _registryKey.OpenSubKey(subKeyName, false));
+                                       .Select(subKeyName => _registryKey.OpenSubKey(subKeyName, false));
         return registryKeys.Where(registryKey => registryKey is not null)
-            .Select(registryKey =>
-            {
-                var registryKeyName = registryKey!.Name.Substring(registryKey.Name.LastIndexOf('\\') + 1);
-                return new Win32RegistryKey(_registry, registryKey, registryKeyName);
-            });
+                           .Select(registryKey =>
+                           {
+                               var registryKeyName = registryKey!.Name.Substring(registryKey.Name.LastIndexOf('\\') + 1);
+                               return new Win32RegistryKey(_registry, registryKey, registryKeyName);
+                           });
     }
 
     public object GetValue(string name)
@@ -111,6 +111,11 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
     public object GetValue(string name, object defaultValue)
     {
         return _registryKey.GetValue(name, defaultValue);
+    }
+
+    public object GetValue(string name, object defaultValue, RegistryValueOptions options)
+    {
+        return _registryKey.GetValue(name, defaultValue, options.ToWin32());
     }
 
     public RegistryValueKind GetValueKind(string name)
@@ -152,11 +157,19 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
             registryVisitor.VisitLeaveRegistryKey(registryKey);
         }
 
-        foreach (var registryValue in GetValues()) registryVisitor.VisitRegistryValue(registryValue);
+        foreach (var registryValue in GetValues())
+        {
+            registryVisitor.VisitRegistryValue(registryValue);
+        }
     }
 
-    public object GetValue(string name, object defaultValue, RegistryValueOptions options)
+    protected override void Dispose(bool disposing)
     {
-        return _registryKey.GetValue(name, defaultValue, options.ToWin32());
+        if (disposing)
+        {
+            _registryKey.Dispose();
+        }
+
+        base.Dispose(disposing);
     }
 }

@@ -5,7 +5,7 @@
 using System;
 using Microsoft.Win32;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32.Internals;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
 
 internal static class RegistryViewExtensions
 {

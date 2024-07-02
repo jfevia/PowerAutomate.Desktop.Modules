@@ -8,6 +8,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
 
 public interface IRegistry : IRegistryVisitable
 {
+    IEnumerable<IRegistryHive> GetHives();
     IRegistryHive ClassesRoot { get; }
     IRegistryHive CurrentConfig { get; }
     IRegistryHive CurrentUser { get; }
@@ -15,5 +16,4 @@ public interface IRegistry : IRegistryVisitable
     IRegistryHive PerformanceData { get; }
     IRegistryHiveFactory RegistryHive { get; }
     IRegistryHive Users { get; }
-    IEnumerable<IRegistryHive> GetHives();
 }

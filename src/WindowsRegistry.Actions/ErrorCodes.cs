@@ -2,11 +2,9 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // --------------------------------------------------------------
 
-using System;
+namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
-
-public interface IRegistryVisitable : IDisposable
+internal static class ErrorCodes
 {
-    void Accept(IRegistryVisitor registryVisitor);
+    public const string Unknown = "UnknownError";
 }
