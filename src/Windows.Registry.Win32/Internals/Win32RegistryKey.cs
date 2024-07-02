@@ -1,5 +1,5 @@
 // --------------------------------------------------------------
-// Copyright (c) Power Automate for desktop. All Rights Reserved.
+// Copyright (c) Jesus Fernandez. All Rights Reserved.
 // --------------------------------------------------------------
 
 using Microsoft.Win32;
