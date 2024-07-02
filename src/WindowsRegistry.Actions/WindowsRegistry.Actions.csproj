@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Windows.Registry.Win32\Windows.Registry.Win32.csproj"/>
+    </ItemGroup>
+
+</Project>
