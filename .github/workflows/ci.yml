@@ -1,0 +1,53 @@
+name: PowerAutomate.Desktop.Modules-CI
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  CONFIGURATION: "Release"
+  ENVIRONMENT: "Production"
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout
+      if: ${{ success() }}
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Install Power Automate for desktop
+      if: ${{ success() }}
+      run: |
+        Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=2164365 -OutFile PADSetup.exe
+        .\PADSetup.exe -Install -AcceptEULA -Silent
+        Start-Sleep -Seconds 10
+        $processName = "PADSetup"
+        do {
+          Write-Host "Waiting for process to exit..."
+          Start-Sleep -Seconds 10
+        } while (Get-Process -Name $processName -ErrorAction SilentlyContinue)
+
+    - name: Setup MSBuild
+      if: ${{ success() }}
+      uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Update NuGet sources
+      if: ${{ success() }}
+      run: dotnet nuget update source github.com --username jfevia --password ${{ secrets.GITHUB_TOKEN }} --configfile nuget.config --store-password-in-clear-text
+
+    - name: Restore solution
+      if: ${{ success() }}
+      run: msbuild src\PowerAutomate.Desktop.Modules.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+
+    - name: Build solution filter
+      if: ${{ success() }}
+      run: msbuild src\build.slnf -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+
+    - name: Run unit tests
+      if: ${{ success() }}
+      run: dotnet test src\build.slnf

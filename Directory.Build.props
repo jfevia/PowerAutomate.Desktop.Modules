@@ -1,0 +1,15 @@
+<Project>
+
+    <PropertyGroup>
+        <ProductName>PowerAutomate.Desktop.Modules</ProductName>
+        <RootNamespace>$(ProductName).$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>$(ProductName).$(MSBuildProjectName)</AssemblyName>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <Environment Condition=" '$(Environment)' == '' ">Development</Environment>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Environment)' != '' ">
+        <DefineConstants>$(DefineConstants);ENVIRONMENT_$(Environment.ToUpper())</DefineConstants>
+    </PropertyGroup>
+
+</Project>
