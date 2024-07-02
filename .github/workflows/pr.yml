@@ -36,10 +36,6 @@ jobs:
       if: ${{ success() }}
       uses: microsoft/setup-msbuild@v1.3.1
 
-    - name: Update NuGet sources
-      if: ${{ success() }}
-      run: dotnet nuget update source github.com --username jfevia --password ${{ secrets.GITHUB_TOKEN }} --configfile nuget.config --store-password-in-clear-text
-
     - name: Restore solution
       if: ${{ success() }}
       run: msbuild src\PowerAutomate.Desktop.Modules.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
