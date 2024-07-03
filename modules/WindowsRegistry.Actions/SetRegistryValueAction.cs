@@ -5,8 +5,8 @@
 using System;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+using PowerAutomate.Desktop.Windows.Registry.Abstractions;
+using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
 

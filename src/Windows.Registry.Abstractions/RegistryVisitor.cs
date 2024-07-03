@@ -4,7 +4,7 @@
 
 using System;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
 public abstract class RegistryVisitor : IRegistryVisitor
 {

@@ -3,9 +3,9 @@
 // --------------------------------------------------------------
 
 using Microsoft.Win32;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+namespace PowerAutomate.Desktop.Windows.Registry.Win32;
 
 internal sealed class Win32RegistryHive : Win32RegistryKeyItem, IRegistryHive
 {

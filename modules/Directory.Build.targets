@@ -1,0 +1,57 @@
+<Project>
+
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)..\'))" />
+
+    <PropertyGroup>
+        <CustomModuleManifestPath Condition="'$(CustomModuleManifestPath)'==''">module.manifest</CustomModuleManifestPath>
+        <CustomModuleOutputPath Condition="'$(CustomModuleOutputPath)'==''">$(OutputPath)\$(MSBuildProjectName).cab</CustomModuleOutputPath>
+        <IntermediateCustomModuleManifestPath Condition="'$(IntermediateCustomModuleManifestPath)'==''">$(BaseIntermediateOutputPath)\module.manifest</IntermediateCustomModuleManifestPath>
+    </PropertyGroup>
+
+    <!-- ========== Get absolute output paths for Pack ========== -->
+    <Target Name="_GetAbsoluteOutputPathsForCustomModulePack">
+        <ConvertToAbsolutePath Paths="$(CustomModuleManifestPath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="CustomModuleManifestAbsolutePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(CustomModuleOutputPath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="CustomModuleOutputAbsolutePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(IntermediateCustomModuleManifestPath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="IntermediateCustomModuleManifestAbsolutePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(OutputPath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="OutputAbsolutePath" />
+        </ConvertToAbsolutePath>
+    </Target>
+
+    <!-- ========== Get the output '.cab' and '.manifest' absolute file paths ========== -->
+    <Target Name="_GetOutputItemsFromCustomModulePack"
+            DependsOnTargets="_GetAbsoluteOutputPathsForCustomModulePack"
+            Returns="@(_OutputCustomModulePackItems)">
+        <PropertyGroup>
+            <_OutputCustomModulePackItems>$(IntermediateCustomModuleManifestAbsolutePath);$(CustomModuleOutputAbsolutePath)</_OutputCustomModulePackItems>
+        </PropertyGroup>
+    </Target>
+
+    <!-- ========== Post event targets ========== -->
+    <Target Name="_CleanCustomModuleFiles"
+            DependsOnTargets="_GetOutputItemsFromCustomModulePack"
+            AfterTargets="Clean">
+        <ItemGroup>
+            <_CustomModuleFilesToDelete Include="$(_OutputCustomModulePackItems)" />
+        </ItemGroup>
+        <Delete Files="@(_CustomModuleFilesToDelete)" />
+    </Target>
+
+    <!-- ========== Pack ========== -->
+    <Target Name="PackCustomModule"
+			AfterTargets="Build"
+            DependsOnTargets="$(PackCustomModuleDependsOn);_GetOutputItemsFromCustomModulePack"
+			Condition=" '$(PackCustomModule)' == 'true' ">
+        <PackTask SourceManifest="$(CustomModuleManifestAbsolutePath)"
+                  IntermediateManifestPath="$(IntermediateCustomModuleManifestAbsolutePath)"
+                  CustomModuleOutputPath="$(CustomModuleOutputAbsolutePath)"
+                  OutputPath="$(OutputAbsolutePath)" />
+    </Target>
+
+</Project>

@@ -5,7 +5,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
 public interface IRegistryKeyItem : IRegistryItem
 {

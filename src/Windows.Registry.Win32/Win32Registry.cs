@@ -3,9 +3,9 @@
 // --------------------------------------------------------------
 
 using System.Collections.Generic;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+namespace PowerAutomate.Desktop.Windows.Registry.Win32;
 
 public sealed class Win32Registry : IRegistry
 {

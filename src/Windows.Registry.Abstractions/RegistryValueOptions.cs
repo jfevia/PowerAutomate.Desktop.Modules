@@ -4,7 +4,7 @@
 
 using System;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
 [Flags]
 public enum RegistryValueOptions

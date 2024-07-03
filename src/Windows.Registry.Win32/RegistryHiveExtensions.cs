@@ -5,7 +5,7 @@
 using System;
 using Microsoft.Win32;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+namespace PowerAutomate.Desktop.Windows.Registry.Win32;
 
 internal static class RegistryHiveExtensions
 {

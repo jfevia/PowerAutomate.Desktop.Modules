@@ -7,13 +7,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
-using RegistryKeyPermissionCheck = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryKeyPermissionCheck;
-using RegistryOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryOptions;
-using RegistryValueKind = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueKind;
-using RegistryValueOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueOptions;
+using PowerAutomate.Desktop.Windows.Registry.Abstractions;
+using RegistryKeyPermissionCheck = PowerAutomate.Desktop.Windows.Registry.Abstractions.RegistryKeyPermissionCheck;
+using RegistryOptions = PowerAutomate.Desktop.Windows.Registry.Abstractions.RegistryOptions;
+using RegistryValueKind = PowerAutomate.Desktop.Windows.Registry.Abstractions.RegistryValueKind;
+using RegistryValueOptions = PowerAutomate.Desktop.Windows.Registry.Abstractions.RegistryValueOptions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+namespace PowerAutomate.Desktop.Windows.Registry.Win32;
 
 internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyItem
 {

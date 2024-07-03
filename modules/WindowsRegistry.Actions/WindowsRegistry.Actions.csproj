@@ -4,6 +4,7 @@
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <PackCustomModule>true</PackCustomModule>
     </PropertyGroup>
 
     <ItemGroup>
@@ -11,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Windows.Registry.Win32\Windows.Registry.Win32.csproj"/>
+        <ProjectReference Include="..\..\src\Windows.Registry.Win32\Windows.Registry.Win32.csproj"/>
     </ItemGroup>
 
 </Project>

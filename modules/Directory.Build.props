@@ -1,0 +1,13 @@
+<Project>
+
+    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
+
+    <PropertyGroup>
+        <ProductName>PowerAutomate.Desktop.Modules</ProductName>
+        <RootNamespace>$(ProductName).$(MSBuildProjectName)</RootNamespace>
+        <AssemblyName>$(ProductName).$(MSBuildProjectName)</AssemblyName>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <OutputPath>bin\$(Configuration)</OutputPath>
+    </PropertyGroup>
+
+</Project>

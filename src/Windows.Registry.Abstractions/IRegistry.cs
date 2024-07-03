@@ -4,7 +4,7 @@
 
 using System.Collections.Generic;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
 public interface IRegistry : IRegistryVisitable
 {

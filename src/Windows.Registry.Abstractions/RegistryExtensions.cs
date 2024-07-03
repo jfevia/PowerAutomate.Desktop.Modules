@@ -5,7 +5,7 @@
 using System;
 using System.Linq;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
 public static class RegistryExtensions
 {

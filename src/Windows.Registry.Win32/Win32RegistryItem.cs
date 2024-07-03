@@ -3,9 +3,9 @@
 // --------------------------------------------------------------
 
 using System;
-using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
+using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.Registry.Win32;
+namespace PowerAutomate.Desktop.Windows.Registry.Win32;
 
 internal abstract class Win32RegistryItem : IRegistryItem
 {
