@@ -17,31 +17,13 @@ public sealed class Win32Registry : IRegistry
     private IRegistryHiveFactory? _registryHive;
     private IRegistryHive? _users;
 
-    public IRegistryHive ClassesRoot =>
-        _classesRoot ??= new Win32RegistryHive(this,
-            Microsoft.Win32.Registry.ClassesRoot, Microsoft.Win32.Registry.ClassesRoot.Name);
-
-    public IRegistryHive CurrentConfig =>
-        _currentConfig ??= new Win32RegistryHive(this,
-            Microsoft.Win32.Registry.CurrentConfig, Microsoft.Win32.Registry.CurrentConfig.Name);
-
-    public IRegistryHive CurrentUser =>
-        _currentUser ??= new Win32RegistryHive(this,
-            Microsoft.Win32.Registry.CurrentUser, Microsoft.Win32.Registry.CurrentUser.Name);
-
-    public IRegistryHive LocalMachine =>
-        _localMachine ??= new Win32RegistryHive(this,
-            Microsoft.Win32.Registry.LocalMachine, Microsoft.Win32.Registry.LocalMachine.Name);
-
-    public IRegistryHive PerformanceData =>
-        _performanceData ??= new Win32RegistryHive(this,
-            Microsoft.Win32.Registry.PerformanceData, Microsoft.Win32.Registry.PerformanceData.Name);
-
+    public IRegistryHive ClassesRoot => _classesRoot ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.ClassesRoot, Microsoft.Win32.Registry.ClassesRoot.Name);
+    public IRegistryHive CurrentConfig => _currentConfig ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.CurrentConfig, Microsoft.Win32.Registry.CurrentConfig.Name);
+    public IRegistryHive CurrentUser => _currentUser ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.CurrentUser, Microsoft.Win32.Registry.CurrentUser.Name);
+    public IRegistryHive LocalMachine => _localMachine ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.LocalMachine, Microsoft.Win32.Registry.LocalMachine.Name);
+    public IRegistryHive PerformanceData => _performanceData ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.PerformanceData, Microsoft.Win32.Registry.PerformanceData.Name);
     public IRegistryHiveFactory RegistryHive => _registryHive ??= new Win32RegistryHiveFactory(this);
-
-    public IRegistryHive Users =>
-        _users ??=
-            new Win32RegistryHive(this, Microsoft.Win32.Registry.Users, Microsoft.Win32.Registry.Users.Name);
+    public IRegistryHive Users => _users ??= new Win32RegistryHive(this, Microsoft.Win32.Registry.Users, Microsoft.Win32.Registry.Users.Name);
 
     public void Dispose()
     {

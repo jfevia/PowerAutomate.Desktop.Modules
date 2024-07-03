@@ -12,7 +12,10 @@ internal static class RegistryOptionsExtensions
     {
         var result = RegistryOptions.None;
 
-        if (options.HasFlag(Abstractions.RegistryOptions.Volatile)) result |= RegistryOptions.Volatile;
+        if (options.HasFlag(Abstractions.RegistryOptions.Volatile))
+        {
+            result |= RegistryOptions.Volatile;
+        }
 
         return result;
     }

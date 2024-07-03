@@ -39,7 +39,7 @@ public static class RegistryExtensions
     public static IRegistryKey ParseKey(this IRegistry registry, string path)
     {
         var items = path.Split(['\\'], StringSplitOptions.RemoveEmptyEntries);
-        var registryHive = registry.ParseHive(items.First());
+        using var registryHive = registry.ParseHive(items.First());
         IRegistryKey? registryKey = null;
 
         foreach (var name in items.Skip(1))
@@ -50,7 +50,8 @@ public static class RegistryExtensions
             }
             else
             {
-                registryKey = registryKey.OpenSubKey(name);
+                using var previousRegistryKey = registryKey;
+                registryKey = previousRegistryKey.OpenSubKey(name);
             }
         }
 

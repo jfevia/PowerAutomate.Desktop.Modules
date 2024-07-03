@@ -8,8 +8,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.Win32;
 using PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions;
-using RegistryKeyPermissionCheck =
-    PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryKeyPermissionCheck;
+using RegistryKeyPermissionCheck = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryKeyPermissionCheck;
 using RegistryOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryOptions;
 using RegistryValueKind = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueKind;
 using RegistryValueOptions = PowerAutomate.Desktop.Modules.Windows.Registry.Abstractions.RegistryValueOptions;
