@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsRegistry.Actions", "..\modules\WindowsRegistry.Actions\WindowsRegistry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.WindowsRegistry.Actions", "..\modules\Modules.WindowsRegistry.Actions\Modules.WindowsRegistry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{AAC42F13-B42E-462A-B605-40BFEC07FD26}"
 EndProject
