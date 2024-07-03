@@ -45,9 +45,9 @@
 
     <!-- ========== Pack ========== -->
     <Target Name="PackCustomModule"
-			AfterTargets="Build"
+            AfterTargets="Build"
             DependsOnTargets="$(PackCustomModuleDependsOn);_GetOutputItemsFromCustomModulePack"
-			Condition=" '$(PackCustomModule)' == 'true' ">
+            Condition=" '$(PackCustomModule)' == 'true' ">
         <PackTask SourceManifest="$(CustomModuleManifestAbsolutePath)"
                   IntermediateManifestPath="$(IntermediateCustomModuleManifestAbsolutePath)"
                   CustomModuleOutputPath="$(CustomModuleOutputAbsolutePath)"
