@@ -1,26 +1,16 @@
 <Project>
 
-    <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.targets', '$(MSBuildThisFileDirectory)..\'))" />
-
     <PropertyGroup>
-        <CustomModuleManifestPath Condition="'$(CustomModuleManifestPath)'==''">module.manifest</CustomModuleManifestPath>
         <CustomModuleOutputFileName Condition="'$(CustomModuleOutputFileName)'==''">$(MSBuildProjectName).cab</CustomModuleOutputFileName>
         <CustomModuleOutputFilePath Condition="'$(CustomModuleOutputFilePath)'==''">$(OutputPath)\$(CustomModuleOutputFileName)</CustomModuleOutputFilePath>
-        <IntermediateCustomModuleManifestPath Condition="'$(IntermediateCustomModuleManifestPath)'==''">$(BaseIntermediateOutputPath)\module.manifest</IntermediateCustomModuleManifestPath>
         <SignScriptRelativeFilePath Condition="'$(SignScriptRelativeFilePath)'==''">..\..\.tools\sign.ps1</SignScriptRelativeFilePath>
         <MakeCabScriptRelativeFilePath Condition="'$(MakeCabScriptRelativeFilePath)'==''">..\..\.tools\makecab.ps1</MakeCabScriptRelativeFilePath>
     </PropertyGroup>
 
     <!-- ========== Get absolute output paths for Pack ========== -->
     <Target Name="_GetAbsoluteOutputPathsForCustomModulePack">
-        <ConvertToAbsolutePath Paths="$(CustomModuleManifestPath)">
-            <Output TaskParameter="AbsolutePaths" PropertyName="CustomModuleManifestAbsolutePath" />
-        </ConvertToAbsolutePath>
         <ConvertToAbsolutePath Paths="$(CustomModuleOutputFilePath)">
             <Output TaskParameter="AbsolutePaths" PropertyName="CustomModuleOutputAbsoluteFilePath" />
-        </ConvertToAbsolutePath>
-        <ConvertToAbsolutePath Paths="$(IntermediateCustomModuleManifestPath)">
-            <Output TaskParameter="AbsolutePaths" PropertyName="IntermediateCustomModuleManifestAbsolutePath" />
         </ConvertToAbsolutePath>
         <ConvertToAbsolutePath Paths="$(OutputPath)">
             <Output TaskParameter="AbsolutePaths" PropertyName="OutputAbsolutePath" />
@@ -33,12 +23,12 @@
         </ConvertToAbsolutePath>
     </Target>
 
-    <!-- ========== Get the output '.cab' and '.manifest' absolute file paths ========== -->
+    <!-- ========== Get the output '.cab' absolute file paths ========== -->
     <Target Name="_GetOutputItemsFromCustomModulePack"
             DependsOnTargets="_GetAbsoluteOutputPathsForCustomModulePack"
             Returns="@(_OutputCustomModulePackItems)">
         <PropertyGroup>
-            <_OutputCustomModulePackItems>$(IntermediateCustomModuleManifestAbsolutePath);$(CustomModuleOutputAbsolutePath)</_OutputCustomModulePackItems>
+            <_OutputCustomModulePackItems>$(CustomModuleOutputAbsoluteFilePath)</_OutputCustomModulePackItems>
         </PropertyGroup>
     </Target>
 
