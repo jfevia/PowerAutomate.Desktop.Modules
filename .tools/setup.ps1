@@ -6,3 +6,4 @@ Export-PfxCertificate -Cert "Cert:\CurrentUser\My\$($cert.Thumbprint)" -FilePath
 Import-PfxCertificate -CertStoreLocation "Cert:\CurrentUser\Root" -FilePath "certificate.pfx" -Password $certPassword
 Remove-Item "certificate.pfx"
 dotnet tool install --global sign --version 0.9.1-beta.24325.5
+Get-ExecutionPolicy
