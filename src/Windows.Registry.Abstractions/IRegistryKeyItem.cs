@@ -4,6 +4,7 @@
 
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 
 namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
@@ -27,6 +28,10 @@ public interface IRegistryKeyItem : IRegistryItem
     RegistryValueKind GetValueKind(string name);
     IEnumerable<IRegistryValue> GetValues();
     IRegistryKey? OpenSubKey(string name);
+    IRegistryKey? OpenSubKey(string name, bool writable);
+    IRegistryKey? OpenSubKey(string name, RegistryKeyPermissionCheck permissionCheck);
+    IRegistryKey? OpenSubKey(string name, RegistryKeyPermissionCheck permissionCheck, RegistryRights registryRights);
+    IRegistryKey? OpenSubKey(string name, RegistryRights registryRights);
     void SetValue(string name, object value);
     void SetValue(string name, object value, RegistryValueKind valueKind);
     SafeHandle Handle { get; }

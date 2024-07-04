@@ -36,7 +36,7 @@ public static class RegistryExtensions
         throw new InvalidOperationException("Could not parse registry hive");
     }
 
-    public static IRegistryKey ParseKey(this IRegistry registry, string path)
+    public static IRegistryKey ParseKey(this IRegistry registry, string path, bool writable)
     {
         var items = path.Split(['\\'], StringSplitOptions.RemoveEmptyEntries);
         using var registryHive = registry.ParseHive(items.First());
@@ -46,12 +46,12 @@ public static class RegistryExtensions
         {
             if (registryKey is null)
             {
-                registryKey = registryHive.OpenSubKey(name);
+                registryKey = registryHive.OpenSubKey(name, writable);
             }
             else
             {
                 using var previousRegistryKey = registryKey;
-                registryKey = previousRegistryKey.OpenSubKey(name);
+                registryKey = previousRegistryKey.OpenSubKey(name, writable);
             }
         }
 

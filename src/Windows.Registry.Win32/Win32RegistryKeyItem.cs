@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.AccessControl;
 using Microsoft.Win32;
 using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 using RegistryKeyPermissionCheck = PowerAutomate.Desktop.Windows.Registry.Abstractions.RegistryKeyPermissionCheck;
@@ -130,11 +131,32 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
 
     public IRegistryKey? OpenSubKey(string name)
     {
-        var registryKey = _registryKey.OpenSubKey(name, false);
-        if (registryKey is null) return null;
+        var registryKey = _registryKey.OpenSubKey(name);
+        return registryKey is null ? null : CreateRegistryKey(registryKey);
+    }
 
-        var registryKeyName = registryKey.Name.Substring(registryKey.Name.LastIndexOf('\\') + 1);
-        return new Win32RegistryKey(_registry, registryKey, registryKeyName);
+    public IRegistryKey? OpenSubKey(string name, bool writable)
+    {
+        var registryKey = _registryKey.OpenSubKey(name, writable);
+        return registryKey is null ? null : CreateRegistryKey(registryKey);
+    }
+
+    public IRegistryKey? OpenSubKey(string name, RegistryKeyPermissionCheck permissionCheck)
+    {
+        var registryKey = _registryKey.OpenSubKey(name, permissionCheck.ToWin32());
+        return registryKey is null ? null : CreateRegistryKey(registryKey);
+    }
+
+    public IRegistryKey? OpenSubKey(string name, RegistryKeyPermissionCheck permissionCheck, RegistryRights registryRights)
+    {
+        var registryKey = _registryKey.OpenSubKey(name, permissionCheck.ToWin32(), registryRights);
+        return registryKey is null ? null : CreateRegistryKey(registryKey);
+    }
+
+    public IRegistryKey? OpenSubKey(string name, RegistryRights registryRights)
+    {
+        var registryKey = _registryKey.OpenSubKey(name, registryRights);
+        return registryKey is null ? null : CreateRegistryKey(registryKey);
     }
 
     public void SetValue(string name, object value)
@@ -170,5 +192,11 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
         }
 
         base.Dispose(disposing);
+    }
+
+    private IRegistryKey CreateRegistryKey(RegistryKey registryKey)
+    {
+        var registryKeyName = registryKey.Name.Substring(registryKey.Name.LastIndexOf('\\') + 1);
+        return new Win32RegistryKey(_registry, registryKey, registryKeyName);
     }
 }
