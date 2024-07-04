@@ -76,7 +76,7 @@ public class SetRegistryValueAction : ActionBase
         }
         catch (Exception ex)
         {
-            throw new ActionException(ErrorCodes.Unknown, "An unexpected error occurred", ex);
+            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
         }
     }
 }
@@ -86,13 +86,13 @@ public class SetStringRegistryValueActionSelector : ActionSelector<SetRegistryVa
     public SetStringRegistryValueActionSelector()
     {
         UseName("StringValue");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.String);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.String);
 
         ShowAll();
-        Hide(p => p.ValueStringArray);
-        Hide(p => p.ValueBinary);
-        Hide(p => p.ValueInt32);
-        Hide(p => p.ValueInt64);
+        Hide(s => s.ValueStringArray);
+        Hide(s => s.ValueBinary);
+        Hide(s => s.ValueInt32);
+        Hide(s => s.ValueInt64);
     }
 }
 
@@ -101,13 +101,13 @@ public class SetExpandStringRegistryValueActionSelector : ActionSelector<SetRegi
     public SetExpandStringRegistryValueActionSelector()
     {
         UseName("ExpandStringValue");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.ExpandString);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.ExpandString);
 
         ShowAll();
-        Hide(p => p.ValueStringArray);
-        Hide(p => p.ValueBinary);
-        Hide(p => p.ValueInt32);
-        Hide(p => p.ValueInt64);
+        Hide(s => s.ValueStringArray);
+        Hide(s => s.ValueBinary);
+        Hide(s => s.ValueInt32);
+        Hide(s => s.ValueInt64);
     }
 }
 
@@ -116,13 +116,13 @@ public class SetMultiStringRegistryValueActionSelector : ActionSelector<SetRegis
     public SetMultiStringRegistryValueActionSelector()
     {
         UseName("MultiStringValue");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.MultiString);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.MultiString);
 
         ShowAll();
-        Hide(p => p.ValueString);
-        Hide(p => p.ValueBinary);
-        Hide(p => p.ValueInt32);
-        Hide(p => p.ValueInt64);
+        Hide(s => s.ValueString);
+        Hide(s => s.ValueBinary);
+        Hide(s => s.ValueInt32);
+        Hide(s => s.ValueInt64);
     }
 }
 
@@ -131,13 +131,13 @@ public class SetBinaryRegistryValueActionSelector : ActionSelector<SetRegistryVa
     public SetBinaryRegistryValueActionSelector()
     {
         UseName("BinaryValue");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.Binary);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.Binary);
 
         ShowAll();
-        Hide(p => p.ValueString);
-        Hide(p => p.ValueStringArray);
-        Hide(p => p.ValueInt32);
-        Hide(p => p.ValueInt64);
+        Hide(s => s.ValueString);
+        Hide(s => s.ValueStringArray);
+        Hide(s => s.ValueInt32);
+        Hide(s => s.ValueInt64);
     }
 }
 
@@ -146,13 +146,13 @@ public class SetInt32RegistryValueActionSelector : ActionSelector<SetRegistryVal
     public SetInt32RegistryValueActionSelector()
     {
         UseName("Int32Value");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.DWord);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.DWord);
 
         ShowAll();
-        Hide(p => p.ValueString);
-        Hide(p => p.ValueStringArray);
-        Hide(p => p.ValueBinary);
-        Hide(p => p.ValueInt64);
+        Hide(s => s.ValueString);
+        Hide(s => s.ValueStringArray);
+        Hide(s => s.ValueBinary);
+        Hide(s => s.ValueInt64);
     }
 }
 
@@ -161,12 +161,12 @@ public class SetInt64RegistryValueActionSelector : ActionSelector<SetRegistryVal
     public SetInt64RegistryValueActionSelector()
     {
         UseName("Int64Value");
-        Prop(p => p.ValueKind).ShouldBe(RegistryValueKind.QWord);
+        Prop(s => s.ValueKind).ShouldBe(RegistryValueKind.QWord);
 
         ShowAll();
-        Hide(p => p.ValueString);
-        Hide(p => p.ValueStringArray);
-        Hide(p => p.ValueBinary);
-        Hide(p => p.ValueInt32);
+        Hide(s => s.ValueString);
+        Hide(s => s.ValueStringArray);
+        Hide(s => s.ValueBinary);
+        Hide(s => s.ValueInt32);
     }
 }
