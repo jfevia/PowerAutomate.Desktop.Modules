@@ -20,13 +20,13 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Setup environment
-      shell: powershell
-      run: .\.tools\setup.ps1
-
     - name: Setup MSBuild
       if: ${{ success() }}
       uses: microsoft/setup-msbuild@v1.3.1
+
+    - name: Setup environment
+      shell: powershell
+      run: .\.tools\setup.ps1
 
     - name: Restore solution
       if: ${{ success() }}
