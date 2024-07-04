@@ -53,14 +53,16 @@
     <!-- ========== Pack ========== -->
     <Target Name="PackCustomModule"
             AfterTargets="SignCustomModuleBuildOutput"
-            DependsOnTargets="$(PackCustomModuleDependsOn);SignCustomModuleBuildOutput">
+            DependsOnTargets="$(PackCustomModuleDependsOn);SignCustomModuleBuildOutput"
+            Condition=" '$(PackCustomModule)' == 'true' ">
         <Exec Command="powershell -ExecutionPolicy Bypass -File $(MakeCabScriptRelativeFilePath) -SourceDirectory $(OutputAbsolutePath) -OutputDirectory $(OutputAbsolutePath) -OutputFileName $(CustomModuleOutputFileName)" />
     </Target>
 
     <!-- ========== Sign package ========== -->
     <Target Name="SignCustomModulePackage"
             AfterTargets="PackCustomModule"
-            DependsOnTargets="$(SignCustomModulePackageDependsOn);PackCustomModule">
+            DependsOnTargets="$(SignCustomModulePackageDependsOn);PackCustomModule"
+            Condition=" '$(PackCustomModule)' == 'true' ">
         <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.cab" />
     </Target>
 

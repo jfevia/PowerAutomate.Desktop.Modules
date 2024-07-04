@@ -5,7 +5,7 @@
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
-        <PackCustomModule>true</PackCustomModule>
+        <PackCustomModule Condition=" '$(Configuration)' == 'Release' ">true</PackCustomModule>
     </PropertyGroup>
 
     <ItemGroup>
