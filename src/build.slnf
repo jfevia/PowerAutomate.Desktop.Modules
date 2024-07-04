@@ -1,10 +1,10 @@
 ﻿{
   "solution": {
-    "path": "PowerAutomate.Desktop.Modules.sln",
+    "path": "PowerAutomate.Desktop.sln",
     "projects": [
+      "..\\modules\\Modules.WindowsRegistry.Actions\\Modules.WindowsRegistry.Actions.csproj",
       "Windows.Registry.Abstractions\\Windows.Registry.Abstractions.csproj",
-      "Windows.Registry.Win32\\Windows.Registry.Win32.csproj",
-      "WindowsRegistry.Actions\\WindowsRegistry.Actions.csproj"
+      "Windows.Registry.Win32\\Windows.Registry.Win32.csproj"
     ]
   }
 }
