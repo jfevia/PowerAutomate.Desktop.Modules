@@ -1,20 +1,19 @@
 param(
-
     [ValidateScript({Test-Path $_ -PathType Container})]
 	[string]
-	$sourceDir,
+	$SourceDirectory,
 	
 	[ValidateScript({Test-Path $_ -PathType Container})]
     [string]
-    $cabOutputDir,
+    $OutputDirectory,
 
     [string]
-    $cabFilename
+    $OutputFileName
 )
 
 $ddf = ".OPTION EXPLICIT
-.Set CabinetName1=$cabFilename
-.Set DiskDirectory1=$cabOutputDir
+.Set CabinetName1=$OutputFileName
+.Set DiskDirectory1=$OutputDirectory
 .Set CompressionType=LZX
 .Set Cabinet=on
 .Set Compress=on
@@ -26,8 +25,8 @@ $ddf = ".OPTION EXPLICIT
 .Set MaxDiskSize=0
 "
 $ddfpath = ($env:TEMP + "\customModule.ddf")
-$sourceDirLength = $sourceDir.Length;
-$ddf += (Get-ChildItem $sourceDir -Filter "*.dll" | Where-Object { (!$_.PSIsContainer) -and ($_.Name -ne "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll") } | Select-Object -ExpandProperty FullName | ForEach-Object { '"' + $_ + '" "' + ($_.Substring($sourceDirLength)) + '"' }) -join "`r`n"
+$sourceDirLength = $SourceDirectory.Length;
+$ddf += (Get-ChildItem $SourceDirectory -Filter "*.dll" | Where-Object { (!$_.PSIsContainer) -and ($_.Name -ne "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll") } | Select-Object -ExpandProperty FullName | ForEach-Object { '"' + $_ + '" "' + ($_.Substring($sourceDirLength)) + '"' }) -join "`r`n"
 $ddf | Out-File -Encoding UTF8 $ddfpath
 makecab.exe /F $ddfpath
 Remove-Item $ddfpath
