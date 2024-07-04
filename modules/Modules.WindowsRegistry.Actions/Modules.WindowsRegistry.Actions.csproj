@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
+        <AssemblyTitle>WindowsRegistry</AssemblyTitle>
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
