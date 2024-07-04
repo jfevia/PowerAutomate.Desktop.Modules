@@ -13,7 +13,7 @@ using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
 
-[Action]
+[Action(Id = "SetRegistryValue")]
 [Throws(ErrorCodes.Unknown)]
 public class SetRegistryValueAction : ActionBase
 {
@@ -90,7 +90,7 @@ public class SetStringRegistryValueActionSelector : ActionSelector<SetRegistryVa
 {
     public SetStringRegistryValueActionSelector()
     {
-        UseName("StringValue");
+        UseName("String");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.String);
 
         ShowAll();
@@ -106,7 +106,7 @@ public class SetExpandStringRegistryValueActionSelector : ActionSelector<SetRegi
 {
     public SetExpandStringRegistryValueActionSelector()
     {
-        UseName("ExpandStringValue");
+        UseName("ExpandString");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.ExpandString);
 
         ShowAll();
@@ -122,7 +122,7 @@ public class SetMultiStringRegistryValueActionSelector : ActionSelector<SetRegis
 {
     public SetMultiStringRegistryValueActionSelector()
     {
-        UseName("MultiStringValue");
+        UseName("MultiString");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.MultiString);
 
         ShowAll();
@@ -138,7 +138,7 @@ public class SetBinaryRegistryValueActionSelector : ActionSelector<SetRegistryVa
 {
     public SetBinaryRegistryValueActionSelector()
     {
-        UseName("BinaryValue");
+        UseName("Binary");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.Binary);
 
         ShowAll();
@@ -154,7 +154,7 @@ public class SetInt32RegistryValueActionSelector : ActionSelector<SetRegistryVal
 {
     public SetInt32RegistryValueActionSelector()
     {
-        UseName("Int32Value");
+        UseName("DWord");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.DWord);
 
         ShowAll();
@@ -170,7 +170,7 @@ public class SetInt64RegistryValueActionSelector : ActionSelector<SetRegistryVal
 {
     public SetInt64RegistryValueActionSelector()
     {
-        UseName("Int64Value");
+        UseName("QWord");
         Prop(s => s.Kind).ShouldBe(RegistryValueKind.QWord);
 
         ShowAll();

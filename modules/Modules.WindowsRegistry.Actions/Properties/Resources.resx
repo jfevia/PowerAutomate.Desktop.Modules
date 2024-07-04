@@ -128,10 +128,10 @@
     <data name="WindowsRegistry_Description" xml:space="preserve">
         <value>Perform operations related to the Windows Registry.</value>
     </data>
-    <data name="SetRegistryValueAction_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_FriendlyName" xml:space="preserve">
         <value>Set registry value</value>
     </data>
-    <data name="SetRegistryValueAction_Description" xml:space="preserve">
+    <data name="SetRegistryValue_Description" xml:space="preserve">
         <value>Sets the value of a name/value pair in the registry key.</value>
     </data>
     <data name="RegistryValueKind_String_FriendlyName" xml:space="preserve">
@@ -152,58 +152,58 @@
     <data name="RegistryValueKind_QWord_FriendlyName" xml:space="preserve">
         <value>QWORD (64-bit)</value>
     </data>
-    <data name="SetRegistryValueAction_Kind_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_Kind_FriendlyName" xml:space="preserve">
         <value>Value Type</value>
     </data>
-    <data name="SetRegistryValueAction_Kind_Description" xml:space="preserve">
+    <data name="SetRegistryValue_Kind_Description" xml:space="preserve">
         <value>The type of registry value.</value>
     </data>
-    <data name="SetRegistryValueAction_Path_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_Path_FriendlyName" xml:space="preserve">
         <value>Path</value>
     </data>
-    <data name="SetRegistryValueAction_Path_Description" xml:space="preserve">
+    <data name="SetRegistryValue_Path_Description" xml:space="preserve">
         <value>The full path to the registry key where the value is located.</value>
     </data>
-    <data name="SetRegistryValueAction_Name_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_Name_FriendlyName" xml:space="preserve">
         <value>Name</value>
     </data>
-    <data name="SetRegistryValueAction_Name_Description" xml:space="preserve">
+    <data name="SetRegistryValue_Name_Description" xml:space="preserve">
         <value>The name of the registry value.</value>
     </data>
-    <data name="SetRegistryValueAction_String_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_String_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_String_Description" xml:space="preserve">
+    <data name="SetRegistryValue_String_Description" xml:space="preserve">
         <value>The string.</value>
     </data>
-    <data name="SetRegistryValueAction_ExpandString_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_ExpandString_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_ExpandString_Description" xml:space="preserve">
+    <data name="SetRegistryValue_ExpandString_Description" xml:space="preserve">
         <value>The string that contains unexpanded references to environment variables, for example: %PATH%.</value>
     </data>
-    <data name="SetRegistryValueAction_MultiString_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_MultiString_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_MultiString_Description" xml:space="preserve">
+    <data name="SetRegistryValue_MultiString_Description" xml:space="preserve">
         <value>The sequence of strings.</value>
     </data>
-    <data name="SetRegistryValueAction_Binary_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_Binary_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_Binary_Description" xml:space="preserve">
+    <data name="SetRegistryValue_Binary_Description" xml:space="preserve">
         <value>The binary data.</value>
     </data>
-    <data name="SetRegistryValueAction_DWord_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_DWord_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_DWord_Description" xml:space="preserve">
+    <data name="SetRegistryValue_DWord_Description" xml:space="preserve">
         <value>The 32-bit number.</value>
     </data>
-    <data name="SetRegistryValueAction_QWord_FriendlyName" xml:space="preserve">
+    <data name="SetRegistryValue_QWord_FriendlyName" xml:space="preserve">
         <value>Value</value>
     </data>
-    <data name="SetRegistryValueAction_QWord_Description" xml:space="preserve">
+    <data name="SetRegistryValue_QWord_Description" xml:space="preserve">
         <value>The 64-bit number.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
@@ -211,5 +211,23 @@
     </data>
     <data name="Error_UnknownError_Description" xml:space="preserve">
         <value>Indicates that there was a problem setting the registry value</value>
+    </data>
+    <data name="String_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(STRING)&gt;&lt;STRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="ExpandString_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(EXPANDSTRING)&gt;&lt;EXPANDSTRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="MultiString_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(MULTISTRING)&gt;&lt;MULTISTRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="Binary_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(BINARY)&gt;&lt;BINARY&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="DWord_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(DWORD)&gt;&lt;DWORD&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="QWord_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(QWORD)&gt;&lt;QWORD&gt;&lt;else&gt;a value&lt;endif&gt;</value>
     </data>
 </root>
