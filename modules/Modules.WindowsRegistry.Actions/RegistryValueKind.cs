@@ -8,8 +8,8 @@ public enum RegistryValueKind
 {
     String,
     ExpandString,
-    Binary,
-    DWord,
     MultiString,
-    QWord
+    DWord,
+    QWord,
+    Binary
 }

@@ -17,10 +17,10 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
 [Throws(ErrorCodes.Unknown)]
 public class SetRegistryValueAction : ActionBase
 {
-    [InputArgument(Order = 2)]
+    [InputArgument(Order = 2, Required = true)]
     public string Name { get; set; } = null!;
 
-    [InputArgument(Order = 1)]
+    [InputArgument(Order = 1, Required = true)]
     public string Path { get; set; } = null!;
 
     [InputArgument(Order = 5)]
@@ -32,7 +32,7 @@ public class SetRegistryValueAction : ActionBase
     [InputArgument(Order = 7)]
     public long ValueInt64 { get; set; }
 
-    [InputArgument]
+    [InputArgument(Order = 0)]
     [DefaultValue(RegistryValueKind.String)]
     public RegistryValueKind ValueKind { get; set; }
 
