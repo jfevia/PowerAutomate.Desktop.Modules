@@ -48,10 +48,10 @@
             AfterTargets="Build"
             DependsOnTargets="$(PackCustomModuleDependsOn);_GetOutputItemsFromCustomModulePack"
             Condition=" '$(PackCustomModule)' == 'true' ">
-        <PackTask SourceManifest="$(CustomModuleManifestAbsolutePath)"
-                  IntermediateManifestPath="$(IntermediateCustomModuleManifestAbsolutePath)"
-                  CustomModuleOutputPath="$(CustomModuleOutputAbsolutePath)"
-                  OutputPath="$(OutputAbsolutePath)" />
+<!--        <PackTask SourceManifest="$(CustomModuleManifestAbsolutePath)"-->
+<!--                  IntermediateManifestPath="$(IntermediateCustomModuleManifestAbsolutePath)"-->
+<!--                  CustomModuleOutputPath="$(CustomModuleOutputAbsolutePath)"-->
+<!--                  OutputPath="$(OutputAbsolutePath)" />-->
     </Target>
 
 </Project>

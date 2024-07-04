@@ -38,7 +38,7 @@ jobs:
 
     - name: Restore solution
       if: ${{ success() }}
-      run: msbuild src\PowerAutomate.Desktop.Modules.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild src\PowerAutomate.Desktop.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
     - name: Build solution filter
       if: ${{ success() }}
