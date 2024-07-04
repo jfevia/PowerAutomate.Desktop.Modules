@@ -20,6 +20,9 @@ jobs:
       with:
         fetch-depth: 0
 
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v4.0.0
+
     - name: Setup MSBuild
       if: ${{ success() }}
       uses: microsoft/setup-msbuild@v1.3.1
