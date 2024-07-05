@@ -173,6 +173,24 @@
     <data name="DeleteRegistryValue_Summary" xml:space="preserve">
         <value>Delete the registry value with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
     </data>
+    <data name="GetValuesInRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Get value names</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Description" xml:space="preserve">
+        <value>Gets the names of the values in the specified path.</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Summary" xml:space="preserve">
+        <value>Get the names of the values in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Get sub key names</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Description" xml:space="preserve">
+        <value>Gets the names of the sub keys in the specified path.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Summary" xml:space="preserve">
+        <value>Get the names of the sub keys in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
     <data name="RegistryValueKind_String_FriendlyName" xml:space="preserve">
         <value>String</value>
     </data>
@@ -271,6 +289,30 @@
     </data>
     <data name="GetRegistryValue_DefaultValue_FriendlyName" xml:space="preserve">
         <value>Default Value</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the values are located.</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Values_FriendlyName" xml:space="preserve">
+        <value>Values</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Values_Description" xml:space="preserve">
+        <value>The list of value names.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the sub keys are located.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_SubKeys_FriendlyName" xml:space="preserve">
+        <value>Sub Keys</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_SubKeys_Description" xml:space="preserve">
+        <value>The list of sub key names.</value>
     </data>
     <data name="GetRegistryValue_DefaultValue_Description" xml:space="preserve">
         <value>The value associated with name, with any embedded environment variables left unexpanded, or the value returned if name is not found.</value>

@@ -447,6 +447,132 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Gets the names of the sub keys in the specified path..
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_Description {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get sub key names.
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry key where the sub keys are located..
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_Path_Description {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The list of sub key names..
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_SubKeys_Description {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_SubKeys_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sub Keys.
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_SubKeys_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_SubKeys_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get the names of the sub keys in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string GetSubKeysInRegistryKey_Summary {
+            get {
+                return ResourceManager.GetString("GetSubKeysInRegistryKey_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the names of the values in the specified path..
+        /// </summary>
+        public static string GetValuesInRegistryKey_Description {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get value names.
+        /// </summary>
+        public static string GetValuesInRegistryKey_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry key where the values are located..
+        /// </summary>
+        public static string GetValuesInRegistryKey_Path_Description {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string GetValuesInRegistryKey_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get the names of the values in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string GetValuesInRegistryKey_Summary {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The list of value names..
+        /// </summary>
+        public static string GetValuesInRegistryKey_Values_Description {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Values_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Values.
+        /// </summary>
+        public static string GetValuesInRegistryKey_Values_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetValuesInRegistryKey_Values_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(MULTISTRING)&gt;&lt;MULTISTRING&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
         public static string MultiString_Summary {
