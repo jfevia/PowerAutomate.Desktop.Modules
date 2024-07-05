@@ -41,9 +41,12 @@ public class ActionTests
                                                                                                                                .OfType<Enum>()
                                                                                                                                .ToList()))
                                                               .ToList();
-        foreach (var friendlyNameResource in enumValuesByPropertyTypes.SelectMany(s => s.Values.Select(value => resourceManager.GetString($"{s.PropertyType.Name}_{value}_FriendlyName"))))
+        foreach (var enumValuesByPropertyType in enumValuesByPropertyTypes)
         {
-            Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty);
+            foreach (var friendlyNameResource in enumValuesByPropertyType.Values.Select(value => resourceManager.GetString($"{enumValuesByPropertyType.PropertyType.Name}_{value}_FriendlyName")))
+            {
+                Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Enum argument '{enumValuesByPropertyType.PropertyType.Name}' doesn't have a friendly name resource");
+            }
         }
     }
 
@@ -74,8 +77,8 @@ public class ActionTests
                 var friendlyNameResource = resourceManager.GetString($"{argumentsByAction.ActionAttribute.Id}_{argument.Property.Name}_FriendlyName");
                 var descriptionResource = resourceManager.GetString($"{argumentsByAction.ActionAttribute.Id}_{argument.Property.Name}_Description");
 
-                Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty);
-                Assert.That(descriptionResource, Is.Not.Null.Or.Empty);
+                Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Argument '{argument.Property.Name}' in action '{argumentsByAction.ActionAttribute.Id}' doesn't have a friendly name resource");
+                Assert.That(descriptionResource, Is.Not.Null.Or.Empty, $"Argument '{argument.Property.Name}' in action '{argumentsByAction.ActionAttribute.Id}' doesn't have a description resource");
             }
         }
     }
@@ -99,8 +102,8 @@ public class ActionTests
             var friendlyNameResource = resourceManager.GetString($"Error_{error}_FriendlyName");
             var descriptionResource = resourceManager.GetString($"Error_{error}_Description");
 
-            Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty);
-            Assert.That(descriptionResource, Is.Not.Null.Or.Empty);
+            Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Error '{error}' doesn't have a friendly name resource");
+            Assert.That(descriptionResource, Is.Not.Null.Or.Empty, $"Error '{error}' doesn't have a friendly name resource");
         }
     }
 
@@ -119,9 +122,11 @@ public class ActionTests
         {
             var friendlyNameResource = resourceManager.GetString($"{action.ActionAttribute.Id}_FriendlyName");
             var descriptionResource = resourceManager.GetString($"{action.ActionAttribute.Id}_Description");
+            var summaryResource = resourceManager.GetString($"{action.ActionAttribute.Id}_Summary");
 
-            Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty);
-            Assert.That(descriptionResource, Is.Not.Null.Or.Empty);
+            Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Action '{action.ActionAttribute.Id}' doesn't have a friendly name resource");
+            Assert.That(descriptionResource, Is.Not.Null.Or.Empty, $"Action '{action.ActionAttribute.Id}' doesn't have a description resource");
+            Assert.That(summaryResource, Is.Not.Null.Or.Empty, $"Action '{action.ActionAttribute.Id}' doesn't have a summary resource");
         }
     }
 }

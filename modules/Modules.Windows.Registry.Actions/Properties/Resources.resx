@@ -134,6 +134,18 @@
     <data name="SetRegistryValue_Description" xml:space="preserve">
         <value>Sets the value of a name/value pair in the registry key.</value>
     </data>
+    <data name="SetRegistryValue_Summary" xml:space="preserve">
+        <value>Set the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a name/value pair&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="GetRegistryValue_FriendlyName" xml:space="preserve">
+        <value>Get registry value</value>
+    </data>
+    <data name="GetRegistryValue_Description" xml:space="preserve">
+        <value>Gets the value of a name/value pair in the registry key.</value>
+    </data>
+    <data name="GetRegistryValue_Summary" xml:space="preserve">
+        <value>Get the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
     <data name="RegistryValueKind_String_FriendlyName" xml:space="preserve">
         <value>String</value>
     </data>
@@ -169,6 +181,36 @@
     </data>
     <data name="SetRegistryValue_Name_Description" xml:space="preserve">
         <value>The name of the registry value.</value>
+    </data>
+    <data name="GetRegistryValue_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetRegistryValue_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the value is located.</value>
+    </data>
+    <data name="GetRegistryValue_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="GetRegistryValue_Name_Description" xml:space="preserve">
+        <value>The name of the registry value.</value>
+    </data>
+    <data name="GetRegistryValue_DefaultValue_FriendlyName" xml:space="preserve">
+        <value>Default Value</value>
+    </data>
+    <data name="GetRegistryValue_DefaultValue_Description" xml:space="preserve">
+        <value>The value associated with name, with any embedded environment variables left unexpanded, or the value returned if name is not found.</value>
+    </data>
+    <data name="GetRegistryValue_ExpandEnvironmentVariables_FriendlyName" xml:space="preserve">
+        <value>Expand Environment Variables</value>
+    </data>
+    <data name="GetRegistryValue_ExpandEnvironmentVariables_Description" xml:space="preserve">
+        <value>Whether the environment variables will be expanded if the registry value supports it.</value>
+    </data>
+    <data name="GetRegistryValue_Value_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="GetRegistryValue_Value_Description" xml:space="preserve">
+        <value>The value of the name/value pair in the registry key.</value>
     </data>
     <data name="SetRegistryValue_String_FriendlyName" xml:space="preserve">
         <value>Value</value>
@@ -207,10 +249,10 @@
         <value>The 64-bit number.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
-        <value>Failed to set the registry value</value>
+        <value>Operation failed</value>
     </data>
     <data name="Error_UnknownError_Description" xml:space="preserve">
-        <value>Indicates that there was a problem setting the registry value.</value>
+        <value>Indicates that there was a problem when executing the operation.</value>
     </data>
     <data name="String_Summary" xml:space="preserve">
         <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(STRING)&gt;&lt;STRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>

@@ -24,12 +24,12 @@ public class ActionSelectorTests
                                           .Where(type => actionSelectorBaseType.IsAssignableFrom(type))
                                           .Where(type => type is { IsGenericType: false, IsAbstract: false, IsPublic: true })
                                           .ToList();
-        var summaryResources = actionSelectorTypes.Select(type => (ActionSelectorBase)Activator.CreateInstance(type))
-                                                  .Select(instance => resourceManager.GetString($"{instance.ActionName}_Summary"));
 
-        foreach (var summaryResource in summaryResources)
+        foreach (var actionSelectorType in actionSelectorTypes)
         {
-            Assert.That(summaryResource, Is.Not.Null.Or.Empty);
+            var instance = (ActionSelectorBase)Activator.CreateInstance(actionSelectorType);
+            var summaryResource = resourceManager.GetString($"{instance.ActionName}_Summary");
+            Assert.That(summaryResource, Is.Not.Null.Or.Empty, $"Action selector '{instance.ActionName}' doesn't have a summary resource");
         }
     }
 }

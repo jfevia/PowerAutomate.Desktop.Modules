@@ -8,6 +8,11 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
 internal static class RegistryValueKindExtensions
 {
+    public static bool CanExpandEnvironmentVariables(this Desktop.Windows.Registry.Abstractions.RegistryValueKind value)
+    {
+        return value is Desktop.Windows.Registry.Abstractions.RegistryValueKind.ExpandString;
+    }
+
     public static Desktop.Windows.Registry.Abstractions.RegistryValueKind ToAbstractions(this RegistryValueKind value)
     {
         return value switch

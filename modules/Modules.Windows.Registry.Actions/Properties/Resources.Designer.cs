@@ -78,7 +78,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates that there was a problem setting the registry value..
+        ///   Looks up a localized string similar to Indicates that there was a problem when executing the operation..
         /// </summary>
         public static string Error_UnknownError_Description {
             get {
@@ -87,7 +87,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Failed to set the registry value.
+        ///   Looks up a localized string similar to Operation failed.
         /// </summary>
         public static string Error_UnknownError_FriendlyName {
             get {
@@ -101,6 +101,123 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         public static string ExpandString_Summary {
             get {
                 return ResourceManager.GetString("ExpandString_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value associated with name, with any embedded environment variables left unexpanded, or the value returned if name is not found..
+        /// </summary>
+        public static string GetRegistryValue_DefaultValue_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_DefaultValue_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Value.
+        /// </summary>
+        public static string GetRegistryValue_DefaultValue_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_DefaultValue_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the value of a name/value pair in the registry key..
+        /// </summary>
+        public static string GetRegistryValue_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the environment variables will be expanded if the registry value supports it..
+        /// </summary>
+        public static string GetRegistryValue_ExpandEnvironmentVariables_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_ExpandEnvironmentVariables_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expand Environment Variables.
+        /// </summary>
+        public static string GetRegistryValue_ExpandEnvironmentVariables_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_ExpandEnvironmentVariables_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get registry value.
+        /// </summary>
+        public static string GetRegistryValue_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the registry value..
+        /// </summary>
+        public static string GetRegistryValue_Name_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Name_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string GetRegistryValue_Name_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Name_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry key where the value is located..
+        /// </summary>
+        public static string GetRegistryValue_Path_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string GetRegistryValue_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string GetRegistryValue_Summary {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value of the name/value pair in the registry key..
+        /// </summary>
+        public static string GetRegistryValue_Value_Description {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Value_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        public static string GetRegistryValue_Value_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetRegistryValue_Value_FriendlyName", resourceCulture);
             }
         }
         
@@ -353,6 +470,15 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         public static string SetRegistryValue_String_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_String_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a name/value pair&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string SetRegistryValue_Summary {
+            get {
+                return ResourceManager.GetString("SetRegistryValue_Summary", resourceCulture);
             }
         }
         

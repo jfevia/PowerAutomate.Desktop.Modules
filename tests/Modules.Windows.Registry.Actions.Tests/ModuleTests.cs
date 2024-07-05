@@ -22,7 +22,7 @@ public class ModuleTests
         var friendlyNameResource = resourceManager.GetString($"{assemblyTitle.Title}_FriendlyName");
         var descriptionResource = resourceManager.GetString($"{assemblyTitle.Title}_Description");
 
-        Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty);
-        Assert.That(descriptionResource, Is.Not.Null.Or.Empty);
+        Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Module '{assemblyTitle.Title}' doesn't have a friendly name resource");
+        Assert.That(descriptionResource, Is.Not.Null.Or.Empty, $"Module '{assemblyTitle.Title}' doesn't have a description resource");
     }
 }
