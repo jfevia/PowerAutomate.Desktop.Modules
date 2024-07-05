@@ -69,6 +69,231 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creates a registry key in the specified path..
+        /// </summary>
+        public static string CreateRegistryKey_Description {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create registry key.
+        /// </summary>
+        public static string CreateRegistryKey_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the registry key..
+        /// </summary>
+        public static string CreateRegistryKey_Name_Description {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Name_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string CreateRegistryKey_Name_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Name_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry key where the new key will be created..
+        /// </summary>
+        public static string CreateRegistryKey_Path_Description {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string CreateRegistryKey_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string CreateRegistryKey_Summary {
+            get {
+                return ResourceManager.GetString("CreateRegistryKey_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes a registry key in the specified path..
+        /// </summary>
+        public static string DeleteRegistryKey_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete registry key.
+        /// </summary>
+        public static string DeleteRegistryKey_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the registry key..
+        /// </summary>
+        public static string DeleteRegistryKey_Name_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Name_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DeleteRegistryKey_Name_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Name_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry key where the key that will be deleted is located..
+        /// </summary>
+        public static string DeleteRegistryKey_Path_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string DeleteRegistryKey_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string DeleteRegistryKey_Summary {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the action fails if the registry key to be deleted does not exist..
+        /// </summary>
+        public static string DeleteRegistryKey_ThrowOnMissingSubKey_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_ThrowOnMissingSubKey_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error on sub key missing.
+        /// </summary>
+        public static string DeleteRegistryKey_ThrowOnMissingSubKey_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryKey_ThrowOnMissingSubKey_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes a registry value in the specified path..
+        /// </summary>
+        public static string DeleteRegistryValue_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete registry value.
+        /// </summary>
+        public static string DeleteRegistryValue_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the registry value..
+        /// </summary>
+        public static string DeleteRegistryValue_Name_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Name_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        public static string DeleteRegistryValue_Name_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Name_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The full path to the registry value where the value that will be deleted is located..
+        /// </summary>
+        public static string DeleteRegistryValue_Path_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Path_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path.
+        /// </summary>
+        public static string DeleteRegistryValue_Path_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Path_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete the registry value with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;.
+        /// </summary>
+        public static string DeleteRegistryValue_Summary {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the action fails if the registry value to be deleted does not exist..
+        /// </summary>
+        public static string DeleteRegistryValue_ThrowOnMissingValue_Description {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_ThrowOnMissingValue_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error on sub value missing.
+        /// </summary>
+        public static string DeleteRegistryValue_ThrowOnMissingValue_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteRegistryValue_ThrowOnMissingValue_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(DWORD)&gt;&lt;DWORD&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
         public static string DWord_Summary {

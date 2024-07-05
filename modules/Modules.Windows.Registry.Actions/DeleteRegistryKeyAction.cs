@@ -12,30 +12,24 @@ using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
-[Action(Id = "GetRegistryValue")]
+[Action(Id = "DeleteRegistryKey")]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetRegistryValueAction : ActionBase
+public class DeleteRegistryKeyAction : ActionBase
 {
-    [InputArgument(Order = 3, Required = false)]
-    public object DefaultValue { get; set; } = null!;
-
-    [InputArgument(Order = 4)]
-    [DefaultValue(false)]
-    public bool ExpandEnvironmentVariables { get; set; }
-
     [InputArgument(Order = 2, Required = true)]
     public string Name { get; set; } = null!;
 
     [InputArgument(Order = 1, Required = true)]
     public string Path { get; set; } = null!;
 
-    [OutputArgument(Order = 1)]
-    public object Value { get; set; } = null!;
+    [InputArgument(Order = 3)]
+    [DefaultValue(false)]
+    public bool ThrowOnMissingSubKey { get; set; }
 
     public override void Execute(ActionContext context)
     {
@@ -45,11 +39,7 @@ public class GetRegistryValueAction : ActionBase
         {
             using var registry = new Win32Registry();
             using var registryKey = registry.ParseKey(Path, true);
-            var valueKind = registryKey.GetValueKind(Name);
-
-            Value = valueKind.CanExpandEnvironmentVariables() && ExpandEnvironmentVariables
-                ? registryKey.GetValue(Name, DefaultValue)
-                : registryKey.GetValue(Name, DefaultValue, RegistryValueOptions.DoNotExpandEnvironmentNames);
+            registryKey.DeleteSubKey(Name, ThrowOnMissingSubKey);
         }
         catch (Exception ex)
         {

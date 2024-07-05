@@ -146,6 +146,33 @@
     <data name="GetRegistryValue_Summary" xml:space="preserve">
         <value>Get the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
     </data>
+    <data name="CreateRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Create registry key</value>
+    </data>
+    <data name="CreateRegistryKey_Description" xml:space="preserve">
+        <value>Creates a registry key in the specified path.</value>
+    </data>
+    <data name="CreateRegistryKey_Summary" xml:space="preserve">
+        <value>Create the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="DeleteRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Delete registry key</value>
+    </data>
+    <data name="DeleteRegistryKey_Description" xml:space="preserve">
+        <value>Deletes a registry key in the specified path.</value>
+    </data>
+    <data name="DeleteRegistryKey_Summary" xml:space="preserve">
+        <value>Delete the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="DeleteRegistryValue_FriendlyName" xml:space="preserve">
+        <value>Delete registry value</value>
+    </data>
+    <data name="DeleteRegistryValue_Description" xml:space="preserve">
+        <value>Deletes a registry value in the specified path.</value>
+    </data>
+    <data name="DeleteRegistryValue_Summary" xml:space="preserve">
+        <value>Delete the registry value with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
     <data name="RegistryValueKind_String_FriendlyName" xml:space="preserve">
         <value>String</value>
     </data>
@@ -193,6 +220,54 @@
     </data>
     <data name="GetRegistryValue_Name_Description" xml:space="preserve">
         <value>The name of the registry value.</value>
+    </data>
+    <data name="CreateRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="CreateRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the new key will be created.</value>
+    </data>
+    <data name="CreateRegistryKey_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="CreateRegistryKey_Name_Description" xml:space="preserve">
+        <value>The name of the registry key.</value>
+    </data>
+    <data name="DeleteRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="DeleteRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the key that will be deleted is located.</value>
+    </data>
+    <data name="DeleteRegistryKey_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="DeleteRegistryKey_Name_Description" xml:space="preserve">
+        <value>The name of the registry key.</value>
+    </data>
+    <data name="DeleteRegistryKey_ThrowOnMissingSubKey_FriendlyName" xml:space="preserve">
+        <value>Error on sub key missing</value>
+    </data>
+    <data name="DeleteRegistryKey_ThrowOnMissingSubKey_Description" xml:space="preserve">
+        <value>Whether the action fails if the registry key to be deleted does not exist.</value>
+    </data>
+    <data name="DeleteRegistryValue_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="DeleteRegistryValue_Path_Description" xml:space="preserve">
+        <value>The full path to the registry value where the value that will be deleted is located.</value>
+    </data>
+    <data name="DeleteRegistryValue_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="DeleteRegistryValue_Name_Description" xml:space="preserve">
+        <value>The name of the registry value.</value>
+    </data>
+    <data name="DeleteRegistryValue_ThrowOnMissingValue_FriendlyName" xml:space="preserve">
+        <value>Error on sub value missing</value>
+    </data>
+    <data name="DeleteRegistryValue_ThrowOnMissingValue_Description" xml:space="preserve">
+        <value>Whether the action fails if the registry value to be deleted does not exist.</value>
     </data>
     <data name="GetRegistryValue_DefaultValue_FriendlyName" xml:space="preserve">
         <value>Default Value</value>
