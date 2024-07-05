@@ -32,4 +32,6 @@
         </EmbeddedResource>
     </ItemGroup>
 
+    <Import Project="..\..\src\Modules.Actions.Shared\Modules.Actions.Shared.projitems" Label="Shared" />
+
 </Project>

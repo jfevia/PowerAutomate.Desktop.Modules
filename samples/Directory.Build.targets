@@ -1,0 +1,69 @@
+<Project>
+
+    <PropertyGroup>
+        <CustomModuleOutputFileName Condition="'$(CustomModuleOutputFileName)'==''">$(MSBuildProjectName).cab</CustomModuleOutputFileName>
+        <CustomModuleOutputFilePath Condition="'$(CustomModuleOutputFilePath)'==''">$(OutputPath)\$(CustomModuleOutputFileName)</CustomModuleOutputFilePath>
+        <SignScriptRelativeFilePath Condition="'$(SignScriptRelativeFilePath)'==''">..\..\.tools\sign.ps1</SignScriptRelativeFilePath>
+        <MakeCabScriptRelativeFilePath Condition="'$(MakeCabScriptRelativeFilePath)'==''">..\..\.tools\makecab.ps1</MakeCabScriptRelativeFilePath>
+    </PropertyGroup>
+
+    <!-- ========== Get absolute output paths for Pack ========== -->
+    <Target Name="_GetAbsoluteOutputPathsForCustomModulePack">
+        <ConvertToAbsolutePath Paths="$(CustomModuleOutputFilePath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="CustomModuleOutputAbsoluteFilePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(OutputPath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="OutputAbsolutePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(SignScriptRelativeFilePath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="SignScriptAbsoluteFilePath" />
+        </ConvertToAbsolutePath>
+        <ConvertToAbsolutePath Paths="$(SignScriptRelativeFilePath)">
+            <Output TaskParameter="AbsolutePaths" PropertyName="SignScriptAbsoluteFilePath" />
+        </ConvertToAbsolutePath>
+    </Target>
+
+    <!-- ========== Get the output '.cab' absolute file paths ========== -->
+    <Target Name="_GetOutputItemsFromCustomModulePack"
+            DependsOnTargets="_GetAbsoluteOutputPathsForCustomModulePack"
+            Returns="@(_OutputCustomModulePackItems)">
+        <PropertyGroup>
+            <_OutputCustomModulePackItems>$(CustomModuleOutputAbsoluteFilePath)</_OutputCustomModulePackItems>
+        </PropertyGroup>
+    </Target>
+
+    <!-- ========== Post event targets ========== -->
+    <Target Name="_CleanCustomModuleFiles"
+            DependsOnTargets="_GetOutputItemsFromCustomModulePack"
+            AfterTargets="Clean">
+        <ItemGroup>
+            <_CustomModuleFilesToDelete Include="$(_OutputCustomModulePackItems)" />
+        </ItemGroup>
+        <Delete Files="@(_CustomModuleFilesToDelete)" />
+    </Target>
+
+    <!-- ========== Sign build output ========== -->
+    <Target Name="SignCustomModuleBuildOutput"
+            AfterTargets="Build"
+            DependsOnTargets="$(SignCustomModuleBuildOutputDependsOn);_GetOutputItemsFromCustomModulePack"
+            Condition=" '$(PackCustomModule)' == 'true' ">
+        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.dll" />
+    </Target>
+
+    <!-- ========== Pack ========== -->
+    <Target Name="PackCustomModule"
+            AfterTargets="SignCustomModuleBuildOutput"
+            DependsOnTargets="$(PackCustomModuleDependsOn);SignCustomModuleBuildOutput"
+            Condition=" '$(PackCustomModule)' == 'true' ">
+        <Exec Command="powershell -ExecutionPolicy Bypass -File $(MakeCabScriptRelativeFilePath) -SourceDirectory $(OutputAbsolutePath) -OutputDirectory $(OutputAbsolutePath) -OutputFileName $(CustomModuleOutputFileName)" />
+    </Target>
+
+    <!-- ========== Sign package ========== -->
+    <Target Name="SignCustomModulePackage"
+            AfterTargets="PackCustomModule"
+            DependsOnTargets="$(SignCustomModulePackageDependsOn);PackCustomModule"
+            Condition=" '$(PackCustomModule)' == 'true' ">
+        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.cab" />
+    </Target>
+
+</Project>

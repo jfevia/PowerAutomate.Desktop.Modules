@@ -1,14 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.Registry.Actions", "..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34902.65
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Windows.Registry.Actions", "..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{AAC42F13-B42E-462A-B605-40BFEC07FD26}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registry", "Registry", "{60B2AD52-230C-4B79-894D-64642E88D9C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows.Registry.Abstractions", "Windows.Registry.Abstractions\Windows.Registry.Abstractions.csproj", "{EAC99B47-CD62-4C43-B213-DB51AB85BA11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Windows.Registry.Abstractions", "Windows.Registry.Abstractions\Windows.Registry.Abstractions.csproj", "{EAC99B47-CD62-4C43-B213-DB51AB85BA11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Windows.Registry.Win32", "Windows.Registry.Win32\Windows.Registry.Win32.csproj", "{E82F9437-289A-4F32-8A70-DE6BC07703D5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Windows.Registry.Win32", "Windows.Registry.Win32\Windows.Registry.Win32.csproj", "{E82F9437-289A-4F32-8A70-DE6BC07703D5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3B78C634-DFD6-43DA-A30E-33AC42224BD4}"
 EndProject
@@ -16,11 +19,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{688BD8
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{79D5DFFD-323B-4DC4-950D-13DA2C1F31E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Actions.Tests", "..\tests\Modules.Actions.Tests\Modules.Actions.Tests.csproj", "{D622D84B-9853-4E6E-AE09-1988FBFE6392}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.Actions.Tests", "..\tests\Modules.Actions.Tests\Modules.Actions.Tests.csproj", "{D622D84B-9853-4E6E-AE09-1988FBFE6392}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.HTML.Actions", "..\modules\Modules.HTML.Actions\Modules.HTML.Actions.csproj", "{435C2B05-E667-4AAD-9BE5-3863345B98A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.HTML.Actions", "..\modules\Modules.HTML.Actions\Modules.HTML.Actions.csproj", "{435C2B05-E667-4AAD-9BE5-3863345B98A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.OpenApi.Actions", "..\modules\Modules.OpenApi.Actions\Modules.OpenApi.Actions.csproj", "{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Modules.OpenApi.Actions", "..\samples\Modules.OpenApi.Actions\Modules.OpenApi.Actions.csproj", "{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Modules.Actions.Shared", "Modules.Actions.Shared\Modules.Actions.Shared.shproj", "{7E19E2F1-6DE7-4A0E-AED8-7CEA38B166AF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,15 +60,22 @@ Global
 		{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{2603CDEA-C582-4096-8AD4-6982E9D36DF5} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{AAC42F13-B42E-462A-B605-40BFEC07FD26} = {688BD8E9-5FCD-4EA8-82AF-DBC986681712}
 		{60B2AD52-230C-4B79-894D-64642E88D9C7} = {AAC42F13-B42E-462A-B605-40BFEC07FD26}
 		{EAC99B47-CD62-4C43-B213-DB51AB85BA11} = {60B2AD52-230C-4B79-894D-64642E88D9C7}
 		{E82F9437-289A-4F32-8A70-DE6BC07703D5} = {60B2AD52-230C-4B79-894D-64642E88D9C7}
-		{2603CDEA-C582-4096-8AD4-6982E9D36DF5} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
-		{AAC42F13-B42E-462A-B605-40BFEC07FD26} = {688BD8E9-5FCD-4EA8-82AF-DBC986681712}
 		{79D5DFFD-323B-4DC4-950D-13DA2C1F31E0} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
 		{D622D84B-9853-4E6E-AE09-1988FBFE6392} = {79D5DFFD-323B-4DC4-950D-13DA2C1F31E0}
 		{435C2B05-E667-4AAD-9BE5-3863345B98A4} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
-		{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{7E19E2F1-6DE7-4A0E-AED8-7CEA38B166AF} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717} = {64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13
 	EndGlobalSection
 EndGlobal

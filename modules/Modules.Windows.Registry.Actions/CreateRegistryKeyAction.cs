@@ -6,6 +6,7 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
+using PowerAutomate.Desktop.Modules.Actions.Shared;
 using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 using PowerAutomate.Desktop.Windows.Registry.Win32;
 
