@@ -27,10 +27,10 @@ jobs:
       if: ${{ success() }}
       run: msbuild src\PowerAutomate.Desktop.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
-    - name: Build solution filter
+    - name: Build solution
       if: ${{ success() }}
-      run: msbuild src\build.slnf -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild src\PowerAutomate.Desktop.sln -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
     - name: Run unit tests
       if: ${{ success() }}
-      run: dotnet test src\build.slnf
+      run: dotnet test src\PowerAutomate.Desktop.sln
