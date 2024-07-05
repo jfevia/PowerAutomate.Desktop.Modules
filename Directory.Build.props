@@ -1,7 +1,7 @@
 <Project>
 
     <PropertyGroup>
-        <ProductName>PowerAutomate.Desktop.Modules</ProductName>
+        <ProductName>PowerAutomate.Desktop</ProductName>
         <RootNamespace>$(ProductName).$(MSBuildProjectName)</RootNamespace>
         <AssemblyName>$(ProductName).$(MSBuildProjectName)</AssemblyName>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>

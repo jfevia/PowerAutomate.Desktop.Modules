@@ -1,0 +1,392 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="WindowsRegistry_FriendlyName" xml:space="preserve">
+        <value>Windows Registry</value>
+    </data>
+    <data name="WindowsRegistry_Description" xml:space="preserve">
+        <value>Perform operations related to the Windows Registry.</value>
+    </data>
+    <data name="SetRegistryValue_FriendlyName" xml:space="preserve">
+        <value>Set registry value</value>
+    </data>
+    <data name="SetRegistryValue_Description" xml:space="preserve">
+        <value>Sets the value of a name/value pair in the registry key.</value>
+    </data>
+    <data name="SetRegistryValue_Summary" xml:space="preserve">
+        <value>Set the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a name/value pair&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="GetRegistryValue_FriendlyName" xml:space="preserve">
+        <value>Get registry value</value>
+    </data>
+    <data name="GetRegistryValue_Description" xml:space="preserve">
+        <value>Gets the value of a name/value pair in the registry key.</value>
+    </data>
+    <data name="GetRegistryValue_Summary" xml:space="preserve">
+        <value>Get the value of &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="CreateRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Create registry key</value>
+    </data>
+    <data name="CreateRegistryKey_Description" xml:space="preserve">
+        <value>Creates a registry key in the specified path.</value>
+    </data>
+    <data name="CreateRegistryKey_Summary" xml:space="preserve">
+        <value>Create the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="DeleteRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Delete registry key</value>
+    </data>
+    <data name="DeleteRegistryKey_Description" xml:space="preserve">
+        <value>Deletes a registry key in the specified path.</value>
+    </data>
+    <data name="DeleteRegistryKey_Summary" xml:space="preserve">
+        <value>Delete the registry key with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="DeleteRegistryValue_FriendlyName" xml:space="preserve">
+        <value>Delete registry value</value>
+    </data>
+    <data name="DeleteRegistryValue_Description" xml:space="preserve">
+        <value>Deletes a registry value in the specified path.</value>
+    </data>
+    <data name="DeleteRegistryValue_Summary" xml:space="preserve">
+        <value>Delete the registry value with &lt;if(NAME)&gt;name &lt;NAME&gt;&lt;else&gt;a given name&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="GetValuesInRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Get value names</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Description" xml:space="preserve">
+        <value>Gets the names of the values in the specified path.</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Summary" xml:space="preserve">
+        <value>Get the names of the values in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_FriendlyName" xml:space="preserve">
+        <value>Get sub key names</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Description" xml:space="preserve">
+        <value>Gets the names of the sub keys in the specified path.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Summary" xml:space="preserve">
+        <value>Get the names of the sub keys in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt;</value>
+    </data>
+    <data name="RegistryValueKind_String_FriendlyName" xml:space="preserve">
+        <value>String</value>
+    </data>
+    <data name="RegistryValueKind_ExpandString_FriendlyName" xml:space="preserve">
+        <value>Expandable String</value>
+    </data>
+    <data name="RegistryValueKind_MultiString_FriendlyName" xml:space="preserve">
+        <value>Multi-String</value>
+    </data>
+    <data name="RegistryValueKind_Binary_FriendlyName" xml:space="preserve">
+        <value>Binary</value>
+    </data>
+    <data name="RegistryValueKind_DWord_FriendlyName" xml:space="preserve">
+        <value>DWORD (32-bit)</value>
+    </data>
+    <data name="RegistryValueKind_QWord_FriendlyName" xml:space="preserve">
+        <value>QWORD (64-bit)</value>
+    </data>
+    <data name="SetRegistryValue_Kind_FriendlyName" xml:space="preserve">
+        <value>Value Type</value>
+    </data>
+    <data name="SetRegistryValue_Kind_Description" xml:space="preserve">
+        <value>The type of registry value.</value>
+    </data>
+    <data name="SetRegistryValue_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="SetRegistryValue_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the value is located.</value>
+    </data>
+    <data name="SetRegistryValue_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="SetRegistryValue_Name_Description" xml:space="preserve">
+        <value>The name of the registry value.</value>
+    </data>
+    <data name="GetRegistryValue_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetRegistryValue_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the value is located.</value>
+    </data>
+    <data name="GetRegistryValue_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="GetRegistryValue_Name_Description" xml:space="preserve">
+        <value>The name of the registry value.</value>
+    </data>
+    <data name="CreateRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="CreateRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the new key will be created.</value>
+    </data>
+    <data name="CreateRegistryKey_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="CreateRegistryKey_Name_Description" xml:space="preserve">
+        <value>The name of the registry key.</value>
+    </data>
+    <data name="DeleteRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="DeleteRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the key that will be deleted is located.</value>
+    </data>
+    <data name="DeleteRegistryKey_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="DeleteRegistryKey_Name_Description" xml:space="preserve">
+        <value>The name of the registry key.</value>
+    </data>
+    <data name="DeleteRegistryKey_ThrowOnMissingSubKey_FriendlyName" xml:space="preserve">
+        <value>Error on sub key missing</value>
+    </data>
+    <data name="DeleteRegistryKey_ThrowOnMissingSubKey_Description" xml:space="preserve">
+        <value>Whether the action fails if the registry key to be deleted does not exist.</value>
+    </data>
+    <data name="DeleteRegistryValue_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="DeleteRegistryValue_Path_Description" xml:space="preserve">
+        <value>The full path to the registry value where the value that will be deleted is located.</value>
+    </data>
+    <data name="DeleteRegistryValue_Name_FriendlyName" xml:space="preserve">
+        <value>Name</value>
+    </data>
+    <data name="DeleteRegistryValue_Name_Description" xml:space="preserve">
+        <value>The name of the registry value.</value>
+    </data>
+    <data name="DeleteRegistryValue_ThrowOnMissingValue_FriendlyName" xml:space="preserve">
+        <value>Error on sub value missing</value>
+    </data>
+    <data name="DeleteRegistryValue_ThrowOnMissingValue_Description" xml:space="preserve">
+        <value>Whether the action fails if the registry value to be deleted does not exist.</value>
+    </data>
+    <data name="GetRegistryValue_DefaultValue_FriendlyName" xml:space="preserve">
+        <value>Default Value</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the values are located.</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Values_FriendlyName" xml:space="preserve">
+        <value>Values</value>
+    </data>
+    <data name="GetValuesInRegistryKey_Values_Description" xml:space="preserve">
+        <value>The list of value names.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_Path_Description" xml:space="preserve">
+        <value>The full path to the registry key where the sub keys are located.</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_SubKeys_FriendlyName" xml:space="preserve">
+        <value>Sub Keys</value>
+    </data>
+    <data name="GetSubKeysInRegistryKey_SubKeys_Description" xml:space="preserve">
+        <value>The list of sub key names.</value>
+    </data>
+    <data name="GetRegistryValue_DefaultValue_Description" xml:space="preserve">
+        <value>The value associated with name, with any embedded environment variables left unexpanded, or the value returned if name is not found.</value>
+    </data>
+    <data name="GetRegistryValue_ExpandEnvironmentVariables_FriendlyName" xml:space="preserve">
+        <value>Expand Environment Variables</value>
+    </data>
+    <data name="GetRegistryValue_ExpandEnvironmentVariables_Description" xml:space="preserve">
+        <value>Whether the environment variables will be expanded if the registry value supports it.</value>
+    </data>
+    <data name="GetRegistryValue_Value_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="GetRegistryValue_Value_Description" xml:space="preserve">
+        <value>The value of the name/value pair in the registry key.</value>
+    </data>
+    <data name="SetRegistryValue_String_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_String_Description" xml:space="preserve">
+        <value>The string.</value>
+    </data>
+    <data name="SetRegistryValue_ExpandString_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_ExpandString_Description" xml:space="preserve">
+        <value>The string that contains unexpanded references to environment variables, for example: %PATH%.</value>
+    </data>
+    <data name="SetRegistryValue_MultiString_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_MultiString_Description" xml:space="preserve">
+        <value>The sequence of strings.</value>
+    </data>
+    <data name="SetRegistryValue_Binary_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_Binary_Description" xml:space="preserve">
+        <value>The binary data.</value>
+    </data>
+    <data name="SetRegistryValue_DWord_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_DWord_Description" xml:space="preserve">
+        <value>The 32-bit number.</value>
+    </data>
+    <data name="SetRegistryValue_QWord_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetRegistryValue_QWord_Description" xml:space="preserve">
+        <value>The 64-bit number.</value>
+    </data>
+    <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
+        <value>Operation failed</value>
+    </data>
+    <data name="Error_UnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when executing the operation.</value>
+    </data>
+    <data name="String_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(STRING)&gt;&lt;STRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="ExpandString_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(EXPANDSTRING)&gt;&lt;EXPANDSTRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="MultiString_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(MULTISTRING)&gt;&lt;MULTISTRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="Binary_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(BINARY)&gt;&lt;BINARY&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="DWord_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(DWORD)&gt;&lt;DWORD&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+    <data name="QWord_Summary" xml:space="preserve">
+        <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(QWORD)&gt;&lt;QWORD&gt;&lt;else&gt;a value&lt;endif&gt;</value>
+    </data>
+</root>

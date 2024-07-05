@@ -5,7 +5,6 @@ on:
     - cron: '0 0 * * *'
 
 env:
-  REPOSITORY_URL: "jfevia/PowerAutomate.Desktop.Modules"
   CONFIGURATION: "Release"
   ENVIRONMENT: "Production"
 
@@ -20,30 +19,18 @@ jobs:
       with:
         fetch-depth: 0
 
-    - name: Install Power Automate for desktop
-      if: ${{ success() }}
-      run: |
-        Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?linkid=2164365 -OutFile PADSetup.exe
-        .\PADSetup.exe -Install -AcceptEULA -Silent
-        Start-Sleep -Seconds 10
-        $processName = "PADSetup"
-        do {
-          Write-Host "Waiting for process to exit..."
-          Start-Sleep -Seconds 10
-        } while (Get-Process -Name $processName -ErrorAction SilentlyContinue)
-
     - name: Setup MSBuild
       if: ${{ success() }}
       uses: microsoft/setup-msbuild@v1.3.1
 
     - name: Restore solution
       if: ${{ success() }}
-      run: msbuild src\PowerAutomate.Desktop.Modules.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild src\PowerAutomate.Desktop.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
-    - name: Build solution filter
+    - name: Build solution
       if: ${{ success() }}
-      run: msbuild src\build.slnf -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild src\PowerAutomate.Desktop.sln -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
     - name: Run unit tests
       if: ${{ success() }}
-      run: dotnet test src\build.slnf
+      run: dotnet test src\PowerAutomate.Desktop.sln
