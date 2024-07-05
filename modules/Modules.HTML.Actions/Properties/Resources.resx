@@ -135,7 +135,16 @@
         <value>Converts a data table to an HTML table.</value>
     </data>
     <data name="ConvertDataTableToHtmlTable_Summary" xml:space="preserve">
-        <value>Convert &lt;DATATABLE&gt; to an HTML table and store it into &lt;TABLE&gt;.</value>
+        <value>Convert &lt;DATATABLE&gt; to an HTML table and store it into &lt;HTMLTABLE&gt;.</value>
+    </data>
+    <data name="ConvertListToHtmlList_FriendlyName" xml:space="preserve">
+        <value>Convert list to HTML list</value>
+    </data>
+    <data name="ConvertListToHtmlList_Description" xml:space="preserve">
+        <value>Converts a list to an HTML list.</value>
+    </data>
+    <data name="ConvertListToHtmlList_Summary" xml:space="preserve">
+        <value>Convert &lt;LIST&gt; to an HTML list and store it into &lt;HTMLLIST&gt;.</value>
     </data>
     <data name="ConvertDataTableToHtmlTable_DataTable_FriendlyName" xml:space="preserve">
         <value>Data Table</value>
@@ -143,11 +152,29 @@
     <data name="ConvertDataTableToHtmlTable_DataTable_Description" xml:space="preserve">
         <value>The data table.</value>
     </data>
-    <data name="ConvertDataTableToHtmlTable_Table_FriendlyName" xml:space="preserve">
+    <data name="ConvertDataTableToHtmlTable_HtmlTable_FriendlyName" xml:space="preserve">
         <value>HTML Table</value>
     </data>
-    <data name="ConvertDataTableToHtmlTable_Table_Description" xml:space="preserve">
+    <data name="ConvertDataTableToHtmlTable_HtmlTable_Description" xml:space="preserve">
         <value>The HTML table.</value>
+    </data>
+    <data name="ConvertListToHtmlList_List_FriendlyName" xml:space="preserve">
+        <value>List</value>
+    </data>
+    <data name="ConvertListToHtmlList_List_Description" xml:space="preserve">
+        <value>The list.</value>
+    </data>
+    <data name="ConvertListToHtmlList_HtmlList_FriendlyName" xml:space="preserve">
+        <value>HTML List</value>
+    </data>
+    <data name="ConvertListToHtmlList_HtmlList_Description" xml:space="preserve">
+        <value>The HTML list.</value>
+    </data>
+    <data name="ConvertListToHtmlList_IsOrdered_FriendlyName" xml:space="preserve">
+        <value>Ordered List</value>
+    </data>
+    <data name="ConvertListToHtmlList_IsOrdered_Description" xml:space="preserve">
+        <value>Whether the resulting HTML list should be ordered.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>

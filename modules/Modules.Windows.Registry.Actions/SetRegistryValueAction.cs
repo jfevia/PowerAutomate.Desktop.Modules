@@ -92,6 +92,8 @@ public class SetRegistryValueAction : ActionBase
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetStringRegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetStringRegistryValueActionSelector()
@@ -108,6 +110,8 @@ public class SetStringRegistryValueActionSelector : ActionSelector<SetRegistryVa
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetExpandStringRegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetExpandStringRegistryValueActionSelector()
@@ -124,6 +128,8 @@ public class SetExpandStringRegistryValueActionSelector : ActionSelector<SetRegi
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetMultiStringRegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetMultiStringRegistryValueActionSelector()
@@ -140,6 +146,8 @@ public class SetMultiStringRegistryValueActionSelector : ActionSelector<SetRegis
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetBinaryRegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetBinaryRegistryValueActionSelector()
@@ -156,6 +164,8 @@ public class SetBinaryRegistryValueActionSelector : ActionSelector<SetRegistryVa
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetInt32RegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetInt32RegistryValueActionSelector()
@@ -172,6 +182,8 @@ public class SetInt32RegistryValueActionSelector : ActionSelector<SetRegistryVal
     }
 }
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class SetInt64RegistryValueActionSelector : ActionSelector<SetRegistryValueAction>
 {
     public SetInt64RegistryValueActionSelector()

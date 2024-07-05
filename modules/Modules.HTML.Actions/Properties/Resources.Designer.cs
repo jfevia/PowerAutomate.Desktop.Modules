@@ -96,7 +96,25 @@ namespace PowerAutomate.Desktop.Modules.HTML.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Convert &lt;DATATABLE&gt; to an HTML table and store it into &lt;TABLE&gt;..
+        ///   Looks up a localized string similar to The HTML table..
+        /// </summary>
+        public static string ConvertDataTableToHtmlTable_HtmlTable_Description {
+            get {
+                return ResourceManager.GetString("ConvertDataTableToHtmlTable_HtmlTable_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTML Table.
+        /// </summary>
+        public static string ConvertDataTableToHtmlTable_HtmlTable_FriendlyName {
+            get {
+                return ResourceManager.GetString("ConvertDataTableToHtmlTable_HtmlTable_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert &lt;DATATABLE&gt; to an HTML table and store it into &lt;HTMLTABLE&gt;..
         /// </summary>
         public static string ConvertDataTableToHtmlTable_Summary {
             get {
@@ -105,20 +123,83 @@ namespace PowerAutomate.Desktop.Modules.HTML.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The HTML table..
+        ///   Looks up a localized string similar to Converts a list to an HTML list..
         /// </summary>
-        public static string ConvertDataTableToHtmlTable_Table_Description {
+        public static string ConvertListToHtmlList_Description {
             get {
-                return ResourceManager.GetString("ConvertDataTableToHtmlTable_Table_Description", resourceCulture);
+                return ResourceManager.GetString("ConvertListToHtmlList_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to HTML Table.
+        ///   Looks up a localized string similar to Convert list to HTML list.
         /// </summary>
-        public static string ConvertDataTableToHtmlTable_Table_FriendlyName {
+        public static string ConvertListToHtmlList_FriendlyName {
             get {
-                return ResourceManager.GetString("ConvertDataTableToHtmlTable_Table_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("ConvertListToHtmlList_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The HTML list..
+        /// </summary>
+        public static string ConvertListToHtmlList_HtmlList_Description {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_HtmlList_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HTML List.
+        /// </summary>
+        public static string ConvertListToHtmlList_HtmlList_FriendlyName {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_HtmlList_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the resulting HTML list should be ordered..
+        /// </summary>
+        public static string ConvertListToHtmlList_IsOrdered_Description {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_IsOrdered_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ordered List.
+        /// </summary>
+        public static string ConvertListToHtmlList_IsOrdered_FriendlyName {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_IsOrdered_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The list..
+        /// </summary>
+        public static string ConvertListToHtmlList_List_Description {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_List_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to List.
+        /// </summary>
+        public static string ConvertListToHtmlList_List_FriendlyName {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_List_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Convert &lt;LIST&gt; to an HTML list and store it into &lt;HTMLLIST&gt;..
+        /// </summary>
+        public static string ConvertListToHtmlList_Summary {
+            get {
+                return ResourceManager.GetString("ConvertListToHtmlList_Summary", resourceCulture);
             }
         }
         

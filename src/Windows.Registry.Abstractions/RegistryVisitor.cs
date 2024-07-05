@@ -3,9 +3,12 @@
 // --------------------------------------------------------------
 
 using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 
+[SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop")]
+[SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop")]
 public abstract class RegistryVisitor : IRegistryVisitor
 {
     public virtual bool VisitEnterRegistry(IRegistry value)
