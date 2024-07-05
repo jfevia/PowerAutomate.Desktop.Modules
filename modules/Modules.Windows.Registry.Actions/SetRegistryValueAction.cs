@@ -11,7 +11,7 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Windows.Registry.Abstractions;
 using PowerAutomate.Desktop.Windows.Registry.Win32;
 
-namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
 [Action(Id = "SetRegistryValue")]
 [Throws(ErrorCodes.Unknown)]

@@ -2,14 +2,9 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // --------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
-public enum RegistryValueKind
+internal static class ErrorCodes
 {
-    String,
-    ExpandString,
-    MultiString,
-    DWord,
-    QWord,
-    Binary
+    public const string Unknown = "UnknownError";
 }

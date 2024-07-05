@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.WindowsRegistry.Actions", "..\modules\Modules.WindowsRegistry.Actions\Modules.WindowsRegistry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.Registry.Actions", "..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj", "{2603CDEA-C582-4096-8AD4-6982E9D36DF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Windows", "Windows", "{AAC42F13-B42E-462A-B605-40BFEC07FD26}"
 EndProject
@@ -13,6 +13,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3B78C634-DFD6-43DA-A30E-33AC42224BD4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{688BD8E9-5FCD-4EA8-82AF-DBC986681712}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{79D5DFFD-323B-4DC4-950D-13DA2C1F31E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.Registry.Actions.Tests", "..\tests\Modules.Windows.Registry.Actions.Tests\Modules.Windows.Registry.Actions.Tests.csproj", "{D622D84B-9853-4E6E-AE09-1988FBFE6392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +36,10 @@ Global
 		{E82F9437-289A-4F32-8A70-DE6BC07703D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E82F9437-289A-4F32-8A70-DE6BC07703D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E82F9437-289A-4F32-8A70-DE6BC07703D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D622D84B-9853-4E6E-AE09-1988FBFE6392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D622D84B-9853-4E6E-AE09-1988FBFE6392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D622D84B-9853-4E6E-AE09-1988FBFE6392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D622D84B-9853-4E6E-AE09-1988FBFE6392}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{60B2AD52-230C-4B79-894D-64642E88D9C7} = {AAC42F13-B42E-462A-B605-40BFEC07FD26}
@@ -39,5 +47,7 @@ Global
 		{E82F9437-289A-4F32-8A70-DE6BC07703D5} = {60B2AD52-230C-4B79-894D-64642E88D9C7}
 		{2603CDEA-C582-4096-8AD4-6982E9D36DF5} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
 		{AAC42F13-B42E-462A-B605-40BFEC07FD26} = {688BD8E9-5FCD-4EA8-82AF-DBC986681712}
+		{79D5DFFD-323B-4DC4-950D-13DA2C1F31E0} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{D622D84B-9853-4E6E-AE09-1988FBFE6392} = {79D5DFFD-323B-4DC4-950D-13DA2C1F31E0}
 	EndGlobalSection
 EndGlobal

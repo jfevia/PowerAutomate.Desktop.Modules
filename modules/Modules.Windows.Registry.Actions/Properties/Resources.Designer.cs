@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties {
     using System;
     
     
@@ -21,7 +21,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -35,10 +35,10 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.Windows.Registry.Actions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -50,7 +50,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -62,7 +62,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(BINARY)&gt;&lt;BINARY&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string Binary_Summary {
+        public static string Binary_Summary {
             get {
                 return ResourceManager.GetString("Binary_Summary", resourceCulture);
             }
@@ -71,16 +71,16 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(DWORD)&gt;&lt;DWORD&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string DWord_Summary {
+        public static string DWord_Summary {
             get {
                 return ResourceManager.GetString("DWord_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Indicates that there was a problem setting the registry value.
+        ///   Looks up a localized string similar to Indicates that there was a problem setting the registry value..
         /// </summary>
-        internal static string Error_UnknownError_Description {
+        public static string Error_UnknownError_Description {
             get {
                 return ResourceManager.GetString("Error_UnknownError_Description", resourceCulture);
             }
@@ -89,7 +89,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Failed to set the registry value.
         /// </summary>
-        internal static string Error_UnknownError_FriendlyName {
+        public static string Error_UnknownError_FriendlyName {
             get {
                 return ResourceManager.GetString("Error_UnknownError_FriendlyName", resourceCulture);
             }
@@ -98,7 +98,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(EXPANDSTRING)&gt;&lt;EXPANDSTRING&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string ExpandString_Summary {
+        public static string ExpandString_Summary {
             get {
                 return ResourceManager.GetString("ExpandString_Summary", resourceCulture);
             }
@@ -107,7 +107,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(MULTISTRING)&gt;&lt;MULTISTRING&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string MultiString_Summary {
+        public static string MultiString_Summary {
             get {
                 return ResourceManager.GetString("MultiString_Summary", resourceCulture);
             }
@@ -116,7 +116,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(QWORD)&gt;&lt;QWORD&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string QWord_Summary {
+        public static string QWord_Summary {
             get {
                 return ResourceManager.GetString("QWord_Summary", resourceCulture);
             }
@@ -125,7 +125,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Binary.
         /// </summary>
-        internal static string RegistryValueKind_Binary_FriendlyName {
+        public static string RegistryValueKind_Binary_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_Binary_FriendlyName", resourceCulture);
             }
@@ -134,7 +134,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to DWORD (32-bit).
         /// </summary>
-        internal static string RegistryValueKind_DWord_FriendlyName {
+        public static string RegistryValueKind_DWord_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_DWord_FriendlyName", resourceCulture);
             }
@@ -143,7 +143,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Expandable String.
         /// </summary>
-        internal static string RegistryValueKind_ExpandString_FriendlyName {
+        public static string RegistryValueKind_ExpandString_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_ExpandString_FriendlyName", resourceCulture);
             }
@@ -152,7 +152,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Multi-String.
         /// </summary>
-        internal static string RegistryValueKind_MultiString_FriendlyName {
+        public static string RegistryValueKind_MultiString_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_MultiString_FriendlyName", resourceCulture);
             }
@@ -161,7 +161,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to QWORD (64-bit).
         /// </summary>
-        internal static string RegistryValueKind_QWord_FriendlyName {
+        public static string RegistryValueKind_QWord_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_QWord_FriendlyName", resourceCulture);
             }
@@ -170,7 +170,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to String.
         /// </summary>
-        internal static string RegistryValueKind_String_FriendlyName {
+        public static string RegistryValueKind_String_FriendlyName {
             get {
                 return ResourceManager.GetString("RegistryValueKind_String_FriendlyName", resourceCulture);
             }
@@ -179,7 +179,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The binary data..
         /// </summary>
-        internal static string SetRegistryValue_Binary_Description {
+        public static string SetRegistryValue_Binary_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Binary_Description", resourceCulture);
             }
@@ -188,7 +188,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_Binary_FriendlyName {
+        public static string SetRegistryValue_Binary_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Binary_FriendlyName", resourceCulture);
             }
@@ -197,7 +197,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Sets the value of a name/value pair in the registry key..
         /// </summary>
-        internal static string SetRegistryValue_Description {
+        public static string SetRegistryValue_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Description", resourceCulture);
             }
@@ -206,7 +206,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The 32-bit number..
         /// </summary>
-        internal static string SetRegistryValue_DWord_Description {
+        public static string SetRegistryValue_DWord_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_DWord_Description", resourceCulture);
             }
@@ -215,7 +215,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_DWord_FriendlyName {
+        public static string SetRegistryValue_DWord_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_DWord_FriendlyName", resourceCulture);
             }
@@ -224,7 +224,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The string that contains unexpanded references to environment variables, for example: %PATH%..
         /// </summary>
-        internal static string SetRegistryValue_ExpandString_Description {
+        public static string SetRegistryValue_ExpandString_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_ExpandString_Description", resourceCulture);
             }
@@ -233,7 +233,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_ExpandString_FriendlyName {
+        public static string SetRegistryValue_ExpandString_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_ExpandString_FriendlyName", resourceCulture);
             }
@@ -242,7 +242,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set registry value.
         /// </summary>
-        internal static string SetRegistryValue_FriendlyName {
+        public static string SetRegistryValue_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_FriendlyName", resourceCulture);
             }
@@ -251,7 +251,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The type of registry value..
         /// </summary>
-        internal static string SetRegistryValue_Kind_Description {
+        public static string SetRegistryValue_Kind_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Kind_Description", resourceCulture);
             }
@@ -260,7 +260,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value Type.
         /// </summary>
-        internal static string SetRegistryValue_Kind_FriendlyName {
+        public static string SetRegistryValue_Kind_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Kind_FriendlyName", resourceCulture);
             }
@@ -269,7 +269,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The sequence of strings..
         /// </summary>
-        internal static string SetRegistryValue_MultiString_Description {
+        public static string SetRegistryValue_MultiString_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_MultiString_Description", resourceCulture);
             }
@@ -278,7 +278,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_MultiString_FriendlyName {
+        public static string SetRegistryValue_MultiString_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_MultiString_FriendlyName", resourceCulture);
             }
@@ -287,7 +287,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The name of the registry value..
         /// </summary>
-        internal static string SetRegistryValue_Name_Description {
+        public static string SetRegistryValue_Name_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Name_Description", resourceCulture);
             }
@@ -296,7 +296,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string SetRegistryValue_Name_FriendlyName {
+        public static string SetRegistryValue_Name_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Name_FriendlyName", resourceCulture);
             }
@@ -305,7 +305,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The full path to the registry key where the value is located..
         /// </summary>
-        internal static string SetRegistryValue_Path_Description {
+        public static string SetRegistryValue_Path_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Path_Description", resourceCulture);
             }
@@ -314,7 +314,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Path.
         /// </summary>
-        internal static string SetRegistryValue_Path_FriendlyName {
+        public static string SetRegistryValue_Path_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_Path_FriendlyName", resourceCulture);
             }
@@ -323,7 +323,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The 64-bit number..
         /// </summary>
-        internal static string SetRegistryValue_QWord_Description {
+        public static string SetRegistryValue_QWord_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_QWord_Description", resourceCulture);
             }
@@ -332,7 +332,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_QWord_FriendlyName {
+        public static string SetRegistryValue_QWord_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_QWord_FriendlyName", resourceCulture);
             }
@@ -341,7 +341,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to The string..
         /// </summary>
-        internal static string SetRegistryValue_String_Description {
+        public static string SetRegistryValue_String_Description {
             get {
                 return ResourceManager.GetString("SetRegistryValue_String_Description", resourceCulture);
             }
@@ -350,7 +350,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Value.
         /// </summary>
-        internal static string SetRegistryValue_String_FriendlyName {
+        public static string SetRegistryValue_String_FriendlyName {
             get {
                 return ResourceManager.GetString("SetRegistryValue_String_FriendlyName", resourceCulture);
             }
@@ -359,7 +359,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(STRING)&gt;&lt;STRING&gt;&lt;else&gt;a value&lt;endif&gt;.
         /// </summary>
-        internal static string String_Summary {
+        public static string String_Summary {
             get {
                 return ResourceManager.GetString("String_Summary", resourceCulture);
             }
@@ -368,7 +368,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Perform operations related to the Windows Registry..
         /// </summary>
-        internal static string WindowsRegistry_Description {
+        public static string WindowsRegistry_Description {
             get {
                 return ResourceManager.GetString("WindowsRegistry_Description", resourceCulture);
             }
@@ -377,7 +377,7 @@ namespace PowerAutomate.Desktop.Modules.WindowsRegistry.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Windows Registry.
         /// </summary>
-        internal static string WindowsRegistry_FriendlyName {
+        public static string WindowsRegistry_FriendlyName {
             get {
                 return ResourceManager.GetString("WindowsRegistry_FriendlyName", resourceCulture);
             }

@@ -36,16 +36,16 @@ internal abstract class Win32RegistryKeyItem : Win32RegistryItem, IRegistryKeyIt
         return registrySubKey is not null ? new Win32RegistryKey(_registry, registrySubKey, registrySubKey.Name) : null;
     }
 
-    public IRegistryKey CreateSubKey(string subKey, bool writable)
+    public IRegistryKey? CreateSubKey(string subKey, bool writable)
     {
         var registrySubKey = _registryKey.CreateSubKey(subKey, writable);
-        return new Win32RegistryKey(_registry, registrySubKey, registrySubKey.Name);
+        return registrySubKey is not null ? new Win32RegistryKey(_registry, registrySubKey, registrySubKey.Name) : null;
     }
 
-    public IRegistryKey CreateSubKey(string subKey, bool writable, RegistryOptions options)
+    public IRegistryKey? CreateSubKey(string subKey, bool writable, RegistryOptions options)
     {
         var registrySubKey = _registryKey.CreateSubKey(subKey, writable, options.ToWin32());
-        return new Win32RegistryKey(_registry, registrySubKey, registrySubKey.Name);
+        return registrySubKey is not null ? new Win32RegistryKey(_registry, registrySubKey, registrySubKey.Name) : null;
     }
 
     public IRegistryKey? CreateSubKey(string subKey, RegistryKeyPermissionCheck permissionCheck)

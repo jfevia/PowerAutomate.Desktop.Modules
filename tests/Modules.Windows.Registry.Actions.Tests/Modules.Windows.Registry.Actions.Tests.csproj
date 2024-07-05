@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="NUnit" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj" />
+    </ItemGroup>
+
+</Project>

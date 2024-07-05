@@ -210,7 +210,7 @@
         <value>Failed to set the registry value</value>
     </data>
     <data name="Error_UnknownError_Description" xml:space="preserve">
-        <value>Indicates that there was a problem setting the registry value</value>
+        <value>Indicates that there was a problem setting the registry value.</value>
     </data>
     <data name="String_Summary" xml:space="preserve">
         <value>Set &lt;if(NAME)&gt;&lt;NAME&gt;&lt;else&gt;a value&lt;endif&gt; in &lt;if(PATH)&gt;&lt;PATH&gt;&lt;else&gt;a specified path&lt;endif&gt; to &lt;if(STRING)&gt;&lt;STRING&gt;&lt;else&gt;a value&lt;endif&gt;</value>

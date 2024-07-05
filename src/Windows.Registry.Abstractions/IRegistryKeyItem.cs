@@ -11,8 +11,8 @@ namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
 public interface IRegistryKeyItem : IRegistryItem
 {
     IRegistryKey? CreateSubKey(string subKey);
-    IRegistryKey CreateSubKey(string subKey, bool writable);
-    IRegistryKey CreateSubKey(string subKey, bool writable, RegistryOptions options);
+    IRegistryKey? CreateSubKey(string subKey, bool writable);
+    IRegistryKey? CreateSubKey(string subKey, bool writable, RegistryOptions options);
     IRegistryKey? CreateSubKey(string subKey, RegistryKeyPermissionCheck permissionCheck);
     IRegistryKey? CreateSubKey(string subKey, RegistryKeyPermissionCheck permissionCheck, RegistryOptions options);
     void DeleteSubKey(string subKey);
