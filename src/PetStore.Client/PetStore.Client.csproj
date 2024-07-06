@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackCustomModule Condition=" '$(Configuration)' == 'Debug' ">true</PackCustomModule>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <OpenApiReference Include="openapi.json" CodeGenerator="NSwagCSharp" ClassName="PetStoreClient" Namespace="PowerAutomate.Desktop.PetStore.Client" Link="OpenAPIs\openapi.json">
+            <Options>/GenerateClientInterfaces:true /UseBaseUrl:false /JsonLibrary:NewtonsoftJson</Options>
+        </OpenApiReference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="NSwag.ApiDescription.Client">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="System.Net.Http" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="System.ComponentModel.DataAnnotations" />
+    </ItemGroup>
+
+</Project>

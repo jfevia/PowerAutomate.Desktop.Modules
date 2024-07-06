@@ -6,7 +6,7 @@ using System;
 using System.Net.Http;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.OpenApi.Actions.Client;
+using PowerAutomate.Desktop.PetStore.Client;
 
 namespace PowerAutomate.Desktop.Modules.OpenApi.Actions;
 
@@ -25,7 +25,7 @@ public class AddPetAction : ActionBase
     {
         try
         {
-            var client = new OpenApiClient(_httpClient);
+            var client = new PetStoreClient(_httpClient);
             client.AddPetAsync(new Pet()).GetAwaiter().GetResult();
         }
         catch (Exception ex)
