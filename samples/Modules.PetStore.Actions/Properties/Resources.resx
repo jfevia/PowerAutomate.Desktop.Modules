@@ -122,11 +122,11 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
-    <data name="OpenAPI_FriendlyName" xml:space="preserve">
-        <value>OpenAPI</value>
+    <data name="PetStore_FriendlyName" xml:space="preserve">
+        <value>PetStore</value>
     </data>
-    <data name="OpenAPI_Description" xml:space="preserve">
-        <value>Perform operations related to the OpenAPI specification.</value>
+    <data name="PetStore_Description" xml:space="preserve">
+        <value>Perform operations related to the PetStore API.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>

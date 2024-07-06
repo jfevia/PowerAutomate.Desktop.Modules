@@ -25,12 +25,12 @@ jobs:
 
     - name: Restore solution
       if: ${{ success() }}
-      run: msbuild src\PowerAutomate.Desktop.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild PowerAutomate.Desktop.sln -target:restore -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
     - name: Build solution
       if: ${{ success() }}
-      run: msbuild src\PowerAutomate.Desktop.sln -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
+      run: msbuild PowerAutomate.Desktop.sln -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
     - name: Run unit tests
       if: ${{ success() }}
-      run: dotnet test src\PowerAutomate.Desktop.sln
+      run: dotnet test PowerAutomate.Desktop.sln

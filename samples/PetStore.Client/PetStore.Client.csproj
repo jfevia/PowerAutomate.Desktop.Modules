@@ -4,12 +4,11 @@
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
-        <PackCustomModule Condition=" '$(Configuration)' == 'Debug' ">true</PackCustomModule>
     </PropertyGroup>
 
     <ItemGroup>
         <OpenApiReference Include="openapi.json" CodeGenerator="NSwagCSharp" ClassName="PetStoreClient" Namespace="PowerAutomate.Desktop.PetStore.Client" Link="OpenAPIs\openapi.json">
-            <Options>/GenerateClientInterfaces:true /UseBaseUrl:false /JsonLibrary:NewtonsoftJson</Options>
+            <Options>/GenerateClientInterfaces:true /UseBaseUrl:false /JsonLibrary:NewtonsoftJson /ParameterArrayType:System.Collections.Generic.List /ParameterDictionaryType:System.Collections.Generic.Dictionary /ResponseArrayType:System.Collections.Generic.List /ResponseDictionaryType:System.Collections.Generic.Dictionary</Options>
         </OpenApiReference>
     </ItemGroup>
 
