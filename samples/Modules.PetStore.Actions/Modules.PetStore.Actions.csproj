@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyTitle>HTML</AssemblyTitle>
+        <AssemblyTitle>PetStore</AssemblyTitle>
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
@@ -18,10 +18,10 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
-        <Compile Update="Properties\Resources.Designer.cs">
-            <DesignTime>True</DesignTime>
+        <Compile Update="Actions.cs">
             <AutoGen>True</AutoGen>
-            <DependentUpon>Resources.resx</DependentUpon>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Actions.tt</DependentUpon>
         </Compile>
     </ItemGroup>
 
@@ -32,6 +32,15 @@
         </EmbeddedResource>
     </ItemGroup>
 
-    <Import Project="..\..\src\Modules.Actions.Shared\Modules.Actions.Shared.projitems" Label="Shared" />
+    <ItemGroup>
+        <None Update="Actions.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>Actions.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\PetStore.Client\PetStore.Client.csproj" />
+    </ItemGroup>
 
 </Project>

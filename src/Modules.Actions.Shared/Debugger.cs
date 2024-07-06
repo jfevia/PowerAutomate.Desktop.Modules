@@ -4,7 +4,7 @@
 
 using System.Diagnostics;
 
-namespace PowerAutomate.Desktop.Modules.HTML.Actions;
+namespace PowerAutomate.Desktop.Modules.Actions.Shared;
 
 internal static class Debugger
 {

@@ -136,4 +136,20 @@ public class ActionTests
             }
         }
     }
+
+    [Test]
+    public void Action_Any_Exists()
+    {
+        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            var assemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>();
+            var actions = assembly.ExportedTypes
+                                  .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
+                                  .Where(pair => pair.ActionAttribute is not null)
+                                  .ToList();
+
+            Assert.That(actions.Count, Is.Not.Zero, $"Module '{assemblyTitle.Title}' doesn't have actions");
+        }
+    }
 }

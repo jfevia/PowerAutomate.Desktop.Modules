@@ -6,6 +6,8 @@
   <ItemGroup>
     <PackageVersion Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" Version="1.4.233.23144-rc" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="NSwag.ApiDescription.Client" Version="14.0.8" />
     <PackageVersion Include="NUnit" Version="4.1.0" />
+    <PackageVersion Include="System.Net.Http" Version="4.3.4" />
   </ItemGroup>
 </Project>
