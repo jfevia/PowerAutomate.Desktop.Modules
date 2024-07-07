@@ -128,4 +128,205 @@
     <data name="WindowsTaskScheduler_Description" xml:space="preserve">
         <value>Perform operations related to the Windows Task Scheduler.</value>
     </data>
+    <data name="CreateTask_FriendlyName" xml:space="preserve">
+        <value>Create task</value>
+    </data>
+    <data name="CreateTask_Description" xml:space="preserve">
+        <value>Creates a task with the specified name.</value>
+    </data>
+    <data name="CreateTask_Summary" xml:space="preserve">
+        <value>Create task.</value>
+    </data>
+    <data name="CreateTaskAction_FriendlyName" xml:space="preserve">
+        <value>Create action in task</value>
+    </data>
+    <data name="CreateTaskAction_Description" xml:space="preserve">
+        <value>Creates an action in the task with the specified name.</value>
+    </data>
+    <data name="CreateTaskAction_Summary" xml:space="preserve">
+        <value>Create action in task.</value>
+    </data>
+    <data name="CreateTaskTrigger_FriendlyName" xml:space="preserve">
+        <value>Create trigger for task</value>
+    </data>
+    <data name="CreateTaskTrigger_Description" xml:space="preserve">
+        <value>Creates a trigger for the task with the specified name.</value>
+    </data>
+    <data name="CreateTaskTrigger_Summary" xml:space="preserve">
+        <value>Create trigger for task.</value>
+    </data>
+    <data name="DeleteTask_FriendlyName" xml:space="preserve">
+        <value>Delete task</value>
+    </data>
+    <data name="DeleteTask_Description" xml:space="preserve">
+        <value>Deletes a task with the specified name.</value>
+    </data>
+    <data name="DeleteTask_Summary" xml:space="preserve">
+        <value>Delete task.</value>
+    </data>
+    <data name="DeleteTaskTrigger_FriendlyName" xml:space="preserve">
+        <value>Delete trigger for task</value>
+    </data>
+    <data name="DeleteTaskTrigger_Description" xml:space="preserve">
+        <value>Deletes a trigger for the task with the specified name.</value>
+    </data>
+    <data name="DeleteTaskTrigger_Summary" xml:space="preserve">
+        <value>Delete trigger for task.</value>
+    </data>
+    <data name="GetTasksInFolder_FriendlyName" xml:space="preserve">
+        <value>Get tasks in folder</value>
+    </data>
+    <data name="GetTasksInFolder_Description" xml:space="preserve">
+        <value>Gets the list of tasks in the specified folder.</value>
+    </data>
+    <data name="GetTasksInFolder_Summary" xml:space="preserve">
+        <value>Get tasks in folder.</value>
+    </data>
+    <data name="GetTriggersInTask_FriendlyName" xml:space="preserve">
+        <value>Get triggers for task</value>
+    </data>
+    <data name="GetTriggersInTask_Description" xml:space="preserve">
+        <value>Gets the list of triggers for a task with the specified name.</value>
+    </data>
+    <data name="GetTriggersInTask_Summary" xml:space="preserve">
+        <value>Get triggers for task.</value>
+    </data>
+    <data name="Group_General_FriendlyName" xml:space="preserve">
+        <value>General</value>
+    </data>
+    <data name="Group_General_Description" xml:space="preserve">
+        <value>The general settings.</value>
+    </data>
+    <data name="Group_Advanced_FriendlyName" xml:space="preserve">
+        <value>Advanced</value>
+    </data>
+    <data name="Group_Advanced_Description" xml:space="preserve">
+        <value>The advanced settings.</value>
+    </data>
+    <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
+        <value>Operation failed</value>
+    </data>
+    <data name="Error_UnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when executing the operation.</value>
+    </data>
+    <data name="Error_TaskNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Task not found</value>
+    </data>
+    <data name="Error_TaskNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that the task was not found.</value>
+    </data>
+    <data name="Error_TaskTriggerNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Trigger not found</value>
+    </data>
+    <data name="Error_TaskTriggerNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that the trigger was not found.</value>
+    </data>
+    <data name="Error_TaskTriggerUnknownError_FriendlyName" xml:space="preserve">
+        <value>Trigger operation failed</value>
+    </data>
+    <data name="Error_TaskTriggerUnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when executing the trigger operation.</value>
+    </data>
+    <data name="SessionStateChangeType_ConsoleConnect_FriendlyName" xml:space="preserve">
+        <value>On connected from user session from local computer</value>
+    </data>
+    <data name="SessionStateChangeType_ConsoleConnect_Description" xml:space="preserve">
+        <value>When connected to the user session from local computer.</value>
+    </data>
+    <data name="SessionStateChangeType_ConsoleDisconnect_FriendlyName" xml:space="preserve">
+        <value>On disconnected from user session from local computer</value>
+    </data>
+    <data name="SessionStateChangeType_ConsoleDisconnect_Description" xml:space="preserve">
+        <value>When disconnected from the user session from local computer.</value>
+    </data>
+    <data name="SessionStateChangeType_RemoteConnect_FriendlyName" xml:space="preserve">
+        <value>On connected from user session from remote computer</value>
+    </data>
+    <data name="SessionStateChangeType_RemoteConnect_Description" xml:space="preserve">
+        <value>When connected to the user session from remote computer.</value>
+    </data>
+    <data name="SessionStateChangeType_RemoteDisconnect_FriendlyName" xml:space="preserve">
+        <value>On disconnected from user session from remote computer</value>
+    </data>
+    <data name="SessionStateChangeType_RemoteDisconnect_Description" xml:space="preserve">
+        <value>When disconnected from the user session from remote computer.</value>
+    </data>
+    <data name="SessionStateChangeType_SessionLock_FriendlyName" xml:space="preserve">
+        <value>On workstation locked</value>
+    </data>
+    <data name="SessionStateChangeType_SessionLock_Description" xml:space="preserve">
+        <value>When the workstation is locked.</value>
+    </data>
+    <data name="SessionStateChangeType_SessionUnlock_FriendlyName" xml:space="preserve">
+        <value>On workstation unlocked</value>
+    </data>
+    <data name="SessionStateChangeType_SessionUnlock_Description" xml:space="preserve">
+        <value>When the workstation is unlocked.</value>
+    </data>
+    <data name="TriggerType_Boot_FriendlyName" xml:space="preserve">
+        <value>At startup</value>
+    </data>
+    <data name="TriggerType_Boot_Description" xml:space="preserve">
+        <value>When the workstation starts up.</value>
+    </data>
+    <data name="TriggerType_Daily_FriendlyName" xml:space="preserve">
+        <value>On a daily schedule</value>
+    </data>
+    <data name="TriggerType_Daily_Description" xml:space="preserve">
+        <value>Triggered on a daily schedule.</value>
+    </data>
+    <data name="TriggerType_Event_FriendlyName" xml:space="preserve">
+        <value>On an event</value>
+    </data>
+    <data name="TriggerType_Event_Description" xml:space="preserve">
+        <value>Triggered by an event.</value>
+    </data>
+    <data name="TriggerType_Idle_FriendlyName" xml:space="preserve">
+        <value>On idle</value>
+    </data>
+    <data name="TriggerType_Idle_Description" xml:space="preserve">
+        <value>Triggered when the workstation goes idle.</value>
+    </data>
+    <data name="TriggerType_Logon_FriendlyName" xml:space="preserve">
+        <value>At log on</value>
+    </data>
+    <data name="TriggerType_Logon_Description" xml:space="preserve">
+        <value>Triggered when logged on.</value>
+    </data>
+    <data name="TriggerType_MonthlyDayOfWeek_FriendlyName" xml:space="preserve">
+        <value>On a monthly schedule by day of the week</value>
+    </data>
+    <data name="TriggerType_MonthlyDayOfWeek_Description" xml:space="preserve">
+        <value>Triggered on a monthly schedule by day of the week.</value>
+    </data>
+    <data name="TriggerType_Monthly_FriendlyName" xml:space="preserve">
+        <value>On a monthly schedule</value>
+    </data>
+    <data name="TriggerType_Monthly_Description" xml:space="preserve">
+        <value>Triggered on a monthly schedule.</value>
+    </data>
+    <data name="TriggerType_Registration_FriendlyName" xml:space="preserve">
+        <value>At task creation/modification</value>
+    </data>
+    <data name="TriggerType_Registration_Description" xml:space="preserve">
+        <value>Triggered when a task is created or modified.</value>
+    </data>
+    <data name="TriggerType_SessionStateChange_FriendlyName" xml:space="preserve">
+        <value>On session state change</value>
+    </data>
+    <data name="TriggerType_SessionStateChange_Description" xml:space="preserve">
+        <value>Triggered when the state of the session changes.</value>
+    </data>
+    <data name="TriggerType_Time_FriendlyName" xml:space="preserve">
+        <value>One time</value>
+    </data>
+    <data name="TriggerType_Time_Description" xml:space="preserve">
+        <value>Triggered only one time.</value>
+    </data>
+    <data name="TriggerType_Weekly_FriendlyName" xml:space="preserve">
+        <value>On a weekly schedule</value>
+    </data>
+    <data name="TriggerType_Weekly_Description" xml:space="preserve">
+        <value>Triggered on a weekly schedule.</value>
+    </data>
 </root>

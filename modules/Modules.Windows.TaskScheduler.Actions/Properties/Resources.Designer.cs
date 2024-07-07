@@ -60,6 +60,609 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creates a task with the specified name..
+        /// </summary>
+        public static string CreateTask_Description {
+            get {
+                return ResourceManager.GetString("CreateTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create task.
+        /// </summary>
+        public static string CreateTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create task..
+        /// </summary>
+        public static string CreateTask_Summary {
+            get {
+                return ResourceManager.GetString("CreateTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates an action in the task with the specified name..
+        /// </summary>
+        public static string CreateTaskAction_Description {
+            get {
+                return ResourceManager.GetString("CreateTaskAction_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create action in task.
+        /// </summary>
+        public static string CreateTaskAction_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateTaskAction_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create action in task..
+        /// </summary>
+        public static string CreateTaskAction_Summary {
+            get {
+                return ResourceManager.GetString("CreateTaskAction_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Creates a trigger for the task with the specified name..
+        /// </summary>
+        public static string CreateTaskTrigger_Description {
+            get {
+                return ResourceManager.GetString("CreateTaskTrigger_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create trigger for task.
+        /// </summary>
+        public static string CreateTaskTrigger_FriendlyName {
+            get {
+                return ResourceManager.GetString("CreateTaskTrigger_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create trigger for task..
+        /// </summary>
+        public static string CreateTaskTrigger_Summary {
+            get {
+                return ResourceManager.GetString("CreateTaskTrigger_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes a task with the specified name..
+        /// </summary>
+        public static string DeleteTask_Description {
+            get {
+                return ResourceManager.GetString("DeleteTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete task.
+        /// </summary>
+        public static string DeleteTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete task..
+        /// </summary>
+        public static string DeleteTask_Summary {
+            get {
+                return ResourceManager.GetString("DeleteTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes a trigger for the task with the specified name..
+        /// </summary>
+        public static string DeleteTaskTrigger_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskTrigger_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete trigger for task.
+        /// </summary>
+        public static string DeleteTaskTrigger_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskTrigger_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete trigger for task..
+        /// </summary>
+        public static string DeleteTaskTrigger_Summary {
+            get {
+                return ResourceManager.GetString("DeleteTaskTrigger_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that the task was not found..
+        /// </summary>
+        public static string Error_TaskNotFoundError_Description {
+            get {
+                return ResourceManager.GetString("Error_TaskNotFoundError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task not found.
+        /// </summary>
+        public static string Error_TaskNotFoundError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_TaskNotFoundError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that the trigger was not found..
+        /// </summary>
+        public static string Error_TaskTriggerNotFoundError_Description {
+            get {
+                return ResourceManager.GetString("Error_TaskTriggerNotFoundError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger not found.
+        /// </summary>
+        public static string Error_TaskTriggerNotFoundError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_TaskTriggerNotFoundError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that there was a problem when executing the trigger operation..
+        /// </summary>
+        public static string Error_TaskTriggerUnknownError_Description {
+            get {
+                return ResourceManager.GetString("Error_TaskTriggerUnknownError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger operation failed.
+        /// </summary>
+        public static string Error_TaskTriggerUnknownError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_TaskTriggerUnknownError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that there was a problem when executing the operation..
+        /// </summary>
+        public static string Error_UnknownError_Description {
+            get {
+                return ResourceManager.GetString("Error_UnknownError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation failed.
+        /// </summary>
+        public static string Error_UnknownError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_UnknownError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the list of tasks in the specified folder..
+        /// </summary>
+        public static string GetTasksInFolder_Description {
+            get {
+                return ResourceManager.GetString("GetTasksInFolder_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get tasks in folder.
+        /// </summary>
+        public static string GetTasksInFolder_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTasksInFolder_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get tasks in folder..
+        /// </summary>
+        public static string GetTasksInFolder_Summary {
+            get {
+                return ResourceManager.GetString("GetTasksInFolder_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the list of triggers for a task with the specified name..
+        /// </summary>
+        public static string GetTriggersInTask_Description {
+            get {
+                return ResourceManager.GetString("GetTriggersInTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get triggers for task.
+        /// </summary>
+        public static string GetTriggersInTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTriggersInTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get triggers for task..
+        /// </summary>
+        public static string GetTriggersInTask_Summary {
+            get {
+                return ResourceManager.GetString("GetTriggersInTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The advanced settings..
+        /// </summary>
+        public static string Group_Advanced_Description {
+            get {
+                return ResourceManager.GetString("Group_Advanced_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced.
+        /// </summary>
+        public static string Group_Advanced_FriendlyName {
+            get {
+                return ResourceManager.GetString("Group_Advanced_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The general settings..
+        /// </summary>
+        public static string Group_General_Description {
+            get {
+                return ResourceManager.GetString("Group_General_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        public static string Group_General_FriendlyName {
+            get {
+                return ResourceManager.GetString("Group_General_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When connected to the user session from local computer..
+        /// </summary>
+        public static string SessionStateChangeType_ConsoleConnect_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_ConsoleConnect_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On connected from user session from local computer.
+        /// </summary>
+        public static string SessionStateChangeType_ConsoleConnect_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_ConsoleConnect_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When disconnected from the user session from local computer..
+        /// </summary>
+        public static string SessionStateChangeType_ConsoleDisconnect_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_ConsoleDisconnect_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On disconnected from user session from local computer.
+        /// </summary>
+        public static string SessionStateChangeType_ConsoleDisconnect_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_ConsoleDisconnect_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When connected to the user session from remote computer..
+        /// </summary>
+        public static string SessionStateChangeType_RemoteConnect_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_RemoteConnect_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On connected from user session from remote computer.
+        /// </summary>
+        public static string SessionStateChangeType_RemoteConnect_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_RemoteConnect_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When disconnected from the user session from remote computer..
+        /// </summary>
+        public static string SessionStateChangeType_RemoteDisconnect_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_RemoteDisconnect_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On disconnected from user session from remote computer.
+        /// </summary>
+        public static string SessionStateChangeType_RemoteDisconnect_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_RemoteDisconnect_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the workstation is locked..
+        /// </summary>
+        public static string SessionStateChangeType_SessionLock_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_SessionLock_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On workstation locked.
+        /// </summary>
+        public static string SessionStateChangeType_SessionLock_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_SessionLock_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the workstation is unlocked..
+        /// </summary>
+        public static string SessionStateChangeType_SessionUnlock_Description {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_SessionUnlock_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On workstation unlocked.
+        /// </summary>
+        public static string SessionStateChangeType_SessionUnlock_FriendlyName {
+            get {
+                return ResourceManager.GetString("SessionStateChangeType_SessionUnlock_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When the workstation starts up..
+        /// </summary>
+        public static string TriggerType_Boot_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Boot_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At startup.
+        /// </summary>
+        public static string TriggerType_Boot_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Boot_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered on a daily schedule..
+        /// </summary>
+        public static string TriggerType_Daily_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Daily_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On a daily schedule.
+        /// </summary>
+        public static string TriggerType_Daily_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Daily_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered by an event..
+        /// </summary>
+        public static string TriggerType_Event_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Event_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On an event.
+        /// </summary>
+        public static string TriggerType_Event_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Event_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered when the workstation goes idle..
+        /// </summary>
+        public static string TriggerType_Idle_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Idle_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On idle.
+        /// </summary>
+        public static string TriggerType_Idle_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Idle_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered when logged on..
+        /// </summary>
+        public static string TriggerType_Logon_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Logon_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At log on.
+        /// </summary>
+        public static string TriggerType_Logon_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Logon_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered on a monthly schedule..
+        /// </summary>
+        public static string TriggerType_Monthly_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Monthly_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On a monthly schedule.
+        /// </summary>
+        public static string TriggerType_Monthly_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Monthly_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered on a monthly schedule by day of the week..
+        /// </summary>
+        public static string TriggerType_MonthlyDayOfWeek_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_MonthlyDayOfWeek_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On a monthly schedule by day of the week.
+        /// </summary>
+        public static string TriggerType_MonthlyDayOfWeek_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_MonthlyDayOfWeek_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered when a task is created or modified..
+        /// </summary>
+        public static string TriggerType_Registration_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Registration_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to At task creation/modification.
+        /// </summary>
+        public static string TriggerType_Registration_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Registration_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered when the state of the session changes..
+        /// </summary>
+        public static string TriggerType_SessionStateChange_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_SessionStateChange_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On session state change.
+        /// </summary>
+        public static string TriggerType_SessionStateChange_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_SessionStateChange_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered only one time..
+        /// </summary>
+        public static string TriggerType_Time_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Time_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One time.
+        /// </summary>
+        public static string TriggerType_Time_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Time_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Triggered on a weekly schedule..
+        /// </summary>
+        public static string TriggerType_Weekly_Description {
+            get {
+                return ResourceManager.GetString("TriggerType_Weekly_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to On a weekly schedule.
+        /// </summary>
+        public static string TriggerType_Weekly_FriendlyName {
+            get {
+                return ResourceManager.GetString("TriggerType_Weekly_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Perform operations related to the Windows Task Scheduler..
         /// </summary>
         public static string WindowsTaskScheduler_Description {
