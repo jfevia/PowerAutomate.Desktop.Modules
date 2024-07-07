@@ -13,8 +13,8 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 [Action(Id = "DeleteTask")]
-[Group(Name = "General", Order = 1)]
-[Group(Name = "Advanced", Order = 2, IsDefault = true)]
+[Group(Name = Groups.General, Order = 1)]
+[Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -33,7 +33,7 @@ public class DeleteTaskAction : ActionBase
     [InputArgument(Order = 2, Required = false)]
     public string TargetServer { get; set; } = null!;
 
-    [InputArgument(Order = 1, Group = "General")]
+    [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
 
     [InputArgument(Order = 3, Required = false)]

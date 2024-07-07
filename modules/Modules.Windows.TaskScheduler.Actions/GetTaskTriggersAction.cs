@@ -12,9 +12,9 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-[Action(Id = "GetTriggersInTask")]
-[Group(Name = "General", Order = 1)]
-[Group(Name = "Advanced", Order = 2, IsDefault = true)]
+[Action(Id = "GetTaskTriggers")]
+[Group(Name = Groups.General, Order = 1)]
+[Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -22,7 +22,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetTriggersInTaskAction : ActionBase
+public class GetTaskTriggersAction : ActionBase
 {
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -33,7 +33,7 @@ public class GetTriggersInTaskAction : ActionBase
     [InputArgument(Order = 2, Required = false)]
     public string TargetServer { get; set; } = null!;
 
-    [InputArgument(Order = 1, Group = "General")]
+    [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
 
     [OutputArgument(Order = 1)]

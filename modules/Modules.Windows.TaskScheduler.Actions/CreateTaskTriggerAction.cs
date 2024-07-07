@@ -15,8 +15,8 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 [Action(Id = "CreateTaskTrigger")]
-[Group(Name = "General", Order = 1)]
-[Group(Name = "Advanced", Order = 2, IsDefault = true)]
+[Group(Name = Groups.General, Order = 1)]
+[Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -29,87 +29,87 @@ public class CreateTaskTriggerAction : ActionBase
     [InputArgument(Order = 24, Required = false)]
     public string AccountDomain { get; set; } = null!;
 
-    [InputArgument(Order = 3, Group = "General")]
+    [InputArgument(Order = 3, Group = Groups.General)]
     public short DaysInterval { get; set; }
 
-    [InputArgument(Order = 6, Group = "General")]
+    [InputArgument(Order = 6, Group = Groups.General)]
     public List<int> DaysOfMonth { get; set; } = null!;
 
-    [InputArgument(Order = 9, Group = "General")]
+    [InputArgument(Order = 9, Group = Groups.General)]
     public List<DayOfWeek> DaysOfWeek { get; set; } = null!;
 
-    [InputArgument(Order = 2, Group = "General")]
+    [InputArgument(Order = 2, Group = Groups.General)]
     public TimeSpan Delay { get; set; }
 
     [InputArgument(Order = 26)]
-    [DefaultValue(false)]
-    public bool Disabled { get; set; }
+    [DefaultValue(true)]
+    public bool Enabled { get; set; }
 
-    [InputArgument(Order = 18, Group = "General")]
-    public TimeSpan Duration { get; set; }
-
-    [InputArgument(Order = 16, Group = "General")]
+    [InputArgument(Order = 16, Group = Groups.General)]
     public DateTime EndBoundary { get; set; }
 
-    [InputArgument(Order = 21, Group = "General")]
-    public TimeSpan ExecutionTimeLimit { get; set; }
-
-    [InputArgument(Order = 20, Group = "General")]
+    [InputArgument(Order = 20, Group = Groups.General)]
     public string Id { get; set; } = null!;
 
-    [InputArgument(Order = 17, Group = "General")]
-    public TimeSpan Interval { get; set; }
-
-    [InputArgument(Order = 7, Group = "General")]
+    [InputArgument(Order = 7, Group = Groups.General)]
     public List<MonthOfYear> MonthsOfYear { get; set; } = null!;
 
     [InputArgument(Order = 25, Required = false)]
     public string Password { get; set; } = null!;
 
-    [InputArgument(Order = 4, Group = "General")]
+    [InputArgument(Order = 4, Group = Groups.General)]
     public TimeSpan RandomDelay { get; set; }
 
-    [InputArgument(Order = 8, Group = "General")]
+    [InputArgument(Order = 18, Group = Groups.General)]
+    public TimeSpan RepetitionDuration { get; set; }
+
+    [InputArgument(Order = 17, Group = Groups.General)]
+    public TimeSpan RepetitionInterval { get; set; }
+
+    [InputArgument(Order = 19, Group = Groups.General)]
+    [DefaultValue(false)]
+    public bool RepetitionStopAtDurationEnd { get; set; }
+
+    [InputArgument(Order = 8, Group = Groups.General)]
     [DefaultValue(false)]
     public bool RunOnLastDayOfMonth { get; set; }
 
-    [InputArgument(Order = 15, Group = "General")]
+    [InputArgument(Order = 15, Group = Groups.General)]
     public DateTime StartBoundary { get; set; }
 
-    [InputArgument(Order = 14, Group = "General")]
+    [InputArgument(Order = 14, Group = Groups.General)]
     [DefaultValue(SessionStateChangeType.ConsoleConnect)]
-    public SessionStateChangeType StateChange { get; set; }
+    public SessionStateChangeType State { get; set; }
 
-    [InputArgument(Order = 19, Group = "General")]
-    [DefaultValue(false)]
-    public bool StopAtDurationEnd { get; set; }
-
-    [InputArgument(Order = 12, Group = "General")]
+    [InputArgument(Order = 12, Group = Groups.General)]
     public string Subscription { get; set; } = null!;
 
     [InputArgument(Order = 22, Required = false)]
     public string TargetServer { get; set; } = null!;
 
-    [InputArgument(Order = 1, Group = "General")]
+    [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
 
-    [InputArgument(Order = 0, Group = "General")]
+    [InputArgument(Order = 21, Group = Groups.General)]
+    public TimeSpan Timeout { get; set; }
+
+    [InputArgument(Order = 0, Group = Groups.General)]
     [DefaultValue(TriggerType.Boot)]
     public TriggerType Type { get; set; }
 
-    [InputArgument(Order = 5, Group = "General")]
+    [InputArgument(Order = 5, Group = Groups.General)]
     public string UserId { get; set; } = null!;
 
     [InputArgument(Order = 23, Required = false)]
     public string UserName { get; set; } = null!;
 
-    [InputArgument(Order = 13, Group = "General")]
+    [InputArgument(Order = 13, Group = Groups.General)]
     public List<string> ValueQueries { get; set; } = null!;
 
-    [InputArgument(Order = 11, Group = "General")]
+    [InputArgument(Order = 11, Group = Groups.General)]
     public short WeeksInterval { get; set; }
 
-    [InputArgument(Order = 10, Group = "General")]
+    [InputArgument(Order = 10, Group = Groups.General)]
     public List<WeekOfMonth> WeeksOfMonth { get; set; } = null!;
 
     public override void Execute(ActionContext context)
@@ -119,6 +119,12 @@ public class CreateTaskTriggerAction : ActionBase
         try
         {
             using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
+
+            using var task = taskService.FindTask(TaskName);
+            if (task is null)
+            {
+                throw new TaskNotFoundException(TaskName);
+            }
 
             using Trigger trigger = Type switch
             {
@@ -169,7 +175,7 @@ public class CreateTaskTriggerAction : ActionBase
                 },
                 TriggerType.SessionStateChange => new SessionStateChangeTrigger
                 {
-                    StateChange = StateChange.ToAbstraction()
+                    StateChange = State.ToAbstraction()
                 },
                 TriggerType.Time => new TimeTrigger
                 {
@@ -183,12 +189,14 @@ public class CreateTaskTriggerAction : ActionBase
                 },
                 _ => throw new ArgumentOutOfRangeException()
             };
-
-            using var task = taskService.FindTask(TaskName);
-            if (task is null)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
+            trigger.Id = Id;
+            trigger.Enabled = Enabled;
+            trigger.StartBoundary = StartBoundary;
+            trigger.EndBoundary = EndBoundary;
+            trigger.ExecutionTimeLimit = Timeout;
+            trigger.Repetition.Duration = RepetitionDuration;
+            trigger.Repetition.Interval = RepetitionInterval;
+            trigger.Repetition.StopAtDurationEnd = RepetitionStopAtDurationEnd;
 
             task.Definition.Triggers.Add(trigger);
         }
@@ -224,7 +232,7 @@ public class AddBootTriggerToTaskActionSelector : ActionSelector<CreateTaskTrigg
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -248,7 +256,7 @@ public class AddDailyTriggerToTaskActionSelector : ActionSelector<CreateTaskTrig
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -274,7 +282,7 @@ public class AddIdleTriggerToTaskActionSelector : ActionSelector<CreateTaskTrigg
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -298,7 +306,7 @@ public class AddLogonTriggerToTaskActionSelector : ActionSelector<CreateTaskTrig
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -321,7 +329,7 @@ public class AddMonthlyTriggerToTaskActionSelector : ActionSelector<CreateTaskTr
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -344,7 +352,7 @@ public class AddMonthlyDayOfWeekTriggerToTaskActionSelector : ActionSelector<Cre
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -370,7 +378,7 @@ public class AddTimeTriggerToTaskActionSelector : ActionSelector<CreateTaskTrigg
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -394,7 +402,7 @@ public class AddWeeklyTriggerToTaskActionSelector : ActionSelector<CreateTaskTri
         Hide(s => s.RunOnLastDayOfMonth);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -418,7 +426,7 @@ public class AddEventTriggerToTaskActionSelector : ActionSelector<CreateTaskTrig
         Hide(s => s.MonthsOfYear);
         Hide(s => s.RunOnLastDayOfMonth);
         Hide(s => s.WeeksInterval);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 
@@ -443,7 +451,7 @@ public class AddRegistrationTriggerToTaskActionSelector : ActionSelector<CreateT
         Hide(s => s.WeeksInterval);
         Hide(s => s.Subscription);
         Hide(s => s.ValueQueries);
-        Hide(s => s.StateChange);
+        Hide(s => s.State);
     }
 }
 

@@ -173,22 +173,22 @@
     <data name="DeleteTaskTrigger_Summary" xml:space="preserve">
         <value>Delete trigger for task.</value>
     </data>
-    <data name="GetTasksInFolder_FriendlyName" xml:space="preserve">
+    <data name="GetFolderTasks_FriendlyName" xml:space="preserve">
         <value>Get tasks in folder</value>
     </data>
-    <data name="GetTasksInFolder_Description" xml:space="preserve">
+    <data name="GetFolderTasks_Description" xml:space="preserve">
         <value>Gets the list of tasks in the specified folder.</value>
     </data>
-    <data name="GetTasksInFolder_Summary" xml:space="preserve">
+    <data name="GetFolderTasks_Summary" xml:space="preserve">
         <value>Get tasks in folder.</value>
     </data>
-    <data name="GetTriggersInTask_FriendlyName" xml:space="preserve">
+    <data name="GetTaskTriggers_FriendlyName" xml:space="preserve">
         <value>Get triggers for task</value>
     </data>
-    <data name="GetTriggersInTask_Description" xml:space="preserve">
+    <data name="GetTaskTriggers_Description" xml:space="preserve">
         <value>Gets the list of triggers for a task with the specified name.</value>
     </data>
-    <data name="GetTriggersInTask_Summary" xml:space="preserve">
+    <data name="GetTaskTriggers_Summary" xml:space="preserve">
         <value>Get triggers for task.</value>
     </data>
     <data name="Group_General_FriendlyName" xml:space="preserve">
@@ -436,5 +436,314 @@
     </data>
     <data name="CreateTaskTrigger_UserName_Description" xml:space="preserve">
         <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysInterval_FriendlyName" xml:space="preserve">
+        <value>Days Interval</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysInterval_Description" xml:space="preserve">
+        <value>The interval between days.</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysOfMonth_FriendlyName" xml:space="preserve">
+        <value>Days Of Month</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysOfMonth_Description" xml:space="preserve">
+        <value>The days of the month.</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysOfWeek_FriendlyName" xml:space="preserve">
+        <value>Days Of Week</value>
+    </data>
+    <data name="CreateTaskTrigger_DaysOfWeek_Description" xml:space="preserve">
+        <value>The days of the week.</value>
+    </data>
+    <data name="CreateTaskTrigger_Delay_FriendlyName" xml:space="preserve">
+        <value>Delay</value>
+    </data>
+    <data name="CreateTaskTrigger_Delay_Description" xml:space="preserve">
+        <value>The amount of time between when the trigger is fired and when the task is executed.</value>
+    </data>
+    <data name="CreateTaskTrigger_Enabled_FriendlyName" xml:space="preserve">
+        <value>Enabled</value>
+    </data>
+    <data name="CreateTaskTrigger_Enabled_Description" xml:space="preserve">
+        <value>Whether the trigger is enabled.</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionDuration_FriendlyName" xml:space="preserve">
+        <value>Duration</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionDuration_Description" xml:space="preserve">
+        <value>The duration that the pattern is repeated. The minimum time allowed is one minute. If zero is specified, the pattern is repeated indefinitely.</value>
+    </data>
+    <data name="CreateTaskTrigger_EndBoundary_FriendlyName" xml:space="preserve">
+        <value>Expires On</value>
+    </data>
+    <data name="CreateTaskTrigger_EndBoundary_Description" xml:space="preserve">
+        <value>The date and time when the trigger is deactivated. The trigger can't start the task after it is deactivated.</value>
+    </data>
+    <data name="CreateTaskTrigger_StartBoundary_FriendlyName" xml:space="preserve">
+        <value>Start</value>
+    </data>
+    <data name="CreateTaskTrigger_StartBoundary_Description" xml:space="preserve">
+        <value>The date and time when the trigger is activated.</value>
+    </data>
+    <data name="CreateTaskTrigger_Timeout_FriendlyName" xml:space="preserve">
+        <value>Timeout</value>
+    </data>
+    <data name="CreateTaskTrigger_Timeout_Description" xml:space="preserve">
+        <value>The maximum amount of time that the task launched by this trigger is allowed to run.</value>
+    </data>
+    <data name="CreateTaskTrigger_Id_FriendlyName" xml:space="preserve">
+        <value>ID</value>
+    </data>
+    <data name="CreateTaskTrigger_Id_Description" xml:space="preserve">
+        <value>The identifier of the trigger.</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionInterval_FriendlyName" xml:space="preserve">
+        <value>Interval</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionInterval_Description" xml:space="preserve">
+        <value>The amount of time in days between each restart of the task. The value must be between 1 minute and 31 days.</value>
+    </data>
+    <data name="CreateTaskTrigger_WeeksOfMonth_FriendlyName" xml:space="preserve">
+        <value>Weeks Of Month</value>
+    </data>
+    <data name="CreateTaskTrigger_WeeksOfMonth_Description" xml:space="preserve">
+        <value>The weeks of the month.</value>
+    </data>
+    <data name="CreateTaskTrigger_MonthsOfYear_FriendlyName" xml:space="preserve">
+        <value>Months Of Year</value>
+    </data>
+    <data name="CreateTaskTrigger_MonthsOfYear_Description" xml:space="preserve">
+        <value>The months of the year.</value>
+    </data>
+    <data name="CreateTaskTrigger_RandomDelay_FriendlyName" xml:space="preserve">
+        <value>Random Delay</value>
+    </data>
+    <data name="CreateTaskTrigger_RandomDelay_Description" xml:space="preserve">
+        <value>The delay time that is randomly added to the start time of the trigger.</value>
+    </data>
+    <data name="CreateTaskTrigger_RunOnLastDayOfMonth_FriendlyName" xml:space="preserve">
+        <value>Run On Last Day Of Month</value>
+    </data>
+    <data name="CreateTaskTrigger_RunOnLastDayOfMonth_Description" xml:space="preserve">
+        <value>Whether the task runs on the last day of the month.</value>
+    </data>
+    <data name="CreateTaskTrigger_State_FriendlyName" xml:space="preserve">
+        <value>State</value>
+    </data>
+    <data name="CreateTaskTrigger_State_Description" xml:space="preserve">
+        <value>The kind of Terminal Server session change that will trigger the task launch.</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionStopAtDurationEnd_FriendlyName" xml:space="preserve">
+        <value>Stop At End of Repetition Duration</value>
+    </data>
+    <data name="CreateTaskTrigger_RepetitionStopAtDurationEnd_Description" xml:space="preserve">
+        <value>Whether a running instance of the task is stopped at the end of repetition pattern duration.</value>
+    </data>
+    <data name="CreateTaskTrigger_Subscription_FriendlyName" xml:space="preserve">
+        <value>Subscription</value>
+    </data>
+    <data name="CreateTaskTrigger_Subscription_Description" xml:space="preserve">
+        <value>The XPath query string that identifies the event that fires the trigger.</value>
+    </data>
+    <data name="CreateTaskTrigger_Type_FriendlyName" xml:space="preserve">
+        <value>Type</value>
+    </data>
+    <data name="CreateTaskTrigger_Type_Description" xml:space="preserve">
+        <value>The type of trigger.</value>
+    </data>
+    <data name="CreateTaskTrigger_UserId_FriendlyName" xml:space="preserve">
+        <value>User ID</value>
+    </data>
+    <data name="CreateTaskTrigger_UserId_Description" xml:space="preserve">
+        <value>The identifier of the user. For example, &quot;MyDomain\MyName&quot; or for a local account, &quot;Administrator&quot;.</value>
+    </data>
+    <data name="CreateTaskTrigger_ValueQueries_FriendlyName" xml:space="preserve">
+        <value>Value Queries</value>
+    </data>
+    <data name="CreateTaskTrigger_ValueQueries_Description" xml:space="preserve">
+        <value>The collection of named XPath queries. Each query in the collection is applied to the last matching event XML returned from the subscription query.</value>
+    </data>
+    <data name="CreateTaskTrigger_WeeksInterval_FriendlyName" xml:space="preserve">
+        <value>Weeks Interval</value>
+    </data>
+    <data name="CreateTaskTrigger_WeeksInterval_Description" xml:space="preserve">
+        <value>The interval between weeks.</value>
+    </data>
+    <data name="DeleteTask_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="DeleteTask_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="DeleteTask_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="DeleteTask_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="DeleteTask_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="DeleteTask_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="DeleteTask_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="DeleteTask_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="DeleteTask_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="DeleteTask_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="DeleteTaskTrigger_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="DeleteTaskTrigger_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="DeleteTaskTrigger_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="DeleteTaskTrigger_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="DeleteTaskTrigger_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="DeleteTaskTrigger_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="DeleteTaskTrigger_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="DeleteTaskTrigger_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="DeleteTaskTrigger_TriggerId_FriendlyName" xml:space="preserve">
+        <value>Trigger ID</value>
+    </data>
+    <data name="DeleteTaskTrigger_TriggerId_Description" xml:space="preserve">
+        <value>The identifier of the trigger.</value>
+    </data>
+    <data name="DeleteTaskTrigger_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="DeleteTaskTrigger_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetFolderTasks_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetFolderTasks_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetFolderTasks_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetFolderTasks_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetFolderTasks_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetFolderTasks_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetFolderTasks_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetFolderTasks_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetFolderTasks_Filter_FriendlyName" xml:space="preserve">
+        <value>Filter</value>
+    </data>
+    <data name="GetFolderTasks_Filter_Description" xml:space="preserve">
+        <value>The regular expression to use as name filter.</value>
+    </data>
+    <data name="GetFolderTasks_FolderPath_FriendlyName" xml:space="preserve">
+        <value>Folder</value>
+    </data>
+    <data name="GetFolderTasks_FolderPath_Description" xml:space="preserve">
+        <value>The path to the folder containing the tasks.</value>
+    </data>
+    <data name="GetFolderTasks_TaskNames_FriendlyName" xml:space="preserve">
+        <value>Task Names</value>
+    </data>
+    <data name="GetFolderTasks_TaskNames_Description" xml:space="preserve">
+        <value>The names of the tasks in the folder.</value>
+    </data>
+    <data name="GetTaskTriggers_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetTaskTriggers_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetTaskTriggers_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetTaskTriggers_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskTriggers_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetTaskTriggers_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetTaskTriggers_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="GetTaskTriggers_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="GetTaskTriggers_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetTaskTriggers_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskTriggers_TriggerIds_FriendlyName" xml:space="preserve">
+        <value>Triggers</value>
+    </data>
+    <data name="GetTaskTriggers_TriggerIds_Description" xml:space="preserve">
+        <value>The identifiers of the triggers for the task.</value>
+    </data>
+    <data name="Boot_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task at startup.</value>
+    </data>
+    <data name="Daily_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on a daily schedule.</value>
+    </data>
+    <data name="Idle_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on idle.</value>
+    </data>
+    <data name="Logon_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task at log on.</value>
+    </data>
+    <data name="Monthly_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on a monthly schedule.</value>
+    </data>
+    <data name="MonthlyDayOfWeek_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on a monthly schedule at a day of the week.</value>
+    </data>
+    <data name="Time_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task one time.</value>
+    </data>
+    <data name="Weekly_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on a weekly schedule.</value>
+    </data>
+    <data name="Event_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on an event.</value>
+    </data>
+    <data name="Registration_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task at task creation/modification.</value>
+    </data>
+    <data name="SessionStateChange_Summary" xml:space="preserve">
+        <value>Create a trigger to execute a task on session state change.</value>
     </data>
 </root>

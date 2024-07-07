@@ -14,8 +14,8 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 [Action(Id = "DeleteTaskTrigger")]
-[Group(Name = "General", Order = 1)]
-[Group(Name = "Advanced", Order = 2, IsDefault = true)]
+[Group(Name = Groups.General, Order = 1)]
+[Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.TaskTriggerNotFound)]
 [Throws(ErrorCodes.TaskTriggerUnknown)]
@@ -36,10 +36,10 @@ public class DeleteTaskTriggerAction : ActionBase
     [InputArgument(Order = 3, Required = false)]
     public string TargetServer { get; set; } = null!;
 
-    [InputArgument(Order = 1, Group = "General")]
+    [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
 
-    [InputArgument(Order = 2, Group = "General")]
+    [InputArgument(Order = 2, Group = Groups.General)]
     public string TriggerId { get; set; } = null!;
 
     [InputArgument(Order = 4, Required = false)]
