@@ -11,7 +11,7 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-[Action(Id = "CreateTaskActionA")]
+[Action(Id = "CreateTaskAction")]
 [Group(Name = "General", Order = 1)]
 [Group(Name = "Advanced", Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
@@ -23,20 +23,29 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class CreateTaskActionAction : ActionBase
 {
-    [InputArgument(Order = 4, Required = false)]
+    [InputArgument(Order = 7, Required = false)]
     public string AccountDomain { get; set; } = null!;
 
-    [InputArgument(Order = 5, Required = false)]
+    [InputArgument(Order = 3, Group = "General")]
+    public string Arguments { get; set; } = null!;
+
+    [InputArgument(Order = 8, Required = false)]
     public string Password { get; set; } = null!;
 
-    [InputArgument(Order = 2, Required = false)]
+    [InputArgument(Order = 2, Group = "General")]
+    public string Path { get; set; } = null!;
+
+    [InputArgument(Order = 5, Required = false)]
     public string TargetServer { get; set; } = null!;
 
     [InputArgument(Order = 1, Group = "General")]
     public string TaskName { get; set; } = null!;
 
-    [InputArgument(Order = 3, Required = false)]
+    [InputArgument(Order = 6, Required = false)]
     public string UserName { get; set; } = null!;
+
+    [InputArgument(Order = 4, Group = "General")]
+    public string WorkingDirectory { get; set; } = null!;
 
     public override void Execute(ActionContext context)
     {
@@ -52,7 +61,8 @@ public class CreateTaskActionAction : ActionBase
                 throw new TaskNotFoundException(TaskName);
             }
 
-            // TODO: Add the action to the task
+            using var execAction = new ExecAction(Path, Arguments, WorkingDirectory);
+            task.Definition.Actions.Add(execAction);
         }
         catch (TaskNotFoundException ex)
         {
