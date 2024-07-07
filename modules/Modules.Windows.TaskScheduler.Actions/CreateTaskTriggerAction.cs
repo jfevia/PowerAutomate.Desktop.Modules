@@ -87,7 +87,7 @@ public class CreateTaskTriggerAction : ActionBase
     [InputArgument(Order = 12, Group = "General")]
     public string Subscription { get; set; } = null!;
 
-    [InputArgument(Order = 22, Group = "General", Required = false)]
+    [InputArgument(Order = 22, Required = false)]
     public string TargetServer { get; set; } = null!;
 
     [InputArgument(Order = 1, Group = "General")]

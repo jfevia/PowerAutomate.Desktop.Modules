@@ -14,6 +14,8 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 [Action(Id = "DeleteTaskTrigger")]
+[Group(Name = "General", Order = 1)]
+[Group(Name = "Advanced", Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.TaskTriggerNotFound)]
 [Throws(ErrorCodes.TaskTriggerUnknown)]
@@ -25,11 +27,23 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class DeleteTaskTriggerAction : ActionBase
 {
-    [InputArgument(Order = 1)]
+    [InputArgument(Order = 5, Required = false)]
+    public string AccountDomain { get; set; } = null!;
+
+    [InputArgument(Order = 6, Required = false)]
+    public string Password { get; set; } = null!;
+
+    [InputArgument(Order = 3, Required = false)]
+    public string TargetServer { get; set; } = null!;
+
+    [InputArgument(Order = 1, Group = "General")]
     public string TaskName { get; set; } = null!;
 
-    [InputArgument(Order = 2)]
+    [InputArgument(Order = 2, Group = "General")]
     public string TriggerId { get; set; } = null!;
+
+    [InputArgument(Order = 4, Required = false)]
+    public string UserName { get; set; } = null!;
 
     public override void Execute(ActionContext context)
     {
@@ -37,7 +51,7 @@ public class DeleteTaskTriggerAction : ActionBase
 
         try
         {
-            using var taskService = new TaskService();
+            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
             using var task = taskService.FindTask(TaskName);
             if (task is null)
             {

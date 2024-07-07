@@ -4,7 +4,6 @@
 
 using System;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
@@ -12,7 +11,7 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-[Action(Id = "DeleteTask")]
+[Action(Id = "CreateTaskActionA")]
 [Group(Name = "General", Order = 1)]
 [Group(Name = "Advanced", Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
@@ -22,7 +21,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class DeleteTaskAction : ActionBase
+public class CreateTaskActionAction : ActionBase
 {
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -46,20 +45,14 @@ public class DeleteTaskAction : ActionBase
         try
         {
             using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
+
             using var task = taskService.FindTask(TaskName);
             if (task is null)
             {
                 throw new TaskNotFoundException(TaskName);
             }
 
-            try
-            {
-                task.Folder.DeleteTask(task.Name);
-            }
-            catch (FileNotFoundException)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
+            // TODO: Add the action to the task
         }
         catch (TaskNotFoundException ex)
         {

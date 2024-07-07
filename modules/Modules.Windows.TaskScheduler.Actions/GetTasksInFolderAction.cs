@@ -14,6 +14,8 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 [Action(Id = "GetTasksInFolder")]
+[Group(Name = "General", Order = 1)]
+[Group(Name = "Advanced", Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -22,14 +24,26 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class GetTasksInFolderAction : ActionBase
 {
-    [InputArgument(Order = 2, Required = false)]
+    [InputArgument(Order = 5, Required = false)]
+    public string AccountDomain { get; set; } = null!;
+
+    [InputArgument(Order = 2, Group = "General", Required = false)]
     public string Filter { get; set; } = null!;
 
-    [InputArgument(Order = 1)]
+    [InputArgument(Order = 1, Group = "General")]
     public string FolderName { get; set; } = null!;
+
+    [InputArgument(Order = 6, Required = false)]
+    public string Password { get; set; } = null!;
+
+    [InputArgument(Order = 3, Required = false)]
+    public string TargetServer { get; set; } = null!;
 
     [OutputArgument(Order = 1)]
     public List<string> TaskNames { get; set; } = null!;
+
+    [InputArgument(Order = 4, Required = false)]
+    public string UserName { get; set; } = null!;
 
     public override void Execute(ActionContext context)
     {
@@ -37,7 +51,7 @@ public class GetTasksInFolderAction : ActionBase
 
         try
         {
-            using var taskService = new TaskService();
+            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
             Regex? regex = null;
 
             if (!string.IsNullOrWhiteSpace(Filter))
