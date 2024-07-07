@@ -173,6 +173,15 @@
     <data name="DeleteTaskTrigger_Summary" xml:space="preserve">
         <value>Delete trigger for task.</value>
     </data>
+    <data name="DeleteTaskAction_FriendlyName" xml:space="preserve">
+        <value>Delete action of task</value>
+    </data>
+    <data name="DeleteTaskAction_Description" xml:space="preserve">
+        <value>Deletes a action of the task with the specified name.</value>
+    </data>
+    <data name="DeleteTaskAction_Summary" xml:space="preserve">
+        <value>Delete action of task.</value>
+    </data>
     <data name="GetFolderTasks_FriendlyName" xml:space="preserve">
         <value>Get tasks in folder</value>
     </data>
@@ -181,6 +190,15 @@
     </data>
     <data name="GetFolderTasks_Summary" xml:space="preserve">
         <value>Get tasks in folder.</value>
+    </data>
+    <data name="GetTaskActions_FriendlyName" xml:space="preserve">
+        <value>Get actions in task</value>
+    </data>
+    <data name="GetTaskActions_Description" xml:space="preserve">
+        <value>Gets the list of actions in the specified task.</value>
+    </data>
+    <data name="GetTaskActions_Summary" xml:space="preserve">
+        <value>Get actions in task.</value>
     </data>
     <data name="GetTaskTriggers_FriendlyName" xml:space="preserve">
         <value>Get triggers for task</value>
@@ -226,6 +244,18 @@
     </data>
     <data name="Error_TaskTriggerUnknownError_Description" xml:space="preserve">
         <value>Indicates that there was a problem when executing the trigger operation.</value>
+    </data>
+    <data name="Error_TaskActionNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Action not found</value>
+    </data>
+    <data name="Error_TaskActionNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that the action was not found.</value>
+    </data>
+    <data name="Error_TaskActionUnknownError_FriendlyName" xml:space="preserve">
+        <value>Action operation failed</value>
+    </data>
+    <data name="Error_TaskActionUnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when executing the action operation.</value>
     </data>
     <data name="SessionStateChangeType_ConsoleConnect_FriendlyName" xml:space="preserve">
         <value>On connected from user session from local computer</value>
@@ -712,6 +742,78 @@
     </data>
     <data name="GetTaskTriggers_TriggerIds_Description" xml:space="preserve">
         <value>The identifiers of the triggers for the task.</value>
+    </data>
+    <data name="DeleteTaskAction_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="DeleteTaskAction_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="DeleteTaskAction_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="DeleteTaskAction_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="DeleteTaskAction_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="DeleteTaskAction_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="DeleteTaskAction_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="DeleteTaskAction_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="DeleteTaskAction_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="DeleteTaskAction_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="DeleteTaskAction_ActionId_FriendlyName" xml:space="preserve">
+        <value>Action ID</value>
+    </data>
+    <data name="DeleteTaskAction_ActionId_Description" xml:space="preserve">
+        <value>The identifier of the action.</value>
+    </data>
+    <data name="GetTaskActions_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetTaskActions_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetTaskActions_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetTaskActions_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskActions_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetTaskActions_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetTaskActions_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="GetTaskActions_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="GetTaskActions_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetTaskActions_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskActions_ActionIds_FriendlyName" xml:space="preserve">
+        <value>Actions</value>
+    </data>
+    <data name="GetTaskActions_ActionIds_Description" xml:space="preserve">
+        <value>The names of the actions.</value>
     </data>
     <data name="Boot_Summary" xml:space="preserve">
         <value>Create a trigger to execute a task at startup.</value>

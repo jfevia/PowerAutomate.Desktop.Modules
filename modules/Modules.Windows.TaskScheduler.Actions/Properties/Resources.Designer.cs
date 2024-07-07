@@ -998,6 +998,141 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         /// <summary>
         ///   Looks up a localized string similar to The domain of the account..
         /// </summary>
+        public static string DeleteTaskAction_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string DeleteTaskAction_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The identifier of the action..
+        /// </summary>
+        public static string DeleteTaskAction_ActionId_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_ActionId_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action ID.
+        /// </summary>
+        public static string DeleteTaskAction_ActionId_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_ActionId_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deletes a action of the task with the specified name..
+        /// </summary>
+        public static string DeleteTaskAction_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete action of task.
+        /// </summary>
+        public static string DeleteTaskAction_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string DeleteTaskAction_Password_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string DeleteTaskAction_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete action of task..
+        /// </summary>
+        public static string DeleteTaskAction_Summary {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string DeleteTaskAction_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string DeleteTaskAction_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string DeleteTaskAction_TaskName_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string DeleteTaskAction_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string DeleteTaskAction_UserName_Description {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string DeleteTaskAction_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("DeleteTaskAction_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
         public static string DeleteTaskTrigger_AccountDomain_Description {
             get {
                 return ResourceManager.GetString("DeleteTaskTrigger_AccountDomain_Description", resourceCulture);
@@ -1127,6 +1262,42 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         public static string DeleteTaskTrigger_UserName_FriendlyName {
             get {
                 return ResourceManager.GetString("DeleteTaskTrigger_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that the action was not found..
+        /// </summary>
+        public static string Error_TaskActionNotFoundError_Description {
+            get {
+                return ResourceManager.GetString("Error_TaskActionNotFoundError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action not found.
+        /// </summary>
+        public static string Error_TaskActionNotFoundError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_TaskActionNotFoundError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indicates that there was a problem when executing the action operation..
+        /// </summary>
+        public static string Error_TaskActionUnknownError_Description {
+            get {
+                return ResourceManager.GetString("Error_TaskActionUnknownError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action operation failed.
+        /// </summary>
+        public static string Error_TaskActionUnknownError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_TaskActionUnknownError_FriendlyName", resourceCulture);
             }
         }
         
@@ -1361,6 +1532,141 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         public static string GetFolderTasks_UserName_FriendlyName {
             get {
                 return ResourceManager.GetString("GetFolderTasks_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string GetTaskActions_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string GetTaskActions_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The names of the actions..
+        /// </summary>
+        public static string GetTaskActions_ActionIds_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_ActionIds_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        public static string GetTaskActions_ActionIds_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_ActionIds_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the list of actions in the specified task..
+        /// </summary>
+        public static string GetTaskActions_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get actions in task.
+        /// </summary>
+        public static string GetTaskActions_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskActions_Password_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string GetTaskActions_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get actions in task..
+        /// </summary>
+        public static string GetTaskActions_Summary {
+            get {
+                return ResourceManager.GetString("GetTaskActions_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string GetTaskActions_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string GetTaskActions_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string GetTaskActions_TaskName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string GetTaskActions_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskActions_UserName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskActions_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string GetTaskActions_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskActions_UserName_FriendlyName", resourceCulture);
             }
         }
         

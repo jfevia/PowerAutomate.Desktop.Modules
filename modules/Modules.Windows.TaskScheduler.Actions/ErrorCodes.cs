@@ -6,6 +6,8 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
 internal static class ErrorCodes
 {
+    public const string TaskActionNotFound = "TaskActionNotFoundError";
+    public const string TaskActionUnknown = "TaskActionUnknownError";
     public const string TaskNotFound = "TaskNotFoundError";
     public const string TaskTriggerNotFound = "TaskTriggerNotFoundError";
     public const string TaskTriggerUnknown = "TaskTriggerUnknownError";
