@@ -16,6 +16,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [Action(Id = "DeleteTaskTrigger")]
 [Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.TaskTriggerNotFound)]
+[Throws(ErrorCodes.TaskTriggerUnknown)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -66,6 +67,10 @@ public class DeleteTaskTriggerAction : ActionBase
             throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
         }
         catch (TaskTriggerNotFoundException ex)
+        {
+            throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
+        }
+        catch (TaskTriggerException ex)
         {
             throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
         }

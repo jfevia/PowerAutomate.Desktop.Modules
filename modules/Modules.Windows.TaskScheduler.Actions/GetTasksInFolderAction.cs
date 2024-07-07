@@ -46,7 +46,7 @@ public class GetTasksInFolderAction : ActionBase
             }
 
             using var taskCollection = taskService.GetFolder(FolderName)
-                                            .GetTasks(regex);
+                                                  .GetTasks(regex);
             var taskNames = new List<string>();
 
             foreach (var task in taskCollection)

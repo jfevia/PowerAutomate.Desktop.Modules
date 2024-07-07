@@ -25,7 +25,6 @@ internal static class WeekOfMonthExtensions
             WeekOfMonth.ThirdWeek => WhichWeek.ThirdWeek,
             WeekOfMonth.FourthWeek => WhichWeek.FourthWeek,
             WeekOfMonth.LastWeek => WhichWeek.LastWeek,
-            WeekOfMonth.AllWeeks => WhichWeek.AllWeeks,
             _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
         };
     }

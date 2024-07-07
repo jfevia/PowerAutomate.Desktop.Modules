@@ -12,6 +12,5 @@ public enum DayOfWeek
     Wednesday,
     Thursday,
     Friday,
-    Saturday,
-    AllDays
+    Saturday
 }

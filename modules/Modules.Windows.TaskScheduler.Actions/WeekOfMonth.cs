@@ -10,6 +10,5 @@ public enum WeekOfMonth
     SecondWeek,
     ThirdWeek,
     FourthWeek,
-    LastWeek,
-    AllWeeks
+    LastWeek
 }

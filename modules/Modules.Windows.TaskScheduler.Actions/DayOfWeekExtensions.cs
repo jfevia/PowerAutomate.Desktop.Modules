@@ -27,7 +27,6 @@ internal static class DayOfWeekExtensions
             DayOfWeek.Thursday => DaysOfTheWeek.Thursday,
             DayOfWeek.Friday => DaysOfTheWeek.Friday,
             DayOfWeek.Saturday => DaysOfTheWeek.Saturday,
-            DayOfWeek.AllDays => DaysOfTheWeek.AllDays,
             _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
         };
     }
