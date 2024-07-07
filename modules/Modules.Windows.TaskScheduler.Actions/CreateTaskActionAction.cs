@@ -26,7 +26,7 @@ public class CreateTaskActionAction : ActionBase
     [InputArgument(Order = 7, Required = false)]
     public string AccountDomain { get; set; } = null!;
 
-    [InputArgument(Order = 3, Group = "General")]
+    [InputArgument(Order = 3, Group = "General", Required = false)]
     public string Arguments { get; set; } = null!;
 
     [InputArgument(Order = 8, Required = false)]
@@ -44,7 +44,7 @@ public class CreateTaskActionAction : ActionBase
     [InputArgument(Order = 6, Required = false)]
     public string UserName { get; set; } = null!;
 
-    [InputArgument(Order = 4, Group = "General")]
+    [InputArgument(Order = 4, Group = "General", Required = false)]
     public string WorkingDirectory { get; set; } = null!;
 
     public override void Execute(ActionContext context)
