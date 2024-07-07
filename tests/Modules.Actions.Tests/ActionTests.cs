@@ -113,6 +113,32 @@ public class ActionTests
     }
 
     [Test]
+    public void Action_All_Groups_All_HasLocalizableResources()
+    {
+        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            var resourceManager = assembly.GetResourceManager();
+            var groups = assembly.ExportedTypes
+                                 .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
+                                 .Where(pair => pair.ActionAttribute is not null)
+                                 .SelectMany(pair => pair.ActionType.GetCustomAttributes<GroupAttribute>())
+                                 .Select(attribute => attribute.Name)
+                                 .Distinct()
+                                 .ToList();
+
+            foreach (var group in groups)
+            {
+                var friendlyNameResource = resourceManager.GetString($"Group_{group}_FriendlyName");
+                var descriptionResource = resourceManager.GetString($"Group_{group}_Description");
+
+                Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Group '{group}' doesn't have a friendly name resource");
+                Assert.That(descriptionResource, Is.Not.Null.Or.Empty, $"Group '{group}' doesn't have a friendly name resource");
+            }
+        }
+    }
+
+    [Test]
     public void Action_All_HasLocalizableResources()
     {
         var assemblies = ModuleEnumerator.GetAllAssemblies();
