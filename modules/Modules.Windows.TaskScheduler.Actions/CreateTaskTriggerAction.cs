@@ -14,16 +14,17 @@ using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-[Action(Id = "AddTriggerToTask")]
+[Action(Id = "CreateTaskTrigger")]
 [Group(Name = "General", Order = 1)]
 [Group(Name = "Advanced", Order = 2, IsDefault = true)]
+[Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddTriggerToTaskAction : ActionBase
+public class CreateTaskTriggerAction : ActionBase
 {
     [InputArgument(Order = 24, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -119,7 +120,7 @@ public class AddTriggerToTaskAction : ActionBase
         {
             using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
 
-            Trigger trigger = Type switch
+            using Trigger trigger = Type switch
             {
                 TriggerType.Boot => new BootTrigger
                 {
@@ -183,8 +184,17 @@ public class AddTriggerToTaskAction : ActionBase
                 _ => throw new ArgumentOutOfRangeException()
             };
 
-            var task = taskService.FindTask(TaskName);
+            using var task = taskService.FindTask(TaskName);
+            if (task is null)
+            {
+                throw new TaskNotFoundException(TaskName);
+            }
+
             task.Definition.Triggers.Add(trigger);
+        }
+        catch (TaskNotFoundException ex)
+        {
+            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
         }
         catch (Exception ex)
         {
@@ -195,7 +205,7 @@ public class AddTriggerToTaskAction : ActionBase
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddBootTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddBootTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddBootTriggerToTaskActionSelector()
     {
@@ -220,7 +230,7 @@ public class AddBootTriggerToTaskActionSelector : ActionSelector<AddTriggerToTas
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddDailyTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddDailyTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddDailyTriggerToTaskActionSelector()
     {
@@ -244,7 +254,7 @@ public class AddDailyTriggerToTaskActionSelector : ActionSelector<AddTriggerToTa
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddIdleTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddIdleTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddIdleTriggerToTaskActionSelector()
     {
@@ -270,7 +280,7 @@ public class AddIdleTriggerToTaskActionSelector : ActionSelector<AddTriggerToTas
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddLogonTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddLogonTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddLogonTriggerToTaskActionSelector()
     {
@@ -294,7 +304,7 @@ public class AddLogonTriggerToTaskActionSelector : ActionSelector<AddTriggerToTa
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddMonthlyTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddMonthlyTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddMonthlyTriggerToTaskActionSelector()
     {
@@ -317,7 +327,7 @@ public class AddMonthlyTriggerToTaskActionSelector : ActionSelector<AddTriggerTo
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddMonthlyDayOfWeekTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddMonthlyDayOfWeekTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddMonthlyDayOfWeekTriggerToTaskActionSelector()
     {
@@ -340,7 +350,7 @@ public class AddMonthlyDayOfWeekTriggerToTaskActionSelector : ActionSelector<Add
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddTimeTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddTimeTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddTimeTriggerToTaskActionSelector()
     {
@@ -366,7 +376,7 @@ public class AddTimeTriggerToTaskActionSelector : ActionSelector<AddTriggerToTas
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddWeeklyTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddWeeklyTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddWeeklyTriggerToTaskActionSelector()
     {
@@ -390,7 +400,7 @@ public class AddWeeklyTriggerToTaskActionSelector : ActionSelector<AddTriggerToT
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddEventTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddEventTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddEventTriggerToTaskActionSelector()
     {
@@ -414,7 +424,7 @@ public class AddEventTriggerToTaskActionSelector : ActionSelector<AddTriggerToTa
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddRegistrationTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddRegistrationTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddRegistrationTriggerToTaskActionSelector()
     {
@@ -439,7 +449,7 @@ public class AddRegistrationTriggerToTaskActionSelector : ActionSelector<AddTrig
 
 [SuppressMessage("ReSharper", "UnusedMember.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class AddSessionStateChangeTriggerToTaskActionSelector : ActionSelector<AddTriggerToTaskAction>
+public class AddSessionStateChangeTriggerToTaskActionSelector : ActionSelector<CreateTaskTriggerAction>
 {
     public AddSessionStateChangeTriggerToTaskActionSelector()
     {

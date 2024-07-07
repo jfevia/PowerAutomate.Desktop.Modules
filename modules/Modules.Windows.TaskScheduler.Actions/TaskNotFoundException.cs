@@ -2,11 +2,16 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // --------------------------------------------------------------
 
+using System;
+
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-internal static class ErrorCodes
+public sealed class TaskNotFoundException : Exception
 {
-    public const string TaskNotFound = "TaskNotFoundError";
-    public const string TaskTriggerNotFound = "TaskTriggerNotFoundError";
-    public const string Unknown = "UnknownError";
+    public string TaskName { get; }
+
+    public TaskNotFoundException(string taskName) : base($"Could not find task '{taskName}'")
+    {
+        TaskName = taskName;
+    }
 }
