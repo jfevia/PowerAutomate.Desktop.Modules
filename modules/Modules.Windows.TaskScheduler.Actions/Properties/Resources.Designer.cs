@@ -2013,6 +2013,294 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string ToggleTask_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string ToggleTask_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enables or disables the task with the specified name..
+        /// </summary>
+        public static string ToggleTask_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the task is enabled..
+        /// </summary>
+        public static string ToggleTask_Enabled_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_Enabled_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string ToggleTask_Enabled_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_Enabled_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable/disable task.
+        /// </summary>
+        public static string ToggleTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string ToggleTask_Password_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string ToggleTask_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;if(ENABLED)&gt;Enables&lt;endif&gt;Disables&lt;endif&gt; the task..
+        /// </summary>
+        public static string ToggleTask_Summary {
+            get {
+                return ResourceManager.GetString("ToggleTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string ToggleTask_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string ToggleTask_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string ToggleTask_TaskName_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string ToggleTask_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string ToggleTask_UserName_Description {
+            get {
+                return ResourceManager.GetString("ToggleTask_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string ToggleTask_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTask_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string ToggleTaskTrigger_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string ToggleTaskTrigger_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enables or disables the trigger for the task with the specified name..
+        /// </summary>
+        public static string ToggleTaskTrigger_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Whether the trigger of the task is enabled..
+        /// </summary>
+        public static string ToggleTaskTrigger_Enabled_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Enabled_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        public static string ToggleTaskTrigger_Enabled_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Enabled_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable/disable task trigger.
+        /// </summary>
+        public static string ToggleTaskTrigger_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string ToggleTaskTrigger_Password_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string ToggleTaskTrigger_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;if(ENABLED)&gt;Enables&lt;endif&gt;Disables&lt;endif&gt; the task trigger..
+        /// </summary>
+        public static string ToggleTaskTrigger_Summary {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string ToggleTaskTrigger_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string ToggleTaskTrigger_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string ToggleTaskTrigger_TaskName_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string ToggleTaskTrigger_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The identifier of the trigger..
+        /// </summary>
+        public static string ToggleTaskTrigger_TriggerId_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TriggerId_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger ID.
+        /// </summary>
+        public static string ToggleTaskTrigger_TriggerId_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_TriggerId_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string ToggleTaskTrigger_UserName_Description {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string ToggleTaskTrigger_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ToggleTaskTrigger_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to When the workstation starts up..
         /// </summary>
         public static string TriggerType_Boot_Description {

@@ -182,6 +182,24 @@
     <data name="DeleteTaskAction_Summary" xml:space="preserve">
         <value>Delete action of task.</value>
     </data>
+    <data name="ToggleTask_FriendlyName" xml:space="preserve">
+        <value>Enable/disable task</value>
+    </data>
+    <data name="ToggleTask_Description" xml:space="preserve">
+        <value>Enables or disables the task with the specified name.</value>
+    </data>
+    <data name="ToggleTask_Summary" xml:space="preserve">
+        <value>&lt;if(ENABLED)&gt;Enables&lt;endif&gt;Disables&lt;endif&gt; the task.</value>
+    </data>
+    <data name="ToggleTaskTrigger_FriendlyName" xml:space="preserve">
+        <value>Enable/disable task trigger</value>
+    </data>
+    <data name="ToggleTaskTrigger_Description" xml:space="preserve">
+        <value>Enables or disables the trigger for the task with the specified name.</value>
+    </data>
+    <data name="ToggleTaskTrigger_Summary" xml:space="preserve">
+        <value>&lt;if(ENABLED)&gt;Enables&lt;endif&gt;Disables&lt;endif&gt; the task trigger.</value>
+    </data>
     <data name="GetFolderTasks_FriendlyName" xml:space="preserve">
         <value>Get tasks in folder</value>
     </data>
@@ -814,6 +832,84 @@
     </data>
     <data name="GetTaskActions_ActionIds_Description" xml:space="preserve">
         <value>The names of the actions.</value>
+    </data>
+    <data name="ToggleTask_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="ToggleTask_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="ToggleTask_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="ToggleTask_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="ToggleTask_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="ToggleTask_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="ToggleTask_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="ToggleTask_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="ToggleTask_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="ToggleTask_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="ToggleTask_Enabled_FriendlyName" xml:space="preserve">
+        <value>Enabled</value>
+    </data>
+    <data name="ToggleTask_Enabled_Description" xml:space="preserve">
+        <value>Whether the task is enabled.</value>
+    </data>
+    <data name="ToggleTaskTrigger_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="ToggleTaskTrigger_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="ToggleTaskTrigger_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="ToggleTaskTrigger_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="ToggleTaskTrigger_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="ToggleTaskTrigger_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="ToggleTaskTrigger_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="ToggleTaskTrigger_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="ToggleTaskTrigger_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="ToggleTaskTrigger_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="ToggleTaskTrigger_TriggerId_FriendlyName" xml:space="preserve">
+        <value>Trigger ID</value>
+    </data>
+    <data name="ToggleTaskTrigger_TriggerId_Description" xml:space="preserve">
+        <value>The identifier of the trigger.</value>
+    </data>
+    <data name="ToggleTaskTrigger_Enabled_FriendlyName" xml:space="preserve">
+        <value>Enabled</value>
+    </data>
+    <data name="ToggleTaskTrigger_Enabled_Description" xml:space="preserve">
+        <value>Whether the trigger of the task is enabled.</value>
     </data>
     <data name="Boot_Summary" xml:space="preserve">
         <value>Create a trigger to execute a task at startup.</value>
