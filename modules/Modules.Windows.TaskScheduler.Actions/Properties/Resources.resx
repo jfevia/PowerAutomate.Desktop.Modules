@@ -245,6 +245,12 @@
     <data name="Error_UnknownError_Description" xml:space="preserve">
         <value>Indicates that there was a problem when executing the operation.</value>
     </data>
+    <data name="Error_FolderNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Folder not found</value>
+    </data>
+    <data name="Error_FolderNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that the folder was not found.</value>
+    </data>
     <data name="Error_TaskNotFoundError_FriendlyName" xml:space="preserve">
         <value>Task not found</value>
     </data>

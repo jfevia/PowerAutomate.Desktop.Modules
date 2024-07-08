@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
@@ -17,6 +16,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 [Action(Id = "GetFolderTasks")]
 [Group(Name = Groups.General, Order = 1)]
 [Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
+[Throws(ErrorCodes.FolderNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -32,7 +32,6 @@ public class GetFolderTasksAction : ActionBase
     public string Filter { get; set; } = null!;
 
     [InputArgument(Order = 1, Group = Groups.General)]
-    [DefaultValue("\\")]
     public string FolderPath { get; set; } = null!;
 
     [InputArgument(Order = 6, Required = false)]
@@ -61,8 +60,13 @@ public class GetFolderTasksAction : ActionBase
                 regex = new Regex(Filter);
             }
 
-            using var taskCollection = taskService.GetFolder(FolderPath)
-                                                  .GetTasks(regex);
+            using var taskFolder = taskService.GetFolder(FolderPath);
+            if (taskFolder is null)
+            {
+                throw new FolderNotFoundException(FolderPath);
+            }
+
+            using var taskCollection = taskFolder.GetTasks(regex);
             var taskNames = new List<string>();
 
             foreach (var task in taskCollection)
@@ -72,6 +76,10 @@ public class GetFolderTasksAction : ActionBase
             }
 
             TaskNames = taskNames;
+        }
+        catch (FolderNotFoundException ex)
+        {
+            throw new ActionException(ErrorCodes.FolderNotFound, ex.Message, ex);
         }
         catch (Exception ex)
         {

@@ -1266,6 +1266,24 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Indicates that the folder was not found..
+        /// </summary>
+        public static string Error_FolderNotFoundError_Description {
+            get {
+                return ResourceManager.GetString("Error_FolderNotFoundError_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Folder not found.
+        /// </summary>
+        public static string Error_FolderNotFoundError_FriendlyName {
+            get {
+                return ResourceManager.GetString("Error_FolderNotFoundError_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates that the action was not found..
         /// </summary>
         public static string Error_TaskActionNotFoundError_Description {
