@@ -3,26 +3,26 @@
 // --------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
-[Action(Id = "DeleteTask")]
+[Action(Id = "GetTaskActions")]
 [Group(Name = Groups.General, Order = 1)]
 [Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
-[Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class DeleteTaskAction : ActionBase
+public class GetTaskActionsAction : ActionBase
 {
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -35,6 +35,9 @@ public class DeleteTaskAction : ActionBase
 
     [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
+
+    [OutputArgument(Order = 1)]
+    public List<string> ActionIds { get; set; } = null!;
 
     [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
@@ -52,18 +55,16 @@ public class DeleteTaskAction : ActionBase
                 throw new TaskNotFoundException(TaskName);
             }
 
-            try
+            using var actionCollection = task.Definition.Actions;
+            var actionIds = new List<string>();
+
+            foreach (var action in actionCollection)
             {
-                task.Folder.DeleteTask(task.Name);
+                actionIds.Add(action.Id);
+                action.Dispose();
             }
-            catch (FileNotFoundException)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
-        }
-        catch (TaskNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
+
+            ActionIds = actionIds;
         }
         catch (Exception ex)
         {

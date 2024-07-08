@@ -6,8 +6,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Win32.TaskScheduler;
+using DayOfWeek = PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums.DayOfWeek;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
 internal static class DayOfWeekExtensions
 {

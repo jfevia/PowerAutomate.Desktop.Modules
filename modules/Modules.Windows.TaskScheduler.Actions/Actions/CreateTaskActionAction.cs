@@ -8,8 +8,9 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
 [Action(Id = "CreateTaskAction")]
 [Group(Name = Groups.General, Order = 1)]

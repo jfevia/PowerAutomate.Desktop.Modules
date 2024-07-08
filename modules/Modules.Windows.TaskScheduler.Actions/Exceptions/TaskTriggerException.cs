@@ -4,17 +4,17 @@
 
 using System;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
-public class TaskActionException : Exception
+public class TaskTriggerException : Exception
 {
-    public string ActionId { get; }
     public string TaskName { get; }
+    public string TriggerId { get; }
 
-    public TaskActionException(string taskName, string actionId, string message)
+    public TaskTriggerException(string taskName, string triggerId, string message)
         : base(message)
     {
         TaskName = taskName;
-        ActionId = actionId;
+        TriggerId = triggerId;
     }
 }

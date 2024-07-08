@@ -4,7 +4,7 @@
 
 using System;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
 public sealed class TaskNotFoundException : Exception
 {

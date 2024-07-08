@@ -2,13 +2,15 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // --------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
-public enum WeekOfMonth
+public enum DayOfWeek
 {
-    FirstWeek,
-    SecondWeek,
-    ThirdWeek,
-    FourthWeek,
-    LastWeek
+    Sunday,
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday
 }

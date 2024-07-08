@@ -2022,6 +2022,240 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string StartTask_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("StartTask_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string StartTask_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Starts the task with the specified name..
+        /// </summary>
+        public static string StartTask_Description {
+            get {
+                return ResourceManager.GetString("StartTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start task.
+        /// </summary>
+        public static string StartTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string StartTask_Password_Description {
+            get {
+                return ResourceManager.GetString("StartTask_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string StartTask_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start the task..
+        /// </summary>
+        public static string StartTask_Summary {
+            get {
+                return ResourceManager.GetString("StartTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string StartTask_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("StartTask_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string StartTask_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string StartTask_TaskName_Description {
+            get {
+                return ResourceManager.GetString("StartTask_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string StartTask_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string StartTask_UserName_Description {
+            get {
+                return ResourceManager.GetString("StartTask_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string StartTask_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("StartTask_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string StopTask_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("StopTask_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string StopTask_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stops the task with the specified name..
+        /// </summary>
+        public static string StopTask_Description {
+            get {
+                return ResourceManager.GetString("StopTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop task.
+        /// </summary>
+        public static string StopTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string StopTask_Password_Description {
+            get {
+                return ResourceManager.GetString("StopTask_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string StopTask_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Stop the task..
+        /// </summary>
+        public static string StopTask_Summary {
+            get {
+                return ResourceManager.GetString("StopTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string StopTask_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("StopTask_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string StopTask_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string StopTask_TaskName_Description {
+            get {
+                return ResourceManager.GetString("StopTask_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string StopTask_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string StopTask_UserName_Description {
+            get {
+                return ResourceManager.GetString("StopTask_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string StopTask_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("StopTask_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create a trigger to execute a task one time..
         /// </summary>
         public static string Time_Summary {

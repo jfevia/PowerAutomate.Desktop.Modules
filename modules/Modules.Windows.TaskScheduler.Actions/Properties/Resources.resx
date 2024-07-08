@@ -200,6 +200,24 @@
     <data name="ToggleTaskTrigger_Summary" xml:space="preserve">
         <value>&lt;if(ENABLED)&gt;Enables&lt;endif&gt;Disables&lt;endif&gt; the task trigger.</value>
     </data>
+    <data name="StartTask_FriendlyName" xml:space="preserve">
+        <value>Start task</value>
+    </data>
+    <data name="StartTask_Description" xml:space="preserve">
+        <value>Starts the task with the specified name.</value>
+    </data>
+    <data name="StartTask_Summary" xml:space="preserve">
+        <value>Start the task.</value>
+    </data>
+    <data name="StopTask_FriendlyName" xml:space="preserve">
+        <value>Stop task</value>
+    </data>
+    <data name="StopTask_Description" xml:space="preserve">
+        <value>Stops the task with the specified name.</value>
+    </data>
+    <data name="StopTask_Summary" xml:space="preserve">
+        <value>Stop the task.</value>
+    </data>
     <data name="GetFolderTasks_FriendlyName" xml:space="preserve">
         <value>Get tasks in folder</value>
     </data>
@@ -916,6 +934,66 @@
     </data>
     <data name="ToggleTaskTrigger_Enabled_Description" xml:space="preserve">
         <value>Whether the trigger of the task is enabled.</value>
+    </data>
+    <data name="StartTask_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="StartTask_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="StartTask_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="StartTask_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="StartTask_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="StartTask_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="StartTask_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="StartTask_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="StartTask_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="StartTask_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="StopTask_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="StopTask_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="StopTask_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="StopTask_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="StopTask_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="StopTask_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="StopTask_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="StopTask_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="StopTask_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="StopTask_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
     </data>
     <data name="Boot_Summary" xml:space="preserve">
         <value>Create a trigger to execute a task at startup.</value>

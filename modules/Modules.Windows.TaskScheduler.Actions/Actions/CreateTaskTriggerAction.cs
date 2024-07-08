@@ -11,8 +11,12 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
+using DayOfWeek = PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums.DayOfWeek;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
 [Action(Id = "CreateTaskTrigger")]
 [Group(Name = Groups.General, Order = 1)]

@@ -3,46 +3,44 @@
 // --------------------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Linq;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
-namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
+namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
-[Action(Id = "DeleteTaskTrigger")]
+[Action(Id = "GetTaskTriggers")]
 [Group(Name = Groups.General, Order = 1)]
 [Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
-[Throws(ErrorCodes.TaskTriggerNotFound)]
-[Throws(ErrorCodes.TaskTriggerUnknown)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class DeleteTaskTriggerAction : ActionBase
+public class GetTaskTriggersAction : ActionBase
 {
-    [InputArgument(Order = 5, Required = false)]
+    [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
 
-    [InputArgument(Order = 6, Required = false)]
+    [InputArgument(Order = 5, Required = false)]
     public string Password { get; set; } = null!;
 
-    [InputArgument(Order = 3, Required = false)]
+    [InputArgument(Order = 2, Required = false)]
     public string TargetServer { get; set; } = null!;
 
     [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
 
-    [InputArgument(Order = 2, Group = Groups.General)]
-    public string TriggerId { get; set; } = null!;
+    [OutputArgument(Order = 1)]
+    public List<string> TriggerIds { get; set; } = null!;
 
-    [InputArgument(Order = 4, Required = false)]
+    [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
 
     public override void Execute(ActionContext context)
@@ -58,35 +56,16 @@ public class DeleteTaskTriggerAction : ActionBase
                 throw new TaskNotFoundException(TaskName);
             }
 
-            try
-            {
-                using var trigger = task.Definition.Triggers.FirstOrDefault(trigger => trigger.Id == TriggerId);
-                if (trigger is null)
-                {
-                    throw new TaskTriggerNotFoundException(TaskName, TriggerId);
-                }
+            using var triggerCollection = task.Definition.Triggers;
+            var triggerIds = new List<string>();
 
-                if (!task.Definition.Triggers.Remove(trigger))
-                {
-                    throw new TaskTriggerException(TaskName, TriggerId, $"Could not delete trigger '{TriggerId}' in task '{TaskName}'");
-                }
-            }
-            catch (FileNotFoundException)
+            foreach (var trigger in triggerCollection)
             {
-                throw new TaskTriggerNotFoundException(TaskName, TriggerId);
+                triggerIds.Add(trigger.Id);
+                trigger.Dispose();
             }
-        }
-        catch (TaskNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
-        }
-        catch (TaskTriggerNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
-        }
-        catch (TaskTriggerException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
+
+            TriggerIds = triggerIds;
         }
         catch (Exception ex)
         {
