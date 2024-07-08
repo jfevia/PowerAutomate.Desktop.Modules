@@ -10,6 +10,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK"/>
+        <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="TaskScheduler"/>
     </ItemGroup>
 

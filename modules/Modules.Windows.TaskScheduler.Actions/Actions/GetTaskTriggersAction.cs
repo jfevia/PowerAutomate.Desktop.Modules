@@ -10,6 +10,8 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
@@ -38,7 +40,7 @@ public class GetTaskTriggersAction : ActionBase
     public string TaskName { get; set; } = null!;
 
     [OutputArgument(Order = 1)]
-    public List<string> TriggerIds { get; set; } = null!;
+    public List<TaskTriggerObject> Triggers { get; set; } = null!;
 
     [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
@@ -57,15 +59,15 @@ public class GetTaskTriggersAction : ActionBase
             }
 
             using var triggerCollection = task.Definition.Triggers;
-            var triggerIds = new List<string>();
+            var triggers = new List<TaskTriggerObject>();
 
             foreach (var trigger in triggerCollection)
             {
-                triggerIds.Add(trigger.Id);
+                triggers.Add(trigger.ToAction(task.Name));
                 trigger.Dispose();
             }
 
-            TriggerIds = triggerIds;
+            Triggers = triggers;
         }
         catch (TaskNotFoundException ex)
         {

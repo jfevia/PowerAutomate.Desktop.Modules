@@ -3,7 +3,6 @@
 // --------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
@@ -15,7 +14,7 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
-[Action(Id = "GetTaskActions")]
+[Action(Id = "GetTask")]
 [Group(Name = Groups.General, Order = 1)]
 [Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
 [Throws(ErrorCodes.TaskNotFound)]
@@ -25,7 +24,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetTaskActionsAction : ActionBase
+public class GetTaskAction : ActionBase
 {
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -36,11 +35,11 @@ public class GetTaskActionsAction : ActionBase
     [InputArgument(Order = 2, Required = false)]
     public string TargetServer { get; set; } = null!;
 
+    [OutputArgument(Order = 1)]
+    public TaskObject Task { get; set; } = null!;
+
     [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
-
-    [OutputArgument(Order = 1)]
-    public List<TaskActionObject> Actions { get; set; } = null!;
 
     [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
@@ -58,16 +57,7 @@ public class GetTaskActionsAction : ActionBase
                 throw new TaskNotFoundException(TaskName);
             }
 
-            using var actionCollection = task.Definition.Actions;
-            var actions = new List<TaskActionObject>();
-
-            foreach (var action in actionCollection)
-            {
-                actions.Add(action.ToAction(task.Name));
-                action.Dispose();
-            }
-
-            Actions = actions;
+            Task = task.ToAction();
         }
         catch (TaskNotFoundException ex)
         {

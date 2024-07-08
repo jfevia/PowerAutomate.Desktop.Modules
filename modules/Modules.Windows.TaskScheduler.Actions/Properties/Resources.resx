@@ -236,6 +236,15 @@
     <data name="ImportTask_Summary" xml:space="preserve">
         <value>Import the task.</value>
     </data>
+    <data name="GetTask_FriendlyName" xml:space="preserve">
+        <value>Get task</value>
+    </data>
+    <data name="GetTask_Description" xml:space="preserve">
+        <value>Gets the task with the specified name.</value>
+    </data>
+    <data name="GetTask_Summary" xml:space="preserve">
+        <value>Get the task.</value>
+    </data>
     <data name="GetFolderTasks_FriendlyName" xml:space="preserve">
         <value>Get tasks in folder</value>
     </data>
@@ -797,11 +806,11 @@
     <data name="GetTaskTriggers_UserName_Description" xml:space="preserve">
         <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
     </data>
-    <data name="GetTaskTriggers_TriggerIds_FriendlyName" xml:space="preserve">
+    <data name="GetTaskTriggers_Triggers_FriendlyName" xml:space="preserve">
         <value>Triggers</value>
     </data>
-    <data name="GetTaskTriggers_TriggerIds_Description" xml:space="preserve">
-        <value>The identifiers of the triggers for the task.</value>
+    <data name="GetTaskTriggers_Triggers_Description" xml:space="preserve">
+        <value>The triggers for the task.</value>
     </data>
     <data name="DeleteTaskAction_AccountDomain_FriendlyName" xml:space="preserve">
         <value>Account Domain</value>
@@ -869,11 +878,11 @@
     <data name="GetTaskActions_UserName_Description" xml:space="preserve">
         <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
     </data>
-    <data name="GetTaskActions_ActionIds_FriendlyName" xml:space="preserve">
+    <data name="GetTaskActions_Actions_FriendlyName" xml:space="preserve">
         <value>Actions</value>
     </data>
-    <data name="GetTaskActions_ActionIds_Description" xml:space="preserve">
-        <value>The names of the actions.</value>
+    <data name="GetTaskActions_Actions_Description" xml:space="preserve">
+        <value>The actions of the task.</value>
     </data>
     <data name="ToggleTask_AccountDomain_FriendlyName" xml:space="preserve">
         <value>Account Domain</value>
@@ -1084,6 +1093,48 @@
     </data>
     <data name="ImportTask_FileName_Description" xml:space="preserve">
         <value>The path to the file.</value>
+    </data>
+    <data name="GetTask_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetTask_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetTask_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetTask_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTask_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetTask_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetTask_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="GetTask_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="GetTask_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetTask_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTask_FileName_FriendlyName" xml:space="preserve">
+        <value>File Name</value>
+    </data>
+    <data name="GetTask_FileName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTask_Task_FriendlyName" xml:space="preserve">
+        <value>Task</value>
+    </data>
+    <data name="GetTask_Task_Description" xml:space="preserve">
+        <value>The task.</value>
     </data>
     <data name="Boot_Summary" xml:space="preserve">
         <value>Create a trigger to execute a task at startup.</value>
