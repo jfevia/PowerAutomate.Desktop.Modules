@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetStore.Client", "samples\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.TaskScheduler.Actions", "modules\Modules.Windows.TaskScheduler.Actions\Modules.Windows.TaskScheduler.Actions.csproj", "{E7F31F2C-1091-4B82-A685-C7A74FC80A1D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.Notifications.Actions", "modules\Modules.Windows.Notifications.Actions\Modules.Windows.Notifications.Actions.csproj", "{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{E7F31F2C-1091-4B82-A685-C7A74FC80A1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7F31F2C-1091-4B82-A685-C7A74FC80A1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7F31F2C-1091-4B82-A685-C7A74FC80A1D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -91,6 +97,7 @@ Global
 		{3D0BC3F2-AB03-44A3-8FAF-599FB80DB717} = {6709150F-B5E8-4377-BAEA-5394C5340806}
 		{A9858CCE-DDB1-4942-84BE-08991E46A818} = {6709150F-B5E8-4377-BAEA-5394C5340806}
 		{E7F31F2C-1091-4B82-A685-C7A74FC80A1D} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13
