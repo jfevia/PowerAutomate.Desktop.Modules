@@ -10,8 +10,6 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
-using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
-using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
@@ -30,6 +28,9 @@ public class GetTaskActionsAction : ActionBase
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
 
+    [OutputArgument(Order = 1)]
+    public List<string> Actions { get; set; } = null!;
+
     [InputArgument(Order = 5, Required = false)]
     public string Password { get; set; } = null!;
 
@@ -38,9 +39,6 @@ public class GetTaskActionsAction : ActionBase
 
     [InputArgument(Order = 1, Group = Groups.General)]
     public string TaskName { get; set; } = null!;
-
-    [OutputArgument(Order = 1)]
-    public List<TaskActionObject> Actions { get; set; } = null!;
 
     [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
@@ -59,11 +57,11 @@ public class GetTaskActionsAction : ActionBase
             }
 
             using var actionCollection = task.Definition.Actions;
-            var actions = new List<TaskActionObject>();
+            var actions = new List<string>();
 
             foreach (var action in actionCollection)
             {
-                actions.Add(action.ToAction(task.Name));
+                actions.Add(action.Id);
                 action.Dispose();
             }
 

@@ -272,6 +272,24 @@
     <data name="GetTaskTriggers_Summary" xml:space="preserve">
         <value>Get triggers for task.</value>
     </data>
+    <data name="GetTaskAction_FriendlyName" xml:space="preserve">
+        <value>Get task action</value>
+    </data>
+    <data name="GetTaskAction_Description" xml:space="preserve">
+        <value>Gets the action of the task with the specified name.</value>
+    </data>
+    <data name="GetTaskAction_Summary" xml:space="preserve">
+        <value>Get task action.</value>
+    </data>
+    <data name="GetTaskTrigger_FriendlyName" xml:space="preserve">
+        <value>Get task trigger</value>
+    </data>
+    <data name="GetTaskTrigger_Description" xml:space="preserve">
+        <value>Gets the trigger of the task with the specified name.</value>
+    </data>
+    <data name="GetTaskTrigger_Summary" xml:space="preserve">
+        <value>Get task trigger.</value>
+    </data>
     <data name="Group_General_FriendlyName" xml:space="preserve">
         <value>General</value>
     </data>
@@ -1135,6 +1153,90 @@
     </data>
     <data name="GetTask_Task_Description" xml:space="preserve">
         <value>The task.</value>
+    </data>
+    <data name="GetTaskAction_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetTaskAction_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetTaskAction_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetTaskAction_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskAction_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetTaskAction_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetTaskAction_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="GetTaskAction_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="GetTaskAction_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetTaskAction_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskAction_TaskAction_FriendlyName" xml:space="preserve">
+        <value>Task Action</value>
+    </data>
+    <data name="GetTaskAction_TaskAction_Description" xml:space="preserve">
+        <value>The task action.</value>
+    </data>
+    <data name="GetTaskAction_ActionId_FriendlyName" xml:space="preserve">
+        <value>Action ID</value>
+    </data>
+    <data name="GetTaskAction_ActionId_Description" xml:space="preserve">
+        <value>The identifier of the action.</value>
+    </data>
+    <data name="GetTaskTrigger_AccountDomain_FriendlyName" xml:space="preserve">
+        <value>Account Domain</value>
+    </data>
+    <data name="GetTaskTrigger_AccountDomain_Description" xml:space="preserve">
+        <value>The domain of the account.</value>
+    </data>
+    <data name="GetTaskTrigger_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="GetTaskTrigger_Password_Description" xml:space="preserve">
+        <value>The password that is used to connect to the computer. If the username and password are not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskTrigger_TargetServer_FriendlyName" xml:space="preserve">
+        <value>Server</value>
+    </data>
+    <data name="GetTaskTrigger_TargetServer_Description" xml:space="preserve">
+        <value>The name of the computer to connect to. If empty, then the connection will be to the local computer.</value>
+    </data>
+    <data name="GetTaskTrigger_TaskName_FriendlyName" xml:space="preserve">
+        <value>Task Name</value>
+    </data>
+    <data name="GetTaskTrigger_TaskName_Description" xml:space="preserve">
+        <value>The name of the task. It can't begin or end with a space character. The '.' character can't be used to specify the current task folder and the '..' characters can't be used to specify the parent task folder in the path.</value>
+    </data>
+    <data name="GetTaskTrigger_UserName_FriendlyName" xml:space="preserve">
+        <value>Username</value>
+    </data>
+    <data name="GetTaskTrigger_UserName_Description" xml:space="preserve">
+        <value>The username that is used during the connection to the computer. If not specified, then the current token is used.</value>
+    </data>
+    <data name="GetTaskTrigger_TaskTrigger_FriendlyName" xml:space="preserve">
+        <value>Task Trigger</value>
+    </data>
+    <data name="GetTaskTrigger_TaskTrigger_Description" xml:space="preserve">
+        <value>The task trigger.</value>
+    </data>
+    <data name="GetTaskTrigger_TriggerId_FriendlyName" xml:space="preserve">
+        <value>Trigger ID</value>
+    </data>
+    <data name="GetTaskTrigger_TriggerId_Description" xml:space="preserve">
+        <value>The identifier of the trigger.</value>
     </data>
     <data name="Boot_Summary" xml:space="preserve">
         <value>Create a trigger to execute a task at startup.</value>

@@ -7,7 +7,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions
 public class TaskActionNotFoundException : TaskActionException
 {
     public TaskActionNotFoundException(string taskName, string actionId)
-        : base(taskName, actionId, $"Could not find action '{actionId} in task '{taskName}'")
+        : base(taskName, actionId, $"Could not find action '{actionId}' in task '{taskName}'")
     {
     }
 }

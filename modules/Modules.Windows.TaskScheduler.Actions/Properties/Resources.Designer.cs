@@ -1844,6 +1844,159 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         /// <summary>
         ///   Looks up a localized string similar to The domain of the account..
         /// </summary>
+        public static string GetTaskAction_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string GetTaskAction_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The identifier of the action..
+        /// </summary>
+        public static string GetTaskAction_ActionId_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_ActionId_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action ID.
+        /// </summary>
+        public static string GetTaskAction_ActionId_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_ActionId_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the action of the task with the specified name..
+        /// </summary>
+        public static string GetTaskAction_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get task action.
+        /// </summary>
+        public static string GetTaskAction_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskAction_Password_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string GetTaskAction_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get task action..
+        /// </summary>
+        public static string GetTaskAction_Summary {
+            get {
+                return ResourceManager.GetString("GetTaskAction_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string GetTaskAction_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string GetTaskAction_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The task action..
+        /// </summary>
+        public static string GetTaskAction_TaskAction_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TaskAction_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Action.
+        /// </summary>
+        public static string GetTaskAction_TaskAction_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TaskAction_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string GetTaskAction_TaskName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string GetTaskAction_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskAction_UserName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskAction_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string GetTaskAction_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskAction_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
         public static string GetTaskActions_AccountDomain_Description {
             get {
                 return ResourceManager.GetString("GetTaskActions_AccountDomain_Description", resourceCulture);
@@ -1973,6 +2126,159 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         public static string GetTaskActions_UserName_FriendlyName {
             get {
                 return ResourceManager.GetString("GetTaskActions_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string GetTaskTrigger_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string GetTaskTrigger_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the trigger of the task with the specified name..
+        /// </summary>
+        public static string GetTaskTrigger_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get task trigger.
+        /// </summary>
+        public static string GetTaskTrigger_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskTrigger_Password_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string GetTaskTrigger_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get task trigger..
+        /// </summary>
+        public static string GetTaskTrigger_Summary {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string GetTaskTrigger_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string GetTaskTrigger_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string GetTaskTrigger_TaskName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string GetTaskTrigger_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The task trigger..
+        /// </summary>
+        public static string GetTaskTrigger_TaskTrigger_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TaskTrigger_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Trigger.
+        /// </summary>
+        public static string GetTaskTrigger_TaskTrigger_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TaskTrigger_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The identifier of the trigger..
+        /// </summary>
+        public static string GetTaskTrigger_TriggerId_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TriggerId_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Trigger ID.
+        /// </summary>
+        public static string GetTaskTrigger_TriggerId_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_TriggerId_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string GetTaskTrigger_UserName_Description {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string GetTaskTrigger_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetTaskTrigger_UserName_FriendlyName", resourceCulture);
             }
         }
         
