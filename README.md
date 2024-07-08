@@ -13,6 +13,6 @@ Custom actions in Power Automate for desktop are a way to create reusable action
 
 Pull requests for bug fixes, enhancements, and documentation are welcome.
 
-## See alos
+## See also
 * [Samples](/samples)
 * [Modules](/modules)
