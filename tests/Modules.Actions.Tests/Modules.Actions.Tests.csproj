@@ -9,11 +9,13 @@
     <ItemGroup>
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="NUnit" />
+        <PackageReference Include="NUnit3TestAdapter" />
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\..\modules\Modules.HTML.Actions\Modules.HTML.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj" />
+        <ProjectReference Include="..\..\modules\Modules.Windows.TaskScheduler.Actions\Modules.Windows.TaskScheduler.Actions.csproj" />
     </ItemGroup>
 
 </Project>
