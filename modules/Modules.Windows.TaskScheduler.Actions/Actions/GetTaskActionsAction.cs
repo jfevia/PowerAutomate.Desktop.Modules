@@ -16,6 +16,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [Action(Id = "GetTaskActions")]
 [Group(Name = Groups.General, Order = 1)]
 [Group(Name = Groups.Advanced, Order = 2, IsDefault = true)]
+[Throws(ErrorCodes.TaskNotFound)]
 [Throws(ErrorCodes.Unknown)]
 [SuppressMessage("ReSharper", "AutoPropertyCanBeMadeGetOnly.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
@@ -65,6 +66,10 @@ public class GetTaskActionsAction : ActionBase
             }
 
             ActionIds = actionIds;
+        }
+        catch (TaskNotFoundException ex)
+        {
+            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
         }
         catch (Exception ex)
         {

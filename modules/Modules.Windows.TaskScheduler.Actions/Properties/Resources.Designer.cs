@@ -1403,6 +1403,141 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         /// <summary>
         ///   Looks up a localized string similar to The domain of the account..
         /// </summary>
+        public static string ExportTask_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string ExportTask_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exports the task with the specified name..
+        /// </summary>
+        public static string ExportTask_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The path to the file..
+        /// </summary>
+        public static string ExportTask_FileName_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_FileName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Name.
+        /// </summary>
+        public static string ExportTask_FileName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_FileName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export task.
+        /// </summary>
+        public static string ExportTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string ExportTask_Password_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string ExportTask_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export the task..
+        /// </summary>
+        public static string ExportTask_Summary {
+            get {
+                return ResourceManager.GetString("ExportTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string ExportTask_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string ExportTask_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string ExportTask_TaskName_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string ExportTask_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string ExportTask_UserName_Description {
+            get {
+                return ResourceManager.GetString("ExportTask_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string ExportTask_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExportTask_UserName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
         public static string GetFolderTasks_AccountDomain_Description {
             get {
                 return ResourceManager.GetString("GetFolderTasks_AccountDomain_Description", resourceCulture);
@@ -1865,6 +2000,141 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Properties
         public static string Idle_Summary {
             get {
                 return ResourceManager.GetString("Idle_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain of the account..
+        /// </summary>
+        public static string ImportTask_AccountDomain_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_AccountDomain_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Domain.
+        /// </summary>
+        public static string ImportTask_AccountDomain_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_AccountDomain_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Imports the task with the specified name..
+        /// </summary>
+        public static string ImportTask_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The path to the file..
+        /// </summary>
+        public static string ImportTask_FileName_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_FileName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to File Name.
+        /// </summary>
+        public static string ImportTask_FileName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_FileName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import task.
+        /// </summary>
+        public static string ImportTask_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password that is used to connect to the computer. If the username and password are not specified, then the current token is used..
+        /// </summary>
+        public static string ImportTask_Password_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_Password_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password.
+        /// </summary>
+        public static string ImportTask_Password_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_Password_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import the task..
+        /// </summary>
+        public static string ImportTask_Summary {
+            get {
+                return ResourceManager.GetString("ImportTask_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the computer to connect to. If empty, then the connection will be to the local computer..
+        /// </summary>
+        public static string ImportTask_TargetServer_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_TargetServer_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server.
+        /// </summary>
+        public static string ImportTask_TargetServer_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_TargetServer_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the task. It can&apos;t begin or end with a space character. The &apos;.&apos; character can&apos;t be used to specify the current task folder and the &apos;..&apos; characters can&apos;t be used to specify the parent task folder in the path..
+        /// </summary>
+        public static string ImportTask_TaskName_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_TaskName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Task Name.
+        /// </summary>
+        public static string ImportTask_TaskName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_TaskName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The username that is used during the connection to the computer. If not specified, then the current token is used..
+        /// </summary>
+        public static string ImportTask_UserName_Description {
+            get {
+                return ResourceManager.GetString("ImportTask_UserName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Username.
+        /// </summary>
+        public static string ImportTask_UserName_FriendlyName {
+            get {
+                return ResourceManager.GetString("ImportTask_UserName_FriendlyName", resourceCulture);
             }
         }
         
