@@ -37,6 +37,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.TaskSchedul
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Windows.Notifications.Actions", "modules\Modules.Windows.Notifications.Actions\Modules.Windows.Notifications.Actions.csproj", "{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GettingStarted", "GettingStarted", "{A5E3C936-7C1F-4719-9EAA-37F4AE439EF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.GettingStarted.Actions", "samples\Modules.GettingStarted.Actions\Modules.GettingStarted.Actions.csproj", "{1D4838E3-22A7-4D65-91CF-2395778EE92F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -79,6 +83,10 @@ Global
 		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4838E3-22A7-4D65-91CF-2395778EE92F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4838E3-22A7-4D65-91CF-2395778EE92F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4838E3-22A7-4D65-91CF-2395778EE92F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4838E3-22A7-4D65-91CF-2395778EE92F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,6 +106,8 @@ Global
 		{A9858CCE-DDB1-4942-84BE-08991E46A818} = {6709150F-B5E8-4377-BAEA-5394C5340806}
 		{E7F31F2C-1091-4B82-A685-C7A74FC80A1D} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
 		{EE7E70E2-7838-4B4E-BCC1-C74051ACBBA5} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{A5E3C936-7C1F-4719-9EAA-37F4AE439EF7} = {64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}
+		{1D4838E3-22A7-4D65-91CF-2395778EE92F} = {A5E3C936-7C1F-4719-9EAA-37F4AE439EF7}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13
