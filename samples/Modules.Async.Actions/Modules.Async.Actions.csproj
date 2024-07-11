@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyTitle>AssemblyResolution</AssemblyTitle>
+        <AssemblyTitle>Async</AssemblyTitle>
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
@@ -9,8 +9,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Azure.Core" />
-        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
+        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK"/>
     </ItemGroup>
+
+    <Import Project="..\..\src\Modules.Actions.Shared\Modules.Actions.Shared.projitems" Label="Shared"/>
 
 </Project>
