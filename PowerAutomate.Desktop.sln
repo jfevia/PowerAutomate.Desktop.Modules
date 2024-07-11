@@ -45,9 +45,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyResolution", "Assem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.AssemblyResolution.Actions", "samples\Modules.AssemblyResolution.Actions\Modules.AssemblyResolution.Actions.csproj", "{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Async.Actions", "samples\Modules.Async.Actions\Modules.Async.Actions.csproj", "{801F4464-7843-4252-9476-E68830781126}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Tasks.Actions", "samples\Modules.Tasks.Actions\Modules.Tasks.Actions.csproj", "{801F4464-7843-4252-9476-E68830781126}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Async", "Async", "{33E32C24-4A59-4DE1-B9C5-57CF051AD355}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{33E32C24-4A59-4DE1-B9C5-57CF051AD355}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyTitle>Async</AssemblyTitle>
+        <AssemblyTitle>Tasks</AssemblyTitle>
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
@@ -9,9 +9,10 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK"/>
+        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
+        <PackageReference Include="Newtonsoft.Json" />
     </ItemGroup>
 
-    <Import Project="..\..\src\Modules.Actions.Shared\Modules.Actions.Shared.projitems" Label="Shared"/>
+    <Import Project="..\..\src\Modules.Actions.Shared\Modules.Actions.Shared.projitems" Label="Shared" />
 
 </Project>
