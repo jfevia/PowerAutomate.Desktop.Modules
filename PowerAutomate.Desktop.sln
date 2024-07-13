@@ -45,6 +45,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AssemblyResolution", "Assem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.AssemblyResolution.Actions", "samples\Modules.AssemblyResolution.Actions\Modules.AssemblyResolution.Actions.csproj", "{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Tasks.Actions", "samples\Modules.Tasks.Actions\Modules.Tasks.Actions.csproj", "{801F4464-7843-4252-9476-E68830781126}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tasks", "Tasks", "{33E32C24-4A59-4DE1-B9C5-57CF051AD355}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -95,6 +99,10 @@ Global
 		{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{801F4464-7843-4252-9476-E68830781126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{801F4464-7843-4252-9476-E68830781126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{801F4464-7843-4252-9476-E68830781126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{801F4464-7843-4252-9476-E68830781126}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,6 +126,8 @@ Global
 		{1D4838E3-22A7-4D65-91CF-2395778EE92F} = {A5E3C936-7C1F-4719-9EAA-37F4AE439EF7}
 		{8EC670BB-BC22-44B4-8228-8F053188C908} = {64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}
 		{146D4CFB-A54A-4E9F-8473-FC0D73F7BEFD} = {8EC670BB-BC22-44B4-8228-8F053188C908}
+		{801F4464-7843-4252-9476-E68830781126} = {33E32C24-4A59-4DE1-B9C5-57CF051AD355}
+		{33E32C24-4A59-4DE1-B9C5-57CF051AD355} = {64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13
