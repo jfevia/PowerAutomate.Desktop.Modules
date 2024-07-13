@@ -11,9 +11,9 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
 namespace PowerAutomate.Desktop.Modules.Tasks.Actions;
 
-[Action(Id = "WhenAll")]
+[Action(Id = "WhenAny")]
 [Throws(ErrorCodes.Unknown)]
-public class TasksWhenAllAction : ActionBase
+public class TasksWhenAnyAction : ActionBase
 {
     [InputArgument]
     public List<TaskObject> Tasks { get; set; } = null!;
@@ -23,7 +23,7 @@ public class TasksWhenAllAction : ActionBase
         try
         {
             var tasks = Tasks.Select(task => task.Task).ToList();
-            Task.WhenAll(tasks).GetAwaiter().GetResult();
+            Task.WhenAny(tasks).GetAwaiter().GetResult();
         }
         catch (Exception ex)
         {

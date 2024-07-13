@@ -3,27 +3,30 @@
 // --------------------------------------------------------------
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
 namespace PowerAutomate.Desktop.Modules.Tasks.Actions;
 
-[Action(Id = "WhenAll")]
+[Action(Id = "Delay")]
 [Throws(ErrorCodes.Unknown)]
-public class TasksWhenAllAction : ActionBase
+public class TaskDelayAction : ActionBase
 {
-    [InputArgument]
-    public List<TaskObject> Tasks { get; set; } = null!;
+    [InputArgument(Order = 2)]
+    public int DelayInMilliseconds { get; set; }
+
+    [InputArgument(Order = 1)]
+    public string Name { get; set; } = null!;
+
+    [OutputArgument(Order = 0)]
+    public TaskObject Task { get; set; } = null!;
 
     public override void Execute(ActionContext context)
     {
         try
         {
-            var tasks = Tasks.Select(task => task.Task).ToList();
-            Task.WhenAll(tasks).GetAwaiter().GetResult();
+            var task = System.Threading.Tasks.Task.Delay(DelayInMilliseconds);
+            Task = new TaskObject(Name, task);
         }
         catch (Exception ex)
         {
