@@ -4,6 +4,12 @@
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <IsPackable>True</IsPackable>
+        <PackageVersion>1.0.0</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Plugins.Shared\Plugins.Shared.csproj" />
+        <ProjectReference Include="..\Plugins.SoftDelete\Plugins.SoftDelete.csproj" />
     </ItemGroup>
 
     <Target Name="GetTfmPublishedFiles">
