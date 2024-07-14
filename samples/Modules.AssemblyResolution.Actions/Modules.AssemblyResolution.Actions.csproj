@@ -9,7 +9,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Azure.Core" />
         <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
     </ItemGroup>
 

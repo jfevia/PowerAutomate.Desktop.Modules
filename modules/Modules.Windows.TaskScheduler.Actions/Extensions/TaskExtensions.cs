@@ -1,6 +1,6 @@
-﻿// --------------------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
-// --------------------------------------------------------------
+// ---------------------------------------------------
 
 using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Types;

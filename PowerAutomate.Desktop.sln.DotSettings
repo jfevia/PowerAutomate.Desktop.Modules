@@ -390,9 +390,9 @@
     &lt;/Group&gt;
   &lt;/TypePattern&gt;
 &lt;/Patterns&gt;</s:String>
-	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">--------------------------------------------------------------
+	<s:String x:Key="/Default/CodeStyle/FileHeader/FileHeaderText/@EntryValue">---------------------------------------------------
 Copyright (c) Jesus Fernandez. All Rights Reserved.
---------------------------------------------------------------</s:String>
+---------------------------------------------------</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=ICE/@EntryIndexedValue">ICE</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=ID/@EntryIndexedValue">ID</s:String>
 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/Abbreviations/=IP/@EntryIndexedValue">IP</s:String>
@@ -444,4 +444,5 @@ public $propertyType$ $propertyName$
   get =&gt; ($propertyType$) GetValue($propertyName$Property);
   set =&gt; SetValue($propertyName$Property, value);
 }</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6B71DB2CFD61314AB1482052FA256B96/Field/=TYPE/Expression/@EntryValue">guessExpectedType("")</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=6B71DB2CFD61314AB1482052FA256B96/Field/=TYPE/Expression/@EntryValue">guessExpectedType("")</s:String>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=subflow/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
