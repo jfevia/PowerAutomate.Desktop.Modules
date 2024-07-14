@@ -1,12 +1,10 @@
-﻿// --------------------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
-// --------------------------------------------------------------
+// ---------------------------------------------------
 
 using System;
-using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using Azure.Core;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
@@ -17,14 +15,10 @@ public class AssemblyResolutionAction : ActionBase
 {
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-
-            var accessToken = new AccessToken();
-            Debug.WriteLine($"Access token expires on {accessToken.ExpiresOn}");
+            throw new NotImplementedException();
         }
         finally
         {

@@ -1,6 +1,6 @@
-﻿// --------------------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
-// --------------------------------------------------------------
+// ---------------------------------------------------
 
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
