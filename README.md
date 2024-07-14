@@ -3,7 +3,12 @@
 ## Projects
 
 This repository contains the following projects:
+* [Plugins](#plugins)
 * [Custom actions](#custom-actions)
+
+### Plugins
+
+Dataverse plugins are custom logic extensions that execute in response to specific events within the Dataverse environment, allowing for enhanced functionality and automation across multiple desktop flows.
 
 ### Custom actions
 
