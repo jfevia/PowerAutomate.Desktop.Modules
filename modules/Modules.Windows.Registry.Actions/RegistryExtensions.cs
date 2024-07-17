@@ -3,29 +3,27 @@
 // ---------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Win32;
 
-namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
+namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
 public static class RegistryExtensions
 {
-    public static IRegistryHive OpenBaseKey(this IRegistry registry, RegistryHive registryHive)
+    private static IEnumerable<RegistryKey> GetHives()
     {
-        return registryHive switch
-        {
-            RegistryHive.ClassesRoot => registry.ClassesRoot,
-            RegistryHive.CurrentUser => registry.CurrentUser,
-            RegistryHive.LocalMachine => registry.LocalMachine,
-            RegistryHive.Users => registry.Users,
-            RegistryHive.PerformanceData => registry.PerformanceData,
-            RegistryHive.CurrentConfig => registry.CurrentConfig,
-            _ => throw new ArgumentOutOfRangeException(nameof(registryHive), registryHive, null)
-        };
+        yield return Microsoft.Win32.Registry.ClassesRoot;
+        yield return Microsoft.Win32.Registry.CurrentConfig;
+        yield return Microsoft.Win32.Registry.CurrentUser;
+        yield return Microsoft.Win32.Registry.PerformanceData;
+        yield return Microsoft.Win32.Registry.LocalMachine;
+        yield return Microsoft.Win32.Registry.Users;
     }
 
-    public static IRegistryHive ParseHive(this IRegistry registry, string name)
+    public static RegistryKey ParseHive(string name)
     {
-        foreach (var registryHive in registry.GetHives())
+        foreach (var registryHive in GetHives())
         {
             if (registryHive.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -36,11 +34,11 @@ public static class RegistryExtensions
         throw new InvalidOperationException("Could not parse registry hive");
     }
 
-    public static IRegistryKey ParseKey(this IRegistry registry, string path, bool writable)
+    public static RegistryKey ParseKey(string path, bool writable)
     {
         var items = path.Split(['\\'], StringSplitOptions.RemoveEmptyEntries);
-        using var registryHive = registry.ParseHive(items.First());
-        IRegistryKey? registryKey = null;
+        using var registryHive = ParseHive(items.First());
+        RegistryKey? registryKey = null;
 
         foreach (var name in items.Skip(1))
         {

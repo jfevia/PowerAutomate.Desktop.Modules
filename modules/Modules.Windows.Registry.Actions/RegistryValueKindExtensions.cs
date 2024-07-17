@@ -8,21 +8,36 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
 internal static class RegistryValueKindExtensions
 {
-    public static bool CanExpandEnvironmentVariables(this Desktop.Windows.Registry.Abstractions.RegistryValueKind value)
+    public static bool CanExpandEnvironmentVariables(this RegistryValueKind value)
     {
-        return value is Desktop.Windows.Registry.Abstractions.RegistryValueKind.ExpandString;
+        return value is RegistryValueKind.ExpandString;
     }
 
-    public static Desktop.Windows.Registry.Abstractions.RegistryValueKind ToAbstractions(this RegistryValueKind value)
+
+    public static Microsoft.Win32.RegistryValueKind ToAbstractions(this RegistryValueKind value)
     {
         return value switch
         {
-            RegistryValueKind.String => Desktop.Windows.Registry.Abstractions.RegistryValueKind.String,
-            RegistryValueKind.ExpandString => Desktop.Windows.Registry.Abstractions.RegistryValueKind.ExpandString,
-            RegistryValueKind.Binary => Desktop.Windows.Registry.Abstractions.RegistryValueKind.Binary,
-            RegistryValueKind.DWord => Desktop.Windows.Registry.Abstractions.RegistryValueKind.DWord,
-            RegistryValueKind.MultiString => Desktop.Windows.Registry.Abstractions.RegistryValueKind.MultiString,
-            RegistryValueKind.QWord => Desktop.Windows.Registry.Abstractions.RegistryValueKind.QWord,
+            RegistryValueKind.String => Microsoft.Win32.RegistryValueKind.String,
+            RegistryValueKind.ExpandString => Microsoft.Win32.RegistryValueKind.ExpandString,
+            RegistryValueKind.Binary => Microsoft.Win32.RegistryValueKind.Binary,
+            RegistryValueKind.DWord => Microsoft.Win32.RegistryValueKind.DWord,
+            RegistryValueKind.MultiString => Microsoft.Win32.RegistryValueKind.MultiString,
+            RegistryValueKind.QWord => Microsoft.Win32.RegistryValueKind.QWord,
+            _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
+        };
+    }
+
+    public static RegistryValueKind ToNative(this Microsoft.Win32.RegistryValueKind value)
+    {
+        return value switch
+        {
+            Microsoft.Win32.RegistryValueKind.String => RegistryValueKind.String,
+            Microsoft.Win32.RegistryValueKind.ExpandString => RegistryValueKind.ExpandString,
+            Microsoft.Win32.RegistryValueKind.Binary => RegistryValueKind.Binary,
+            Microsoft.Win32.RegistryValueKind.DWord => RegistryValueKind.DWord,
+            Microsoft.Win32.RegistryValueKind.MultiString => RegistryValueKind.MultiString,
+            Microsoft.Win32.RegistryValueKind.QWord => RegistryValueKind.QWord,
             _ => throw new ArgumentOutOfRangeException(nameof(value), value, null)
         };
     }

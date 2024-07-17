@@ -7,9 +7,8 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
+using Microsoft.Win32;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
-using PowerAutomate.Desktop.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -44,9 +43,9 @@ public class GetRegistryValueAction : ActionBase
 
         try
         {
-            using var registry = new Win32Registry();
-            using var registryKey = registry.ParseKey(Path, true);
-            var valueKind = registryKey.GetValueKind(Name);
+            using var registryKey = RegistryExtensions.ParseKey(Path, true);
+            var valueKind = registryKey.GetValueKind(Name)
+                                       .ToNative();
 
             Value = valueKind.CanExpandEnvironmentVariables() && ExpandEnvironmentVariables
                 ? registryKey.GetValue(Name, DefaultValue)

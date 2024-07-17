@@ -8,8 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
-using PowerAutomate.Desktop.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -38,8 +36,7 @@ public class DeleteRegistryKeyAction : ActionBase
 
         try
         {
-            using var registry = new Win32Registry();
-            using var registryKey = registry.ParseKey(Path, true);
+            using var registryKey = RegistryExtensions.ParseKey(Path, true);
             registryKey.DeleteSubKey(Name, ThrowOnMissingSubKey);
         }
         catch (Exception ex)
