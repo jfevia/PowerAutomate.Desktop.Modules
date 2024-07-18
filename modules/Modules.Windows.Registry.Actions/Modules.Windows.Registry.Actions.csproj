@@ -13,10 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Windows.Registry.Win32\Windows.Registry.Win32.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
         <EmbeddedResource Update="Properties\Resources.resx">
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>

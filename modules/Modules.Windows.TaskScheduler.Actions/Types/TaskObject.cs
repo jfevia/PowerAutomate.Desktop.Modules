@@ -3,7 +3,6 @@
 // ---------------------------------------------------
 
 using System;
-using System.Collections.Generic;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Enums;
 using Newtonsoft.Json;
