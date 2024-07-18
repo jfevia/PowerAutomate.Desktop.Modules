@@ -10,8 +10,6 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
-using PowerAutomate.Desktop.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -58,8 +56,7 @@ public class SetRegistryValueAction : ActionBase
 
         try
         {
-            using var registry = new Win32Registry();
-            using var registryKey = registry.ParseKey(Path, true);
+            using var registryKey = RegistryExtensions.ParseKey(Path, true);
             var valueKind = Kind.ToAbstractions();
 
             switch (Kind)

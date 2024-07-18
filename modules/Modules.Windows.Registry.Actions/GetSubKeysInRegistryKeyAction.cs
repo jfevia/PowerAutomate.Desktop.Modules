@@ -9,8 +9,6 @@ using System.Linq;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
-using PowerAutomate.Desktop.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -35,18 +33,8 @@ public class GetSubKeysInRegistryKeyAction : ActionBase
 
         try
         {
-            using var registry = new Win32Registry();
-            using var registryKey = registry.ParseKey(Path, true);
-            var registrySubKeys = registryKey.GetSubKeys().ToList();
-            var subKeys = new List<string>();
-
-            foreach (var registrySubKey in registrySubKeys)
-            {
-                subKeys.Add(registrySubKey.Name);
-                registrySubKey.Dispose();
-            }
-
-            SubKeys = subKeys;
+            using var registryKey = RegistryExtensions.ParseKey(Path, true);
+            SubKeys = registryKey.GetSubKeyNames().ToList();
         }
         catch (Exception ex)
         {
