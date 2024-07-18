@@ -2,13 +2,9 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
+namespace PowerAutomate.Desktop.Modules.AzureKeyVault.Actions;
 
-namespace PowerAutomate.Desktop.Windows.Registry.Abstractions;
-
-[Flags]
-public enum RegistryValueOptions
+internal static class ErrorCodes
 {
-    None = 0x0,
-    DoNotExpandEnvironmentNames = 0x1
+    public const string Unknown = "UnknownError";
 }

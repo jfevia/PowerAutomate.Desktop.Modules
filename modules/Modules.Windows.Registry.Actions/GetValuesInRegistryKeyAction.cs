@@ -9,8 +9,6 @@ using System.Linq;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Actions.Shared;
-using PowerAutomate.Desktop.Windows.Registry.Abstractions;
-using PowerAutomate.Desktop.Windows.Registry.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -35,18 +33,8 @@ public class GetValuesInRegistryKeyAction : ActionBase
 
         try
         {
-            using var registry = new Win32Registry();
-            using var registryKey = registry.ParseKey(Path, true);
-            var registryValues = registryKey.GetValues().ToList();
-            var values = new List<string>();
-
-            foreach (var registryValue in registryValues)
-            {
-                values.Add(registryValue.Name);
-                registryValue.Dispose();
-            }
-
-            Values = values;
+            using var registryKey = RegistryExtensions.ParseKey(Path, true);
+            Values = registryKey.GetValueNames().ToList();
         }
         catch (Exception ex)
         {
