@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <AssemblyTitle>WindowsTaskScheduler</AssemblyTitle>
+        <AssemblyTitle>AzureKeyVault</AssemblyTitle>
         <TargetFramework>net472</TargetFramework>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
