@@ -49,6 +49,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.Host", "plugins\Plu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.AzureKeyVault.Actions", "modules\Modules.AzureKeyVault.Actions\Modules.AzureKeyVault.Actions.csproj", "{121AA4E9-9301-4EB7-A0B7-5AFD70EF65D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ActionSelectors", "ActionSelectors", "{898CA625-50B2-475F-B1D8-B9A96577DCF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.ActionSelectors.Actions", "samples\Modules.ActionSelectors.Actions\Modules.ActionSelectors.Actions.csproj", "{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +115,10 @@ Global
 		{121AA4E9-9301-4EB7-A0B7-5AFD70EF65D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{121AA4E9-9301-4EB7-A0B7-5AFD70EF65D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{121AA4E9-9301-4EB7-A0B7-5AFD70EF65D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -136,6 +144,8 @@ Global
 		{4435846D-01BD-4121-A1AF-8132F63E4649} = {75B693A3-4FAE-4009-B370-9A062546D8A2}
 		{15602292-F636-4904-8835-5784B644BDA8} = {75B693A3-4FAE-4009-B370-9A062546D8A2}
 		{121AA4E9-9301-4EB7-A0B7-5AFD70EF65D1} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{898CA625-50B2-475F-B1D8-B9A96577DCF8} = {64A2FE14-920C-4A2F-8F4A-28B77CC84BA4}
+		{278DD34D-AC4C-4756-A58A-5E5BD4EB84DD} = {898CA625-50B2-475F-B1D8-B9A96577DCF8}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13
