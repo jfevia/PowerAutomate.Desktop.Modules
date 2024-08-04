@@ -122,11 +122,11 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
-    <data name="CloudFlows_FriendlyName" xml:space="preserve">
-        <value>Cloud Flows</value>
+    <data name="PowerFx_FriendlyName" xml:space="preserve">
+        <value>PowerFx</value>
     </data>
-    <data name="CloudFlows_Description" xml:space="preserve">
-        <value>Perform operations related to Cloud Flows in Power Automate.</value>
+    <data name="PowerFx_Description" xml:space="preserve">
+        <value>Perform operations related to PowerFx in Power Automate.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>
