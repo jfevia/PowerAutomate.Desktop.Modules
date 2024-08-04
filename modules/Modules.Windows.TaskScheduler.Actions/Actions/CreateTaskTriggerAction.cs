@@ -10,7 +10,6 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32.TaskScheduler;
-using PowerAutomate.Desktop.Modules.Actions.Shared;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
@@ -118,8 +117,6 @@ public class CreateTaskTriggerAction : ActionBase
 
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);

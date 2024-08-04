@@ -8,7 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Microsoft.Win32;
-using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -39,8 +38,6 @@ public class GetRegistryValueAction : ActionBase
 
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             using var registryKey = RegistryExtensions.ParseKey(Path, true);

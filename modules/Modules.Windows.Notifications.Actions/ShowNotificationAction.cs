@@ -8,7 +8,6 @@ using Windows.Data.Xml.Dom;
 using Windows.UI.Notifications;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Notifications.Actions;
 
@@ -26,8 +25,6 @@ public class ShowNotificationAction : ActionBase
 
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             var toastXml = ToastNotificationManager.GetTemplateContent(ToastTemplateType.ToastText01);
