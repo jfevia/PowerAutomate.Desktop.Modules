@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
+namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
     using System;
     
     
@@ -38,7 +38,7 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -56,24 +56,6 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Perform operations related to Cloud Flows in Power Automate..
-        /// </summary>
-        public static string CloudFlows_Description {
-            get {
-                return ResourceManager.GetString("CloudFlows_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cloud Flows.
-        /// </summary>
-        public static string CloudFlows_FriendlyName {
-            get {
-                return ResourceManager.GetString("CloudFlows_FriendlyName", resourceCulture);
             }
         }
         
@@ -96,101 +78,83 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The access token..
+        ///   Looks up a localized string similar to Executes a PowerFx expression..
         /// </summary>
-        public static string RunFlow_AccessToken_Description {
+        public static string ExecuteExpression_Description {
             get {
-                return ResourceManager.GetString("RunFlow_AccessToken_Description", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access token.
+        ///   Looks up a localized string similar to The PowerFx expression..
         /// </summary>
-        public static string RunFlow_AccessToken_FriendlyName {
+        public static string ExecuteExpression_Expression_Description {
             get {
-                return ResourceManager.GetString("RunFlow_AccessToken_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Expression_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The base URL..
+        ///   Looks up a localized string similar to Expression.
         /// </summary>
-        public static string RunFlow_BaseUrl_Description {
+        public static string ExecuteExpression_Expression_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_BaseUrl_Description", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Expression_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Base URL.
+        ///   Looks up a localized string similar to Execute expression.
         /// </summary>
-        public static string RunFlow_BaseUrl_FriendlyName {
+        public static string ExecuteExpression_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_BaseUrl_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runs a cloud flow..
+        ///   Looks up a localized string similar to The result of executing the PowerFx expression..
         /// </summary>
-        public static string RunFlow_Description {
+        public static string ExecuteExpression_Result_Description {
             get {
-                return ResourceManager.GetString("RunFlow_Description", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Result_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run flow.
+        ///   Looks up a localized string similar to Result.
         /// </summary>
-        public static string RunFlow_FriendlyName {
+        public static string ExecuteExpression_Result_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Result_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The response..
+        ///   Looks up a localized string similar to Execute PowerFx expression..
         /// </summary>
-        public static string RunFlow_Response_Description {
+        public static string ExecuteExpression_Summary {
             get {
-                return ResourceManager.GetString("RunFlow_Response_Description", resourceCulture);
+                return ResourceManager.GetString("ExecuteExpression_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Response.
+        ///   Looks up a localized string similar to Perform operations related to PowerFx..
         /// </summary>
-        public static string RunFlow_Response_FriendlyName {
+        public static string PowerFx_Description {
             get {
-                return ResourceManager.GetString("RunFlow_Response_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("PowerFx_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run a cloud flow..
+        ///   Looks up a localized string similar to PowerFx.
         /// </summary>
-        public static string RunFlow_Summary {
+        public static string PowerFx_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The identifier of the workflow..
-        /// </summary>
-        public static string RunFlow_WorkflowId_Description {
-            get {
-                return ResourceManager.GetString("RunFlow_WorkflowId_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Workflow ID.
-        /// </summary>
-        public static string RunFlow_WorkflowId_FriendlyName {
-            get {
-                return ResourceManager.GetString("RunFlow_WorkflowId_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("PowerFx_FriendlyName", resourceCulture);
             }
         }
     }

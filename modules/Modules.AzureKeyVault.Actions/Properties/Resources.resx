@@ -122,44 +122,38 @@
             PublicKeyToken=b77a5c561934e089
         </value>
     </resheader>
-    <data name="CloudFlows_FriendlyName" xml:space="preserve">
-        <value>Cloud Flows</value>
+    <data name="AzureKeyVault_FriendlyName" xml:space="preserve">
+        <value>Azure Key Vault</value>
     </data>
-    <data name="CloudFlows_Description" xml:space="preserve">
-        <value>Perform operations related to Cloud Flows in Power Automate.</value>
+    <data name="AzureKeyVault_Description" xml:space="preserve">
+        <value>Perform operations related to Azure Key Vault.</value>
     </data>
-    <data name="RunFlow_FriendlyName" xml:space="preserve">
-        <value>Run flow</value>
+    <data name="GetKeyVaultSecret_FriendlyName" xml:space="preserve">
+        <value>Get secret</value>
     </data>
-    <data name="RunFlow_Description" xml:space="preserve">
-        <value>Runs a cloud flow.</value>
+    <data name="GetKeyVaultSecret_Description" xml:space="preserve">
+        <value>Gets the secret.</value>
     </data>
-    <data name="RunFlow_Summary" xml:space="preserve">
-        <value>Run a cloud flow.</value>
+    <data name="GetKeyVaultSecret_Summary" xml:space="preserve">
+        <value>Get the secret.</value>
     </data>
-    <data name="RunFlow_AccessToken_FriendlyName" xml:space="preserve">
-        <value>Access token</value>
+    <data name="GetKeyVaultSecret_SecretName_FriendlyName" xml:space="preserve">
+        <value>Secret name</value>
     </data>
-    <data name="RunFlow_AccessToken_Description" xml:space="preserve">
-        <value>The access token.</value>
+    <data name="GetKeyVaultSecret_SecretName_Description" xml:space="preserve">
+        <value>The name of the secret.</value>
     </data>
-    <data name="RunFlow_BaseUrl_FriendlyName" xml:space="preserve">
-        <value>Base URL</value>
+    <data name="GetKeyVaultSecret_SecretValue_FriendlyName" xml:space="preserve">
+        <value>Secret value</value>
     </data>
-    <data name="RunFlow_BaseUrl_Description" xml:space="preserve">
-        <value>The base URL.</value>
+    <data name="GetKeyVaultSecret_SecretValue_Description" xml:space="preserve">
+        <value>The value of the secret.</value>
     </data>
-    <data name="RunFlow_Response_FriendlyName" xml:space="preserve">
-        <value>Response</value>
+    <data name="GetKeyVaultSecret_VaultUrl_FriendlyName" xml:space="preserve">
+        <value>Vault URL</value>
     </data>
-    <data name="RunFlow_Response_Description" xml:space="preserve">
-        <value>The response.</value>
-    </data>
-    <data name="RunFlow_WorkflowId_FriendlyName" xml:space="preserve">
-        <value>Workflow ID</value>
-    </data>
-    <data name="RunFlow_WorkflowId_Description" xml:space="preserve">
-        <value>The identifier of the workflow.</value>
+    <data name="GetKeyVaultSecret_VaultUrl_Description" xml:space="preserve">
+        <value>The URL of the vault.</value>
     </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>

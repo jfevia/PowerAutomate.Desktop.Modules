@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
+namespace PowerAutomate.Desktop.Modules.AzureKeyVault.Actions.Properties {
     using System;
     
     
@@ -38,7 +38,7 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.AzureKeyVault.Actions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,20 +60,20 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Perform operations related to Cloud Flows in Power Automate..
+        ///   Looks up a localized string similar to Perform operations related to Azure Key Vault..
         /// </summary>
-        public static string CloudFlows_Description {
+        public static string AzureKeyVault_Description {
             get {
-                return ResourceManager.GetString("CloudFlows_Description", resourceCulture);
+                return ResourceManager.GetString("AzureKeyVault_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cloud Flows.
+        ///   Looks up a localized string similar to Azure Key Vault.
         /// </summary>
-        public static string CloudFlows_FriendlyName {
+        public static string AzureKeyVault_FriendlyName {
             get {
-                return ResourceManager.GetString("CloudFlows_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("AzureKeyVault_FriendlyName", resourceCulture);
             }
         }
         
@@ -96,101 +96,83 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The access token..
+        ///   Looks up a localized string similar to Gets the secret..
         /// </summary>
-        public static string RunFlow_AccessToken_Description {
+        public static string GetKeyVaultSecret_Description {
             get {
-                return ResourceManager.GetString("RunFlow_AccessToken_Description", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Access token.
+        ///   Looks up a localized string similar to Get secret.
         /// </summary>
-        public static string RunFlow_AccessToken_FriendlyName {
+        public static string GetKeyVaultSecret_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_AccessToken_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The base URL..
+        ///   Looks up a localized string similar to The name of the secret..
         /// </summary>
-        public static string RunFlow_BaseUrl_Description {
+        public static string GetKeyVaultSecret_SecretName_Description {
             get {
-                return ResourceManager.GetString("RunFlow_BaseUrl_Description", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretName_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Base URL.
+        ///   Looks up a localized string similar to Secret name.
         /// </summary>
-        public static string RunFlow_BaseUrl_FriendlyName {
+        public static string GetKeyVaultSecret_SecretName_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_BaseUrl_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretName_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Runs a cloud flow..
+        ///   Looks up a localized string similar to The value of the secret..
         /// </summary>
-        public static string RunFlow_Description {
+        public static string GetKeyVaultSecret_SecretValue_Description {
             get {
-                return ResourceManager.GetString("RunFlow_Description", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretValue_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run flow.
+        ///   Looks up a localized string similar to Secret value.
         /// </summary>
-        public static string RunFlow_FriendlyName {
+        public static string GetKeyVaultSecret_SecretValue_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretValue_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The response..
+        ///   Looks up a localized string similar to Get the secret..
         /// </summary>
-        public static string RunFlow_Response_Description {
+        public static string GetKeyVaultSecret_Summary {
             get {
-                return ResourceManager.GetString("RunFlow_Response_Description", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Response.
+        ///   Looks up a localized string similar to The URL of the vault..
         /// </summary>
-        public static string RunFlow_Response_FriendlyName {
+        public static string GetKeyVaultSecret_VaultUrl_Description {
             get {
-                return ResourceManager.GetString("RunFlow_Response_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_VaultUrl_Description", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run a cloud flow..
+        ///   Looks up a localized string similar to Vault URL.
         /// </summary>
-        public static string RunFlow_Summary {
+        public static string GetKeyVaultSecret_VaultUrl_FriendlyName {
             get {
-                return ResourceManager.GetString("RunFlow_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to The identifier of the workflow..
-        /// </summary>
-        public static string RunFlow_WorkflowId_Description {
-            get {
-                return ResourceManager.GetString("RunFlow_WorkflowId_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Workflow ID.
-        /// </summary>
-        public static string RunFlow_WorkflowId_FriendlyName {
-            get {
-                return ResourceManager.GetString("RunFlow_WorkflowId_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("GetKeyVaultSecret_VaultUrl_FriendlyName", resourceCulture);
             }
         }
     }
