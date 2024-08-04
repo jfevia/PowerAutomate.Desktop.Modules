@@ -8,7 +8,6 @@ using System.Net.Http;
 using System.Text;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions;
 
@@ -35,8 +34,6 @@ public class RunFlowAction : ActionBase
 
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             using var client = new HttpClient();

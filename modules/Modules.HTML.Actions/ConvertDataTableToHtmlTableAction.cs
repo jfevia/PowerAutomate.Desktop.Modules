@@ -8,7 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Actions.Shared;
 
 namespace PowerAutomate.Desktop.Modules.HTML.Actions;
 
@@ -29,8 +28,6 @@ public class ConvertDataTableToHtmlTableAction : ActionBase
 
     public override void Execute(ActionContext context)
     {
-        Debugger.Launch();
-
         try
         {
             var html = new StringBuilder();
