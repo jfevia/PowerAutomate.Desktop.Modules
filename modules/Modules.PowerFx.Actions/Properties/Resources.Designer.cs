@@ -78,6 +78,69 @@ namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Executes a PowerFx expression..
+        /// </summary>
+        public static string ExecuteExpression_Description {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The PowerFx expression..
+        /// </summary>
+        public static string ExecuteExpression_Expression_Description {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Expression_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expression.
+        /// </summary>
+        public static string ExecuteExpression_Expression_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Expression_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute expression.
+        /// </summary>
+        public static string ExecuteExpression_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The result of executing the PowerFx expression..
+        /// </summary>
+        public static string ExecuteExpression_Result_Description {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Result_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        public static string ExecuteExpression_Result_FriendlyName {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Result_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute PowerFx expression..
+        /// </summary>
+        public static string ExecuteExpression_Summary {
+            get {
+                return ResourceManager.GetString("ExecuteExpression_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Perform operations related to PowerFx..
         /// </summary>
         public static string PowerFx_Description {

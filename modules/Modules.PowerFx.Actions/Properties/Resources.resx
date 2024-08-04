@@ -128,6 +128,27 @@
     <data name="PowerFx_Description" xml:space="preserve">
         <value>Perform operations related to PowerFx.</value>
     </data>
+    <data name="ExecuteExpression_FriendlyName" xml:space="preserve">
+        <value>Execute expression</value>
+    </data>
+    <data name="ExecuteExpression_Description" xml:space="preserve">
+        <value>Executes a PowerFx expression.</value>
+    </data>
+    <data name="ExecuteExpression_Summary" xml:space="preserve">
+        <value>Execute PowerFx expression.</value>
+    </data>
+    <data name="ExecuteExpression_Expression_FriendlyName" xml:space="preserve">
+        <value>Expression</value>
+    </data>
+    <data name="ExecuteExpression_Expression_Description" xml:space="preserve">
+        <value>The PowerFx expression.</value>
+    </data>
+    <data name="ExecuteExpression_Result_FriendlyName" xml:space="preserve">
+        <value>Result</value>
+    </data>
+    <data name="ExecuteExpression_Result_Description" xml:space="preserve">
+        <value>The result of executing the PowerFx expression.</value>
+    </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>
     </data>

@@ -128,6 +128,33 @@
     <data name="AzureKeyVault_Description" xml:space="preserve">
         <value>Perform operations related to Azure Key Vault.</value>
     </data>
+    <data name="GetKeyVaultSecret_FriendlyName" xml:space="preserve">
+        <value>Get secret</value>
+    </data>
+    <data name="GetKeyVaultSecret_Description" xml:space="preserve">
+        <value>Gets the secret.</value>
+    </data>
+    <data name="GetKeyVaultSecret_Summary" xml:space="preserve">
+        <value>Get the secret.</value>
+    </data>
+    <data name="GetKeyVaultSecret_SecretName_FriendlyName" xml:space="preserve">
+        <value>Secret name</value>
+    </data>
+    <data name="GetKeyVaultSecret_SecretName_Description" xml:space="preserve">
+        <value>The name of the secret.</value>
+    </data>
+    <data name="GetKeyVaultSecret_SecretValue_FriendlyName" xml:space="preserve">
+        <value>Secret value</value>
+    </data>
+    <data name="GetKeyVaultSecret_SecretValue_Description" xml:space="preserve">
+        <value>The value of the secret.</value>
+    </data>
+    <data name="GetKeyVaultSecret_VaultUrl_FriendlyName" xml:space="preserve">
+        <value>Vault URL</value>
+    </data>
+    <data name="GetKeyVaultSecret_VaultUrl_Description" xml:space="preserve">
+        <value>The URL of the vault.</value>
+    </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>
     </data>

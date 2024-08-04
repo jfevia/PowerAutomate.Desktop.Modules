@@ -94,5 +94,86 @@ namespace PowerAutomate.Desktop.Modules.AzureKeyVault.Actions.Properties {
                 return ResourceManager.GetString("Error_UnknownError_FriendlyName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gets the secret..
+        /// </summary>
+        public static string GetKeyVaultSecret_Description {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get secret.
+        /// </summary>
+        public static string GetKeyVaultSecret_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The name of the secret..
+        /// </summary>
+        public static string GetKeyVaultSecret_SecretName_Description {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretName_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret name.
+        /// </summary>
+        public static string GetKeyVaultSecret_SecretName_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretName_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value of the secret..
+        /// </summary>
+        public static string GetKeyVaultSecret_SecretValue_Description {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretValue_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret value.
+        /// </summary>
+        public static string GetKeyVaultSecret_SecretValue_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_SecretValue_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get the secret..
+        /// </summary>
+        public static string GetKeyVaultSecret_Summary {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_Summary", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The URL of the vault..
+        /// </summary>
+        public static string GetKeyVaultSecret_VaultUrl_Description {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_VaultUrl_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vault URL.
+        /// </summary>
+        public static string GetKeyVaultSecret_VaultUrl_FriendlyName {
+            get {
+                return ResourceManager.GetString("GetKeyVaultSecret_VaultUrl_FriendlyName", resourceCulture);
+            }
+        }
     }
 }

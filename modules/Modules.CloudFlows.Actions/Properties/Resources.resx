@@ -128,6 +128,39 @@
     <data name="CloudFlows_Description" xml:space="preserve">
         <value>Perform operations related to Cloud Flows in Power Automate.</value>
     </data>
+    <data name="RunFlow_FriendlyName" xml:space="preserve">
+        <value>Run flow</value>
+    </data>
+    <data name="RunFlow_Description" xml:space="preserve">
+        <value>Runs a cloud flow.</value>
+    </data>
+    <data name="RunFlow_Summary" xml:space="preserve">
+        <value>Run a cloud flow.</value>
+    </data>
+    <data name="RunFlow_AccessToken_FriendlyName" xml:space="preserve">
+        <value>Access token</value>
+    </data>
+    <data name="RunFlow_AccessToken_Description" xml:space="preserve">
+        <value>The access token.</value>
+    </data>
+    <data name="RunFlow_BaseUrl_FriendlyName" xml:space="preserve">
+        <value>Base URL</value>
+    </data>
+    <data name="RunFlow_BaseUrl_Description" xml:space="preserve">
+        <value>The base URL.</value>
+    </data>
+    <data name="RunFlow_Response_FriendlyName" xml:space="preserve">
+        <value>Response</value>
+    </data>
+    <data name="RunFlow_Response_Description" xml:space="preserve">
+        <value>The response.</value>
+    </data>
+    <data name="RunFlow_WorkflowId_FriendlyName" xml:space="preserve">
+        <value>Workflow ID</value>
+    </data>
+    <data name="RunFlow_WorkflowId_Description" xml:space="preserve">
+        <value>The identifier of the workflow.</value>
+    </data>
     <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
         <value>Operation failed</value>
     </data>
