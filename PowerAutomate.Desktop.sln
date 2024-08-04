@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Conditionals.Action
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.PowerFx.Actions", "modules\Modules.PowerFx.Actions\Modules.PowerFx.Actions.csproj", "{86C08ED2-7025-4898-BE9B-BCD10A0C5774}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.PowerFx.Actions.Tests", "tests\Modules.PowerFx.Actions.Tests\Modules.PowerFx.Actions.Tests.csproj", "{4EA67E6A-2786-4BAC-A184-71182C1B75CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{86C08ED2-7025-4898-BE9B-BCD10A0C5774}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86C08ED2-7025-4898-BE9B-BCD10A0C5774}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86C08ED2-7025-4898-BE9B-BCD10A0C5774}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EA67E6A-2786-4BAC-A184-71182C1B75CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EA67E6A-2786-4BAC-A184-71182C1B75CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EA67E6A-2786-4BAC-A184-71182C1B75CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EA67E6A-2786-4BAC-A184-71182C1B75CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -189,6 +195,7 @@ Global
 		{22D1EE4E-815F-48F2-AB46-754518B1F914} = {FEFFE5BC-DCBD-466C-87DE-5B9D8A553256}
 		{791698E0-931E-4F35-97A4-B050FD0B4F82} = {22D1EE4E-815F-48F2-AB46-754518B1F914}
 		{86C08ED2-7025-4898-BE9B-BCD10A0C5774} = {3B78C634-DFD6-43DA-A30E-33AC42224BD4}
+		{4EA67E6A-2786-4BAC-A184-71182C1B75CE} = {79D5DFFD-323B-4DC4-950D-13DA2C1F31E0}
 	EndGlobalSection
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Modules.Actions.Shared\Modules.Actions.Shared.projitems*{7e19e2f1-6de7-4a0e-aed8-7cea38b166af}*SharedItemsImports = 13

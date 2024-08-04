@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
+namespace PowerAutomate.Desktop.Modules.AzureKeyVault.Actions.Properties {
     using System;
     
     
@@ -38,7 +38,7 @@ namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PowerAutomate.Desktop.Modules.AzureKeyVault.Actions.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -60,6 +60,24 @@ namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Perform operations related to Azure Key Vault..
+        /// </summary>
+        public static string AzureKeyVault_Description {
+            get {
+                return ResourceManager.GetString("AzureKeyVault_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Azure Key Vault.
+        /// </summary>
+        public static string AzureKeyVault_FriendlyName {
+            get {
+                return ResourceManager.GetString("AzureKeyVault_FriendlyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Indicates that there was a problem when executing the operation..
         /// </summary>
         public static string Error_UnknownError_Description {
@@ -74,24 +92,6 @@ namespace PowerAutomate.Desktop.Modules.PowerFx.Actions.Properties {
         public static string Error_UnknownError_FriendlyName {
             get {
                 return ResourceManager.GetString("Error_UnknownError_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Perform operations related to PowerFx..
-        /// </summary>
-        public static string PowerFx_Description {
-            get {
-                return ResourceManager.GetString("PowerFx_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to PowerFx.
-        /// </summary>
-        public static string PowerFx_FriendlyName {
-            get {
-                return ResourceManager.GetString("PowerFx_FriendlyName", resourceCulture);
             }
         }
     }

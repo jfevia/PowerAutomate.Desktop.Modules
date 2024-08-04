@@ -9,7 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.PowerFx.Core" />
+        <PackageReference Include="Microsoft.PowerFx.Interpreter" />
         <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
         <PackageReference Include="System.Net.Http" />
     </ItemGroup>
