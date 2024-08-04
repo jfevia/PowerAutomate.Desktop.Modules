@@ -18,7 +18,7 @@ namespace PowerAutomate.Desktop.Modules.PowerFx.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class ExecutePowerFxExpressionAction : ActionBase
+public class ExecutePowerFxExpression : ActionBase
 {
     [InputArgument]
     public string Expression { get; set; } = null!;
