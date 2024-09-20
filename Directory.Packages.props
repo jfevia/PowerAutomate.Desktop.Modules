@@ -10,6 +10,7 @@
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Hosting.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Identity.Client" Version="4.61.3" />
     <PackageVersion Include="Microsoft.PowerFx.Interpreter" Version="1.2.0" />
     <PackageVersion Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" Version="1.4.233.23144-rc" />
     <PackageVersion Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.1" />
