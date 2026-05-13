@@ -165,11 +165,11 @@
     <data name="CopilotSwitch_Unset_FriendlyName" xml:space="preserve">
         <value>(Not set)</value>
     </data>
-    <data name="CopilotSwitch_On_FriendlyName" xml:space="preserve">
-        <value>True</value>
+    <data name="CopilotSwitch_Enabled_FriendlyName" xml:space="preserve">
+        <value>Enabled</value>
     </data>
-    <data name="CopilotSwitch_Off_FriendlyName" xml:space="preserve">
-        <value>False</value>
+    <data name="CopilotSwitch_Disabled_FriendlyName" xml:space="preserve">
+        <value>Disabled</value>
     </data>
 
     <!-- Enum: CopilotEffortLevel -->
