@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
@@ -56,6 +57,7 @@ public class LaunchCopilotCliAction : ActionBase
 
     // ── Mode ───────────────────────────────────────────────────────────────────
     [InputArgument(Order = 9, Group = Groups.Mode)]
+    [DefaultValue(CopilotMode.Default)]
     public CopilotMode Mode { get; set; } = CopilotMode.Default;
 
     [InputArgument(Order = 10, Required = false, Group = Groups.Mode)]
