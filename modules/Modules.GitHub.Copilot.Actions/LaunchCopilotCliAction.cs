@@ -160,9 +160,6 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 41, Required = false, Group = Groups.Display)]
     public bool? Banner { get; set; }
 
-    [InputArgument(Order = 42, Required = false, Group = Groups.Display)]
-    public bool? NoBanner { get; set; }
-
     [InputArgument(Order = 43, Required = false, Group = Groups.Display)]
     public CopilotStreamMode? Stream { get; set; }
 
@@ -185,9 +182,6 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 49, Required = false, Group = Groups.Advanced)]
     public bool? Experimental { get; set; }
 
-    [InputArgument(Order = 50, Required = false, Group = Groups.Advanced)]
-    public bool? NoExperimental { get; set; }
-
     [InputArgument(Order = 51, Required = false, Group = Groups.Advanced)]
     public bool? NoAutoUpdate { get; set; }
 
@@ -198,28 +192,16 @@ public class LaunchCopilotCliAction : ActionBase
     public bool? Remote { get; set; }
 
     [InputArgument(Order = 54, Required = false, Group = Groups.Advanced)]
-    public bool? NoRemote { get; set; }
-
-    [InputArgument(Order = 55, Required = false, Group = Groups.Advanced)]
     public bool? BashEnv { get; set; }
 
-    [InputArgument(Order = 56, Required = false, Group = Groups.Advanced)]
-    public bool? NoBashEnv { get; set; }
-
-    [InputArgument(Order = 57, Required = false, Group = Groups.Advanced)]
+    [InputArgument(Order = 55, Required = false, Group = Groups.Advanced)]
     public bool? Mouse { get; set; }
 
-    [InputArgument(Order = 58, Required = false, Group = Groups.Advanced)]
-    public bool? NoMouse { get; set; }
-
-    [InputArgument(Order = 59, Required = false, Group = Groups.Advanced)]
+    [InputArgument(Order = 56, Required = false, Group = Groups.Advanced)]
     public string SecretEnvVars { get; set; } = string.Empty;
 
-    [InputArgument(Order = 60, Required = false, Group = Groups.Advanced)]
+    [InputArgument(Order = 57, Required = false, Group = Groups.Advanced)]
     public bool? PlainDiff { get; set; }
-
-    [InputArgument(Order = 61, Required = false, Group = Groups.Advanced)]
-    public bool? NoPlainDiff { get; set; }
 
     // Output arguments
     [OutputArgument(Order = 1)]
@@ -321,8 +303,8 @@ public class LaunchCopilotCliAction : ActionBase
         if (OutputFormat.HasValue)                    args.Add($"--output-format={OutputFormat.Value.ToString().ToLowerInvariant()}");
         if (Silent == true)                           args.Add("--silent");
         if (NoColor == true)                          args.Add("--no-color");
-        if (Banner == true)                           args.Add("--banner");
-        if (NoBanner == true)                         args.Add("--no-banner");
+        if (Banner == true)         args.Add("--banner");
+        else if (Banner == false)   args.Add("--no-banner");
         if (Stream.HasValue)                          args.Add($"--stream={Stream.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(LogDir))            args.Add($"--log-dir={Quote(LogDir)}");
         if (LogLevel.HasValue)                        args.Add($"--log-level={LogLevel.Value.ToString().ToLowerInvariant()}");
@@ -332,18 +314,18 @@ public class LaunchCopilotCliAction : ActionBase
 
         // Advanced
         if (Experimental == true)       args.Add("--experimental");
-        if (NoExperimental == true)     args.Add("--no-experimental");
+        else if (Experimental == false) args.Add("--no-experimental");
         if (NoAutoUpdate == true)       args.Add("--no-auto-update");
         if (NoCustomInstructions == true) args.Add("--no-custom-instructions");
         if (Remote == true)             args.Add("--remote");
-        if (NoRemote == true)           args.Add("--no-remote");
+        else if (Remote == false)       args.Add("--no-remote");
         if (BashEnv == true)            args.Add("--bash-env");
-        if (NoBashEnv == true)          args.Add("--no-bash-env");
+        else if (BashEnv == false)      args.Add("--no-bash-env");
         if (Mouse == true)              args.Add("--mouse");
-        if (NoMouse == true)            args.Add("--no-mouse");
+        else if (Mouse == false)        args.Add("--no-mouse");
         AddMultiValueArgs(args, SecretEnvVars, "--secret-env-vars");
         if (PlainDiff == true)          args.Add("--plain-diff");
-        if (NoPlainDiff == true)        args.Add("--no-plain-diff");
+        else if (PlainDiff == false)    args.Add("--no-plain-diff");
 
         return args;
     }

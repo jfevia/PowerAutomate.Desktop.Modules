@@ -951,42 +951,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Hide the Copilot banner on startup (--no-banner)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoBanner_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoBanner_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No banner.
-        /// </summary>
-        public static string LaunchCopilotCli_NoBanner_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoBanner_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Skip sourcing the bash environment (--no-bash-env)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoBashEnv_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoBashEnv_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No bash env.
-        /// </summary>
-        public static string LaunchCopilotCli_NoBashEnv_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoBashEnv_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Disable colored output (--no-color)..
         /// </summary>
         public static string LaunchCopilotCli_NoColor_Description {
@@ -1019,78 +983,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         public static string LaunchCopilotCli_NoCustomInstructions_FriendlyName {
             get {
                 return ResourceManager.GetString("LaunchCopilotCli_NoCustomInstructions_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable experimental features (--no-experimental)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoExperimental_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoExperimental_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No experimental.
-        /// </summary>
-        public static string LaunchCopilotCli_NoExperimental_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoExperimental_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable mouse support in the terminal UI (--no-mouse)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoMouse_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoMouse_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No mouse.
-        /// </summary>
-        public static string LaunchCopilotCli_NoMouse_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoMouse_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Use the default diff format instead of plain text (--no-plain-diff)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoPlainDiff_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoPlainDiff_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No plain diff.
-        /// </summary>
-        public static string LaunchCopilotCli_NoPlainDiff_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoPlainDiff_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Disable remote session support (--no-remote)..
-        /// </summary>
-        public static string LaunchCopilotCli_NoRemote_Description {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoRemote_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to No remote.
-        /// </summary>
-        public static string LaunchCopilotCli_NoRemote_FriendlyName {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_NoRemote_FriendlyName", resourceCulture);
             }
         }
         

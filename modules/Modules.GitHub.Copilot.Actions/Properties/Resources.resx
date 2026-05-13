@@ -473,13 +473,7 @@
         <value>Banner</value>
     </data>
     <data name="LaunchCopilotCli_Banner_Description" xml:space="preserve">
-        <value>Show the Copilot banner on startup (--banner).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoBanner_FriendlyName" xml:space="preserve">
-        <value>No banner</value>
-    </data>
-    <data name="LaunchCopilotCli_NoBanner_Description" xml:space="preserve">
-        <value>Hide the Copilot banner on startup (--no-banner).</value>
+        <value>Show (true) or hide (false) the Copilot banner on startup (--banner / --no-banner).</value>
     </data>
     <data name="LaunchCopilotCli_Stream_FriendlyName" xml:space="preserve">
         <value>Stream mode</value>
@@ -523,13 +517,7 @@
         <value>Experimental</value>
     </data>
     <data name="LaunchCopilotCli_Experimental_Description" xml:space="preserve">
-        <value>Enable experimental features (--experimental).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoExperimental_FriendlyName" xml:space="preserve">
-        <value>No experimental</value>
-    </data>
-    <data name="LaunchCopilotCli_NoExperimental_Description" xml:space="preserve">
-        <value>Disable experimental features (--no-experimental).</value>
+        <value>Enable (true) or disable (false) experimental features (--experimental / --no-experimental).</value>
     </data>
     <data name="LaunchCopilotCli_NoAutoUpdate_FriendlyName" xml:space="preserve">
         <value>No auto update</value>
@@ -547,37 +535,19 @@
         <value>Remote</value>
     </data>
     <data name="LaunchCopilotCli_Remote_Description" xml:space="preserve">
-        <value>Use a remote session (--remote).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoRemote_FriendlyName" xml:space="preserve">
-        <value>No remote</value>
-    </data>
-    <data name="LaunchCopilotCli_NoRemote_Description" xml:space="preserve">
-        <value>Disable remote session support (--no-remote).</value>
+        <value>Enable (true) or disable (false) remote session support (--remote / --no-remote).</value>
     </data>
     <data name="LaunchCopilotCli_BashEnv_FriendlyName" xml:space="preserve">
         <value>Bash env</value>
     </data>
     <data name="LaunchCopilotCli_BashEnv_Description" xml:space="preserve">
-        <value>Source the bash environment before running commands (--bash-env).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoBashEnv_FriendlyName" xml:space="preserve">
-        <value>No bash env</value>
-    </data>
-    <data name="LaunchCopilotCli_NoBashEnv_Description" xml:space="preserve">
-        <value>Skip sourcing the bash environment (--no-bash-env).</value>
+        <value>Source (true) or skip (false) the bash environment before running commands (--bash-env / --no-bash-env).</value>
     </data>
     <data name="LaunchCopilotCli_Mouse_FriendlyName" xml:space="preserve">
         <value>Mouse</value>
     </data>
     <data name="LaunchCopilotCli_Mouse_Description" xml:space="preserve">
-        <value>Enable mouse support in the terminal UI (--mouse).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoMouse_FriendlyName" xml:space="preserve">
-        <value>No mouse</value>
-    </data>
-    <data name="LaunchCopilotCli_NoMouse_Description" xml:space="preserve">
-        <value>Disable mouse support in the terminal UI (--no-mouse).</value>
+        <value>Enable (true) or disable (false) mouse support in the terminal UI (--mouse / --no-mouse).</value>
     </data>
     <data name="LaunchCopilotCli_SecretEnvVars_FriendlyName" xml:space="preserve">
         <value>Secret environment variables</value>
@@ -589,13 +559,7 @@
         <value>Plain diff</value>
     </data>
     <data name="LaunchCopilotCli_PlainDiff_Description" xml:space="preserve">
-        <value>Show diffs in plain text format (--plain-diff).</value>
-    </data>
-    <data name="LaunchCopilotCli_NoPlainDiff_FriendlyName" xml:space="preserve">
-        <value>No plain diff</value>
-    </data>
-    <data name="LaunchCopilotCli_NoPlainDiff_Description" xml:space="preserve">
-        <value>Use the default diff format instead of plain text (--no-plain-diff).</value>
+        <value>Show (true) or hide (false) diffs in plain text format (--plain-diff / --no-plain-diff).</value>
     </data>
 
     <!-- Output arguments -->
