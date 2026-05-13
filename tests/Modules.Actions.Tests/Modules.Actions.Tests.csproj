@@ -21,6 +21,7 @@
         <ProjectReference Include="..\..\modules\Modules.Windows.Notifications.Actions\Modules.Windows.Notifications.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.TaskScheduler.Actions\Modules.Windows.TaskScheduler.Actions.csproj" />
+        <ProjectReference Include="..\..\modules\Modules.GitHub.Copilot.Actions\Modules.GitHub.Copilot.Actions.csproj" />
     </ItemGroup>
 
 </Project>

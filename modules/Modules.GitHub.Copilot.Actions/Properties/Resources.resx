@@ -142,6 +142,120 @@
         <value>Launch the GitHub Copilot CLI.</value>
     </data>
 
+    <!-- Enum: CopilotMode -->
+    <data name="CopilotMode_NotSet_FriendlyName" xml:space="preserve">
+        <value>(Default)</value>
+    </data>
+    <data name="CopilotMode_Interactive_FriendlyName" xml:space="preserve">
+        <value>Interactive</value>
+    </data>
+    <data name="CopilotMode_Plan_FriendlyName" xml:space="preserve">
+        <value>Plan</value>
+    </data>
+    <data name="CopilotMode_Autopilot_FriendlyName" xml:space="preserve">
+        <value>Autopilot</value>
+    </data>
+
+    <!-- Enum: CopilotOutputFormat -->
+    <data name="CopilotOutputFormat_NotSet_FriendlyName" xml:space="preserve">
+        <value>(Default)</value>
+    </data>
+    <data name="CopilotOutputFormat_Text_FriendlyName" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="CopilotOutputFormat_Json_FriendlyName" xml:space="preserve">
+        <value>JSON</value>
+    </data>
+
+    <!-- Enum: CopilotEffortLevel -->
+    <data name="CopilotEffortLevel_NotSet_FriendlyName" xml:space="preserve">
+        <value>(Default)</value>
+    </data>
+    <data name="CopilotEffortLevel_Low_FriendlyName" xml:space="preserve">
+        <value>Low</value>
+    </data>
+    <data name="CopilotEffortLevel_Medium_FriendlyName" xml:space="preserve">
+        <value>Medium</value>
+    </data>
+    <data name="CopilotEffortLevel_High_FriendlyName" xml:space="preserve">
+        <value>High</value>
+    </data>
+
+    <!-- Enum: CopilotStreamMode -->
+    <data name="CopilotStreamMode_NotSet_FriendlyName" xml:space="preserve">
+        <value>(Default)</value>
+    </data>
+    <data name="CopilotStreamMode_On_FriendlyName" xml:space="preserve">
+        <value>On</value>
+    </data>
+    <data name="CopilotStreamMode_Off_FriendlyName" xml:space="preserve">
+        <value>Off</value>
+    </data>
+
+    <!-- Enum: CopilotLogLevel -->
+    <data name="CopilotLogLevel_NotSet_FriendlyName" xml:space="preserve">
+        <value>(Default)</value>
+    </data>
+    <data name="CopilotLogLevel_None_FriendlyName" xml:space="preserve">
+        <value>None</value>
+    </data>
+    <data name="CopilotLogLevel_Error_FriendlyName" xml:space="preserve">
+        <value>Error</value>
+    </data>
+    <data name="CopilotLogLevel_Warning_FriendlyName" xml:space="preserve">
+        <value>Warning</value>
+    </data>
+    <data name="CopilotLogLevel_Info_FriendlyName" xml:space="preserve">
+        <value>Info</value>
+    </data>
+    <data name="CopilotLogLevel_Debug_FriendlyName" xml:space="preserve">
+        <value>Debug</value>
+    </data>
+    <data name="CopilotLogLevel_All_FriendlyName" xml:space="preserve">
+        <value>All</value>
+    </data>
+    <data name="CopilotLogLevel_Default_FriendlyName" xml:space="preserve">
+        <value>Default</value>
+    </data>
+
+    <!-- Action Selectors -->
+    <data name="LaunchCopilotCli_NotSet_NotSet_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in default mode with default output format.</value>
+    </data>
+    <data name="LaunchCopilotCli_NotSet_Text_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in default mode with text output.</value>
+    </data>
+    <data name="LaunchCopilotCli_NotSet_Json_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in default mode with JSON output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Interactive_NotSet_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in interactive mode with default output format.</value>
+    </data>
+    <data name="LaunchCopilotCli_Interactive_Text_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in interactive mode with text output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Interactive_Json_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in interactive mode with JSON output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Plan_NotSet_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in plan mode with default output format.</value>
+    </data>
+    <data name="LaunchCopilotCli_Plan_Text_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in plan mode with text output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Plan_Json_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in plan mode with JSON output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Autopilot_NotSet_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in autopilot mode with default output format.</value>
+    </data>
+    <data name="LaunchCopilotCli_Autopilot_Text_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in autopilot mode with text output.</value>
+    </data>
+    <data name="LaunchCopilotCli_Autopilot_Json_Summary" xml:space="preserve">
+        <value>Launch Copilot CLI in autopilot mode with JSON output.</value>
+    </data>
+
     <!-- Input: General -->
     <data name="LaunchCopilotCli_ExecutablePath_FriendlyName" xml:space="preserve">
         <value>Executable path</value>
