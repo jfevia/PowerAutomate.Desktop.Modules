@@ -46,8 +46,9 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 5, Required = false, Group = Groups.Session)]
     public string SessionName { get; set; } = string.Empty;
 
-    [InputArgument(Order = 6, Required = false, Group = Groups.Session)]
-    public bool? Continue { get; set; }
+    [InputArgument(Order = 6, Group = Groups.Session)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Continue { get; set; }
 
     [InputArgument(Order = 7, Required = false, Group = Groups.Session)]
     public string Resume { get; set; } = string.Empty;
@@ -60,33 +61,41 @@ public class LaunchCopilotCliAction : ActionBase
     [DefaultValue(CopilotMode.Interactive)]
     public CopilotMode Mode { get; set; } = CopilotMode.Interactive;
 
-    [InputArgument(Order = 10, Required = false, Group = Groups.Mode)]
-    public bool? Autopilot { get; set; }
+    [InputArgument(Order = 10, Group = Groups.Mode)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Autopilot { get; set; }
 
-    [InputArgument(Order = 11, Required = false, Group = Groups.Mode)]
-    public bool? Plan { get; set; }
+    [InputArgument(Order = 11, Group = Groups.Mode)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Plan { get; set; }
 
     [InputArgument(Order = 12, Required = false, Group = Groups.Mode)]
     public int? MaxAutopilotContinues { get; set; }
 
-    [InputArgument(Order = 13, Required = false, Group = Groups.Mode)]
-    public bool? NoAskUser { get; set; }
+    [InputArgument(Order = 13, Group = Groups.Mode)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch NoAskUser { get; set; }
 
     // ── Permissions ────────────────────────────────────────────────────────────
-    [InputArgument(Order = 14, Required = false, Group = Groups.Permissions)]
-    public bool? AllowAll { get; set; }
+    [InputArgument(Order = 14, Group = Groups.Permissions)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch AllowAll { get; set; }
 
-    [InputArgument(Order = 15, Required = false, Group = Groups.Permissions)]
-    public bool? Yolo { get; set; }
+    [InputArgument(Order = 15, Group = Groups.Permissions)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Yolo { get; set; }
 
-    [InputArgument(Order = 16, Required = false, Group = Groups.Permissions)]
-    public bool? AllowAllPaths { get; set; }
+    [InputArgument(Order = 16, Group = Groups.Permissions)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch AllowAllPaths { get; set; }
 
-    [InputArgument(Order = 17, Required = false, Group = Groups.Permissions)]
-    public bool? AllowAllTools { get; set; }
+    [InputArgument(Order = 17, Group = Groups.Permissions)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch AllowAllTools { get; set; }
 
-    [InputArgument(Order = 18, Required = false, Group = Groups.Permissions)]
-    public bool? AllowAllUrls { get; set; }
+    [InputArgument(Order = 18, Group = Groups.Permissions)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch AllowAllUrls { get; set; }
 
     [InputArgument(Order = 19, Required = false, Group = Groups.Permissions)]
     public string AllowTool { get; set; } = string.Empty;
@@ -113,15 +122,17 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 26, Required = false, Group = Groups.Model)]
     public CopilotEffortLevel? Effort { get; set; }
 
-    [InputArgument(Order = 27, Required = false, Group = Groups.Model)]
-    public bool? EnableReasoningSummaries { get; set; }
+    [InputArgument(Order = 27, Group = Groups.Model)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch EnableReasoningSummaries { get; set; }
 
     // ── MCP & Plugins ──────────────────────────────────────────────────────────
     [InputArgument(Order = 28, Required = false, Group = Groups.Mcp)]
     public string AddDir { get; set; } = string.Empty;
 
-    [InputArgument(Order = 29, Required = false, Group = Groups.Mcp)]
-    public bool? DisallowTempDir { get; set; }
+    [InputArgument(Order = 29, Group = Groups.Mcp)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch DisallowTempDir { get; set; }
 
     [InputArgument(Order = 30, Required = false, Group = Groups.Mcp)]
     public string AddGithubMcpTool { get; set; } = string.Empty;
@@ -132,14 +143,16 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 32, Required = false, Group = Groups.Mcp)]
     public string AdditionalMcpConfig { get; set; } = string.Empty;
 
-    [InputArgument(Order = 33, Required = false, Group = Groups.Mcp)]
-    public bool? DisableBuiltinMcps { get; set; }
+    [InputArgument(Order = 33, Group = Groups.Mcp)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch DisableBuiltinMcps { get; set; }
 
     [InputArgument(Order = 34, Required = false, Group = Groups.Mcp)]
     public string DisableMcpServer { get; set; } = string.Empty;
 
-    [InputArgument(Order = 35, Required = false, Group = Groups.Mcp)]
-    public bool? EnableAllGithubMcpTools { get; set; }
+    [InputArgument(Order = 35, Group = Groups.Mcp)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch EnableAllGithubMcpTools { get; set; }
 
     [InputArgument(Order = 36, Required = false, Group = Groups.Mcp)]
     public string PluginDir { get; set; } = string.Empty;
@@ -151,14 +164,17 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 38, Required = false, Group = Groups.Display)]
     public CopilotOutputFormat? OutputFormat { get; set; }
 
-    [InputArgument(Order = 39, Required = false, Group = Groups.Display)]
-    public bool? Silent { get; set; }
+    [InputArgument(Order = 39, Group = Groups.Display)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Silent { get; set; }
 
-    [InputArgument(Order = 40, Required = false, Group = Groups.Display)]
-    public bool? NoColor { get; set; }
+    [InputArgument(Order = 40, Group = Groups.Display)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch NoColor { get; set; }
 
-    [InputArgument(Order = 41, Required = false, Group = Groups.Display)]
-    public bool? Banner { get; set; }
+    [InputArgument(Order = 41, Group = Groups.Display)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Banner { get; set; }
 
     [InputArgument(Order = 43, Required = false, Group = Groups.Display)]
     public CopilotStreamMode? Stream { get; set; }
@@ -172,36 +188,45 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 46, Required = false, Group = Groups.Display)]
     public string Share { get; set; } = string.Empty;
 
-    [InputArgument(Order = 47, Required = false, Group = Groups.Display)]
-    public bool? ShareGist { get; set; }
+    [InputArgument(Order = 47, Group = Groups.Display)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch ShareGist { get; set; }
 
-    [InputArgument(Order = 48, Required = false, Group = Groups.Display)]
-    public bool? ScreenReader { get; set; }
+    [InputArgument(Order = 48, Group = Groups.Display)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch ScreenReader { get; set; }
 
     // ── Advanced ───────────────────────────────────────────────────────────────
-    [InputArgument(Order = 49, Required = false, Group = Groups.Advanced)]
-    public bool? Experimental { get; set; }
+    [InputArgument(Order = 49, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Experimental { get; set; }
 
-    [InputArgument(Order = 51, Required = false, Group = Groups.Advanced)]
-    public bool? NoAutoUpdate { get; set; }
+    [InputArgument(Order = 51, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch NoAutoUpdate { get; set; }
 
-    [InputArgument(Order = 52, Required = false, Group = Groups.Advanced)]
-    public bool? NoCustomInstructions { get; set; }
+    [InputArgument(Order = 52, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch NoCustomInstructions { get; set; }
 
-    [InputArgument(Order = 53, Required = false, Group = Groups.Advanced)]
-    public bool? Remote { get; set; }
+    [InputArgument(Order = 53, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Remote { get; set; }
 
-    [InputArgument(Order = 54, Required = false, Group = Groups.Advanced)]
-    public bool? BashEnv { get; set; }
+    [InputArgument(Order = 54, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch BashEnv { get; set; }
 
-    [InputArgument(Order = 55, Required = false, Group = Groups.Advanced)]
-    public bool? Mouse { get; set; }
+    [InputArgument(Order = 55, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch Mouse { get; set; }
 
     [InputArgument(Order = 56, Required = false, Group = Groups.Advanced)]
     public string SecretEnvVars { get; set; } = string.Empty;
 
-    [InputArgument(Order = 57, Required = false, Group = Groups.Advanced)]
-    public bool? PlainDiff { get; set; }
+    [InputArgument(Order = 57, Group = Groups.Advanced)]
+    [DefaultValue(CopilotSwitch.Unset)]
+    public CopilotSwitch PlainDiff { get; set; }
 
     // Output arguments
     [OutputArgument(Order = 1)]
@@ -256,23 +281,23 @@ public class LaunchCopilotCliAction : ActionBase
         if (!string.IsNullOrEmpty(Prompt))            args.Add($"--prompt={Quote(Prompt)}");
         if (!string.IsNullOrEmpty(InteractivePrompt)) args.Add($"--interactive={Quote(InteractivePrompt)}");
         if (!string.IsNullOrEmpty(SessionName))       args.Add($"--name={Quote(SessionName)}");
-        if (Continue == true)                          args.Add("--continue");
+        if (Continue == CopilotSwitch.True)                  args.Add("--continue");
         if (!string.IsNullOrEmpty(Resume))            args.Add($"--resume={Quote(Resume)}");
         if (!string.IsNullOrEmpty(Connect))           args.Add($"--connect={Quote(Connect)}");
 
         // Mode
         args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
-        if (Autopilot == true)                        args.Add("--autopilot");
-        if (Plan == true)                             args.Add("--plan");
+        if (Autopilot == CopilotSwitch.True)                 args.Add("--autopilot");
+        if (Plan == CopilotSwitch.True)                       args.Add("--plan");
         if (MaxAutopilotContinues.HasValue)           args.Add($"--max-autopilot-continues={MaxAutopilotContinues.Value}");
-        if (NoAskUser == true)                        args.Add("--no-ask-user");
+        if (NoAskUser == CopilotSwitch.True)                  args.Add("--no-ask-user");
 
         // Permissions
-        if (AllowAll == true)                         args.Add("--allow-all");
-        if (Yolo == true)                             args.Add("--yolo");
-        if (AllowAllPaths == true)                    args.Add("--allow-all-paths");
-        if (AllowAllTools == true)                    args.Add("--allow-all-tools");
-        if (AllowAllUrls == true)                     args.Add("--allow-all-urls");
+        if (AllowAll == CopilotSwitch.True)                   args.Add("--allow-all");
+        if (Yolo == CopilotSwitch.True)                       args.Add("--yolo");
+        if (AllowAllPaths == CopilotSwitch.True)              args.Add("--allow-all-paths");
+        if (AllowAllTools == CopilotSwitch.True)              args.Add("--allow-all-tools");
+        if (AllowAllUrls == CopilotSwitch.True)               args.Add("--allow-all-urls");
         if (!string.IsNullOrEmpty(AllowTool))         args.Add($"--allow-tool={Quote(AllowTool)}");
         if (!string.IsNullOrEmpty(AllowUrl))          args.Add($"--allow-url={Quote(AllowUrl)}");
         if (!string.IsNullOrEmpty(DenyTool))          args.Add($"--deny-tool={Quote(DenyTool)}");
@@ -283,49 +308,49 @@ public class LaunchCopilotCliAction : ActionBase
         // Model/AI
         if (!string.IsNullOrEmpty(Model))             args.Add($"--model={Quote(Model)}");
         if (Effort.HasValue)                          args.Add($"--effort={Effort.Value.ToString().ToLowerInvariant()}");
-        if (EnableReasoningSummaries == true)         args.Add("--enable-reasoning-summaries");
+        if (EnableReasoningSummaries == CopilotSwitch.True)   args.Add("--enable-reasoning-summaries");
 
         // Paths/Dirs
         AddMultiValueArgs(args, AddDir, "--add-dir");
-        if (DisallowTempDir == true)                  args.Add("--disallow-temp-dir");
+        if (DisallowTempDir == CopilotSwitch.True)            args.Add("--disallow-temp-dir");
 
         // MCP/Tools
         AddMultiValueArgs(args, AddGithubMcpTool, "--add-github-mcp-tool");
         AddMultiValueArgs(args, AddGithubMcpToolset, "--add-github-mcp-toolset");
         if (!string.IsNullOrEmpty(AdditionalMcpConfig)) args.Add($"--additional-mcp-config={Quote(AdditionalMcpConfig)}");
-        if (DisableBuiltinMcps == true)               args.Add("--disable-builtin-mcps");
+        if (DisableBuiltinMcps == CopilotSwitch.True)         args.Add("--disable-builtin-mcps");
         AddMultiValueArgs(args, DisableMcpServer, "--disable-mcp-server");
-        if (EnableAllGithubMcpTools == true)          args.Add("--enable-all-github-mcp-tools");
+        if (EnableAllGithubMcpTools == CopilotSwitch.True)    args.Add("--enable-all-github-mcp-tools");
         AddMultiValueArgs(args, PluginDir, "--plugin-dir");
         if (!string.IsNullOrEmpty(Agent))             args.Add($"--agent={Quote(Agent)}");
 
         // Output/Display
         if (OutputFormat.HasValue)                    args.Add($"--output-format={OutputFormat.Value.ToString().ToLowerInvariant()}");
-        if (Silent == true)                           args.Add("--silent");
-        if (NoColor == true)                          args.Add("--no-color");
-        if (Banner == true)         args.Add("--banner");
-        else if (Banner == false)   args.Add("--no-banner");
+        if (Silent == CopilotSwitch.True)                     args.Add("--silent");
+        if (NoColor == CopilotSwitch.True)                    args.Add("--no-color");
+        if (Banner == CopilotSwitch.True)         args.Add("--banner");
+        else if (Banner == CopilotSwitch.False)   args.Add("--no-banner");
         if (Stream.HasValue)                          args.Add($"--stream={Stream.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(LogDir))            args.Add($"--log-dir={Quote(LogDir)}");
         if (LogLevel.HasValue)                        args.Add($"--log-level={LogLevel.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(Share))             args.Add($"--share={Quote(Share)}");
-        if (ShareGist == true)                        args.Add("--share-gist");
-        if (ScreenReader == true)                     args.Add("--screen-reader");
+        if (ShareGist == CopilotSwitch.True)                  args.Add("--share-gist");
+        if (ScreenReader == CopilotSwitch.True)               args.Add("--screen-reader");
 
         // Advanced
-        if (Experimental == true)       args.Add("--experimental");
-        else if (Experimental == false) args.Add("--no-experimental");
-        if (NoAutoUpdate == true)       args.Add("--no-auto-update");
-        if (NoCustomInstructions == true) args.Add("--no-custom-instructions");
-        if (Remote == true)             args.Add("--remote");
-        else if (Remote == false)       args.Add("--no-remote");
-        if (BashEnv == true)            args.Add("--bash-env");
-        else if (BashEnv == false)      args.Add("--no-bash-env");
-        if (Mouse == true)              args.Add("--mouse");
-        else if (Mouse == false)        args.Add("--no-mouse");
+        if (Experimental == CopilotSwitch.True)       args.Add("--experimental");
+        else if (Experimental == CopilotSwitch.False) args.Add("--no-experimental");
+        if (NoAutoUpdate == CopilotSwitch.True)       args.Add("--no-auto-update");
+        if (NoCustomInstructions == CopilotSwitch.True) args.Add("--no-custom-instructions");
+        if (Remote == CopilotSwitch.True)             args.Add("--remote");
+        else if (Remote == CopilotSwitch.False)       args.Add("--no-remote");
+        if (BashEnv == CopilotSwitch.True)            args.Add("--bash-env");
+        else if (BashEnv == CopilotSwitch.False)      args.Add("--no-bash-env");
+        if (Mouse == CopilotSwitch.True)              args.Add("--mouse");
+        else if (Mouse == CopilotSwitch.False)        args.Add("--no-mouse");
         AddMultiValueArgs(args, SecretEnvVars, "--secret-env-vars");
-        if (PlainDiff == true)          args.Add("--plain-diff");
-        else if (PlainDiff == false)    args.Add("--no-plain-diff");
+        if (PlainDiff == CopilotSwitch.True)          args.Add("--plain-diff");
+        else if (PlainDiff == CopilotSwitch.False)    args.Add("--no-plain-diff");
 
         return args;
     }

@@ -161,6 +161,17 @@
         <value>JSON</value>
     </data>
 
+    <!-- Enum: CopilotSwitch -->
+    <data name="CopilotSwitch_Unset_FriendlyName" xml:space="preserve">
+        <value>(Not set)</value>
+    </data>
+    <data name="CopilotSwitch_True_FriendlyName" xml:space="preserve">
+        <value>True</value>
+    </data>
+    <data name="CopilotSwitch_False_FriendlyName" xml:space="preserve">
+        <value>False</value>
+    </data>
+
     <!-- Enum: CopilotEffortLevel -->
     <data name="CopilotEffortLevel_Low_FriendlyName" xml:space="preserve">
         <value>Low</value>
