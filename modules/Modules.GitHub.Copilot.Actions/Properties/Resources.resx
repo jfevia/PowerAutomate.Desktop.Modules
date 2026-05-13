@@ -1,0 +1,606 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+
+    <!-- Module -->
+    <data name="GitHubCopilot_FriendlyName" xml:space="preserve">
+        <value>GitHub Copilot CLI</value>
+    </data>
+    <data name="GitHubCopilot_Description" xml:space="preserve">
+        <value>Perform operations using the GitHub Copilot CLI.</value>
+    </data>
+
+    <!-- Action -->
+    <data name="LaunchCopilotCli_FriendlyName" xml:space="preserve">
+        <value>Launch Copilot CLI</value>
+    </data>
+    <data name="LaunchCopilotCli_Description" xml:space="preserve">
+        <value>Launches the GitHub Copilot CLI with the specified options.</value>
+    </data>
+    <data name="LaunchCopilotCli_Summary" xml:space="preserve">
+        <value>Launch the GitHub Copilot CLI.</value>
+    </data>
+
+    <!-- Input: General -->
+    <data name="LaunchCopilotCli_ExecutablePath_FriendlyName" xml:space="preserve">
+        <value>Executable path</value>
+    </data>
+    <data name="LaunchCopilotCli_ExecutablePath_Description" xml:space="preserve">
+        <value>Full path to the copilot executable. Leave empty to use "copilot" from the system PATH.</value>
+    </data>
+    <data name="LaunchCopilotCli_WorkingDirectory_FriendlyName" xml:space="preserve">
+        <value>Working directory</value>
+    </data>
+    <data name="LaunchCopilotCli_WorkingDirectory_Description" xml:space="preserve">
+        <value>The working directory for the copilot process. Leave empty to use the current directory.</value>
+    </data>
+
+    <!-- Input: Prompt/Session -->
+    <data name="LaunchCopilotCli_Prompt_FriendlyName" xml:space="preserve">
+        <value>Prompt</value>
+    </data>
+    <data name="LaunchCopilotCli_Prompt_Description" xml:space="preserve">
+        <value>Execute a prompt programmatically and exit (--prompt / -p).</value>
+    </data>
+    <data name="LaunchCopilotCli_InteractivePrompt_FriendlyName" xml:space="preserve">
+        <value>Interactive prompt</value>
+    </data>
+    <data name="LaunchCopilotCli_InteractivePrompt_Description" xml:space="preserve">
+        <value>Start an interactive session and automatically send this prompt (--interactive / -i).</value>
+    </data>
+    <data name="LaunchCopilotCli_SessionName_FriendlyName" xml:space="preserve">
+        <value>Session name</value>
+    </data>
+    <data name="LaunchCopilotCli_SessionName_Description" xml:space="preserve">
+        <value>Name for the session (--name / -n).</value>
+    </data>
+    <data name="LaunchCopilotCli_Continue_FriendlyName" xml:space="preserve">
+        <value>Continue</value>
+    </data>
+    <data name="LaunchCopilotCli_Continue_Description" xml:space="preserve">
+        <value>Resume the most recent session (--continue).</value>
+    </data>
+    <data name="LaunchCopilotCli_Resume_FriendlyName" xml:space="preserve">
+        <value>Resume</value>
+    </data>
+    <data name="LaunchCopilotCli_Resume_Description" xml:space="preserve">
+        <value>Resume a previous session by ID or name (--resume).</value>
+    </data>
+    <data name="LaunchCopilotCli_Connect_FriendlyName" xml:space="preserve">
+        <value>Connect</value>
+    </data>
+    <data name="LaunchCopilotCli_Connect_Description" xml:space="preserve">
+        <value>Connect to a remote session by session ID (--connect).</value>
+    </data>
+
+    <!-- Input: Mode -->
+    <data name="LaunchCopilotCli_Mode_FriendlyName" xml:space="preserve">
+        <value>Mode</value>
+    </data>
+    <data name="LaunchCopilotCli_Mode_Description" xml:space="preserve">
+        <value>Set the operating mode: Interactive, Plan, or Autopilot (--mode).</value>
+    </data>
+    <data name="LaunchCopilotCli_Autopilot_FriendlyName" xml:space="preserve">
+        <value>Autopilot</value>
+    </data>
+    <data name="LaunchCopilotCli_Autopilot_Description" xml:space="preserve">
+        <value>Run in autopilot mode, executing tasks autonomously (--autopilot).</value>
+    </data>
+    <data name="LaunchCopilotCli_Plan_FriendlyName" xml:space="preserve">
+        <value>Plan</value>
+    </data>
+    <data name="LaunchCopilotCli_Plan_Description" xml:space="preserve">
+        <value>Run in plan mode, generating a plan before executing (--plan).</value>
+    </data>
+    <data name="LaunchCopilotCli_MaxAutopilotContinues_FriendlyName" xml:space="preserve">
+        <value>Max autopilot continues</value>
+    </data>
+    <data name="LaunchCopilotCli_MaxAutopilotContinues_Description" xml:space="preserve">
+        <value>Maximum number of automatic continuation steps in autopilot mode. Set to -1 to leave unset (--max-autopilot-continues).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoAskUser_FriendlyName" xml:space="preserve">
+        <value>No ask user</value>
+    </data>
+    <data name="LaunchCopilotCli_NoAskUser_Description" xml:space="preserve">
+        <value>Suppress interactive confirmation prompts (--no-ask-user).</value>
+    </data>
+
+    <!-- Input: Permissions -->
+    <data name="LaunchCopilotCli_AllowAll_FriendlyName" xml:space="preserve">
+        <value>Allow all</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAll_Description" xml:space="preserve">
+        <value>Allow all tools, paths, and URLs without confirmation (--allow-all).</value>
+    </data>
+    <data name="LaunchCopilotCli_Yolo_FriendlyName" xml:space="preserve">
+        <value>Yolo</value>
+    </data>
+    <data name="LaunchCopilotCli_Yolo_Description" xml:space="preserve">
+        <value>Alias for --allow-all; skip all permission prompts (--yolo).</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllPaths_FriendlyName" xml:space="preserve">
+        <value>Allow all paths</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllPaths_Description" xml:space="preserve">
+        <value>Allow access to all file system paths without confirmation (--allow-all-paths).</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllTools_FriendlyName" xml:space="preserve">
+        <value>Allow all tools</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllTools_Description" xml:space="preserve">
+        <value>Allow all tools to be used without confirmation (--allow-all-tools).</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllUrls_FriendlyName" xml:space="preserve">
+        <value>Allow all URLs</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowAllUrls_Description" xml:space="preserve">
+        <value>Allow all URLs to be accessed without confirmation (--allow-all-urls).</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowTool_FriendlyName" xml:space="preserve">
+        <value>Allow tool</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowTool_Description" xml:space="preserve">
+        <value>Comma-separated list of tools to allow. Each value becomes a separate --allow-tool flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowUrl_FriendlyName" xml:space="preserve">
+        <value>Allow URL</value>
+    </data>
+    <data name="LaunchCopilotCli_AllowUrl_Description" xml:space="preserve">
+        <value>Comma-separated list of URLs to allow. Each value becomes a separate --allow-url flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_DenyTool_FriendlyName" xml:space="preserve">
+        <value>Deny tool</value>
+    </data>
+    <data name="LaunchCopilotCli_DenyTool_Description" xml:space="preserve">
+        <value>Comma-separated list of tools to deny. Each value becomes a separate --deny-tool flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_DenyUrl_FriendlyName" xml:space="preserve">
+        <value>Deny URL</value>
+    </data>
+    <data name="LaunchCopilotCli_DenyUrl_Description" xml:space="preserve">
+        <value>Comma-separated list of URLs to deny. Each value becomes a separate --deny-url flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_AvailableTools_FriendlyName" xml:space="preserve">
+        <value>Available tools</value>
+    </data>
+    <data name="LaunchCopilotCli_AvailableTools_Description" xml:space="preserve">
+        <value>Comma-separated list of tools to make available (--available-tools).</value>
+    </data>
+    <data name="LaunchCopilotCli_ExcludedTools_FriendlyName" xml:space="preserve">
+        <value>Excluded tools</value>
+    </data>
+    <data name="LaunchCopilotCli_ExcludedTools_Description" xml:space="preserve">
+        <value>Comma-separated list of tools to exclude (--excluded-tools).</value>
+    </data>
+
+    <!-- Input: Model/AI -->
+    <data name="LaunchCopilotCli_Model_FriendlyName" xml:space="preserve">
+        <value>Model</value>
+    </data>
+    <data name="LaunchCopilotCli_Model_Description" xml:space="preserve">
+        <value>The AI model to use for the session (--model).</value>
+    </data>
+    <data name="LaunchCopilotCli_Effort_FriendlyName" xml:space="preserve">
+        <value>Effort level</value>
+    </data>
+    <data name="LaunchCopilotCli_Effort_Description" xml:space="preserve">
+        <value>The reasoning effort level: Low, Medium, or High (--effort).</value>
+    </data>
+    <data name="LaunchCopilotCli_EnableReasoningSummaries_FriendlyName" xml:space="preserve">
+        <value>Enable reasoning summaries</value>
+    </data>
+    <data name="LaunchCopilotCli_EnableReasoningSummaries_Description" xml:space="preserve">
+        <value>Enable reasoning summaries in the output (--enable-reasoning-summaries).</value>
+    </data>
+
+    <!-- Input: Paths/Dirs -->
+    <data name="LaunchCopilotCli_AddDir_FriendlyName" xml:space="preserve">
+        <value>Add directory</value>
+    </data>
+    <data name="LaunchCopilotCli_AddDir_Description" xml:space="preserve">
+        <value>Comma-separated list of directories to add to the context. Each value becomes a separate --add-dir flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_DisallowTempDir_FriendlyName" xml:space="preserve">
+        <value>Disallow temp directory</value>
+    </data>
+    <data name="LaunchCopilotCli_DisallowTempDir_Description" xml:space="preserve">
+        <value>Prevent Copilot from using the system temp directory (--disallow-temp-dir).</value>
+    </data>
+
+    <!-- Input: MCP/Tools -->
+    <data name="LaunchCopilotCli_AddGithubMcpTool_FriendlyName" xml:space="preserve">
+        <value>Add GitHub MCP tool</value>
+    </data>
+    <data name="LaunchCopilotCli_AddGithubMcpTool_Description" xml:space="preserve">
+        <value>Comma-separated list of GitHub MCP tools to add. Each value becomes a separate --add-github-mcp-tool flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_AddGithubMcpToolset_FriendlyName" xml:space="preserve">
+        <value>Add GitHub MCP toolset</value>
+    </data>
+    <data name="LaunchCopilotCli_AddGithubMcpToolset_Description" xml:space="preserve">
+        <value>Comma-separated list of GitHub MCP toolsets to add. Each value becomes a separate --add-github-mcp-toolset flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_AdditionalMcpConfig_FriendlyName" xml:space="preserve">
+        <value>Additional MCP config</value>
+    </data>
+    <data name="LaunchCopilotCli_AdditionalMcpConfig_Description" xml:space="preserve">
+        <value>Additional MCP configuration as a JSON string (--additional-mcp-config).</value>
+    </data>
+    <data name="LaunchCopilotCli_DisableBuiltinMcps_FriendlyName" xml:space="preserve">
+        <value>Disable built-in MCPs</value>
+    </data>
+    <data name="LaunchCopilotCli_DisableBuiltinMcps_Description" xml:space="preserve">
+        <value>Disable all built-in MCP servers (--disable-builtin-mcps).</value>
+    </data>
+    <data name="LaunchCopilotCli_DisableMcpServer_FriendlyName" xml:space="preserve">
+        <value>Disable MCP server</value>
+    </data>
+    <data name="LaunchCopilotCli_DisableMcpServer_Description" xml:space="preserve">
+        <value>Comma-separated list of MCP server names to disable. Each value becomes a separate --disable-mcp-server flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_EnableAllGithubMcpTools_FriendlyName" xml:space="preserve">
+        <value>Enable all GitHub MCP tools</value>
+    </data>
+    <data name="LaunchCopilotCli_EnableAllGithubMcpTools_Description" xml:space="preserve">
+        <value>Enable all available GitHub MCP tools (--enable-all-github-mcp-tools).</value>
+    </data>
+    <data name="LaunchCopilotCli_PluginDir_FriendlyName" xml:space="preserve">
+        <value>Plugin directory</value>
+    </data>
+    <data name="LaunchCopilotCli_PluginDir_Description" xml:space="preserve">
+        <value>Comma-separated list of directories containing plugins. Each value becomes a separate --plugin-dir flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_Agent_FriendlyName" xml:space="preserve">
+        <value>Agent</value>
+    </data>
+    <data name="LaunchCopilotCli_Agent_Description" xml:space="preserve">
+        <value>The agent to use for the session (--agent).</value>
+    </data>
+
+    <!-- Input: Output/Display -->
+    <data name="LaunchCopilotCli_OutputFormat_FriendlyName" xml:space="preserve">
+        <value>Output format</value>
+    </data>
+    <data name="LaunchCopilotCli_OutputFormat_Description" xml:space="preserve">
+        <value>The output format: Text or Json (--output-format).</value>
+    </data>
+    <data name="LaunchCopilotCli_Silent_FriendlyName" xml:space="preserve">
+        <value>Silent</value>
+    </data>
+    <data name="LaunchCopilotCli_Silent_Description" xml:space="preserve">
+        <value>Suppress all non-essential output (--silent).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoColor_FriendlyName" xml:space="preserve">
+        <value>No color</value>
+    </data>
+    <data name="LaunchCopilotCli_NoColor_Description" xml:space="preserve">
+        <value>Disable colored output (--no-color).</value>
+    </data>
+    <data name="LaunchCopilotCli_Banner_FriendlyName" xml:space="preserve">
+        <value>Banner</value>
+    </data>
+    <data name="LaunchCopilotCli_Banner_Description" xml:space="preserve">
+        <value>Show the Copilot banner on startup (--banner).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoBanner_FriendlyName" xml:space="preserve">
+        <value>No banner</value>
+    </data>
+    <data name="LaunchCopilotCli_NoBanner_Description" xml:space="preserve">
+        <value>Hide the Copilot banner on startup (--no-banner).</value>
+    </data>
+    <data name="LaunchCopilotCli_Stream_FriendlyName" xml:space="preserve">
+        <value>Stream mode</value>
+    </data>
+    <data name="LaunchCopilotCli_Stream_Description" xml:space="preserve">
+        <value>Control streaming output: On or Off (--stream).</value>
+    </data>
+    <data name="LaunchCopilotCli_LogDir_FriendlyName" xml:space="preserve">
+        <value>Log directory</value>
+    </data>
+    <data name="LaunchCopilotCli_LogDir_Description" xml:space="preserve">
+        <value>Directory where log files are written (--log-dir).</value>
+    </data>
+    <data name="LaunchCopilotCli_LogLevel_FriendlyName" xml:space="preserve">
+        <value>Log level</value>
+    </data>
+    <data name="LaunchCopilotCli_LogLevel_Description" xml:space="preserve">
+        <value>The logging verbosity level: None, Error, Warning, Info, Debug, All, or Default (--log-level).</value>
+    </data>
+    <data name="LaunchCopilotCli_Share_FriendlyName" xml:space="preserve">
+        <value>Share path</value>
+    </data>
+    <data name="LaunchCopilotCli_Share_Description" xml:space="preserve">
+        <value>Path for sharing the session output (--share).</value>
+    </data>
+    <data name="LaunchCopilotCli_ShareGist_FriendlyName" xml:space="preserve">
+        <value>Share gist</value>
+    </data>
+    <data name="LaunchCopilotCli_ShareGist_Description" xml:space="preserve">
+        <value>Share the session output as a GitHub Gist (--share-gist).</value>
+    </data>
+    <data name="LaunchCopilotCli_ScreenReader_FriendlyName" xml:space="preserve">
+        <value>Screen reader</value>
+    </data>
+    <data name="LaunchCopilotCli_ScreenReader_Description" xml:space="preserve">
+        <value>Enable screen reader accessibility mode (--screen-reader).</value>
+    </data>
+
+    <!-- Input: Other -->
+    <data name="LaunchCopilotCli_Experimental_FriendlyName" xml:space="preserve">
+        <value>Experimental</value>
+    </data>
+    <data name="LaunchCopilotCli_Experimental_Description" xml:space="preserve">
+        <value>Enable experimental features (--experimental).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoExperimental_FriendlyName" xml:space="preserve">
+        <value>No experimental</value>
+    </data>
+    <data name="LaunchCopilotCli_NoExperimental_Description" xml:space="preserve">
+        <value>Disable experimental features (--no-experimental).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoAutoUpdate_FriendlyName" xml:space="preserve">
+        <value>No auto update</value>
+    </data>
+    <data name="LaunchCopilotCli_NoAutoUpdate_Description" xml:space="preserve">
+        <value>Disable automatic updates of the Copilot CLI (--no-auto-update).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoCustomInstructions_FriendlyName" xml:space="preserve">
+        <value>No custom instructions</value>
+    </data>
+    <data name="LaunchCopilotCli_NoCustomInstructions_Description" xml:space="preserve">
+        <value>Ignore any custom instruction files in the repository (--no-custom-instructions).</value>
+    </data>
+    <data name="LaunchCopilotCli_Remote_FriendlyName" xml:space="preserve">
+        <value>Remote</value>
+    </data>
+    <data name="LaunchCopilotCli_Remote_Description" xml:space="preserve">
+        <value>Use a remote session (--remote).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoRemote_FriendlyName" xml:space="preserve">
+        <value>No remote</value>
+    </data>
+    <data name="LaunchCopilotCli_NoRemote_Description" xml:space="preserve">
+        <value>Disable remote session support (--no-remote).</value>
+    </data>
+    <data name="LaunchCopilotCli_BashEnv_FriendlyName" xml:space="preserve">
+        <value>Bash env</value>
+    </data>
+    <data name="LaunchCopilotCli_BashEnv_Description" xml:space="preserve">
+        <value>Source the bash environment before running commands (--bash-env).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoBashEnv_FriendlyName" xml:space="preserve">
+        <value>No bash env</value>
+    </data>
+    <data name="LaunchCopilotCli_NoBashEnv_Description" xml:space="preserve">
+        <value>Skip sourcing the bash environment (--no-bash-env).</value>
+    </data>
+    <data name="LaunchCopilotCli_Mouse_FriendlyName" xml:space="preserve">
+        <value>Mouse</value>
+    </data>
+    <data name="LaunchCopilotCli_Mouse_Description" xml:space="preserve">
+        <value>Enable mouse support in the terminal UI (--mouse).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoMouse_FriendlyName" xml:space="preserve">
+        <value>No mouse</value>
+    </data>
+    <data name="LaunchCopilotCli_NoMouse_Description" xml:space="preserve">
+        <value>Disable mouse support in the terminal UI (--no-mouse).</value>
+    </data>
+    <data name="LaunchCopilotCli_SecretEnvVars_FriendlyName" xml:space="preserve">
+        <value>Secret environment variables</value>
+    </data>
+    <data name="LaunchCopilotCli_SecretEnvVars_Description" xml:space="preserve">
+        <value>Comma-separated list of environment variable names to treat as secrets. Each value becomes a separate --secret-env-vars flag.</value>
+    </data>
+    <data name="LaunchCopilotCli_PlainDiff_FriendlyName" xml:space="preserve">
+        <value>Plain diff</value>
+    </data>
+    <data name="LaunchCopilotCli_PlainDiff_Description" xml:space="preserve">
+        <value>Show diffs in plain text format (--plain-diff).</value>
+    </data>
+    <data name="LaunchCopilotCli_NoPlainDiff_FriendlyName" xml:space="preserve">
+        <value>No plain diff</value>
+    </data>
+    <data name="LaunchCopilotCli_NoPlainDiff_Description" xml:space="preserve">
+        <value>Use the default diff format instead of plain text (--no-plain-diff).</value>
+    </data>
+
+    <!-- Output arguments -->
+    <data name="LaunchCopilotCli_ExitCode_FriendlyName" xml:space="preserve">
+        <value>Exit code</value>
+    </data>
+    <data name="LaunchCopilotCli_ExitCode_Description" xml:space="preserve">
+        <value>The exit code returned by the copilot process.</value>
+    </data>
+    <data name="LaunchCopilotCli_StandardOutput_FriendlyName" xml:space="preserve">
+        <value>Standard output</value>
+    </data>
+    <data name="LaunchCopilotCli_StandardOutput_Description" xml:space="preserve">
+        <value>The text written to standard output (stdout) by the copilot process.</value>
+    </data>
+    <data name="LaunchCopilotCli_StandardError_FriendlyName" xml:space="preserve">
+        <value>Standard error</value>
+    </data>
+    <data name="LaunchCopilotCli_StandardError_Description" xml:space="preserve">
+        <value>The text written to standard error (stderr) by the copilot process.</value>
+    </data>
+
+    <!-- Groups -->
+    <data name="Group_General_FriendlyName" xml:space="preserve">
+        <value>General</value>
+    </data>
+    <data name="Group_General_Description" xml:space="preserve">
+        <value>General settings for the Copilot CLI execution.</value>
+    </data>
+    <data name="Group_Session_FriendlyName" xml:space="preserve">
+        <value>Session</value>
+    </data>
+    <data name="Group_Session_Description" xml:space="preserve">
+        <value>Session management settings.</value>
+    </data>
+    <data name="Group_Mode_FriendlyName" xml:space="preserve">
+        <value>Mode</value>
+    </data>
+    <data name="Group_Mode_Description" xml:space="preserve">
+        <value>Operating mode and autopilot settings.</value>
+    </data>
+    <data name="Group_Permissions_FriendlyName" xml:space="preserve">
+        <value>Permissions</value>
+    </data>
+    <data name="Group_Permissions_Description" xml:space="preserve">
+        <value>Permission and access control settings for tools, paths, and URLs.</value>
+    </data>
+    <data name="Group_Model_FriendlyName" xml:space="preserve">
+        <value>Model</value>
+    </data>
+    <data name="Group_Model_Description" xml:space="preserve">
+        <value>AI model and reasoning settings.</value>
+    </data>
+    <data name="Group_Mcp_FriendlyName" xml:space="preserve">
+        <value>MCP &amp; Plugins</value>
+    </data>
+    <data name="Group_Mcp_Description" xml:space="preserve">
+        <value>Model Context Protocol server, plugin, and directory settings.</value>
+    </data>
+    <data name="Group_Display_FriendlyName" xml:space="preserve">
+        <value>Display &amp; Output</value>
+    </data>
+    <data name="Group_Display_Description" xml:space="preserve">
+        <value>Output format, logging, and display settings.</value>
+    </data>
+    <data name="Group_Advanced_FriendlyName" xml:space="preserve">
+        <value>Advanced</value>
+    </data>
+    <data name="Group_Advanced_Description" xml:space="preserve">
+        <value>Advanced and miscellaneous settings.</value>
+    </data>
+
+    <!-- Errors -->
+    <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
+        <value>Operation failed</value>
+    </data>
+    <data name="Error_UnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when launching or executing the Copilot CLI.</value>
+    </data>
+</root>
