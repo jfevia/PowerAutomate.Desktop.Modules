@@ -281,23 +281,23 @@ public class LaunchCopilotCliAction : ActionBase
         if (!string.IsNullOrEmpty(Prompt))            args.Add($"--prompt={Quote(Prompt)}");
         if (!string.IsNullOrEmpty(InteractivePrompt)) args.Add($"--interactive={Quote(InteractivePrompt)}");
         if (!string.IsNullOrEmpty(SessionName))       args.Add($"--name={Quote(SessionName)}");
-        if (Continue == CopilotSwitch.Yes)                  args.Add("--continue");
+        if (Continue == CopilotSwitch.On)                  args.Add("--continue");
         if (!string.IsNullOrEmpty(Resume))            args.Add($"--resume={Quote(Resume)}");
         if (!string.IsNullOrEmpty(Connect))           args.Add($"--connect={Quote(Connect)}");
 
         // Mode
         args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
-        if (Autopilot == CopilotSwitch.Yes)                 args.Add("--autopilot");
-        if (Plan == CopilotSwitch.Yes)                       args.Add("--plan");
+        if (Autopilot == CopilotSwitch.On)                 args.Add("--autopilot");
+        if (Plan == CopilotSwitch.On)                       args.Add("--plan");
         if (MaxAutopilotContinues.HasValue)           args.Add($"--max-autopilot-continues={MaxAutopilotContinues.Value}");
-        if (NoAskUser == CopilotSwitch.Yes)                  args.Add("--no-ask-user");
+        if (NoAskUser == CopilotSwitch.On)                  args.Add("--no-ask-user");
 
         // Permissions
-        if (AllowAll == CopilotSwitch.Yes)                   args.Add("--allow-all");
-        if (Yolo == CopilotSwitch.Yes)                       args.Add("--yolo");
-        if (AllowAllPaths == CopilotSwitch.Yes)              args.Add("--allow-all-paths");
-        if (AllowAllTools == CopilotSwitch.Yes)              args.Add("--allow-all-tools");
-        if (AllowAllUrls == CopilotSwitch.Yes)               args.Add("--allow-all-urls");
+        if (AllowAll == CopilotSwitch.On)                   args.Add("--allow-all");
+        if (Yolo == CopilotSwitch.On)                       args.Add("--yolo");
+        if (AllowAllPaths == CopilotSwitch.On)              args.Add("--allow-all-paths");
+        if (AllowAllTools == CopilotSwitch.On)              args.Add("--allow-all-tools");
+        if (AllowAllUrls == CopilotSwitch.On)               args.Add("--allow-all-urls");
         if (!string.IsNullOrEmpty(AllowTool))         args.Add($"--allow-tool={Quote(AllowTool)}");
         if (!string.IsNullOrEmpty(AllowUrl))          args.Add($"--allow-url={Quote(AllowUrl)}");
         if (!string.IsNullOrEmpty(DenyTool))          args.Add($"--deny-tool={Quote(DenyTool)}");
@@ -308,49 +308,49 @@ public class LaunchCopilotCliAction : ActionBase
         // Model/AI
         if (!string.IsNullOrEmpty(Model))             args.Add($"--model={Quote(Model)}");
         if (Effort.HasValue)                          args.Add($"--effort={Effort.Value.ToString().ToLowerInvariant()}");
-        if (EnableReasoningSummaries == CopilotSwitch.Yes)   args.Add("--enable-reasoning-summaries");
+        if (EnableReasoningSummaries == CopilotSwitch.On)   args.Add("--enable-reasoning-summaries");
 
         // Paths/Dirs
         AddMultiValueArgs(args, AddDir, "--add-dir");
-        if (DisallowTempDir == CopilotSwitch.Yes)            args.Add("--disallow-temp-dir");
+        if (DisallowTempDir == CopilotSwitch.On)            args.Add("--disallow-temp-dir");
 
         // MCP/Tools
         AddMultiValueArgs(args, AddGithubMcpTool, "--add-github-mcp-tool");
         AddMultiValueArgs(args, AddGithubMcpToolset, "--add-github-mcp-toolset");
         if (!string.IsNullOrEmpty(AdditionalMcpConfig)) args.Add($"--additional-mcp-config={Quote(AdditionalMcpConfig)}");
-        if (DisableBuiltinMcps == CopilotSwitch.Yes)         args.Add("--disable-builtin-mcps");
+        if (DisableBuiltinMcps == CopilotSwitch.On)         args.Add("--disable-builtin-mcps");
         AddMultiValueArgs(args, DisableMcpServer, "--disable-mcp-server");
-        if (EnableAllGithubMcpTools == CopilotSwitch.Yes)    args.Add("--enable-all-github-mcp-tools");
+        if (EnableAllGithubMcpTools == CopilotSwitch.On)    args.Add("--enable-all-github-mcp-tools");
         AddMultiValueArgs(args, PluginDir, "--plugin-dir");
         if (!string.IsNullOrEmpty(Agent))             args.Add($"--agent={Quote(Agent)}");
 
         // Output/Display
         if (OutputFormat.HasValue)                    args.Add($"--output-format={OutputFormat.Value.ToString().ToLowerInvariant()}");
-        if (Silent == CopilotSwitch.Yes)                     args.Add("--silent");
-        if (NoColor == CopilotSwitch.Yes)                    args.Add("--no-color");
-        if (Banner == CopilotSwitch.Yes)         args.Add("--banner");
-        else if (Banner == CopilotSwitch.No)   args.Add("--no-banner");
+        if (Silent == CopilotSwitch.On)                     args.Add("--silent");
+        if (NoColor == CopilotSwitch.On)                    args.Add("--no-color");
+        if (Banner == CopilotSwitch.On)         args.Add("--banner");
+        else if (Banner == CopilotSwitch.Off)   args.Add("--no-banner");
         if (Stream.HasValue)                          args.Add($"--stream={Stream.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(LogDir))            args.Add($"--log-dir={Quote(LogDir)}");
         if (LogLevel.HasValue)                        args.Add($"--log-level={LogLevel.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(Share))             args.Add($"--share={Quote(Share)}");
-        if (ShareGist == CopilotSwitch.Yes)                  args.Add("--share-gist");
-        if (ScreenReader == CopilotSwitch.Yes)               args.Add("--screen-reader");
+        if (ShareGist == CopilotSwitch.On)                  args.Add("--share-gist");
+        if (ScreenReader == CopilotSwitch.On)               args.Add("--screen-reader");
 
         // Advanced
-        if (Experimental == CopilotSwitch.Yes)       args.Add("--experimental");
-        else if (Experimental == CopilotSwitch.No) args.Add("--no-experimental");
-        if (NoAutoUpdate == CopilotSwitch.Yes)       args.Add("--no-auto-update");
-        if (NoCustomInstructions == CopilotSwitch.Yes) args.Add("--no-custom-instructions");
-        if (Remote == CopilotSwitch.Yes)             args.Add("--remote");
-        else if (Remote == CopilotSwitch.No)       args.Add("--no-remote");
-        if (BashEnv == CopilotSwitch.Yes)            args.Add("--bash-env");
-        else if (BashEnv == CopilotSwitch.No)      args.Add("--no-bash-env");
-        if (Mouse == CopilotSwitch.Yes)              args.Add("--mouse");
-        else if (Mouse == CopilotSwitch.No)        args.Add("--no-mouse");
+        if (Experimental == CopilotSwitch.On)       args.Add("--experimental");
+        else if (Experimental == CopilotSwitch.Off) args.Add("--no-experimental");
+        if (NoAutoUpdate == CopilotSwitch.On)       args.Add("--no-auto-update");
+        if (NoCustomInstructions == CopilotSwitch.On) args.Add("--no-custom-instructions");
+        if (Remote == CopilotSwitch.On)             args.Add("--remote");
+        else if (Remote == CopilotSwitch.Off)       args.Add("--no-remote");
+        if (BashEnv == CopilotSwitch.On)            args.Add("--bash-env");
+        else if (BashEnv == CopilotSwitch.Off)      args.Add("--no-bash-env");
+        if (Mouse == CopilotSwitch.On)              args.Add("--mouse");
+        else if (Mouse == CopilotSwitch.Off)        args.Add("--no-mouse");
         AddMultiValueArgs(args, SecretEnvVars, "--secret-env-vars");
-        if (PlainDiff == CopilotSwitch.Yes)          args.Add("--plain-diff");
-        else if (PlainDiff == CopilotSwitch.No)    args.Add("--no-plain-diff");
+        if (PlainDiff == CopilotSwitch.On)          args.Add("--plain-diff");
+        else if (PlainDiff == CopilotSwitch.Off)    args.Add("--no-plain-diff");
 
         return args;
     }

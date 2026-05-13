@@ -107,18 +107,18 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to True.
         /// </summary>
-        public static string CopilotSwitch_Yes_FriendlyName {
+        public static string CopilotSwitch_On_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotSwitch_Yes_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotSwitch_On_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to False.
         /// </summary>
-        public static string CopilotSwitch_No_FriendlyName {
+        public static string CopilotSwitch_Off_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotSwitch_No_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotSwitch_Off_FriendlyName", resourceCulture);
             }
         }
         
