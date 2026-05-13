@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
     <!-- 
       Microsoft ResX Schema 
@@ -165,10 +165,10 @@
     <data name="CopilotSwitch_Unset_FriendlyName" xml:space="preserve">
         <value>(Not set)</value>
     </data>
-    <data name="CopilotSwitch_True_FriendlyName" xml:space="preserve">
+    <data name="CopilotSwitch_Yes_FriendlyName" xml:space="preserve">
         <value>True</value>
     </data>
-    <data name="CopilotSwitch_False_FriendlyName" xml:space="preserve">
+    <data name="CopilotSwitch_No_FriendlyName" xml:space="preserve">
         <value>False</value>
     </data>
 
