@@ -47,7 +47,7 @@
             AfterTargets="Build"
             DependsOnTargets="$(SignCustomModuleBuildOutputDependsOn);_GetOutputItemsFromCustomModulePack"
             Condition=" '$(PackCustomModule)' == 'true' ">
-        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.dll" />
+        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.dll" WorkingDirectory="$(MSBuildProjectDirectory)" />
     </Target>
 
     <!-- ========== Pack ========== -->
@@ -63,7 +63,7 @@
             AfterTargets="PackCustomModule"
             DependsOnTargets="$(SignCustomModulePackageDependsOn);PackCustomModule"
             Condition=" '$(PackCustomModule)' == 'true' ">
-        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.cab" />
+        <Exec Command="powershell -ExecutionPolicy Bypass -File $(SignScriptAbsoluteFilePath) -Filter **\*.cab" WorkingDirectory="$(MSBuildProjectDirectory)" />
     </Target>
 
 </Project>
