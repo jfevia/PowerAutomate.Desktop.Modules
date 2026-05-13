@@ -57,8 +57,8 @@ public class LaunchCopilotCliAction : ActionBase
 
     // ── Mode ───────────────────────────────────────────────────────────────────
     [InputArgument(Order = 9, Group = Groups.Mode)]
-    [DefaultValue(CopilotMode.Default)]
-    public CopilotMode Mode { get; set; } = CopilotMode.Default;
+    [DefaultValue(CopilotMode.Interactive)]
+    public CopilotMode Mode { get; set; } = CopilotMode.Interactive;
 
     [InputArgument(Order = 10, Required = false, Group = Groups.Mode)]
     public bool? Autopilot { get; set; }
@@ -279,7 +279,7 @@ public class LaunchCopilotCliAction : ActionBase
         if (!string.IsNullOrEmpty(Connect))           args.Add($"--connect={Quote(Connect)}");
 
         // Mode
-        if (Mode != CopilotMode.Default)              args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
+        args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
         if (Autopilot == true)                        args.Add("--autopilot");
         if (Plan == true)                             args.Add("--plan");
         if (MaxAutopilotContinues.HasValue)           args.Add($"--max-autopilot-continues={MaxAutopilotContinues.Value}");

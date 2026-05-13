@@ -143,9 +143,6 @@
     </data>
 
     <!-- Enum: CopilotMode -->
-    <data name="CopilotMode_Default_FriendlyName" xml:space="preserve">
-        <value>(Default)</value>
-    </data>
     <data name="CopilotMode_Interactive_FriendlyName" xml:space="preserve">
         <value>Interactive</value>
     </data>
@@ -207,9 +204,6 @@
     </data>
 
     <!-- Action Selectors -->
-    <data name="LaunchCopilotCli_Default_Summary" xml:space="preserve">
-        <value>Launch Copilot CLI with default mode (no explicit --mode flag).</value>
-    </data>
     <data name="LaunchCopilotCli_Interactive_Summary" xml:space="preserve">
         <value>Launch Copilot CLI in interactive mode.</value>
     </data>

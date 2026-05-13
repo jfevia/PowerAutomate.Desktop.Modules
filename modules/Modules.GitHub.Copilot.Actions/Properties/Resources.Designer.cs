@@ -186,15 +186,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Default).
-        /// </summary>
-        public static string CopilotMode_Default_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotMode_Default_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Interactive.
         /// </summary>
         public static string CopilotMode_Interactive_FriendlyName {
@@ -1397,15 +1388,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         public static string LaunchCopilotCli_Summary {
             get {
                 return ResourceManager.GetString("LaunchCopilotCli_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI with default mode (no explicit --mode flag)..
-        /// </summary>
-        public static string LaunchCopilotCli_Default_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Default_Summary", resourceCulture);
             }
         }
         

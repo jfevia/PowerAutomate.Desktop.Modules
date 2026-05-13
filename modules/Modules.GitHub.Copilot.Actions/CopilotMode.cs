@@ -6,8 +6,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
 
 public enum CopilotMode
 {
-    Default = 0,
-    Interactive,
+    Interactive = 0,
     Plan,
     Autopilot
 }
