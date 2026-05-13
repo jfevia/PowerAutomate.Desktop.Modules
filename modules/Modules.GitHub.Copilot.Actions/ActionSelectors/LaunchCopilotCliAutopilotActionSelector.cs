@@ -1,18 +1,16 @@
-// ---------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 
 namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
-
-public class LaunchCopilotCliAutopilotNotSetActionSelector : ActionSelector<LaunchCopilotCliAction>
+public class LaunchCopilotCliAutopilotActionSelector : ActionSelector<LaunchCopilotCliAction>
 {
-    public LaunchCopilotCliAutopilotNotSetActionSelector()
+    public LaunchCopilotCliAutopilotActionSelector()
     {
-        UseName("LaunchCopilotCli_Autopilot_NotSet");
+        UseName("LaunchCopilotCli_Autopilot");
         Prop(s => s.Mode).ShouldBe(CopilotMode.Autopilot);
-        Prop(s => s.OutputFormat).ShouldBe(CopilotOutputFormat.NotSet);
 
         ShowAll();
         // --autopilot and --plan cannot be combined with --mode (docs)
@@ -20,6 +18,6 @@ public class LaunchCopilotCliAutopilotNotSetActionSelector : ActionSelector<Laun
         Hide(s => s.Plan);
         // --interactive prompt is for interactive mode only
         Hide(s => s.InteractivePrompt);
-        // MaxAutopilotContinues and NoAskUser ARE shown — autopilot-specific
+        // MaxAutopilotContinues and NoAskUser ARE shown -- autopilot-specific
     }
 }

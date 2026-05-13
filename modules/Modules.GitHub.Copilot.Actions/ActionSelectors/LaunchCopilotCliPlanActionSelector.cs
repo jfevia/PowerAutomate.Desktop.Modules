@@ -1,18 +1,16 @@
-// ---------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 
 namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
-
-public class LaunchCopilotCliPlanNotSetActionSelector : ActionSelector<LaunchCopilotCliAction>
+public class LaunchCopilotCliPlanActionSelector : ActionSelector<LaunchCopilotCliAction>
 {
-    public LaunchCopilotCliPlanNotSetActionSelector()
+    public LaunchCopilotCliPlanActionSelector()
     {
-        UseName("LaunchCopilotCli_Plan_NotSet");
+        UseName("LaunchCopilotCli_Plan");
         Prop(s => s.Mode).ShouldBe(CopilotMode.Plan);
-        Prop(s => s.OutputFormat).ShouldBe(CopilotOutputFormat.NotSet);
 
         ShowAll();
         // --autopilot and --plan cannot be combined with --mode (docs)

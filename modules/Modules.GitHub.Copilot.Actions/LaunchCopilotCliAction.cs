@@ -4,7 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
@@ -31,255 +30,194 @@ public class LaunchCopilotCliAction : ActionBase
 {
     // ── General ────────────────────────────────────────────────────────────────
     [InputArgument(Order = 1, Required = false, Group = Groups.General)]
-    [DefaultValue("")]
     public string ExecutablePath { get; set; } = string.Empty;
 
     [InputArgument(Order = 2, Required = false, Group = Groups.General)]
-    [DefaultValue("")]
     public string WorkingDirectory { get; set; } = string.Empty;
 
     // ── Session ────────────────────────────────────────────────────────────────
     [InputArgument(Order = 3, Required = false, Group = Groups.Session)]
-    [DefaultValue("")]
     public string Prompt { get; set; } = string.Empty;
 
     [InputArgument(Order = 4, Required = false, Group = Groups.Session)]
-    [DefaultValue("")]
     public string InteractivePrompt { get; set; } = string.Empty;
 
     [InputArgument(Order = 5, Required = false, Group = Groups.Session)]
-    [DefaultValue("")]
     public string SessionName { get; set; } = string.Empty;
 
     [InputArgument(Order = 6, Required = false, Group = Groups.Session)]
-    [DefaultValue(false)]
-    public bool Continue { get; set; } = false;
+    public bool? Continue { get; set; }
 
     [InputArgument(Order = 7, Required = false, Group = Groups.Session)]
-    [DefaultValue("")]
     public string Resume { get; set; } = string.Empty;
 
     [InputArgument(Order = 8, Required = false, Group = Groups.Session)]
-    [DefaultValue("")]
     public string Connect { get; set; } = string.Empty;
 
     // ── Mode ───────────────────────────────────────────────────────────────────
-    [InputArgument(Order = 9, Required = false, Group = Groups.Mode)]
-    [DefaultValue(CopilotMode.NotSet)]
-    public CopilotMode Mode { get; set; } = CopilotMode.NotSet;
+    [InputArgument(Order = 9, Group = Groups.Mode)]
+    public CopilotMode Mode { get; set; } = CopilotMode.Default;
 
     [InputArgument(Order = 10, Required = false, Group = Groups.Mode)]
-    [DefaultValue(false)]
-    public bool Autopilot { get; set; } = false;
+    public bool? Autopilot { get; set; }
 
     [InputArgument(Order = 11, Required = false, Group = Groups.Mode)]
-    [DefaultValue(false)]
-    public bool Plan { get; set; } = false;
+    public bool? Plan { get; set; }
 
     [InputArgument(Order = 12, Required = false, Group = Groups.Mode)]
-    [DefaultValue(-1)]
-    public int MaxAutopilotContinues { get; set; } = -1;
+    public int? MaxAutopilotContinues { get; set; }
 
     [InputArgument(Order = 13, Required = false, Group = Groups.Mode)]
-    [DefaultValue(false)]
-    public bool NoAskUser { get; set; } = false;
+    public bool? NoAskUser { get; set; }
 
     // ── Permissions ────────────────────────────────────────────────────────────
     [InputArgument(Order = 14, Required = false, Group = Groups.Permissions)]
-    [DefaultValue(false)]
-    public bool AllowAll { get; set; } = false;
+    public bool? AllowAll { get; set; }
 
     [InputArgument(Order = 15, Required = false, Group = Groups.Permissions)]
-    [DefaultValue(false)]
-    public bool Yolo { get; set; } = false;
+    public bool? Yolo { get; set; }
 
     [InputArgument(Order = 16, Required = false, Group = Groups.Permissions)]
-    [DefaultValue(false)]
-    public bool AllowAllPaths { get; set; } = false;
+    public bool? AllowAllPaths { get; set; }
 
     [InputArgument(Order = 17, Required = false, Group = Groups.Permissions)]
-    [DefaultValue(false)]
-    public bool AllowAllTools { get; set; } = false;
+    public bool? AllowAllTools { get; set; }
 
     [InputArgument(Order = 18, Required = false, Group = Groups.Permissions)]
-    [DefaultValue(false)]
-    public bool AllowAllUrls { get; set; } = false;
+    public bool? AllowAllUrls { get; set; }
 
     [InputArgument(Order = 19, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string AllowTool { get; set; } = string.Empty;
 
     [InputArgument(Order = 20, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string AllowUrl { get; set; } = string.Empty;
 
     [InputArgument(Order = 21, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string DenyTool { get; set; } = string.Empty;
 
     [InputArgument(Order = 22, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string DenyUrl { get; set; } = string.Empty;
 
     [InputArgument(Order = 23, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string AvailableTools { get; set; } = string.Empty;
 
     [InputArgument(Order = 24, Required = false, Group = Groups.Permissions)]
-    [DefaultValue("")]
     public string ExcludedTools { get; set; } = string.Empty;
 
     // ── Model ──────────────────────────────────────────────────────────────────
     [InputArgument(Order = 25, Required = false, Group = Groups.Model)]
-    [DefaultValue("")]
     public string Model { get; set; } = string.Empty;
 
     [InputArgument(Order = 26, Required = false, Group = Groups.Model)]
-    [DefaultValue(CopilotEffortLevel.NotSet)]
-    public CopilotEffortLevel Effort { get; set; } = CopilotEffortLevel.NotSet;
+    public CopilotEffortLevel? Effort { get; set; }
 
     [InputArgument(Order = 27, Required = false, Group = Groups.Model)]
-    [DefaultValue(false)]
-    public bool EnableReasoningSummaries { get; set; } = false;
+    public bool? EnableReasoningSummaries { get; set; }
 
     // ── MCP & Plugins ──────────────────────────────────────────────────────────
     [InputArgument(Order = 28, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string AddDir { get; set; } = string.Empty;
 
     [InputArgument(Order = 29, Required = false, Group = Groups.Mcp)]
-    [DefaultValue(false)]
-    public bool DisallowTempDir { get; set; } = false;
+    public bool? DisallowTempDir { get; set; }
 
     [InputArgument(Order = 30, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string AddGithubMcpTool { get; set; } = string.Empty;
 
     [InputArgument(Order = 31, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string AddGithubMcpToolset { get; set; } = string.Empty;
 
     [InputArgument(Order = 32, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string AdditionalMcpConfig { get; set; } = string.Empty;
 
     [InputArgument(Order = 33, Required = false, Group = Groups.Mcp)]
-    [DefaultValue(false)]
-    public bool DisableBuiltinMcps { get; set; } = false;
+    public bool? DisableBuiltinMcps { get; set; }
 
     [InputArgument(Order = 34, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string DisableMcpServer { get; set; } = string.Empty;
 
     [InputArgument(Order = 35, Required = false, Group = Groups.Mcp)]
-    [DefaultValue(false)]
-    public bool EnableAllGithubMcpTools { get; set; } = false;
+    public bool? EnableAllGithubMcpTools { get; set; }
 
     [InputArgument(Order = 36, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string PluginDir { get; set; } = string.Empty;
 
     [InputArgument(Order = 37, Required = false, Group = Groups.Mcp)]
-    [DefaultValue("")]
     public string Agent { get; set; } = string.Empty;
 
     // ── Display & Output ───────────────────────────────────────────────────────
     [InputArgument(Order = 38, Required = false, Group = Groups.Display)]
-    [DefaultValue(CopilotOutputFormat.NotSet)]
-    public CopilotOutputFormat OutputFormat { get; set; } = CopilotOutputFormat.NotSet;
+    public CopilotOutputFormat? OutputFormat { get; set; }
 
     [InputArgument(Order = 39, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool Silent { get; set; } = false;
+    public bool? Silent { get; set; }
 
     [InputArgument(Order = 40, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool NoColor { get; set; } = false;
+    public bool? NoColor { get; set; }
 
     [InputArgument(Order = 41, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool Banner { get; set; } = false;
+    public bool? Banner { get; set; }
 
     [InputArgument(Order = 42, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool NoBanner { get; set; } = false;
+    public bool? NoBanner { get; set; }
 
     [InputArgument(Order = 43, Required = false, Group = Groups.Display)]
-    [DefaultValue(CopilotStreamMode.NotSet)]
-    public CopilotStreamMode Stream { get; set; } = CopilotStreamMode.NotSet;
+    public CopilotStreamMode? Stream { get; set; }
 
     [InputArgument(Order = 44, Required = false, Group = Groups.Display)]
-    [DefaultValue("")]
     public string LogDir { get; set; } = string.Empty;
 
     [InputArgument(Order = 45, Required = false, Group = Groups.Display)]
-    [DefaultValue(CopilotLogLevel.NotSet)]
-    public CopilotLogLevel LogLevel { get; set; } = CopilotLogLevel.NotSet;
+    public CopilotLogLevel? LogLevel { get; set; }
 
     [InputArgument(Order = 46, Required = false, Group = Groups.Display)]
-    [DefaultValue("")]
     public string Share { get; set; } = string.Empty;
 
     [InputArgument(Order = 47, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool ShareGist { get; set; } = false;
+    public bool? ShareGist { get; set; }
 
     [InputArgument(Order = 48, Required = false, Group = Groups.Display)]
-    [DefaultValue(false)]
-    public bool ScreenReader { get; set; } = false;
+    public bool? ScreenReader { get; set; }
 
     // ── Advanced ───────────────────────────────────────────────────────────────
     [InputArgument(Order = 49, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool Experimental { get; set; } = false;
+    public bool? Experimental { get; set; }
 
     [InputArgument(Order = 50, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoExperimental { get; set; } = false;
+    public bool? NoExperimental { get; set; }
 
     [InputArgument(Order = 51, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoAutoUpdate { get; set; } = false;
+    public bool? NoAutoUpdate { get; set; }
 
     [InputArgument(Order = 52, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoCustomInstructions { get; set; } = false;
+    public bool? NoCustomInstructions { get; set; }
 
     [InputArgument(Order = 53, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool Remote { get; set; } = false;
+    public bool? Remote { get; set; }
 
     [InputArgument(Order = 54, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoRemote { get; set; } = false;
+    public bool? NoRemote { get; set; }
 
     [InputArgument(Order = 55, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool BashEnv { get; set; } = false;
+    public bool? BashEnv { get; set; }
 
     [InputArgument(Order = 56, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoBashEnv { get; set; } = false;
+    public bool? NoBashEnv { get; set; }
 
     [InputArgument(Order = 57, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool Mouse { get; set; } = false;
+    public bool? Mouse { get; set; }
 
     [InputArgument(Order = 58, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoMouse { get; set; } = false;
+    public bool? NoMouse { get; set; }
 
     [InputArgument(Order = 59, Required = false, Group = Groups.Advanced)]
-    [DefaultValue("")]
     public string SecretEnvVars { get; set; } = string.Empty;
 
     [InputArgument(Order = 60, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool PlainDiff { get; set; } = false;
+    public bool? PlainDiff { get; set; }
 
     [InputArgument(Order = 61, Required = false, Group = Groups.Advanced)]
-    [DefaultValue(false)]
-    public bool NoPlainDiff { get; set; } = false;
+    public bool? NoPlainDiff { get; set; }
 
     // Output arguments
     [OutputArgument(Order = 1)]
@@ -334,23 +272,23 @@ public class LaunchCopilotCliAction : ActionBase
         if (!string.IsNullOrEmpty(Prompt))            args.Add($"--prompt={Quote(Prompt)}");
         if (!string.IsNullOrEmpty(InteractivePrompt)) args.Add($"--interactive={Quote(InteractivePrompt)}");
         if (!string.IsNullOrEmpty(SessionName))       args.Add($"--name={Quote(SessionName)}");
-        if (Continue)                                  args.Add("--continue");
+        if (Continue == true)                          args.Add("--continue");
         if (!string.IsNullOrEmpty(Resume))            args.Add($"--resume={Quote(Resume)}");
         if (!string.IsNullOrEmpty(Connect))           args.Add($"--connect={Quote(Connect)}");
 
         // Mode
-        if (Mode != CopilotMode.NotSet)               args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
-        if (Autopilot)                                 args.Add("--autopilot");
-        if (Plan)                                      args.Add("--plan");
-        if (MaxAutopilotContinues >= 0)               args.Add($"--max-autopilot-continues={MaxAutopilotContinues}");
-        if (NoAskUser)                                 args.Add("--no-ask-user");
+        if (Mode != CopilotMode.Default)              args.Add($"--mode={Mode.ToString().ToLowerInvariant()}");
+        if (Autopilot == true)                        args.Add("--autopilot");
+        if (Plan == true)                             args.Add("--plan");
+        if (MaxAutopilotContinues.HasValue)           args.Add($"--max-autopilot-continues={MaxAutopilotContinues.Value}");
+        if (NoAskUser == true)                        args.Add("--no-ask-user");
 
         // Permissions
-        if (AllowAll)                                  args.Add("--allow-all");
-        if (Yolo)                                      args.Add("--yolo");
-        if (AllowAllPaths)                             args.Add("--allow-all-paths");
-        if (AllowAllTools)                             args.Add("--allow-all-tools");
-        if (AllowAllUrls)                              args.Add("--allow-all-urls");
+        if (AllowAll == true)                         args.Add("--allow-all");
+        if (Yolo == true)                             args.Add("--yolo");
+        if (AllowAllPaths == true)                    args.Add("--allow-all-paths");
+        if (AllowAllTools == true)                    args.Add("--allow-all-tools");
+        if (AllowAllUrls == true)                     args.Add("--allow-all-urls");
         if (!string.IsNullOrEmpty(AllowTool))         args.Add($"--allow-tool={Quote(AllowTool)}");
         if (!string.IsNullOrEmpty(AllowUrl))          args.Add($"--allow-url={Quote(AllowUrl)}");
         if (!string.IsNullOrEmpty(DenyTool))          args.Add($"--deny-tool={Quote(DenyTool)}");
@@ -360,50 +298,50 @@ public class LaunchCopilotCliAction : ActionBase
 
         // Model/AI
         if (!string.IsNullOrEmpty(Model))             args.Add($"--model={Quote(Model)}");
-        if (Effort != CopilotEffortLevel.NotSet)       args.Add($"--effort={Effort.ToString().ToLowerInvariant()}");
-        if (EnableReasoningSummaries)                  args.Add("--enable-reasoning-summaries");
+        if (Effort.HasValue)                          args.Add($"--effort={Effort.Value.ToString().ToLowerInvariant()}");
+        if (EnableReasoningSummaries == true)         args.Add("--enable-reasoning-summaries");
 
         // Paths/Dirs
         AddMultiValueArgs(args, AddDir, "--add-dir");
-        if (DisallowTempDir)                           args.Add("--disallow-temp-dir");
+        if (DisallowTempDir == true)                  args.Add("--disallow-temp-dir");
 
         // MCP/Tools
         AddMultiValueArgs(args, AddGithubMcpTool, "--add-github-mcp-tool");
         AddMultiValueArgs(args, AddGithubMcpToolset, "--add-github-mcp-toolset");
         if (!string.IsNullOrEmpty(AdditionalMcpConfig)) args.Add($"--additional-mcp-config={Quote(AdditionalMcpConfig)}");
-        if (DisableBuiltinMcps)                        args.Add("--disable-builtin-mcps");
+        if (DisableBuiltinMcps == true)               args.Add("--disable-builtin-mcps");
         AddMultiValueArgs(args, DisableMcpServer, "--disable-mcp-server");
-        if (EnableAllGithubMcpTools)                   args.Add("--enable-all-github-mcp-tools");
+        if (EnableAllGithubMcpTools == true)          args.Add("--enable-all-github-mcp-tools");
         AddMultiValueArgs(args, PluginDir, "--plugin-dir");
         if (!string.IsNullOrEmpty(Agent))             args.Add($"--agent={Quote(Agent)}");
 
         // Output/Display
-        if (OutputFormat != CopilotOutputFormat.NotSet) args.Add($"--output-format={OutputFormat.ToString().ToLowerInvariant()}");
-        if (Silent)                                    args.Add("--silent");
-        if (NoColor)                                   args.Add("--no-color");
-        if (Banner)                                    args.Add("--banner");
-        if (NoBanner)                                  args.Add("--no-banner");
-        if (Stream != CopilotStreamMode.NotSet)        args.Add($"--stream={Stream.ToString().ToLowerInvariant()}");
+        if (OutputFormat.HasValue)                    args.Add($"--output-format={OutputFormat.Value.ToString().ToLowerInvariant()}");
+        if (Silent == true)                           args.Add("--silent");
+        if (NoColor == true)                          args.Add("--no-color");
+        if (Banner == true)                           args.Add("--banner");
+        if (NoBanner == true)                         args.Add("--no-banner");
+        if (Stream.HasValue)                          args.Add($"--stream={Stream.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(LogDir))            args.Add($"--log-dir={Quote(LogDir)}");
-        if (LogLevel != CopilotLogLevel.NotSet)        args.Add($"--log-level={LogLevel.ToString().ToLowerInvariant()}");
+        if (LogLevel.HasValue)                        args.Add($"--log-level={LogLevel.Value.ToString().ToLowerInvariant()}");
         if (!string.IsNullOrEmpty(Share))             args.Add($"--share={Quote(Share)}");
-        if (ShareGist)                                 args.Add("--share-gist");
-        if (ScreenReader)                              args.Add("--screen-reader");
+        if (ShareGist == true)                        args.Add("--share-gist");
+        if (ScreenReader == true)                     args.Add("--screen-reader");
 
-        // Other
-        if (Experimental)         args.Add("--experimental");
-        if (NoExperimental)       args.Add("--no-experimental");
-        if (NoAutoUpdate)         args.Add("--no-auto-update");
-        if (NoCustomInstructions) args.Add("--no-custom-instructions");
-        if (Remote)               args.Add("--remote");
-        if (NoRemote)             args.Add("--no-remote");
-        if (BashEnv)              args.Add("--bash-env");
-        if (NoBashEnv)            args.Add("--no-bash-env");
-        if (Mouse)                args.Add("--mouse");
-        if (NoMouse)              args.Add("--no-mouse");
+        // Advanced
+        if (Experimental == true)       args.Add("--experimental");
+        if (NoExperimental == true)     args.Add("--no-experimental");
+        if (NoAutoUpdate == true)       args.Add("--no-auto-update");
+        if (NoCustomInstructions == true) args.Add("--no-custom-instructions");
+        if (Remote == true)             args.Add("--remote");
+        if (NoRemote == true)           args.Add("--no-remote");
+        if (BashEnv == true)            args.Add("--bash-env");
+        if (NoBashEnv == true)          args.Add("--no-bash-env");
+        if (Mouse == true)              args.Add("--mouse");
+        if (NoMouse == true)            args.Add("--no-mouse");
         AddMultiValueArgs(args, SecretEnvVars, "--secret-env-vars");
-        if (PlainDiff)            args.Add("--plain-diff");
-        if (NoPlainDiff)          args.Add("--no-plain-diff");
+        if (PlainDiff == true)          args.Add("--plain-diff");
+        if (NoPlainDiff == true)        args.Add("--no-plain-diff");
 
         return args;
     }

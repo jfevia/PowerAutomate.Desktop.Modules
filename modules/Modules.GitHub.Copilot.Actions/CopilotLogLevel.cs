@@ -6,7 +6,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
 
 public enum CopilotLogLevel
 {
-    NotSet = 0,
     None,
     Error,
     Warning,

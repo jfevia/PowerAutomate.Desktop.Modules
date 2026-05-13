@@ -96,15 +96,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Default).
-        /// </summary>
-        public static string CopilotEffortLevel_NotSet_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotEffortLevel_NotSet_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Low.
         /// </summary>
         public static string CopilotEffortLevel_Low_FriendlyName {
@@ -128,15 +119,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         public static string CopilotEffortLevel_High_FriendlyName {
             get {
                 return ResourceManager.GetString("CopilotEffortLevel_High_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (Default).
-        /// </summary>
-        public static string CopilotLogLevel_NotSet_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotLogLevel_NotSet_FriendlyName", resourceCulture);
             }
         }
         
@@ -206,9 +188,9 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to (Default).
         /// </summary>
-        public static string CopilotMode_NotSet_FriendlyName {
+        public static string CopilotMode_Default_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotMode_NotSet_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotMode_Default_FriendlyName", resourceCulture);
             }
         }
         
@@ -240,15 +222,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Default).
-        /// </summary>
-        public static string CopilotOutputFormat_NotSet_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotOutputFormat_NotSet_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
         public static string CopilotOutputFormat_Text_FriendlyName {
@@ -263,15 +236,6 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         public static string CopilotOutputFormat_Json_FriendlyName {
             get {
                 return ResourceManager.GetString("CopilotOutputFormat_Json_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to (Default).
-        /// </summary>
-        public static string CopilotStreamMode_NotSet_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotStreamMode_NotSet_FriendlyName", resourceCulture);
             }
         }
         
@@ -1437,110 +1401,38 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in default mode with default output format..
+        ///   Looks up a localized string similar to Launch Copilot CLI with default mode (no explicit --mode flag)..
         /// </summary>
-        public static string LaunchCopilotCli_NotSet_NotSet_Summary {
+        public static string LaunchCopilotCli_Default_Summary {
             get {
-                return ResourceManager.GetString("LaunchCopilotCli_NotSet_NotSet_Summary", resourceCulture);
+                return ResourceManager.GetString("LaunchCopilotCli_Default_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in default mode with text output..
+        ///   Looks up a localized string similar to Launch Copilot CLI in interactive mode..
         /// </summary>
-        public static string LaunchCopilotCli_NotSet_Text_Summary {
+        public static string LaunchCopilotCli_Interactive_Summary {
             get {
-                return ResourceManager.GetString("LaunchCopilotCli_NotSet_Text_Summary", resourceCulture);
+                return ResourceManager.GetString("LaunchCopilotCli_Interactive_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in default mode with JSON output..
+        ///   Looks up a localized string similar to Launch Copilot CLI in plan mode..
         /// </summary>
-        public static string LaunchCopilotCli_NotSet_Json_Summary {
+        public static string LaunchCopilotCli_Plan_Summary {
             get {
-                return ResourceManager.GetString("LaunchCopilotCli_NotSet_Json_Summary", resourceCulture);
+                return ResourceManager.GetString("LaunchCopilotCli_Plan_Summary", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in interactive mode with default output format..
+        ///   Looks up a localized string similar to Launch Copilot CLI in autopilot mode..
         /// </summary>
-        public static string LaunchCopilotCli_Interactive_NotSet_Summary {
+        public static string LaunchCopilotCli_Autopilot_Summary {
             get {
-                return ResourceManager.GetString("LaunchCopilotCli_Interactive_NotSet_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in interactive mode with text output..
-        /// </summary>
-        public static string LaunchCopilotCli_Interactive_Text_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Interactive_Text_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in interactive mode with JSON output..
-        /// </summary>
-        public static string LaunchCopilotCli_Interactive_Json_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Interactive_Json_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in plan mode with default output format..
-        /// </summary>
-        public static string LaunchCopilotCli_Plan_NotSet_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Plan_NotSet_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in plan mode with text output..
-        /// </summary>
-        public static string LaunchCopilotCli_Plan_Text_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Plan_Text_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in plan mode with JSON output..
-        /// </summary>
-        public static string LaunchCopilotCli_Plan_Json_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Plan_Json_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in autopilot mode with default output format..
-        /// </summary>
-        public static string LaunchCopilotCli_Autopilot_NotSet_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Autopilot_NotSet_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in autopilot mode with text output..
-        /// </summary>
-        public static string LaunchCopilotCli_Autopilot_Text_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Autopilot_Text_Summary", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Launch Copilot CLI in autopilot mode with JSON output..
-        /// </summary>
-        public static string LaunchCopilotCli_Autopilot_Json_Summary {
-            get {
-                return ResourceManager.GetString("LaunchCopilotCli_Autopilot_Json_Summary", resourceCulture);
+                return ResourceManager.GetString("LaunchCopilotCli_Autopilot_Summary", resourceCulture);
             }
         }
         
