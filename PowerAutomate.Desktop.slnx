@@ -1,0 +1,50 @@
+<Solution>
+  <Configurations>
+    <Platform Name="Any CPU" />
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Folder Name="/Modules/">
+    <Project Path="modules/Modules.AzureKeyVault.Actions/Modules.AzureKeyVault.Actions.csproj" />
+    <Project Path="modules/Modules.CloudFlows.Actions/Modules.CloudFlows.Actions.csproj" />
+    <Project Path="modules/Modules.GitHub.Copilot.Actions/Modules.GitHub.Copilot.Actions.csproj" />
+    <Project Path="modules/Modules.HTML.Actions/Modules.HTML.Actions.csproj" />
+    <Project Path="modules/Modules.Identity.Actions/Modules.Identity.Actions.csproj" />
+    <Project Path="modules/Modules.PowerFx.Actions/Modules.PowerFx.Actions.csproj" />
+    <Project Path="modules/Modules.Windows.Notifications.Actions/Modules.Windows.Notifications.Actions.csproj" />
+    <Project Path="modules/Modules.Windows.Registry.Actions/Modules.Windows.Registry.Actions.csproj" />
+    <Project Path="modules/Modules.Windows.TaskScheduler.Actions/Modules.Windows.TaskScheduler.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Modules/Tests/">
+    <Project Path="tests/Modules.Actions.Tests/Modules.Actions.Tests.csproj" />
+  </Folder>
+  <Folder Name="/Samples/" />
+  <Folder Name="/Samples/Modules/" />
+  <Folder Name="/Samples/Modules/1.GettingStarted/">
+    <Project Path="samples/Modules.GettingStarted.Actions/Modules.GettingStarted.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/2.Features/" />
+  <Folder Name="/Samples/Modules/2.Features/2.1.ActionSelectors/">
+    <Project Path="samples/Modules.ActionSelectors.Actions/Modules.ActionSelectors.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/3.Groups/">
+    <Project Path="samples/Modules.Groups.Actions/Modules.Groups.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/4.Categories/">
+    <Project Path="samples/Modules.Categories.Actions/Modules.Categories.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/5.Conditionals/">
+    <Project Path="samples/Modules.Conditionals.Actions/Modules.Conditionals.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/6.Advanced/" />
+  <Folder Name="/Samples/Modules/6.Advanced/AssemblyResolution/">
+    <Project Path="samples/Modules.AssemblyResolution.Actions/Modules.AssemblyResolution.Actions.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/6.Advanced/OpenAPI/">
+    <Project Path="samples/Modules.PetStore.Actions/Modules.PetStore.Actions.csproj" />
+    <Project Path="samples/PetStore.Client/PetStore.Client.csproj" />
+  </Folder>
+  <Folder Name="/Samples/Modules/6.Advanced/Tasks/">
+    <Project Path="samples/Modules.Tasks.Actions/Modules.Tasks.Actions.csproj" />
+  </Folder>
+</Solution>

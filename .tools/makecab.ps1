@@ -24,7 +24,7 @@ $ddf = ".OPTION EXPLICIT
 .Set MaxDiskFileCount=0
 .Set MaxDiskSize=0
 "
-$ddfpath = ($env:TEMP + "\customModule.ddf")
+$ddfpath = ($env:TEMP + "\" + [System.IO.Path]::GetFileNameWithoutExtension($OutputFileName) + ".ddf")
 $sourceDirLength = $SourceDirectory.Length;
 $ddf += (Get-ChildItem $SourceDirectory -Filter "*.dll" | Where-Object { (!$_.PSIsContainer) -and ($_.Name -ne "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll") } | Select-Object -ExpandProperty FullName | ForEach-Object { '"' + $_ + '" "' + ($_.Substring($sourceDirLength)) + '"' }) -join "`r`n"
 $ddf | Out-File -Encoding UTF8 $ddfpath
