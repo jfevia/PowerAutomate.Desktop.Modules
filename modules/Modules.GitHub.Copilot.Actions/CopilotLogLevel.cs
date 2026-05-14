@@ -6,11 +6,11 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
 
 public enum CopilotLogLevel
 {
-    None,
+    Unset = 0,  // don't pass --log-level
+    Quiet,      // emits --log-level=none
     Error,
     Warning,
     Info,
     Debug,
-    All,
-    Default
+    Verbose     // emits --log-level=all
 }

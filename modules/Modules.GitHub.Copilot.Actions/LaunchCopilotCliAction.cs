@@ -119,8 +119,9 @@ public class LaunchCopilotCliAction : ActionBase
     [InputArgument(Order = 25, Required = false, Group = Groups.Model)]
     public string Model { get; set; } = string.Empty;
 
-    [InputArgument(Order = 26, Required = false, Group = Groups.Model)]
-    public CopilotEffortLevel? Effort { get; set; }
+    [InputArgument(Order = 26, Group = Groups.Model)]
+    [DefaultValue(CopilotEffortLevel.Unset)]
+    public CopilotEffortLevel Effort { get; set; }
 
     [InputArgument(Order = 27, Group = Groups.Model)]
     [DefaultValue(CopilotSwitch.Unset)]
@@ -161,8 +162,9 @@ public class LaunchCopilotCliAction : ActionBase
     public string Agent { get; set; } = string.Empty;
 
     // -- Display & Output -------------------------------------------------------
-    [InputArgument(Order = 38, Required = false, Group = Groups.Display)]
-    public CopilotOutputFormat? OutputFormat { get; set; }
+    [InputArgument(Order = 38, Group = Groups.Display)]
+    [DefaultValue(CopilotOutputFormat.Unset)]
+    public CopilotOutputFormat OutputFormat { get; set; }
 
     [InputArgument(Order = 39, Group = Groups.Display)]
     [DefaultValue(CopilotSwitch.Unset)]
@@ -176,14 +178,16 @@ public class LaunchCopilotCliAction : ActionBase
     [DefaultValue(CopilotSwitch.Unset)]
     public CopilotSwitch Banner { get; set; }
 
-    [InputArgument(Order = 43, Required = false, Group = Groups.Display)]
-    public CopilotStreamMode? Stream { get; set; }
+    [InputArgument(Order = 43, Group = Groups.Display)]
+    [DefaultValue(CopilotStreamMode.Unset)]
+    public CopilotStreamMode Stream { get; set; }
 
     [InputArgument(Order = 44, Required = false, Group = Groups.Display)]
     public string LogDir { get; set; } = string.Empty;
 
-    [InputArgument(Order = 45, Required = false, Group = Groups.Display)]
-    public CopilotLogLevel? LogLevel { get; set; }
+    [InputArgument(Order = 45, Group = Groups.Display)]
+    [DefaultValue(CopilotLogLevel.Unset)]
+    public CopilotLogLevel LogLevel { get; set; }
 
     [InputArgument(Order = 46, Required = false, Group = Groups.Display)]
     public string Share { get; set; } = string.Empty;
@@ -307,7 +311,7 @@ public class LaunchCopilotCliAction : ActionBase
 
         // Model/AI
         if (!string.IsNullOrEmpty(Model))             args.Add($"--model={Quote(Model)}");
-        if (Effort.HasValue)                          args.Add($"--effort={Effort.Value.ToString().ToLowerInvariant()}");
+        if (Effort != CopilotEffortLevel.Unset)       args.Add($"--effort={Effort.ToString().ToLowerInvariant()}");
         if (EnableReasoningSummaries == CopilotSwitch.Enabled)   args.Add("--enable-reasoning-summaries");
 
         // Paths/Dirs
@@ -325,14 +329,24 @@ public class LaunchCopilotCliAction : ActionBase
         if (!string.IsNullOrEmpty(Agent))             args.Add($"--agent={Quote(Agent)}");
 
         // Output/Display
-        if (OutputFormat.HasValue)                    args.Add($"--output-format={OutputFormat.Value.ToString().ToLowerInvariant()}");
+        if (OutputFormat != CopilotOutputFormat.Unset) args.Add($"--output-format={OutputFormat.ToString().ToLowerInvariant()}");
         if (Silent == CopilotSwitch.Enabled)                     args.Add("--silent");
         if (NoColor == CopilotSwitch.Enabled)                    args.Add("--no-color");
         if (Banner == CopilotSwitch.Enabled)         args.Add("--banner");
         else if (Banner == CopilotSwitch.Disabled)   args.Add("--no-banner");
-        if (Stream.HasValue)                          args.Add($"--stream={Stream.Value.ToString().ToLowerInvariant()}");
+        if (Stream == CopilotStreamMode.Enabled)  args.Add("--stream=on");
+        else if (Stream == CopilotStreamMode.Disabled) args.Add("--stream=off");
         if (!string.IsNullOrEmpty(LogDir))            args.Add($"--log-dir={Quote(LogDir)}");
-        if (LogLevel.HasValue)                        args.Add($"--log-level={LogLevel.Value.ToString().ToLowerInvariant()}");
+        if (LogLevel != CopilotLogLevel.Unset)
+        {
+            var levelStr = LogLevel switch
+            {
+                CopilotLogLevel.Quiet   => "none",
+                CopilotLogLevel.Verbose => "all",
+                _                       => LogLevel.ToString().ToLowerInvariant()
+            };
+            args.Add($"--log-level={levelStr}");
+        }
         if (!string.IsNullOrEmpty(Share))             args.Add($"--share={Quote(Share)}");
         if (ShareGist == CopilotSwitch.Enabled)                  args.Add("--share-gist");
         if (ScreenReader == CopilotSwitch.Enabled)               args.Add("--screen-reader");

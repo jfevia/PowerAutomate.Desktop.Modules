@@ -125,6 +125,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Low.
         /// </summary>
+        public static string CopilotEffortLevel_Unset_FriendlyName {
+            get {
+                return ResourceManager.GetString("CopilotEffortLevel_Unset_FriendlyName", resourceCulture);
+            }
+        }
+        
         public static string CopilotEffortLevel_Low_FriendlyName {
             get {
                 return ResourceManager.GetString("CopilotEffortLevel_Low_FriendlyName", resourceCulture);
@@ -152,9 +158,15 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to None.
         /// </summary>
-        public static string CopilotLogLevel_None_FriendlyName {
+        public static string CopilotLogLevel_Unset_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotLogLevel_None_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotLogLevel_Unset_FriendlyName", resourceCulture);
+            }
+        }
+        
+        public static string CopilotLogLevel_Quiet_FriendlyName {
+            get {
+                return ResourceManager.GetString("CopilotLogLevel_Quiet_FriendlyName", resourceCulture);
             }
         }
         
@@ -197,18 +209,9 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to All.
         /// </summary>
-        public static string CopilotLogLevel_All_FriendlyName {
+        public static string CopilotLogLevel_Verbose_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotLogLevel_All_FriendlyName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Default.
-        /// </summary>
-        public static string CopilotLogLevel_Default_FriendlyName {
-            get {
-                return ResourceManager.GetString("CopilotLogLevel_Default_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotLogLevel_Verbose_FriendlyName", resourceCulture);
             }
         }
         
@@ -242,6 +245,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Text.
         /// </summary>
+        public static string CopilotOutputFormat_Unset_FriendlyName {
+            get {
+                return ResourceManager.GetString("CopilotOutputFormat_Unset_FriendlyName", resourceCulture);
+            }
+        }
+        
         public static string CopilotOutputFormat_Text_FriendlyName {
             get {
                 return ResourceManager.GetString("CopilotOutputFormat_Text_FriendlyName", resourceCulture);
@@ -260,18 +269,24 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to On.
         /// </summary>
-        public static string CopilotStreamMode_On_FriendlyName {
+        public static string CopilotStreamMode_Unset_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotStreamMode_On_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotStreamMode_Unset_FriendlyName", resourceCulture);
+            }
+        }
+        
+        public static string CopilotStreamMode_Enabled_FriendlyName {
+            get {
+                return ResourceManager.GetString("CopilotStreamMode_Enabled_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Off.
         /// </summary>
-        public static string CopilotStreamMode_Off_FriendlyName {
+        public static string CopilotStreamMode_Disabled_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotStreamMode_Off_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotStreamMode_Disabled_FriendlyName", resourceCulture);
             }
         }
         

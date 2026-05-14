@@ -154,6 +154,9 @@
     </data>
 
     <!-- Enum: CopilotOutputFormat -->
+    <data name="CopilotOutputFormat_Unset_FriendlyName" xml:space="preserve">
+        <value>(Not set)</value>
+    </data>
     <data name="CopilotOutputFormat_Text_FriendlyName" xml:space="preserve">
         <value>Text</value>
     </data>
@@ -173,6 +176,9 @@
     </data>
 
     <!-- Enum: CopilotEffortLevel -->
+    <data name="CopilotEffortLevel_Unset_FriendlyName" xml:space="preserve">
+        <value>(Not set)</value>
+    </data>
     <data name="CopilotEffortLevel_Low_FriendlyName" xml:space="preserve">
         <value>Low</value>
     </data>
@@ -184,16 +190,22 @@
     </data>
 
     <!-- Enum: CopilotStreamMode -->
-    <data name="CopilotStreamMode_On_FriendlyName" xml:space="preserve">
-        <value>On</value>
+    <data name="CopilotStreamMode_Unset_FriendlyName" xml:space="preserve">
+        <value>(Not set)</value>
     </data>
-    <data name="CopilotStreamMode_Off_FriendlyName" xml:space="preserve">
-        <value>Off</value>
+    <data name="CopilotStreamMode_Enabled_FriendlyName" xml:space="preserve">
+        <value>Enabled</value>
+    </data>
+    <data name="CopilotStreamMode_Disabled_FriendlyName" xml:space="preserve">
+        <value>Disabled</value>
     </data>
 
     <!-- Enum: CopilotLogLevel -->
-    <data name="CopilotLogLevel_None_FriendlyName" xml:space="preserve">
-        <value>None</value>
+    <data name="CopilotLogLevel_Unset_FriendlyName" xml:space="preserve">
+        <value>(Not set)</value>
+    </data>
+    <data name="CopilotLogLevel_Quiet_FriendlyName" xml:space="preserve">
+        <value>Quiet (none)</value>
     </data>
     <data name="CopilotLogLevel_Error_FriendlyName" xml:space="preserve">
         <value>Error</value>
@@ -207,11 +219,8 @@
     <data name="CopilotLogLevel_Debug_FriendlyName" xml:space="preserve">
         <value>Debug</value>
     </data>
-    <data name="CopilotLogLevel_All_FriendlyName" xml:space="preserve">
-        <value>All</value>
-    </data>
-    <data name="CopilotLogLevel_Default_FriendlyName" xml:space="preserve">
-        <value>Default</value>
+    <data name="CopilotLogLevel_Verbose_FriendlyName" xml:space="preserve">
+        <value>Verbose (all)</value>
     </data>
 
     <!-- Action Selectors -->
