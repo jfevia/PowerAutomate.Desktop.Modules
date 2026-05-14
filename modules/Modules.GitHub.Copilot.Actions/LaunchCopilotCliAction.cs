@@ -341,8 +341,10 @@ public class LaunchCopilotCliAction : ActionBase
         {
             var levelStr = LogLevel switch
             {
-                CopilotLogLevel.Quiet   => "none",
-                CopilotLogLevel.Verbose => "all",
+                CopilotLogLevel.Quiet    => "none",
+                CopilotLogLevel.Errors   => "error",
+                CopilotLogLevel.Warnings => "warning",
+                CopilotLogLevel.Verbose  => "all",
                 _                       => LogLevel.ToString().ToLowerInvariant()
             };
             args.Add($"--log-level={levelStr}");

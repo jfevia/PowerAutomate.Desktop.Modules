@@ -173,18 +173,18 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
-        public static string CopilotLogLevel_Error_FriendlyName {
+        public static string CopilotLogLevel_Errors_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotLogLevel_Error_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotLogLevel_Errors_FriendlyName", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Warning.
         /// </summary>
-        public static string CopilotLogLevel_Warning_FriendlyName {
+        public static string CopilotLogLevel_Warnings_FriendlyName {
             get {
-                return ResourceManager.GetString("CopilotLogLevel_Warning_FriendlyName", resourceCulture);
+                return ResourceManager.GetString("CopilotLogLevel_Warnings_FriendlyName", resourceCulture);
             }
         }
         

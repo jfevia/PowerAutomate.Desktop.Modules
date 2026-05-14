@@ -207,10 +207,10 @@
     <data name="CopilotLogLevel_Quiet_FriendlyName" xml:space="preserve">
         <value>Quiet (none)</value>
     </data>
-    <data name="CopilotLogLevel_Error_FriendlyName" xml:space="preserve">
+    <data name="CopilotLogLevel_Errors_FriendlyName" xml:space="preserve">
         <value>Error</value>
     </data>
-    <data name="CopilotLogLevel_Warning_FriendlyName" xml:space="preserve">
+    <data name="CopilotLogLevel_Warnings_FriendlyName" xml:space="preserve">
         <value>Warning</value>
     </data>
     <data name="CopilotLogLevel_Info_FriendlyName" xml:space="preserve">
