@@ -125,6 +125,10 @@ public class LoginAction : ActionBase
 
         CopyTextToClipboard(userCode);
         OpenInDefaultBrowser(verificationUri);
+        Console.WriteLine();
+        Console.WriteLine("GitHub device flow: open " + verificationUri + " in a browser and enter user code " + userCode + ".");
+        Console.WriteLine("The user code has been copied to your clipboard and the verification URL has been opened in your default browser.");
+        Console.WriteLine("Waiting for authorization (expires in " + expiresIn + "s)...");
 
         var deadline = DateTime.UtcNow.AddSeconds(expiresIn);
         while (DateTime.UtcNow < deadline)

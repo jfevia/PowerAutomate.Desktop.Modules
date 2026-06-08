@@ -403,14 +403,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
 
     private string ResolveCSharpType(OpenApiSchema schema)
     {
-        if (schema == null) return "JObject";
+        if (schema == null) return "JToken";
         if (schema.Reference != null && schema.Reference.Type == ReferenceType.Schema)
         {
             return "Models." + ToClassName(schema.Reference.Id);
         }
         if (schema.Type == "array")
         {
-            return "List<" + (schema.Items != null ? ResolveCSharpType(schema.Items) : "JObject") + ">";
+            return "List<" + (schema.Items != null ? ResolveCSharpType(schema.Items) : "JToken") + ">";
         }
         if (schema.Type == "integer") return schema.Format == "int64" ? "long?" : "int?";
         if (schema.Type == "number") return schema.Format == "float" ? "float?" : "double?";
@@ -424,7 +424,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         {
             return "Dictionary<string, " + ResolveCSharpType(schema.AdditionalProperties) + ">";
         }
-        return "JObject";
+        return "JToken";
     }
 
     private static readonly Regex SegmentSplitter = new Regex("[-_/. ]+");

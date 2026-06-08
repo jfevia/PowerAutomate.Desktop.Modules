@@ -153,17 +153,17 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
 
     private string ResolveCSharpType(OpenApiSchema schema, HashSet<string> emittedClassNames)
     {
-        if (schema == null) return "JObject";
+        if (schema == null) return "JToken";
 
         if (schema.Reference != null && schema.Reference.Type == ReferenceType.Schema)
         {
             var refName = ToClassName(schema.Reference.Id);
-            return emittedClassNames.Contains(refName) ? refName : "JObject";
+            return emittedClassNames.Contains(refName) ? refName : "JToken";
         }
 
         if (schema.Type == "array")
         {
-            var itemType = schema.Items != null ? ResolveCSharpType(schema.Items, emittedClassNames) : "JObject";
+            var itemType = schema.Items != null ? ResolveCSharpType(schema.Items, emittedClassNames) : "JToken";
             return "List<" + itemType + ">";
         }
 
@@ -195,7 +195,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         }
 
         // object with inline properties, oneOf, anyOf, allOf without $ref, etc. - lossy fallback.
-        return "JObject";
+        return "JToken";
     }
 
     private static readonly Regex SegmentSplitter = new Regex("[-_/. ]+");

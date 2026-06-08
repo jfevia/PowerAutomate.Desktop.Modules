@@ -83,13 +83,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Severity { get; set; }
 
         [InputArgument(Order = 7, Required = false, Group = Groups.Query)]
-        public JObject Cwes { get; set; }
+        public JToken Cwes { get; set; }
 
         [InputArgument(Order = 8, Required = false, Group = Groups.Query)]
         public bool? IsWithdrawn { get; set; }
 
         [InputArgument(Order = 9, Required = false, Group = Groups.Query)]
-        public JObject Affects { get; set; }
+        public JToken Affects { get; set; }
 
         [InputArgument(Order = 10, Required = false, Group = Groups.Query)]
         public string Published { get; set; }
@@ -247,7 +247,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public List<int?> CreatorId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -280,7 +280,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -306,10 +306,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -333,7 +333,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -361,7 +361,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string TaskId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -381,7 +381,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -421,7 +421,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public System.DateTime? Since { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -445,7 +445,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -467,7 +467,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string TaskId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -485,7 +485,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -542,7 +542,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Code { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -560,7 +560,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -614,7 +614,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.WebhookConfig Result { get; set; }
@@ -749,7 +749,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? DeliveryId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -767,7 +767,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -961,7 +961,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? InstallationId { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.InstallationToken Result { get; set; }
@@ -1080,7 +1080,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -1124,7 +1124,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Authorization Result { get; set; }
@@ -1173,7 +1173,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Authorization Result { get; set; }
@@ -1222,7 +1222,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -1266,7 +1266,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Authorization Result { get; set; }
@@ -1688,10 +1688,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -1713,7 +1713,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -2120,7 +2120,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeSecurityConfiguration Result { get; set; }
@@ -2256,7 +2256,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeSecurityConfiguration Result { get; set; }
@@ -2348,10 +2348,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -2375,7 +2375,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -2401,10 +2401,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -2428,7 +2428,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -2727,7 +2727,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -2771,7 +2771,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -2815,7 +2815,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -2877,7 +2877,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EpssPercentage { get; set; }
 
         [InputArgument(Order = 9, Required = false, Group = Groups.Query)]
-        public JObject Has { get; set; }
+        public JToken Has { get; set; }
 
         [InputArgument(Order = 10, Required = false, Group = Groups.Query)]
         public string Assignee { get; set; }
@@ -3005,7 +3005,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -3049,7 +3049,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -3142,7 +3142,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enterprise { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EnterpriseTeam Result { get; set; }
@@ -3247,7 +3247,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnterpriseTeam { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SimpleUser> Result { get; set; }
@@ -3300,7 +3300,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnterpriseTeam { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SimpleUser> Result { get; set; }
@@ -3545,7 +3545,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnterpriseTeam { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.OrganizationSimple> Result { get; set; }
@@ -3598,7 +3598,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnterpriseTeam { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -3829,7 +3829,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string TeamSlug { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EnterpriseTeam Result { get; set; }
@@ -4041,7 +4041,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GistSimple Result { get; set; }
@@ -4225,7 +4225,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string GistId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GistSimple Result { get; set; }
@@ -4358,7 +4358,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string GistId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GistComment Result { get; set; }
@@ -4454,7 +4454,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GistComment Result { get; set; }
@@ -4907,7 +4907,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -4926,7 +4926,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -5147,7 +5147,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -5646,10 +5646,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -5671,7 +5671,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -5844,7 +5844,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ThreadId { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ThreadSubscription Result { get; set; }
@@ -6297,7 +6297,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CreateBudget Result { get; set; }
@@ -6393,7 +6393,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string BudgetId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.UpdateBudget Result { get; set; }
@@ -6710,7 +6710,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrganizationFull Result { get; set; }
@@ -6758,7 +6758,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -6776,7 +6776,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -6845,7 +6845,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -6865,7 +6865,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -6894,7 +6894,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -6914,7 +6914,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -6937,7 +6937,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ActionsHostedRunner Result { get; set; }
@@ -6985,7 +6985,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7003,7 +7003,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7111,7 +7111,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7130,7 +7130,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7243,7 +7243,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7261,7 +7261,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7283,7 +7283,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7301,7 +7301,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7363,7 +7363,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7381,7 +7381,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7403,7 +7403,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -7421,7 +7421,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -7491,7 +7491,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? HostedRunnerId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ActionsHostedRunner Result { get; set; }
@@ -7753,7 +7753,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -7842,7 +7842,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8144,7 +8144,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8164,7 +8164,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -8187,7 +8187,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8433,7 +8433,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8483,7 +8483,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8503,7 +8503,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -8526,7 +8526,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8741,7 +8741,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string VisibleToRepository { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -8762,7 +8762,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -8785,7 +8785,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RunnerGroupsOrg Result { get; set; }
@@ -8881,7 +8881,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerGroupId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RunnerGroupsOrg Result { get; set; }
@@ -8979,7 +8979,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9000,7 +9000,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9032,7 +9032,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9053,7 +9053,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9079,7 +9079,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerGroupId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9219,7 +9219,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9240,7 +9240,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9266,7 +9266,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerGroupId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9406,7 +9406,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9427,7 +9427,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9490,10 +9490,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9516,7 +9516,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9704,7 +9704,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9723,7 +9723,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9749,10 +9749,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9776,7 +9776,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9802,10 +9802,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9829,7 +9829,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9854,7 +9854,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9873,7 +9873,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9901,7 +9901,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9921,7 +9921,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -9950,7 +9950,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -9970,7 +9970,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -10080,7 +10080,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -10178,7 +10178,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10199,7 +10199,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -10225,7 +10225,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10362,7 +10362,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10382,7 +10382,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -10405,7 +10405,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -10501,7 +10501,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10594,7 +10594,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10615,7 +10615,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -10641,7 +10641,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10778,7 +10778,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -10798,7 +10798,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -10908,7 +10908,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -11006,7 +11006,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11027,7 +11027,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11053,7 +11053,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11190,7 +11190,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11210,7 +11210,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11233,7 +11233,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -11329,7 +11329,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11422,7 +11422,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11443,7 +11443,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11469,7 +11469,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11600,10 +11600,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11626,7 +11626,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11652,10 +11652,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Cluster { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11679,7 +11679,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11702,10 +11702,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11728,7 +11728,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11753,7 +11753,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SubjectDigest { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11772,7 +11772,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11797,7 +11797,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SubjectDigest { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11816,7 +11816,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11849,10 +11849,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11878,7 +11878,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -11901,7 +11901,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -11996,7 +11996,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string PredicateType { get; set; }
 
         [OutputArgument(Order = 1)]
-        public List<JObject> Result { get; set; }
+        public List<JToken> Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -12018,7 +12018,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<List<JObject>>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<List<JToken>>(responseJson);
             }
             catch (Exception ex)
             {
@@ -12095,7 +12095,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string PredicateType { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -12118,7 +12118,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -12369,7 +12369,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CampaignSummary Result { get; set; }
@@ -12465,7 +12465,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? CampaignNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CampaignSummary Result { get; set; }
@@ -12698,7 +12698,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeSecurityConfiguration Result { get; set; }
@@ -12787,7 +12787,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -12878,7 +12878,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeSecurityConfiguration Result { get; set; }
@@ -12970,10 +12970,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -12997,7 +12997,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13023,10 +13023,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13050,7 +13050,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13140,7 +13140,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13160,7 +13160,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13183,7 +13183,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13227,7 +13227,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13271,7 +13271,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13321,7 +13321,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13341,7 +13341,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13451,7 +13451,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -13549,7 +13549,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13570,7 +13570,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13596,7 +13596,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13736,7 +13736,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string After { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13757,7 +13757,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -13780,7 +13780,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpace Result { get; set; }
@@ -13876,7 +13876,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpace Result { get; set; }
@@ -13967,7 +13967,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -13986,7 +13986,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14012,7 +14012,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceCollaborator Result { get; set; }
@@ -14071,7 +14071,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ActorIdentifier { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceCollaborator Result { get; set; }
@@ -14172,7 +14172,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14191,7 +14191,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14217,7 +14217,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceResource Result { get; set; }
@@ -14321,7 +14321,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceResourceId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceResource Result { get; set; }
@@ -14461,7 +14461,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14481,7 +14481,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14504,10 +14504,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14530,7 +14530,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14553,10 +14553,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14579,7 +14579,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14602,10 +14602,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14628,7 +14628,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14651,10 +14651,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14677,7 +14677,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14699,7 +14699,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14717,7 +14717,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14740,7 +14740,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14790,7 +14790,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14810,7 +14810,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -14833,7 +14833,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -14995,10 +14995,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public Dictionary<string, List<JObject>> Body { get; set; }
+        public Dictionary<string, List<JToken>> Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -15021,7 +15021,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -15340,7 +15340,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ArtifactRegistry { get; set; }
 
         [InputArgument(Order = 11, Required = false, Group = Groups.Query)]
-        public JObject Has { get; set; }
+        public JToken Has { get; set; }
 
         [InputArgument(Order = 12, Required = false, Group = Groups.Query)]
         public string Assignee { get; set; }
@@ -15474,7 +15474,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -15518,7 +15518,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -15568,7 +15568,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -15588,7 +15588,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -15698,7 +15698,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -15796,7 +15796,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -15817,7 +15817,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -15843,7 +15843,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -16161,7 +16161,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrgHook Result { get; set; }
@@ -16257,7 +16257,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? HookId { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrgHook Result { get; set; }
@@ -16393,7 +16393,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? HookId { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.WebhookConfig Result { get; set; }
@@ -16553,7 +16553,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? DeliveryId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -16573,7 +16573,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -17248,7 +17248,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -17268,7 +17268,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -17290,7 +17290,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -17308,7 +17308,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -17472,7 +17472,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrganizationInvitation Result { get; set; }
@@ -18196,7 +18196,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -18217,7 +18217,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -18245,7 +18245,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CodespaceName { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -18265,7 +18265,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -18427,7 +18427,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrgMembership Result { get; set; }
@@ -18575,7 +18575,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Migration Result { get; set; }
@@ -18852,7 +18852,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -18870,7 +18870,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -19349,10 +19349,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -19376,7 +19376,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -19934,10 +19934,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -19960,7 +19960,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -19986,7 +19986,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PatRequestId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20177,10 +20177,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20203,7 +20203,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -20229,7 +20229,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PatId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20333,7 +20333,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20353,7 +20353,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -20376,7 +20376,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrgPrivateRegistryConfigurationWithSelectedRepositories Result { get; set; }
@@ -20424,7 +20424,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20442,7 +20442,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -20512,7 +20512,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -20700,7 +20700,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemSimple Result { get; set; }
@@ -20810,7 +20810,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2Field Result { get; set; }
@@ -20914,7 +20914,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Q { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
         public string Before { get; set; }
@@ -20976,7 +20976,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemSimple Result { get; set; }
@@ -21032,7 +21032,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ItemId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemWithContent Result { get; set; }
@@ -21085,7 +21085,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ItemId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemWithContent Result { get; set; }
@@ -21182,7 +21182,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2View Result { get; set; }
@@ -21238,7 +21238,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ViewNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
         public string Before { get; set; }
@@ -21337,7 +21337,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.CustomProperty> Result { get; set; }
@@ -21575,7 +21575,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -21846,7 +21846,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FullRepository Result { get; set; }
@@ -21948,7 +21948,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryRuleset Result { get; set; }
@@ -22161,7 +22161,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RulesetId { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryRuleset Result { get; set; }
@@ -22504,10 +22504,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -22530,7 +22530,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -22776,7 +22776,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -22826,7 +22826,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -22846,7 +22846,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -22869,7 +22869,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -22997,7 +22997,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -23017,7 +23017,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -23040,7 +23040,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.NetworkConfiguration Result { get; set; }
@@ -23136,7 +23136,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string NetworkConfigurationId { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.NetworkConfiguration Result { get; set; }
@@ -23383,7 +23383,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.TeamFull Result { get; set; }
@@ -23479,7 +23479,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string TeamSlug { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.TeamFull Result { get; set; }
@@ -23732,7 +23732,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.TeamMembership Result { get; set; }
@@ -23940,7 +23940,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -24093,7 +24093,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Enablement { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -24221,7 +24221,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FullRepository Result { get; set; }
@@ -24322,7 +24322,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -24344,7 +24344,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -25105,7 +25105,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? JobId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -25203,7 +25203,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -25262,7 +25262,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -25283,7 +25283,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -25315,7 +25315,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -25336,7 +25336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -25406,7 +25406,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26015,7 +26015,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26037,7 +26037,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26107,10 +26107,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26134,7 +26134,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26341,7 +26341,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26361,7 +26361,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26390,10 +26390,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26418,7 +26418,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26447,10 +26447,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26475,7 +26475,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26503,7 +26503,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunnerId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26523,7 +26523,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26554,7 +26554,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26575,7 +26575,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26631,7 +26631,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string HeadSha { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26660,7 +26660,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -26893,7 +26893,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Direction { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -26917,7 +26917,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -27012,7 +27012,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -27035,7 +27035,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -27220,7 +27220,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -27329,7 +27329,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -27352,7 +27352,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -27515,7 +27515,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Deployment> Result { get; set; }
@@ -27572,7 +27572,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -27629,7 +27629,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RunId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -27737,7 +27737,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -27758,7 +27758,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -27879,7 +27879,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -27982,7 +27982,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28003,7 +28003,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28029,7 +28029,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -28133,7 +28133,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28231,7 +28231,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28252,7 +28252,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28277,7 +28277,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Workflow Result { get; set; }
@@ -28325,7 +28325,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28369,10 +28369,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.WorkflowDispatchResponse Result { get; set; }
@@ -28425,7 +28425,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28469,7 +28469,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
         public string Actor { get; set; }
@@ -28502,7 +28502,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string HeadSha { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28532,7 +28532,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28557,7 +28557,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject WorkflowId { get; set; }
+        public JToken WorkflowId { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.WorkflowUsage Result { get; set; }
@@ -28689,7 +28689,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28710,7 +28710,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28742,7 +28742,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28763,7 +28763,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28795,7 +28795,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -28816,7 +28816,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -28937,7 +28937,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -29040,7 +29040,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -29061,7 +29061,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -29087,7 +29087,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -29191,7 +29191,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -29379,10 +29379,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -29406,7 +29406,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -29447,7 +29447,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string PredicateType { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -29471,7 +29471,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -29541,7 +29541,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Autolink Result { get; set; }
@@ -29963,7 +29963,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProtectedBranch Result { get; set; }
@@ -30250,7 +30250,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProtectedBranchPullRequestReview Result { get; set; }
@@ -30537,7 +30537,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.StatusCheckPolicy Result { get; set; }
@@ -30685,7 +30685,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<string> Result { get; set; }
@@ -30742,7 +30742,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<string> Result { get; set; }
@@ -30799,7 +30799,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<string> Result { get; set; }
@@ -30995,7 +30995,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Integration> Result { get; set; }
@@ -31052,7 +31052,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Integration> Result { get; set; }
@@ -31109,7 +31109,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Integration> Result { get; set; }
@@ -31214,7 +31214,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Team> Result { get; set; }
@@ -31271,7 +31271,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Team> Result { get; set; }
@@ -31328,7 +31328,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Team> Result { get; set; }
@@ -31433,7 +31433,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SimpleUser> Result { get; set; }
@@ -31490,7 +31490,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SimpleUser> Result { get; set; }
@@ -31547,7 +31547,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SimpleUser> Result { get; set; }
@@ -31604,7 +31604,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Branch { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.BranchWithProtection Result { get; set; }
@@ -31658,7 +31658,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CheckRun Result { get; set; }
@@ -31762,7 +31762,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? CheckRunId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CheckRun Result { get; set; }
@@ -31921,7 +31921,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CheckSuite Result { get; set; }
@@ -31974,7 +31974,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CheckSuitePreference Result { get; set; }
@@ -32093,7 +32093,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -32118,7 +32118,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -32439,7 +32439,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public Models.AlertNumber AlertNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeScanningAlert Result { get; set; }
@@ -33028,7 +33028,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeScanningVariantAnalysis Result { get; set; }
@@ -33282,7 +33282,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodeScanningSarifsReceipt Result { get; set; }
@@ -33482,7 +33482,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -33503,7 +33503,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -33529,7 +33529,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Codespace Result { get; set; }
@@ -33588,7 +33588,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -33609,7 +33609,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -33644,7 +33644,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Ref { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -33666,7 +33666,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -33698,7 +33698,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ClientIp { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -33719,7 +33719,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -33804,7 +33804,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -33825,7 +33825,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -33946,7 +33946,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -34150,7 +34150,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryInvitation Result { get; set; }
@@ -34399,7 +34399,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CommitComment Result { get; set; }
@@ -34560,7 +34560,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Reaction Result { get; set; }
@@ -34846,7 +34846,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CommitSha { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CommitComment Result { get; set; }
@@ -35035,7 +35035,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? AppId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -35061,7 +35061,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -35102,7 +35102,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -35126,7 +35126,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -35374,10 +35374,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Ref { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -35403,7 +35403,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -35432,7 +35432,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Path { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FileCommit Result { get; set; }
@@ -35489,7 +35489,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Path { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FileCommit Result { get; set; }
@@ -35599,7 +35599,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -35618,7 +35618,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -35665,7 +35665,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EpssPercentage { get; set; }
 
         [InputArgument(Order = 11, Required = false, Group = Groups.Query)]
-        public JObject Has { get; set; }
+        public JToken Has { get; set; }
 
         [InputArgument(Order = 12, Required = false, Group = Groups.Query)]
         public string Assignee { get; set; }
@@ -35800,7 +35800,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public Models.AlertNumber AlertNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.DependabotAlert Result { get; set; }
@@ -35860,7 +35860,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -35881,7 +35881,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -36002,7 +36002,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -36238,7 +36238,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -36257,7 +36257,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -36286,7 +36286,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public Models.Snapshot Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -36310,7 +36310,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -36405,7 +36405,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Deployment Result { get; set; }
@@ -36609,7 +36609,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? DeploymentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.DeploymentStatus Result { get; set; }
@@ -36715,7 +36715,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -36769,7 +36769,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -36790,7 +36790,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -36867,7 +36867,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnvironmentName { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Environment Result { get; set; }
@@ -36973,7 +36973,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -36995,7 +36995,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -37240,7 +37240,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Owner { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -37260,7 +37260,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -37289,7 +37289,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Owner { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.DeploymentProtectionRule Result { get; set; }
@@ -37352,7 +37352,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PerPage { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -37374,7 +37374,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -37508,7 +37508,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -37530,7 +37530,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -37662,7 +37662,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -37773,7 +37773,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -37795,7 +37795,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -37824,7 +37824,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnvironmentName { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -37936,7 +37936,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string EnvironmentName { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -38143,7 +38143,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FullRepository Result { get; set; }
@@ -38196,7 +38196,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ShortBlob Result { get; set; }
@@ -38297,7 +38297,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GitCommit Result { get; set; }
@@ -38494,7 +38494,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GitRef Result { get; set; }
@@ -38550,7 +38550,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Ref { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GitRef Result { get; set; }
@@ -38647,7 +38647,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GitTag Result { get; set; }
@@ -38748,7 +38748,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GitTree Result { get; set; }
@@ -38951,7 +38951,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Hook Result { get; set; }
@@ -39055,7 +39055,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? HookId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Hook Result { get; set; }
@@ -39203,7 +39203,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? HookId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.WebhookConfig Result { get; set; }
@@ -39375,7 +39375,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? DeliveryId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -39396,7 +39396,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -39674,7 +39674,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Import Result { get; set; }
@@ -39727,7 +39727,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Import Result { get; set; }
@@ -39871,7 +39871,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? AuthorId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PorterAuthor Result { get; set; }
@@ -39969,7 +39969,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Import Result { get; set; }
@@ -40065,7 +40065,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -40084,7 +40084,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -40258,7 +40258,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? InvitationId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryInvitation Result { get; set; }
@@ -40452,7 +40452,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -40621,7 +40621,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.IssueComment Result { get; set; }
@@ -40873,7 +40873,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Reaction Result { get; set; }
@@ -41126,7 +41126,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -41183,7 +41183,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -41240,7 +41240,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -41405,7 +41405,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.IssueComment Result { get; set; }
@@ -41519,7 +41519,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -41799,7 +41799,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.IssueFieldValue> Result { get; set; }
@@ -41856,7 +41856,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.IssueFieldValue> Result { get; set; }
@@ -42017,7 +42017,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Label> Result { get; set; }
@@ -42074,7 +42074,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Label> Result { get; set; }
@@ -42226,7 +42226,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -42430,7 +42430,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Reaction Result { get; set; }
@@ -42534,7 +42534,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -42648,7 +42648,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -42705,7 +42705,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? IssueNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Issue Result { get; set; }
@@ -42869,7 +42869,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.DeployKey Result { get; set; }
@@ -43066,7 +43066,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Label Result { get; set; }
@@ -43170,7 +43170,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Label Result { get; set; }
@@ -43360,7 +43360,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.MergedUpstream Result { get; set; }
@@ -43413,7 +43413,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Commit Result { get; set; }
@@ -43531,7 +43531,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Milestone Result { get; set; }
@@ -43635,7 +43635,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? MilestoneNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Milestone Result { get; set; }
@@ -43858,10 +43858,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -43885,7 +43885,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -43955,7 +43955,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Page Result { get; set; }
@@ -44008,7 +44008,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -44284,7 +44284,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PageDeployment Result { get; set; }
@@ -44336,7 +44336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject PagesDeploymentId { get; set; }
+        public JToken PagesDeploymentId { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PagesDeploymentStatus Result { get; set; }
@@ -44384,7 +44384,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Path)]
-        public JObject PagesDeploymentId { get; set; }
+        public JToken PagesDeploymentId { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -44471,7 +44471,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -44490,7 +44490,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -44638,7 +44638,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -44759,7 +44759,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequest Result { get; set; }
@@ -44928,7 +44928,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReviewComment Result { get; set; }
@@ -45089,7 +45089,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Reaction Result { get; set; }
@@ -45241,7 +45241,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequest Result { get; set; }
@@ -45298,7 +45298,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Codespace Result { get; set; }
@@ -45424,7 +45424,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReviewComment Result { get; set; }
@@ -45484,7 +45484,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public long? CommentId { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReviewComment Result { get; set; }
@@ -45699,7 +45699,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestMergeResult Result { get; set; }
@@ -45804,7 +45804,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestSimple Result { get; set; }
@@ -45861,7 +45861,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestSimple Result { get; set; }
@@ -45975,7 +45975,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReview Result { get; set; }
@@ -46087,7 +46087,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ReviewId { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReview Result { get; set; }
@@ -46261,7 +46261,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ReviewId { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReview Result { get; set; }
@@ -46322,7 +46322,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ReviewId { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PullRequestReview Result { get; set; }
@@ -46380,10 +46380,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? PullNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -46408,7 +46408,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -46589,7 +46589,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Release Result { get; set; }
@@ -46693,7 +46693,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? AssetId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ReleaseAsset Result { get; set; }
@@ -46790,7 +46790,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ReleaseNotesContent Result { get; set; }
@@ -46986,7 +46986,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ReleaseId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Release Result { get; set; }
@@ -47261,7 +47261,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ReleaseId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Reaction Result { get; set; }
@@ -47480,7 +47480,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryRuleset Result { get; set; }
@@ -47710,7 +47710,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RulesetId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositoryRuleset Result { get; set; }
@@ -48089,7 +48089,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public Models.AlertNumber AlertNumber { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.SecretScanningAlert Result { get; set; }
@@ -48200,7 +48200,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.SecretScanningPushProtectionBypass Result { get; set; }
@@ -48579,7 +48579,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string GhsaId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -48599,7 +48599,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -48679,7 +48679,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -48700,7 +48700,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -48949,7 +48949,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Sha { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Status Result { get; set; }
@@ -49100,7 +49100,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.RepositorySubscription Result { get; set; }
@@ -49394,7 +49394,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Topic Result { get; set; }
@@ -49633,7 +49633,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.MinimalRepository Result { get; set; }
@@ -49846,7 +49846,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string TemplateRepo { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FullRepository Result { get; set; }
@@ -49947,7 +49947,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -49969,7 +49969,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50003,7 +50003,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50025,7 +50025,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50065,7 +50065,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SearchType { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50089,7 +50089,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50126,7 +50126,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50149,7 +50149,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50183,7 +50183,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50205,7 +50205,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50233,7 +50233,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50253,7 +50253,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50287,7 +50287,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -50309,7 +50309,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -50372,7 +50372,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? TeamId { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.TeamFull Result { get; set; }
@@ -50722,7 +50722,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 4, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.TeamMembership Result { get; set; }
@@ -50914,7 +50914,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Repo { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51047,7 +51047,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51064,7 +51064,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51083,7 +51083,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.PrivateUser Result { get; set; }
@@ -51285,7 +51285,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? RepositoryId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51305,7 +51305,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51324,7 +51324,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Codespace Result { get; set; }
@@ -51374,7 +51374,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51393,7 +51393,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51491,7 +51491,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.EmptyObject Result { get; set; }
@@ -51574,7 +51574,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51592,7 +51592,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51615,7 +51615,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string SecretName { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51777,7 +51777,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CodespaceName { get; set; }
 
         [InputArgument(Order = 3, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Codespace Result { get; set; }
@@ -51825,7 +51825,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CodespaceName { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51843,7 +51843,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51949,7 +51949,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CodespaceName { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -51967,7 +51967,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -51990,7 +51990,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CodespaceName { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CodespaceWithFullRepository Result { get; set; }
@@ -52150,7 +52150,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Email> Result { get; set; }
@@ -52238,7 +52238,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.Email> Result { get; set; }
@@ -52282,7 +52282,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = false, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -52558,7 +52558,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.GpgKey Result { get; set; }
@@ -52683,7 +52683,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -52702,7 +52702,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -52731,7 +52731,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -52751,7 +52751,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -52847,7 +52847,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -52864,7 +52864,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -53069,7 +53069,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Key Result { get; set; }
@@ -53368,7 +53368,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Org { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.OrgMembership Result { get; set; }
@@ -53457,7 +53457,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.Migration Result { get; set; }
@@ -54240,7 +54240,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.FullRepository Result { get; set; }
@@ -54442,7 +54442,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.SocialAccount> Result { get; set; }
@@ -54486,7 +54486,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -54569,7 +54569,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public GitHubAuthenticationContext Authentication { get; set; }
 
         [InputArgument(Order = 2, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.SshSigningKey Result { get; set; }
@@ -54948,7 +54948,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? AccountId { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -54966,7 +54966,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -54992,7 +54992,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemSimple Result { get; set; }
@@ -55089,7 +55089,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2View Result { get; set; }
@@ -55138,7 +55138,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55156,7 +55156,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55189,10 +55189,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55218,7 +55218,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55241,7 +55241,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55378,7 +55378,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string PredicateType { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55401,7 +55401,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55433,7 +55433,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string After { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55454,7 +55454,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55477,7 +55477,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Username { get; set; }
 
         [InputArgument(Order = 3, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpace Result { get; set; }
@@ -55573,7 +55573,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpace Result { get; set; }
@@ -55664,7 +55664,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55683,7 +55683,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55709,7 +55709,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceCollaborator Result { get; set; }
@@ -55768,7 +55768,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string ActorIdentifier { get; set; }
 
         [InputArgument(Order = 6, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceCollaborator Result { get; set; }
@@ -55869,7 +55869,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -55888,7 +55888,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {
@@ -55914,7 +55914,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceResource Result { get; set; }
@@ -56018,7 +56018,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? SpaceResourceId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.CopilotSpaceResource Result { get; set; }
@@ -57280,7 +57280,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2Field Result { get; set; }
@@ -57393,7 +57393,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Q { get; set; }
 
         [InputArgument(Order = 8, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [OutputArgument(Order = 1)]
         public List<Models.ProjectsV2ItemWithContent> Result { get; set; }
@@ -57446,7 +57446,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ProjectNumber { get; set; }
 
         [InputArgument(Order = 4, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemSimple Result { get; set; }
@@ -57502,7 +57502,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ItemId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemWithContent Result { get; set; }
@@ -57555,7 +57555,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ItemId { get; set; }
 
         [InputArgument(Order = 5, Required = true, Group = Groups.Body)]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ProjectsV2ItemWithContent Result { get; set; }
@@ -57655,7 +57655,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? ViewNumber { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public JObject Fields { get; set; }
+        public JToken Fields { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
         public string Before { get; set; }
@@ -58223,7 +58223,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public int? Page { get; set; }
 
         [OutputArgument(Order = 1)]
-        public JObject Result { get; set; }
+        public JToken Result { get; set; }
 
         public override void Execute(ActionContext context)
         {
@@ -58245,7 +58245,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 var response = Authentication.HttpClient.SendAsync(request).GetAwaiter().GetResult();
                 response.EnsureSuccessStatusCode();
                 var responseJson = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JObject>(responseJson);
+                Result = string.IsNullOrEmpty(responseJson) ? default : JsonConvert.DeserializeObject<JToken>(responseJson);
             }
             catch (Exception ex)
             {

@@ -152,7 +152,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class Vulnerability
     {
         [JsonProperty("package")]
-        public JObject Package { get; set; }
+        public JToken Package { get; set; }
 
         [JsonProperty("vulnerable_version_range")]
         public string VulnerableVersionRange { get; set; }
@@ -168,10 +168,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class CvssSeverities
     {
         [JsonProperty("cvss_v3")]
-        public JObject CvssV3 { get; set; }
+        public JToken CvssV3 { get; set; }
 
         [JsonProperty("cvss_v4")]
-        public JObject CvssV4 { get; set; }
+        public JToken CvssV4 { get; set; }
 
     }
 
@@ -312,7 +312,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string SourceCodeLocation { get; set; }
 
         [JsonProperty("identifiers")]
-        public List<JObject> Identifiers { get; set; }
+        public List<JToken> Identifiers { get; set; }
 
         [JsonProperty("references")]
         public List<string> References { get; set; }
@@ -336,7 +336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<Vulnerability> Vulnerabilities { get; set; }
 
         [JsonProperty("cvss")]
-        public JObject Cvss { get; set; }
+        public JToken Cvss { get; set; }
 
         [JsonProperty("cvss_severities")]
         public CvssSeverities CvssSeverities { get; set; }
@@ -345,10 +345,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SecurityAdvisoryEpss Epss { get; set; }
 
         [JsonProperty("cwes")]
-        public List<JObject> Cwes { get; set; }
+        public List<JToken> Cwes { get; set; }
 
         [JsonProperty("credits")]
-        public List<JObject> Credits { get; set; }
+        public List<JToken> Credits { get; set; }
 
     }
 
@@ -430,7 +430,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ClientId { get; set; }
 
         [JsonProperty("owner")]
-        public JObject Owner { get; set; }
+        public JToken Owner { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -451,7 +451,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("events")]
         public List<string> Events { get; set; }
@@ -564,7 +564,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DocumentationUrl { get; set; }
 
         [JsonProperty("errors")]
-        public List<JObject> Errors { get; set; }
+        public List<JToken> Errors { get; set; }
 
     }
 
@@ -610,10 +610,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("request")]
-        public JObject Request { get; set; }
+        public JToken Request { get; set; }
 
         [JsonProperty("response")]
-        public JObject Response { get; set; }
+        public JToken Response { get; set; }
 
     }
 
@@ -626,7 +626,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("account")]
-        public JObject Account { get; set; }
+        public JToken Account { get; set; }
 
         [JsonProperty("requester")]
         public SimpleUser Requester { get; set; }
@@ -881,7 +881,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Id { get; set; }
 
         [JsonProperty("account")]
-        public JObject Account { get; set; }
+        public JToken Account { get; set; }
 
         [JsonProperty("repository_selection")]
         public string RepositorySelection { get; set; }
@@ -985,7 +985,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Forks { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("owner")]
         public SimpleUser Owner { get; set; }
@@ -1258,7 +1258,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? AnonymousAccessEnabled { get; set; }
 
         [JsonProperty("code_search_index_status")]
-        public JObject CodeSearchIndexStatus { get; set; }
+        public JToken CodeSearchIndexStatus { get; set; }
 
     }
 
@@ -1336,7 +1336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string HashedToken { get; set; }
 
         [JsonProperty("app")]
-        public JObject App { get; set; }
+        public JToken App { get; set; }
 
         [JsonProperty("note")]
         public string Note { get; set; }
@@ -1717,7 +1717,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DependencyGraphAutosubmitAction { get; set; }
 
         [JsonProperty("dependency_graph_autosubmit_action_options")]
-        public JObject DependencyGraphAutosubmitActionOptions { get; set; }
+        public JToken DependencyGraphAutosubmitActionOptions { get; set; }
 
         [JsonProperty("dependabot_alerts")]
         public string DependabotAlerts { get; set; }
@@ -1729,13 +1729,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DependabotDelegatedAlertDismissal { get; set; }
 
         [JsonProperty("code_scanning_options")]
-        public JObject CodeScanningOptions { get; set; }
+        public JToken CodeScanningOptions { get; set; }
 
         [JsonProperty("code_scanning_default_setup")]
         public string CodeScanningDefaultSetup { get; set; }
 
         [JsonProperty("code_scanning_default_setup_options")]
-        public JObject CodeScanningDefaultSetupOptions { get; set; }
+        public JToken CodeScanningDefaultSetupOptions { get; set; }
 
         [JsonProperty("code_scanning_delegated_alert_dismissal")]
         public string CodeScanningDelegatedAlertDismissal { get; set; }
@@ -1750,7 +1750,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string SecretScanningDelegatedBypass { get; set; }
 
         [JsonProperty("secret_scanning_delegated_bypass_options")]
-        public JObject SecretScanningDelegatedBypassOptions { get; set; }
+        public JToken SecretScanningDelegatedBypassOptions { get; set; }
 
         [JsonProperty("secret_scanning_validity_checks")]
         public string SecretScanningValidityChecks { get; set; }
@@ -2009,7 +2009,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string VulnerableVersionRange { get; set; }
 
         [JsonProperty("first_patched_version")]
-        public JObject FirstPatchedVersion { get; set; }
+        public JToken FirstPatchedVersion { get; set; }
 
     }
 
@@ -2037,7 +2037,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Classification { get; set; }
 
         [JsonProperty("cvss")]
-        public JObject Cvss { get; set; }
+        public JToken Cvss { get; set; }
 
         [JsonProperty("cvss_severities")]
         public CvssSeverities CvssSeverities { get; set; }
@@ -2046,13 +2046,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SecurityAdvisoryEpss Epss { get; set; }
 
         [JsonProperty("cwes")]
-        public List<JObject> Cwes { get; set; }
+        public List<JToken> Cwes { get; set; }
 
         [JsonProperty("identifiers")]
-        public List<JObject> Identifiers { get; set; }
+        public List<JToken> Identifiers { get; set; }
 
         [JsonProperty("references")]
-        public List<JObject> References { get; set; }
+        public List<JToken> References { get; set; }
 
         [JsonProperty("published_at")]
         public System.DateTime? PublishedAt { get; set; }
@@ -2102,7 +2102,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Status { get; set; }
 
         [JsonProperty("requester")]
-        public JObject Requester { get; set; }
+        public JToken Requester { get; set; }
 
         [JsonProperty("created_at")]
         public System.DateTime? CreatedAt { get; set; }
@@ -2121,7 +2121,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string State { get; set; }
 
         [JsonProperty("dependency")]
-        public JObject Dependency { get; set; }
+        public JToken Dependency { get; set; }
 
         [JsonProperty("security_advisory")]
         public DependabotAlertSecurityAdvisory SecurityAdvisory { get; set; }
@@ -2464,7 +2464,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string AnswerChosenAt { get; set; }
 
         [JsonProperty("answer_chosen_by")]
-        public JObject AnswerChosenBy { get; set; }
+        public JToken AnswerChosenBy { get; set; }
 
         [JsonProperty("answer_html_url")]
         public string AnswerHtmlUrl { get; set; }
@@ -2476,7 +2476,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Body { get; set; }
 
         [JsonProperty("category")]
-        public JObject Category { get; set; }
+        public JToken Category { get; set; }
 
         [JsonProperty("comments")]
         public int? Comments { get; set; }
@@ -2500,7 +2500,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Number { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("repository_url")]
         public string RepositoryUrl { get; set; }
@@ -2521,7 +2521,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
         [JsonProperty("labels")]
         public List<Label> Labels { get; set; }
@@ -2623,7 +2623,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ClientId { get; set; }
 
         [JsonProperty("owner")]
-        public JObject Owner { get; set; }
+        public JToken Owner { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -2644,7 +2644,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("events")]
         public List<string> Events { get; set; }
@@ -2805,13 +2805,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DataType { get; set; }
 
         [JsonProperty("value")]
-        public JObject Value { get; set; }
+        public JToken Value { get; set; }
 
         [JsonProperty("single_select_option")]
-        public JObject SingleSelectOption { get; set; }
+        public JToken SingleSelectOption { get; set; }
 
         [JsonProperty("multi_select_options")]
-        public List<JObject> MultiSelectOptions { get; set; }
+        public List<JToken> MultiSelectOptions { get; set; }
 
     }
 
@@ -2860,7 +2860,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableSimpleUser User { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("assignee")]
         public NullableSimpleUser Assignee { get; set; }
@@ -2881,7 +2881,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Comments { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("closed_at")]
         public System.DateTime? ClosedAt { get; set; }
@@ -3000,10 +3000,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("head")]
-        public JObject Head { get; set; }
+        public JToken Head { get; set; }
 
         [JsonProperty("base")]
-        public JObject Base { get; set; }
+        public JToken Base { get; set; }
 
     }
 
@@ -3144,13 +3144,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public Actor Actor { get; set; }
 
         [JsonProperty("repo")]
-        public JObject Repo { get; set; }
+        public JToken Repo { get; set; }
 
         [JsonProperty("org")]
         public Actor Org { get; set; }
 
         [JsonProperty("payload")]
-        public JObject Payload { get; set; }
+        public JToken Payload { get; set; }
 
         [JsonProperty("public")]
         public bool? Public { get; set; }
@@ -3203,7 +3203,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string RepositoryDiscussionsCategoryUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
     }
 
@@ -3234,7 +3234,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string HtmlUrl { get; set; }
 
         [JsonProperty("files")]
-        public Dictionary<string, JObject> Files { get; set; }
+        public Dictionary<string, JToken> Files { get; set; }
 
         [JsonProperty("public")]
         public bool? Public { get; set; }
@@ -3267,10 +3267,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Truncated { get; set; }
 
         [JsonProperty("forks")]
-        public List<JObject> Forks { get; set; }
+        public List<JToken> Forks { get; set; }
 
         [JsonProperty("history")]
-        public List<JObject> History { get; set; }
+        public List<JToken> History { get; set; }
 
     }
 
@@ -3379,7 +3379,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("private_gists")]
         public int? PrivateGists { get; set; }
@@ -3410,7 +3410,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CommittedAt { get; set; }
 
         [JsonProperty("change_status")]
-        public JObject ChangeStatus { get; set; }
+        public JToken ChangeStatus { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -3420,13 +3420,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class GistSimple
     {
         [JsonProperty("forks")]
-        public List<JObject> Forks { get; set; }
+        public List<JToken> Forks { get; set; }
 
         [JsonProperty("history")]
         public List<GistHistory> History { get; set; }
 
         [JsonProperty("fork_of")]
-        public JObject ForkOf { get; set; }
+        public JToken ForkOf { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -3453,7 +3453,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string HtmlUrl { get; set; }
 
         [JsonProperty("files")]
-        public Dictionary<string, JObject> Files { get; set; }
+        public Dictionary<string, JToken> Files { get; set; }
 
         [JsonProperty("public")]
         public bool? Public { get; set; }
@@ -3527,7 +3527,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableSimpleUser User { get; set; }
 
         [JsonProperty("change_status")]
-        public JObject ChangeStatus { get; set; }
+        public JToken ChangeStatus { get; set; }
 
         [JsonProperty("committed_at")]
         public System.DateTime? CommittedAt { get; set; }
@@ -3673,10 +3673,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Email { get; set; }
 
         [JsonProperty("marketplace_pending_change")]
-        public JObject MarketplacePendingChange { get; set; }
+        public JToken MarketplacePendingChange { get; set; }
 
         [JsonProperty("marketplace_purchase")]
-        public JObject MarketplacePurchaseProperty { get; set; }
+        public JToken MarketplacePurchaseProperty { get; set; }
 
     }
 
@@ -3686,7 +3686,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? VerifiablePasswordAuthentication { get; set; }
 
         [JsonProperty("ssh_key_fingerprints")]
-        public JObject SshKeyFingerprints { get; set; }
+        public JToken SshKeyFingerprints { get; set; }
 
         [JsonProperty("ssh_keys")]
         public List<string> SshKeys { get; set; }
@@ -3731,41 +3731,41 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> Copilot { get; set; }
 
         [JsonProperty("domains")]
-        public JObject Domains { get; set; }
+        public JToken Domains { get; set; }
 
     }
 
     public partial class SecurityAndAnalysis
     {
         [JsonProperty("advanced_security")]
-        public JObject AdvancedSecurity { get; set; }
+        public JToken AdvancedSecurity { get; set; }
 
         [JsonProperty("code_security")]
-        public JObject CodeSecurity { get; set; }
+        public JToken CodeSecurity { get; set; }
 
         [JsonProperty("dependabot_security_updates")]
-        public JObject DependabotSecurityUpdates { get; set; }
+        public JToken DependabotSecurityUpdates { get; set; }
 
         [JsonProperty("secret_scanning")]
-        public JObject SecretScanning { get; set; }
+        public JToken SecretScanning { get; set; }
 
         [JsonProperty("secret_scanning_push_protection")]
-        public JObject SecretScanningPushProtection { get; set; }
+        public JToken SecretScanningPushProtection { get; set; }
 
         [JsonProperty("secret_scanning_non_provider_patterns")]
-        public JObject SecretScanningNonProviderPatterns { get; set; }
+        public JToken SecretScanningNonProviderPatterns { get; set; }
 
         [JsonProperty("secret_scanning_ai_detection")]
-        public JObject SecretScanningAiDetection { get; set; }
+        public JToken SecretScanningAiDetection { get; set; }
 
         [JsonProperty("secret_scanning_delegated_alert_dismissal")]
-        public JObject SecretScanningDelegatedAlertDismissal { get; set; }
+        public JToken SecretScanningDelegatedAlertDismissal { get; set; }
 
         [JsonProperty("secret_scanning_delegated_bypass")]
-        public JObject SecretScanningDelegatedBypass { get; set; }
+        public JToken SecretScanningDelegatedBypass { get; set; }
 
         [JsonProperty("secret_scanning_delegated_bypass_options")]
-        public JObject SecretScanningDelegatedBypassOptions { get; set; }
+        public JToken SecretScanningDelegatedBypassOptions { get; set; }
 
     }
 
@@ -3997,7 +3997,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("role_name")]
         public string RoleName { get; set; }
@@ -4018,7 +4018,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public CodeOfConduct CodeOfConduct { get; set; }
 
         [JsonProperty("license")]
-        public JObject License { get; set; }
+        public JToken License { get; set; }
 
         [JsonProperty("forks")]
         public int? Forks { get; set; }
@@ -4039,7 +4039,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SecurityAndAnalysis SecurityAndAnalysis { get; set; }
 
         [JsonProperty("custom_properties")]
-        public JObject CustomProperties { get; set; }
+        public JToken CustomProperties { get; set; }
 
     }
 
@@ -4052,7 +4052,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public MinimalRepository Repository { get; set; }
 
         [JsonProperty("subject")]
-        public JObject Subject { get; set; }
+        public JToken Subject { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -4116,7 +4116,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class BillingAiCreditUsageReportOrg
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("organization")]
         public string Organization { get; set; }
@@ -4131,7 +4131,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Model { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
@@ -4141,7 +4141,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Id { get; set; }
 
         [JsonProperty("budget_type")]
-        public JObject BudgetType { get; set; }
+        public JToken BudgetType { get; set; }
 
         [JsonProperty("budget_amount")]
         public int? BudgetAmount { get; set; }
@@ -4162,7 +4162,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string BudgetProductSku { get; set; }
 
         [JsonProperty("budget_alerting")]
-        public JObject BudgetAlerting { get; set; }
+        public JToken BudgetAlerting { get; set; }
 
     }
 
@@ -4175,7 +4175,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string User { get; set; }
 
         [JsonProperty("effective_budget")]
-        public JObject EffectiveBudget { get; set; }
+        public JToken EffectiveBudget { get; set; }
 
         [JsonProperty("has_next_page")]
         public bool? HasNextPage { get; set; }
@@ -4191,7 +4191,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Message { get; set; }
 
         [JsonProperty("budget")]
-        public JObject Budget { get; set; }
+        public JToken Budget { get; set; }
 
     }
 
@@ -4219,10 +4219,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string BudgetProductSku { get; set; }
 
         [JsonProperty("budget_type")]
-        public JObject BudgetType { get; set; }
+        public JToken BudgetType { get; set; }
 
         [JsonProperty("budget_alerting")]
-        public JObject BudgetAlerting { get; set; }
+        public JToken BudgetAlerting { get; set; }
 
     }
 
@@ -4232,7 +4232,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Message { get; set; }
 
         [JsonProperty("budget")]
-        public JObject Budget { get; set; }
+        public JToken Budget { get; set; }
 
     }
 
@@ -4249,7 +4249,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class BillingPremiumRequestUsageReportOrg
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("organization")]
         public string Organization { get; set; }
@@ -4264,21 +4264,21 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Model { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
     public partial class BillingUsageReport
     {
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
     public partial class BillingUsageSummaryReportOrg
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("organization")]
         public string Organization { get; set; }
@@ -4293,7 +4293,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Sku { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
@@ -4399,7 +4399,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string BillingEmail { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("default_repository_permission")]
         public string DefaultRepositoryPermission { get; set; }
@@ -4682,7 +4682,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class ActionsHostedRunnerLimits
     {
         [JsonProperty("public_ips")]
-        public JObject PublicIps { get; set; }
+        public JToken PublicIps { get; set; }
 
     }
 
@@ -4979,7 +4979,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? ExpiresAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("repositories")]
         public List<Repository> Repositories { get; set; }
@@ -5187,7 +5187,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Permission { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -5254,7 +5254,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ContactLink { get; set; }
 
         [JsonProperty("alert_stats")]
-        public JObject AlertStats { get; set; }
+        public JToken AlertStats { get; set; }
 
     }
 
@@ -5440,7 +5440,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CommitSha { get; set; }
 
         [JsonProperty("message")]
-        public JObject Message { get; set; }
+        public JToken Message { get; set; }
 
         [JsonProperty("location")]
         public CodeScanningAlertLocation Location { get; set; }
@@ -5584,7 +5584,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("git_status")]
-        public JObject GitStatus { get; set; }
+        public JToken GitStatus { get; set; }
 
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -5614,7 +5614,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> RecentFolders { get; set; }
 
         [JsonProperty("runtime_constraints")]
-        public JObject RuntimeConstraints { get; set; }
+        public JToken RuntimeConstraints { get; set; }
 
         [JsonProperty("pending_operation")]
         public bool? PendingOperation { get; set; }
@@ -5698,7 +5698,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string BaseRole { get; set; }
 
         [JsonProperty("owner")]
-        public JObject Owner { get; set; }
+        public JToken Owner { get; set; }
 
         [JsonProperty("creator")]
         public SimpleUser Creator { get; set; }
@@ -5716,7 +5716,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ApiUrl { get; set; }
 
         [JsonProperty("resources_attributes")]
-        public List<JObject> ResourcesAttributes { get; set; }
+        public List<JToken> ResourcesAttributes { get; set; }
 
     }
 
@@ -5736,7 +5736,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? CopilotChatAttachmentId { get; set; }
 
         [JsonProperty("metadata")]
-        public JObject Metadata { get; set; }
+        public JToken Metadata { get; set; }
 
         [JsonProperty("created_at")]
         public System.DateTime? CreatedAt { get; set; }
@@ -5842,7 +5842,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableOrganizationSimple Organization { get; set; }
 
         [JsonProperty("assigning_team")]
-        public JObject AssigningTeam { get; set; }
+        public JToken AssigningTeam { get; set; }
 
         [JsonProperty("pending_cancellation_date")]
         public System.DateTime? PendingCancellationDate { get; set; }
@@ -5877,10 +5877,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalEngagedUsers { get; set; }
 
         [JsonProperty("languages")]
-        public List<JObject> Languages { get; set; }
+        public List<JToken> Languages { get; set; }
 
         [JsonProperty("editors")]
-        public List<JObject> Editors { get; set; }
+        public List<JToken> Editors { get; set; }
 
     }
 
@@ -5890,7 +5890,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalEngagedUsers { get; set; }
 
         [JsonProperty("editors")]
-        public List<JObject> Editors { get; set; }
+        public List<JToken> Editors { get; set; }
 
     }
 
@@ -5900,7 +5900,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalEngagedUsers { get; set; }
 
         [JsonProperty("models")]
-        public List<JObject> Models { get; set; }
+        public List<JToken> Models { get; set; }
 
     }
 
@@ -5910,7 +5910,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalEngagedUsers { get; set; }
 
         [JsonProperty("repositories")]
-        public List<JObject> Repositories { get; set; }
+        public List<JToken> Repositories { get; set; }
 
     }
 
@@ -6196,7 +6196,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("role_name")]
         public string RoleName { get; set; }
@@ -6217,7 +6217,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public CodeOfConduct CodeOfConduct { get; set; }
 
         [JsonProperty("license")]
-        public JObject License { get; set; }
+        public JToken License { get; set; }
 
         [JsonProperty("forks")]
         public int? Forks { get; set; }
@@ -6238,7 +6238,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SecurityAndAnalysis SecurityAndAnalysis { get; set; }
 
         [JsonProperty("custom_properties")]
-        public JObject CustomProperties { get; set; }
+        public JToken CustomProperties { get; set; }
 
     }
 
@@ -6343,7 +6343,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Active { get; set; }
 
         [JsonProperty("config")]
-        public JObject Config { get; set; }
+        public JToken Config { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -6450,7 +6450,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Visibility { get; set; }
 
         [JsonProperty("options")]
-        public List<JObject> Options { get; set; }
+        public List<JToken> Options { get; set; }
 
         [JsonProperty("created_at")]
         public System.DateTime? CreatedAt { get; set; }
@@ -6475,7 +6475,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Visibility { get; set; }
 
         [JsonProperty("options")]
-        public List<JObject> Options { get; set; }
+        public List<JToken> Options { get; set; }
 
     }
 
@@ -6491,7 +6491,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Visibility { get; set; }
 
         [JsonProperty("options")]
-        public List<JObject> Options { get; set; }
+        public List<JToken> Options { get; set; }
 
     }
 
@@ -6554,7 +6554,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableSimpleUser User { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
     }
 
@@ -6677,7 +6677,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Permission { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("url")]
         public string Url { get; set; }
@@ -6866,7 +6866,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? DeletedAt { get; set; }
 
         [JsonProperty("metadata")]
-        public JObject Metadata { get; set; }
+        public JToken Metadata { get; set; }
 
     }
 
@@ -6888,7 +6888,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string RepositoriesUrl { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
@@ -6925,7 +6925,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string RepositoriesUrl { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("access_granted_at")]
         public string AccessGrantedAt { get; set; }
@@ -7271,7 +7271,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Body { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("milestone")]
         public NullableMilestone Milestone { get; set; }
@@ -7307,13 +7307,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<Team> RequestedTeams { get; set; }
 
         [JsonProperty("head")]
-        public JObject Head { get; set; }
+        public JToken Head { get; set; }
 
         [JsonProperty("base")]
-        public JObject Base { get; set; }
+        public JToken Base { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("author_association")]
         public AuthorAssociation AuthorAssociation { get; set; }
@@ -7370,7 +7370,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("content")]
-        public JObject Content { get; set; }
+        public JToken Content { get; set; }
 
         [JsonProperty("content_type")]
         public ProjectsV2ItemContentType ContentType { get; set; }
@@ -7401,10 +7401,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Id { get; set; }
 
         [JsonProperty("name")]
-        public JObject Name { get; set; }
+        public JToken Name { get; set; }
 
         [JsonProperty("description")]
-        public JObject Description { get; set; }
+        public JToken Description { get; set; }
 
         [JsonProperty("color")]
         public string Color { get; set; }
@@ -7423,7 +7423,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Duration { get; set; }
 
         [JsonProperty("title")]
-        public JObject Title { get; set; }
+        public JToken Title { get; set; }
 
         [JsonProperty("completed")]
         public bool? Completed { get; set; }
@@ -7454,7 +7454,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<ProjectsV2SingleSelectOptions> Options { get; set; }
 
         [JsonProperty("configuration")]
-        public JObject Configuration { get; set; }
+        public JToken Configuration { get; set; }
 
         [JsonProperty("created_at")]
         public System.DateTime? CreatedAt { get; set; }
@@ -7486,7 +7486,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Duration { get; set; }
 
         [JsonProperty("iterations")]
-        public List<JObject> Iterations { get; set; }
+        public List<JToken> Iterations { get; set; }
 
     }
 
@@ -7505,7 +7505,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public ProjectsV2ItemContentType ContentType { get; set; }
 
         [JsonProperty("content")]
-        public JObject Content { get; set; }
+        public JToken Content { get; set; }
 
         [JsonProperty("creator")]
         public SimpleUser Creator { get; set; }
@@ -7523,7 +7523,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ItemUrl { get; set; }
 
         [JsonProperty("fields")]
-        public List<JObject> Fields { get; set; }
+        public List<JToken> Fields { get; set; }
 
     }
 
@@ -7551,7 +7551,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string HtmlUrl { get; set; }
 
         [JsonProperty("creator")]
-        public JObject Creator { get; set; }
+        public JToken Creator { get; set; }
 
         [JsonProperty("created_at")]
         public System.DateTime? CreatedAt { get; set; }
@@ -7566,7 +7566,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<int?> VisibleFields { get; set; }
 
         [JsonProperty("sort_by")]
-        public List<List<JObject>> SortBy { get; set; }
+        public List<List<JToken>> SortBy { get; set; }
 
         [JsonProperty("group_by")]
         public List<int?> GroupBy { get; set; }
@@ -7594,7 +7594,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Required { get; set; }
 
         [JsonProperty("default_value")]
-        public JObject DefaultValue { get; set; }
+        public JToken DefaultValue { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -7619,7 +7619,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Required { get; set; }
 
         [JsonProperty("default_value")]
-        public JObject DefaultValue { get; set; }
+        public JToken DefaultValue { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -7641,7 +7641,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PropertyName { get; set; }
 
         [JsonProperty("value")]
-        public JObject Value { get; set; }
+        public JToken Value { get; set; }
 
     }
 
@@ -7682,7 +7682,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Forks { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("owner")]
         public SimpleUser Owner { get; set; }
@@ -7955,7 +7955,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? AnonymousAccessEnabled { get; set; }
 
         [JsonProperty("code_search_index_status")]
-        public JObject CodeSearchIndexStatus { get; set; }
+        public JToken CodeSearchIndexStatus { get; set; }
 
     }
 
@@ -8203,7 +8203,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("allow_rebase_merge")]
         public bool? AllowRebaseMerge { get; set; }
@@ -8290,7 +8290,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SecurityAndAnalysis SecurityAndAnalysis { get; set; }
 
         [JsonProperty("custom_properties")]
-        public JObject CustomProperties { get; set; }
+        public JToken CustomProperties { get; set; }
 
     }
 
@@ -8320,21 +8320,21 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class RepositoryRulesetConditions
     {
         [JsonProperty("ref_name")]
-        public JObject RefName { get; set; }
+        public JToken RefName { get; set; }
 
     }
 
     public partial class RepositoryRulesetConditionsRepositoryNameTarget
     {
         [JsonProperty("repository_name")]
-        public JObject RepositoryName { get; set; }
+        public JToken RepositoryName { get; set; }
 
     }
 
     public partial class RepositoryRulesetConditionsRepositoryIdTarget
     {
         [JsonProperty("repository_id")]
-        public JObject RepositoryId { get; set; }
+        public JToken RepositoryId { get; set; }
 
     }
 
@@ -8354,7 +8354,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class RepositoryRulesetConditionsRepositoryPropertyTarget
     {
         [JsonProperty("repository_property")]
-        public JObject RepositoryProperty { get; set; }
+        public JToken RepositoryProperty { get; set; }
 
     }
 
@@ -8375,7 +8375,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8399,7 +8399,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8409,7 +8409,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8469,7 +8469,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8489,7 +8489,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8506,7 +8506,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8516,7 +8516,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8526,7 +8526,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8536,7 +8536,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8546,7 +8546,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8582,7 +8582,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8605,7 +8605,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8615,7 +8615,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8625,7 +8625,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8635,7 +8635,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8645,7 +8645,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8655,7 +8655,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("parameters")]
-        public JObject Parameters { get; set; }
+        public JToken Parameters { get; set; }
 
     }
 
@@ -8693,10 +8693,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("conditions")]
-        public JObject Conditions { get; set; }
+        public JToken Conditions { get; set; }
 
         [JsonProperty("rules")]
         public List<RepositoryRule> Rules { get; set; }
@@ -8720,14 +8720,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class RuleSuitePullRequest
     {
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
     }
 
     public partial class RuleSuiteRequiredStatusChecks
     {
         [JsonProperty("checks")]
-        public List<JObject> Checks { get; set; }
+        public List<JToken> Checks { get; set; }
 
     }
 
@@ -8767,7 +8767,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string EvaluationResult { get; set; }
 
         [JsonProperty("rule_evaluations")]
-        public List<JObject> RuleEvaluations { get; set; }
+        public List<JToken> RuleEvaluations { get; set; }
 
     }
 
@@ -8777,7 +8777,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? VersionId { get; set; }
 
         [JsonProperty("actor")]
-        public JObject Actor { get; set; }
+        public JToken Actor { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -8790,13 +8790,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? VersionId { get; set; }
 
         [JsonProperty("actor")]
-        public JObject Actor { get; set; }
+        public JToken Actor { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("state")]
-        public JObject State { get; set; }
+        public JToken State { get; set; }
 
     }
 
@@ -9160,7 +9160,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class RepositoryAdvisoryVulnerability
     {
         [JsonProperty("package")]
-        public JObject Package { get; set; }
+        public JToken Package { get; set; }
 
         [JsonProperty("vulnerable_version_range")]
         public string VulnerableVersionRange { get; set; }
@@ -9210,13 +9210,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Severity { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("publisher")]
-        public JObject Publisher { get; set; }
+        public JToken Publisher { get; set; }
 
         [JsonProperty("identifiers")]
-        public List<JObject> Identifiers { get; set; }
+        public List<JToken> Identifiers { get; set; }
 
         [JsonProperty("state")]
         public string State { get; set; }
@@ -9237,25 +9237,25 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? WithdrawnAt { get; set; }
 
         [JsonProperty("submission")]
-        public JObject Submission { get; set; }
+        public JToken Submission { get; set; }
 
         [JsonProperty("vulnerabilities")]
         public List<RepositoryAdvisoryVulnerability> Vulnerabilities { get; set; }
 
         [JsonProperty("cvss")]
-        public JObject Cvss { get; set; }
+        public JToken Cvss { get; set; }
 
         [JsonProperty("cvss_severities")]
         public CvssSeverities CvssSeverities { get; set; }
 
         [JsonProperty("cwes")]
-        public List<JObject> Cwes { get; set; }
+        public List<JToken> Cwes { get; set; }
 
         [JsonProperty("cwe_ids")]
         public List<string> CweIds { get; set; }
 
         [JsonProperty("credits")]
-        public List<JObject> Credits { get; set; }
+        public List<JToken> Credits { get; set; }
 
         [JsonProperty("credits_detailed")]
         public List<RepositoryAdvisoryCredit> CreditsDetailed { get; set; }
@@ -9267,7 +9267,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<Team> CollaboratingTeams { get; set; }
 
         [JsonProperty("private_fork")]
-        public JObject PrivateFork { get; set; }
+        public JToken PrivateFork { get; set; }
 
     }
 
@@ -9430,7 +9430,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string BillingEmail { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("default_repository_permission")]
         public string DefaultRepositoryPermission { get; set; }
@@ -9584,7 +9584,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Forks { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("role_name")]
         public string RoleName { get; set; }
@@ -9853,7 +9853,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class RateLimitOverview
     {
         [JsonProperty("resources")]
-        public JObject Resources { get; set; }
+        public JToken Resources { get; set; }
 
         [JsonProperty("rate")]
         public RateLimit Rate { get; set; }
@@ -9896,7 +9896,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Digest { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -9920,7 +9920,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalCount { get; set; }
 
         [JsonProperty("actions_caches")]
-        public List<JObject> ActionsCaches { get; set; }
+        public List<JToken> ActionsCaches { get; set; }
 
     }
 
@@ -9930,7 +9930,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalCount { get; set; }
 
         [JsonProperty("concurrency_groups")]
-        public List<JObject> ConcurrencyGroups { get; set; }
+        public List<JToken> ConcurrencyGroups { get; set; }
 
     }
 
@@ -9946,7 +9946,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalCount { get; set; }
 
         [JsonProperty("group_members")]
-        public List<JObject> GroupMembers { get; set; }
+        public List<JToken> GroupMembers { get; set; }
 
     }
 
@@ -9995,7 +9995,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Name { get; set; }
 
         [JsonProperty("steps")]
-        public List<JObject> Steps { get; set; }
+        public List<JToken> Steps { get; set; }
 
         [JsonProperty("check_run_url")]
         public string CheckRunUrl { get; set; }
@@ -10123,10 +10123,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? Timestamp { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("committer")]
-        public JObject Committer { get; set; }
+        public JToken Committer { get; set; }
 
     }
 
@@ -10245,7 +10245,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class EnvironmentApprovals
     {
         [JsonProperty("environments")]
-        public List<JObject> Environments { get; set; }
+        public List<JToken> Environments { get; set; }
 
         [JsonProperty("state")]
         public string State { get; set; }
@@ -10264,7 +10264,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? TotalCount { get; set; }
 
         [JsonProperty("concurrency_groups")]
-        public List<JObject> ConcurrencyGroups { get; set; }
+        public List<JToken> ConcurrencyGroups { get; set; }
 
     }
 
@@ -10302,7 +10302,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class PendingDeployment
     {
         [JsonProperty("environment")]
-        public JObject Environment { get; set; }
+        public JToken Environment { get; set; }
 
         [JsonProperty("wait_timer")]
         public int? WaitTimer { get; set; }
@@ -10314,7 +10314,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? CurrentUserCanApprove { get; set; }
 
         [JsonProperty("reviewers")]
-        public List<JObject> Reviewers { get; set; }
+        public List<JToken> Reviewers { get; set; }
 
     }
 
@@ -10339,7 +10339,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Task { get; set; }
 
         [JsonProperty("payload")]
-        public JObject Payload { get; set; }
+        public JToken Payload { get; set; }
 
         [JsonProperty("original_environment")]
         public string OriginalEnvironment { get; set; }
@@ -10379,7 +10379,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WorkflowRunUsage
     {
         [JsonProperty("billable")]
-        public JObject Billable { get; set; }
+        public JToken Billable { get; set; }
 
         [JsonProperty("run_duration_ms")]
         public int? RunDurationMs { get; set; }
@@ -10443,7 +10443,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WorkflowUsage
     {
         [JsonProperty("billable")]
-        public JObject Billable { get; set; }
+        public JToken Billable { get; set; }
 
     }
 
@@ -10516,7 +10516,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> Contexts { get; set; }
 
         [JsonProperty("checks")]
-        public List<JObject> Checks { get; set; }
+        public List<JToken> Checks { get; set; }
 
         [JsonProperty("contexts_url")]
         public string ContextsUrl { get; set; }
@@ -10542,10 +10542,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("dismissal_restrictions")]
-        public JObject DismissalRestrictions { get; set; }
+        public JToken DismissalRestrictions { get; set; }
 
         [JsonProperty("bypass_pull_request_allowances")]
-        public JObject BypassPullRequestAllowances { get; set; }
+        public JToken BypassPullRequestAllowances { get; set; }
 
         [JsonProperty("dismiss_stale_reviews")]
         public bool? DismissStaleReviews { get; set; }
@@ -10576,13 +10576,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string AppsUrl { get; set; }
 
         [JsonProperty("users")]
-        public List<JObject> Users { get; set; }
+        public List<JToken> Users { get; set; }
 
         [JsonProperty("teams")]
         public List<Team> Teams { get; set; }
 
         [JsonProperty("apps")]
-        public List<JObject> Apps { get; set; }
+        public List<JToken> Apps { get; set; }
 
     }
 
@@ -10607,19 +10607,19 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public BranchRestrictionPolicy Restrictions { get; set; }
 
         [JsonProperty("required_linear_history")]
-        public JObject RequiredLinearHistory { get; set; }
+        public JToken RequiredLinearHistory { get; set; }
 
         [JsonProperty("allow_force_pushes")]
-        public JObject AllowForcePushes { get; set; }
+        public JToken AllowForcePushes { get; set; }
 
         [JsonProperty("allow_deletions")]
-        public JObject AllowDeletions { get; set; }
+        public JToken AllowDeletions { get; set; }
 
         [JsonProperty("block_creations")]
-        public JObject BlockCreations { get; set; }
+        public JToken BlockCreations { get; set; }
 
         [JsonProperty("required_conversation_resolution")]
-        public JObject RequiredConversationResolution { get; set; }
+        public JToken RequiredConversationResolution { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -10628,13 +10628,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ProtectionUrl { get; set; }
 
         [JsonProperty("required_signatures")]
-        public JObject RequiredSignatures { get; set; }
+        public JToken RequiredSignatures { get; set; }
 
         [JsonProperty("lock_branch")]
-        public JObject LockBranch { get; set; }
+        public JToken LockBranch { get; set; }
 
         [JsonProperty("allow_fork_syncing")]
-        public JObject AllowForkSyncing { get; set; }
+        public JToken AllowForkSyncing { get; set; }
 
     }
 
@@ -10644,7 +10644,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Name { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
         [JsonProperty("protected")]
         public bool? Protected { get; set; }
@@ -10744,19 +10744,19 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CommentsUrl { get; set; }
 
         [JsonProperty("commit")]
-        public JObject CommitProperty { get; set; }
+        public JToken CommitProperty { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("committer")]
-        public JObject Committer { get; set; }
+        public JToken Committer { get; set; }
 
         [JsonProperty("parents")]
-        public List<JObject> Parents { get; set; }
+        public List<JToken> Parents { get; set; }
 
         [JsonProperty("stats")]
-        public JObject Stats { get; set; }
+        public JToken Stats { get; set; }
 
         [JsonProperty("files")]
         public List<DiffEntry> Files { get; set; }
@@ -10772,7 +10772,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public Commit Commit { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("protected")]
         public bool? Protected { get; set; }
@@ -10803,7 +10803,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> Contexts { get; set; }
 
         [JsonProperty("checks")]
-        public List<JObject> Checks { get; set; }
+        public List<JToken> Checks { get; set; }
 
         [JsonProperty("contexts_url")]
         public string ContextsUrl { get; set; }
@@ -10819,37 +10819,37 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public StatusCheckPolicy RequiredStatusChecks { get; set; }
 
         [JsonProperty("required_pull_request_reviews")]
-        public JObject RequiredPullRequestReviews { get; set; }
+        public JToken RequiredPullRequestReviews { get; set; }
 
         [JsonProperty("required_signatures")]
-        public JObject RequiredSignatures { get; set; }
+        public JToken RequiredSignatures { get; set; }
 
         [JsonProperty("enforce_admins")]
-        public JObject EnforceAdmins { get; set; }
+        public JToken EnforceAdmins { get; set; }
 
         [JsonProperty("required_linear_history")]
-        public JObject RequiredLinearHistory { get; set; }
+        public JToken RequiredLinearHistory { get; set; }
 
         [JsonProperty("allow_force_pushes")]
-        public JObject AllowForcePushes { get; set; }
+        public JToken AllowForcePushes { get; set; }
 
         [JsonProperty("allow_deletions")]
-        public JObject AllowDeletions { get; set; }
+        public JToken AllowDeletions { get; set; }
 
         [JsonProperty("restrictions")]
         public BranchRestrictionPolicy Restrictions { get; set; }
 
         [JsonProperty("required_conversation_resolution")]
-        public JObject RequiredConversationResolution { get; set; }
+        public JToken RequiredConversationResolution { get; set; }
 
         [JsonProperty("block_creations")]
-        public JObject BlockCreations { get; set; }
+        public JToken BlockCreations { get; set; }
 
         [JsonProperty("lock_branch")]
-        public JObject LockBranch { get; set; }
+        public JToken LockBranch { get; set; }
 
         [JsonProperty("allow_fork_syncing")]
-        public JObject AllowForkSyncing { get; set; }
+        public JToken AllowForkSyncing { get; set; }
 
     }
 
@@ -10935,13 +10935,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CompletedAt { get; set; }
 
         [JsonProperty("output")]
-        public JObject Output { get; set; }
+        public JToken Output { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
 
         [JsonProperty("check_suite")]
-        public JObject CheckSuite { get; set; }
+        public JToken CheckSuite { get; set; }
 
         [JsonProperty("app")]
         public NullableIntegration App { get; set; }
@@ -11003,10 +11003,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? Timestamp { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("committer")]
-        public JObject Committer { get; set; }
+        public JToken Committer { get; set; }
 
     }
 
@@ -11074,7 +11074,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class CheckSuitePreference
     {
         [JsonProperty("preferences")]
-        public JObject Preferences { get; set; }
+        public JToken Preferences { get; set; }
 
         [JsonProperty("repository")]
         public MinimalRepository Repository { get; set; }
@@ -11368,7 +11368,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CommitSha { get; set; }
 
         [JsonProperty("message")]
-        public JObject Message { get; set; }
+        public JToken Message { get; set; }
 
         [JsonProperty("location")]
         public CodeScanningAlertLocation Location { get; set; }
@@ -11602,10 +11602,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string FailureReason { get; set; }
 
         [JsonProperty("scanned_repositories")]
-        public List<JObject> ScannedRepositories { get; set; }
+        public List<JToken> ScannedRepositories { get; set; }
 
         [JsonProperty("skipped_repositories")]
-        public JObject SkippedRepositories { get; set; }
+        public JToken SkippedRepositories { get; set; }
 
     }
 
@@ -11741,7 +11741,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class CodeownersErrors
     {
         [JsonProperty("errors")]
-        public List<JObject> Errors { get; set; }
+        public List<JToken> Errors { get; set; }
 
     }
 
@@ -11853,7 +11853,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? SiteAdmin { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("role_name")]
         public string RoleName { get; set; }
@@ -11960,7 +11960,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? SiteAdmin { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("role_name")]
         public string RoleName { get; set; }
@@ -12054,7 +12054,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Name { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
         [JsonProperty("protected")]
         public bool? Protected { get; set; }
@@ -12198,7 +12198,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Documentation { get; set; }
 
         [JsonProperty("files")]
-        public JObject Files { get; set; }
+        public JToken Files { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -12284,13 +12284,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DownloadUrl { get; set; }
 
         [JsonProperty("entries")]
-        public List<JObject> Entries { get; set; }
+        public List<JToken> Entries { get; set; }
 
         [JsonProperty("encoding")]
         public string Encoding { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
     }
 
@@ -12334,7 +12334,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DownloadUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("target")]
         public string Target { get; set; }
@@ -12377,7 +12377,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DownloadUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
     }
 
@@ -12414,17 +12414,17 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DownloadUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
     }
 
     public partial class FileCommit
     {
         [JsonProperty("content")]
-        public JObject Content { get; set; }
+        public JToken Content { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
     }
 
@@ -12444,7 +12444,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Status { get; set; }
 
         [JsonProperty("metadata")]
-        public JObject Metadata { get; set; }
+        public JToken Metadata { get; set; }
 
     }
 
@@ -12527,7 +12527,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string State { get; set; }
 
         [JsonProperty("dependency")]
-        public JObject Dependency { get; set; }
+        public JToken Dependency { get; set; }
 
         [JsonProperty("security_advisory")]
         public DependabotAlertSecurityAdvisory SecurityAdvisory { get; set; }
@@ -12593,7 +12593,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class DependencyGraphSpdxSbom
     {
         [JsonProperty("sbom")]
-        public JObject Sbom { get; set; }
+        public JToken Sbom { get; set; }
 
     }
 
@@ -12626,7 +12626,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Name { get; set; }
 
         [JsonProperty("file")]
-        public JObject File { get; set; }
+        public JToken File { get; set; }
 
         [JsonProperty("metadata")]
         public Metadata Metadata { get; set; }
@@ -12642,7 +12642,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Version { get; set; }
 
         [JsonProperty("job")]
-        public JObject Job { get; set; }
+        public JToken Job { get; set; }
 
         [JsonProperty("sha")]
         public string Sha { get; set; }
@@ -12651,7 +12651,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Ref { get; set; }
 
         [JsonProperty("detector")]
-        public JObject Detector { get; set; }
+        public JToken Detector { get; set; }
 
         [JsonProperty("metadata")]
         public Metadata Metadata { get; set; }
@@ -12751,7 +12751,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("protection_rules")]
-        public List<JObject> ProtectionRules { get; set; }
+        public List<JToken> ProtectionRules { get; set; }
 
         [JsonProperty("deployment_branch_policy")]
         public DeploymentBranchPolicySettings DeploymentBranchPolicy { get; set; }
@@ -12874,22 +12874,22 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("committer")]
-        public JObject Committer { get; set; }
+        public JToken Committer { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("tree")]
-        public JObject Tree { get; set; }
+        public JToken Tree { get; set; }
 
         [JsonProperty("parents")]
-        public List<JObject> Parents { get; set; }
+        public List<JToken> Parents { get; set; }
 
         [JsonProperty("verification")]
-        public JObject Verification { get; set; }
+        public JToken Verification { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -12908,7 +12908,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("object")]
-        public JObject Object { get; set; }
+        public JToken Object { get; set; }
 
     }
 
@@ -12930,10 +12930,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Message { get; set; }
 
         [JsonProperty("tagger")]
-        public JObject Tagger { get; set; }
+        public JToken Tagger { get; set; }
 
         [JsonProperty("object")]
-        public JObject Object { get; set; }
+        public JToken Object { get; set; }
 
         [JsonProperty("verification")]
         public Verification Verification { get; set; }
@@ -12952,7 +12952,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Truncated { get; set; }
 
         [JsonProperty("tree")]
-        public List<JObject> Tree { get; set; }
+        public List<JToken> Tree { get; set; }
 
     }
 
@@ -13077,7 +13077,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? LargeFilesCount { get; set; }
 
         [JsonProperty("project_choices")]
-        public List<JObject> ProjectChoices { get; set; }
+        public List<JToken> ProjectChoices { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
@@ -13188,7 +13188,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableSimpleUser User { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("assignee")]
         public NullableSimpleUser Assignee { get; set; }
@@ -13209,7 +13209,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Comments { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("closed_at")]
         public System.DateTime? ClosedAt { get; set; }
@@ -13432,7 +13432,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("label")]
-        public JObject Label { get; set; }
+        public JToken Label { get; set; }
 
     }
 
@@ -13466,7 +13466,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("label")]
-        public JObject Label { get; set; }
+        public JToken Label { get; set; }
 
     }
 
@@ -13574,7 +13574,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("milestone")]
-        public JObject Milestone { get; set; }
+        public JToken Milestone { get; set; }
 
     }
 
@@ -13608,7 +13608,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("milestone")]
-        public JObject Milestone { get; set; }
+        public JToken Milestone { get; set; }
 
     }
 
@@ -13642,7 +13642,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("rename")]
-        public JObject Rename { get; set; }
+        public JToken Rename { get; set; }
 
     }
 
@@ -13756,7 +13756,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("dismissed_review")]
-        public JObject DismissedReview { get; set; }
+        public JToken DismissedReview { get; set; }
 
     }
 
@@ -13824,7 +13824,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
     }
 
@@ -13858,7 +13858,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
     }
 
@@ -13892,7 +13892,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableIntegration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
     }
 
@@ -13926,7 +13926,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public Integration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
     }
 
@@ -14004,7 +14004,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("source")]
-        public JObject Source { get; set; }
+        public JToken Source { get; set; }
 
     }
 
@@ -14023,22 +14023,22 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("committer")]
-        public JObject Committer { get; set; }
+        public JToken Committer { get; set; }
 
         [JsonProperty("message")]
         public string Message { get; set; }
 
         [JsonProperty("tree")]
-        public JObject Tree { get; set; }
+        public JToken Tree { get; set; }
 
         [JsonProperty("parents")]
-        public List<JObject> Parents { get; set; }
+        public List<JToken> Parents { get; set; }
 
         [JsonProperty("verification")]
-        public JObject Verification { get; set; }
+        public JToken Verification { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -14072,7 +14072,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PullRequestUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("submitted_at")]
         public System.DateTime? SubmittedAt { get; set; }
@@ -14151,7 +14151,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public AuthorAssociation AuthorAssociation { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("start_line")]
         public int? StartLine { get; set; }
@@ -14394,7 +14394,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Encoding { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("license")]
         public NullableLicenseSimple License { get; set; }
@@ -14541,7 +14541,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Status { get; set; }
 
         [JsonProperty("error")]
-        public JObject Error { get; set; }
+        public JToken Error { get; set; }
 
         [JsonProperty("pusher")]
         public NullableSimpleUser Pusher { get; set; }
@@ -14573,7 +14573,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class PageDeployment
     {
         [JsonProperty("id")]
-        public JObject Id { get; set; }
+        public JToken Id { get; set; }
 
         [JsonProperty("status_url")]
         public string StatusUrl { get; set; }
@@ -14596,10 +14596,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class PagesHealthCheck
     {
         [JsonProperty("domain")]
-        public JObject Domain { get; set; }
+        public JToken Domain { get; set; }
 
         [JsonProperty("alt_domain")]
-        public JObject AltDomain { get; set; }
+        public JToken AltDomain { get; set; }
 
     }
 
@@ -14660,7 +14660,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Body { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("milestone")]
         public NullableMilestone Milestone { get; set; }
@@ -14696,13 +14696,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<TeamSimple> RequestedTeams { get; set; }
 
         [JsonProperty("head")]
-        public JObject Head { get; set; }
+        public JToken Head { get; set; }
 
         [JsonProperty("base")]
-        public JObject Base { get; set; }
+        public JToken Base { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("author_association")]
         public AuthorAssociation AuthorAssociation { get; set; }
@@ -14798,7 +14798,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PullRequestUrl { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("submitted_at")]
         public System.DateTime? SubmittedAt { get; set; }
@@ -14874,7 +14874,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public AuthorAssociation AuthorAssociation { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("body_text")]
         public string BodyText { get; set; }
@@ -15052,7 +15052,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Type { get; set; }
 
         [JsonProperty("details")]
-        public JObject Details { get; set; }
+        public JToken Details { get; set; }
 
     }
 
@@ -15107,7 +15107,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<SecretScanningScan> BackfillScans { get; set; }
 
         [JsonProperty("custom_pattern_backfill_scans")]
-        public List<JObject> CustomPatternBackfillScans { get; set; }
+        public List<JToken> CustomPatternBackfillScans { get; set; }
 
         [JsonProperty("generic_secrets_backfill_scans")]
         public List<SecretScanningScan> GenericSecretsBackfillScans { get; set; }
@@ -15126,13 +15126,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CveId { get; set; }
 
         [JsonProperty("vulnerabilities")]
-        public List<JObject> Vulnerabilities { get; set; }
+        public List<JToken> Vulnerabilities { get; set; }
 
         [JsonProperty("cwe_ids")]
         public List<string> CweIds { get; set; }
 
         [JsonProperty("credits")]
-        public List<JObject> Credits { get; set; }
+        public List<JToken> Credits { get; set; }
 
         [JsonProperty("severity")]
         public string Severity { get; set; }
@@ -15154,7 +15154,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Description { get; set; }
 
         [JsonProperty("vulnerabilities")]
-        public List<JObject> Vulnerabilities { get; set; }
+        public List<JToken> Vulnerabilities { get; set; }
 
         [JsonProperty("cwe_ids")]
         public List<string> CweIds { get; set; }
@@ -15182,13 +15182,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CveId { get; set; }
 
         [JsonProperty("vulnerabilities")]
-        public List<JObject> Vulnerabilities { get; set; }
+        public List<JToken> Vulnerabilities { get; set; }
 
         [JsonProperty("cwe_ids")]
         public List<string> CweIds { get; set; }
 
         [JsonProperty("credits")]
-        public List<JObject> Credits { get; set; }
+        public List<JToken> Credits { get; set; }
 
         [JsonProperty("severity")]
         public string Severity { get; set; }
@@ -15243,7 +15243,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Total { get; set; }
 
         [JsonProperty("weeks")]
-        public List<JObject> Weeks { get; set; }
+        public List<JToken> Weeks { get; set; }
 
     }
 
@@ -15285,7 +15285,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Name { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
         [JsonProperty("zipball_url")]
         public string ZipballUrl { get; set; }
@@ -15435,7 +15435,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CommentsUrl { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
         [JsonProperty("author")]
         public NullableSimpleUser Author { get; set; }
@@ -15444,7 +15444,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableGitUser Committer { get; set; }
 
         [JsonProperty("parents")]
-        public List<JObject> Parents { get; set; }
+        public List<JToken> Parents { get; set; }
 
         [JsonProperty("repository")]
         public MinimalRepository Repository { get; set; }
@@ -15505,7 +15505,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableSimpleUser User { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("sub_issues_summary")]
         public SubIssuesSummary SubIssuesSummary { get; set; }
@@ -15544,7 +15544,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SearchResultTextMatches TextMatches { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -15858,7 +15858,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public NullableLicenseSimple License { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("text_matches")]
         public SearchResultTextMatches TextMatches { get; set; }
@@ -15937,10 +15937,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SearchResultTextMatches TextMatches { get; set; }
 
         [JsonProperty("related")]
-        public List<JObject> Related { get; set; }
+        public List<JToken> Related { get; set; }
 
         [JsonProperty("aliases")]
-        public List<JObject> Aliases { get; set; }
+        public List<JToken> Aliases { get; set; }
 
     }
 
@@ -16176,7 +16176,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? TwoFactorAuthentication { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("business_plus")]
         public bool? BusinessPlus { get; set; }
@@ -16288,7 +16288,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("git_status")]
-        public JObject GitStatus { get; set; }
+        public JToken GitStatus { get; set; }
 
         [JsonProperty("location")]
         public string Location { get; set; }
@@ -16318,7 +16318,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> RecentFolders { get; set; }
 
         [JsonProperty("runtime_constraints")]
-        public JObject RuntimeConstraints { get; set; }
+        public JToken RuntimeConstraints { get; set; }
 
         [JsonProperty("pending_operation")]
         public bool? PendingOperation { get; set; }
@@ -16371,10 +16371,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PublicKey { get; set; }
 
         [JsonProperty("emails")]
-        public List<JObject> Emails { get; set; }
+        public List<JToken> Emails { get; set; }
 
         [JsonProperty("subkeys")]
-        public List<JObject> Subkeys { get; set; }
+        public List<JToken> Subkeys { get; set; }
 
         [JsonProperty("can_sign")]
         public bool? CanSign { get; set; }
@@ -16522,7 +16522,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class Hovercard
     {
         [JsonProperty("contexts")]
-        public List<JObject> Contexts { get; set; }
+        public List<JToken> Contexts { get; set; }
 
     }
 
@@ -16545,7 +16545,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class BillingAiCreditUsageReportUser
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }
@@ -16557,14 +16557,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Model { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
     public partial class BillingPremiumRequestUsageReportUser
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }
@@ -16576,21 +16576,21 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Model { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
     public partial class BillingUsageReportUser
     {
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
     public partial class BillingUsageSummaryReportUser
     {
         [JsonProperty("timePeriod")]
-        public JObject TimePeriod { get; set; }
+        public JToken TimePeriod { get; set; }
 
         [JsonProperty("user")]
         public string User { get; set; }
@@ -16605,7 +16605,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Sku { get; set; }
 
         [JsonProperty("usageItems")]
-        public List<JObject> UsageItems { get; set; }
+        public List<JToken> UsageItems { get; set; }
 
     }
 
@@ -16717,7 +16717,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Forks { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("owner")]
         public SimpleUser Owner { get; set; }
@@ -16891,7 +16891,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> Topics { get; set; }
 
         [JsonProperty("custom_properties")]
-        public JObject CustomProperties { get; set; }
+        public JToken CustomProperties { get; set; }
 
         [JsonProperty("has_issues")]
         public bool? HasIssues { get; set; }
@@ -16939,7 +16939,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? AllowRebaseMerge { get; set; }
 
         [JsonProperty("template_repository")]
-        public JObject TemplateRepository { get; set; }
+        public JToken TemplateRepository { get; set; }
 
         [JsonProperty("temp_clone_token")]
         public string TempCloneToken { get; set; }
@@ -17176,7 +17176,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("output")]
-        public JObject Output { get; set; }
+        public JToken Output { get; set; }
 
         [JsonProperty("pull_requests")]
         public List<PullRequestMinimal> PullRequests { get; set; }
@@ -17297,7 +17297,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Task { get; set; }
 
         [JsonProperty("payload")]
-        public JObject Payload { get; set; }
+        public JToken Payload { get; set; }
 
         [JsonProperty("original_environment")]
         public string OriginalEnvironment { get; set; }
@@ -17402,7 +17402,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksWorkflowJobRun
     {
         [JsonProperty("conclusion")]
-        public JObject Conclusion { get; set; }
+        public JToken Conclusion { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
@@ -17417,7 +17417,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Id { get; set; }
 
         [JsonProperty("name")]
-        public JObject Name { get; set; }
+        public JToken Name { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -17524,10 +17524,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("parent_id")]
-        public JObject ParentId { get; set; }
+        public JToken ParentId { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("repository_url")]
         public string RepositoryUrl { get; set; }
@@ -17536,7 +17536,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -17570,7 +17570,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? ParentId { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("repository_url")]
         public string RepositoryUrl { get; set; }
@@ -17579,7 +17579,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string UpdatedAt { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -17651,7 +17651,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public Integration PerformedViaGithubApp { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -17660,7 +17660,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
         [JsonProperty("pin")]
         public NullablePinnedIssueComment Pin { get; set; }
@@ -17670,7 +17670,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksChanges
     {
         [JsonProperty("body")]
-        public JObject Body { get; set; }
+        public JToken Body { get; set; }
 
     }
 
@@ -17680,10 +17680,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ActiveLockReason { get; set; }
 
         [JsonProperty("assignee")]
-        public JObject Assignee { get; set; }
+        public JToken Assignee { get; set; }
 
         [JsonProperty("assignees")]
-        public List<JObject> Assignees { get; set; }
+        public List<JToken> Assignees { get; set; }
 
         [JsonProperty("author_association")]
         public string AuthorAssociation { get; set; }
@@ -17716,7 +17716,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public long? Id { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("labels_url")]
         public string LabelsUrl { get; set; }
@@ -17725,7 +17725,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Locked { get; set; }
 
         [JsonProperty("milestone")]
-        public JObject Milestone { get; set; }
+        public JToken Milestone { get; set; }
 
         [JsonProperty("node_id")]
         public string NodeId { get; set; }
@@ -17734,13 +17734,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Number { get; set; }
 
         [JsonProperty("performed_via_github_app")]
-        public JObject PerformedViaGithubApp { get; set; }
+        public JToken PerformedViaGithubApp { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("repository_url")]
         public string RepositoryUrl { get; set; }
@@ -17779,7 +17779,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -17795,7 +17795,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CreatedAt { get; set; }
 
         [JsonProperty("creator")]
-        public JObject Creator { get; set; }
+        public JToken Creator { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -17841,10 +17841,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string ActiveLockReason { get; set; }
 
         [JsonProperty("assignee")]
-        public JObject Assignee { get; set; }
+        public JToken Assignee { get; set; }
 
         [JsonProperty("assignees")]
-        public List<JObject> Assignees { get; set; }
+        public List<JToken> Assignees { get; set; }
 
         [JsonProperty("author_association")]
         public string AuthorAssociation { get; set; }
@@ -17877,7 +17877,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public long? Id { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("labels_url")]
         public string LabelsUrl { get; set; }
@@ -17886,7 +17886,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Locked { get; set; }
 
         [JsonProperty("milestone")]
-        public JObject Milestone { get; set; }
+        public JToken Milestone { get; set; }
 
         [JsonProperty("node_id")]
         public string NodeId { get; set; }
@@ -17895,13 +17895,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Number { get; set; }
 
         [JsonProperty("performed_via_github_app")]
-        public JObject PerformedViaGithubApp { get; set; }
+        public JToken PerformedViaGithubApp { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("repository_url")]
         public string RepositoryUrl { get; set; }
@@ -17940,7 +17940,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -18017,7 +18017,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksMarketplacePurchase
     {
         [JsonProperty("account")]
-        public JObject Account { get; set; }
+        public JToken Account { get; set; }
 
         [JsonProperty("billing_cycle")]
         public string BillingCycle { get; set; }
@@ -18032,7 +18032,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? OnFreeTrial { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("unit_count")]
         public int? UnitCount { get; set; }
@@ -18042,13 +18042,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksPreviousMarketplacePurchase
     {
         [JsonProperty("account")]
-        public JObject Account { get; set; }
+        public JToken Account { get; set; }
 
         [JsonProperty("billing_cycle")]
         public string BillingCycle { get; set; }
 
         [JsonProperty("free_trial_ends_on")]
-        public JObject FreeTrialEndsOn { get; set; }
+        public JToken FreeTrialEndsOn { get; set; }
 
         [JsonProperty("next_billing_date")]
         public string NextBillingDate { get; set; }
@@ -18057,7 +18057,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? OnFreeTrial { get; set; }
 
         [JsonProperty("plan")]
-        public JObject Plan { get; set; }
+        public JToken Plan { get; set; }
 
         [JsonProperty("unit_count")]
         public int? UnitCount { get; set; }
@@ -18088,7 +18088,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("parent")]
-        public JObject Parent { get; set; }
+        public JToken Parent { get; set; }
 
         [JsonProperty("permission")]
         public string Permission { get; set; }
@@ -18162,7 +18162,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Forks { get; set; }
 
         [JsonProperty("permissions")]
-        public JObject Permissions { get; set; }
+        public JToken Permissions { get; set; }
 
         [JsonProperty("owner")]
         public SimpleUser Owner { get; set; }
@@ -18336,7 +18336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<string> Topics { get; set; }
 
         [JsonProperty("custom_properties")]
-        public JObject CustomProperties { get; set; }
+        public JToken CustomProperties { get; set; }
 
         [JsonProperty("has_issues")]
         public bool? HasIssues { get; set; }
@@ -18384,7 +18384,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? AllowRebaseMerge { get; set; }
 
         [JsonProperty("template_repository")]
-        public JObject TemplateRepository { get; set; }
+        public JToken TemplateRepository { get; set; }
 
         [JsonProperty("temp_clone_token")]
         public string TempCloneToken { get; set; }
@@ -18460,7 +18460,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CreatedAt { get; set; }
 
         [JsonProperty("creator")]
-        public JObject Creator { get; set; }
+        public JToken Creator { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -18521,7 +18521,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -18534,13 +18534,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Owner { get; set; }
 
         [JsonProperty("permissions_added")]
-        public JObject PermissionsAdded { get; set; }
+        public JToken PermissionsAdded { get; set; }
 
         [JsonProperty("permissions_upgraded")]
-        public JObject PermissionsUpgraded { get; set; }
+        public JToken PermissionsUpgraded { get; set; }
 
         [JsonProperty("permissions_result")]
-        public JObject PermissionsResult { get; set; }
+        public JToken PermissionsResult { get; set; }
 
         [JsonProperty("repository_selection")]
         public string RepositorySelection { get; set; }
@@ -18549,7 +18549,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? RepositoryCount { get; set; }
 
         [JsonProperty("repositories")]
-        public List<JObject> Repositories { get; set; }
+        public List<JToken> Repositories { get; set; }
 
         [JsonProperty("created_at")]
         public string CreatedAt { get; set; }
@@ -18592,7 +18592,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CreatedAt { get; set; }
 
         [JsonProperty("creator")]
-        public JObject Creator { get; set; }
+        public JToken Creator { get; set; }
 
         [JsonProperty("id")]
         public int? Id { get; set; }
@@ -18626,7 +18626,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? CreatedAt { get; set; }
 
         [JsonProperty("creator")]
-        public JObject Creator { get; set; }
+        public JToken Creator { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -18691,7 +18691,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksProjectChanges
     {
         [JsonProperty("archived_at")]
-        public JObject ArchivedAt { get; set; }
+        public JToken ArchivedAt { get; set; }
 
     }
 
@@ -18859,7 +18859,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Body { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("milestone")]
         public NullableMilestone Milestone { get; set; }
@@ -18895,13 +18895,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public List<TeamSimple> RequestedTeams { get; set; }
 
         [JsonProperty("head")]
-        public JObject Head { get; set; }
+        public JToken Head { get; set; }
 
         [JsonProperty("base")]
-        public JObject Base { get; set; }
+        public JToken Base { get; set; }
 
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("author_association")]
         public AuthorAssociation AuthorAssociation { get; set; }
@@ -18977,7 +18977,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksPullRequest5
     {
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("active_lock_reason")]
         public string ActiveLockReason { get; set; }
@@ -18986,19 +18986,19 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public int? Additions { get; set; }
 
         [JsonProperty("assignee")]
-        public JObject Assignee { get; set; }
+        public JToken Assignee { get; set; }
 
         [JsonProperty("assignees")]
-        public List<JObject> Assignees { get; set; }
+        public List<JToken> Assignees { get; set; }
 
         [JsonProperty("author_association")]
         public string AuthorAssociation { get; set; }
 
         [JsonProperty("auto_merge")]
-        public JObject AutoMerge { get; set; }
+        public JToken AutoMerge { get; set; }
 
         [JsonProperty("base")]
-        public JObject Base { get; set; }
+        public JToken Base { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -19034,7 +19034,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Draft { get; set; }
 
         [JsonProperty("head")]
-        public JObject Head { get; set; }
+        public JToken Head { get; set; }
 
         [JsonProperty("html_url")]
         public string HtmlUrl { get; set; }
@@ -19046,7 +19046,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string IssueUrl { get; set; }
 
         [JsonProperty("labels")]
-        public List<JObject> Labels { get; set; }
+        public List<JToken> Labels { get; set; }
 
         [JsonProperty("locked")]
         public bool? Locked { get; set; }
@@ -19070,10 +19070,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? MergedAt { get; set; }
 
         [JsonProperty("merged_by")]
-        public JObject MergedBy { get; set; }
+        public JToken MergedBy { get; set; }
 
         [JsonProperty("milestone")]
-        public JObject Milestone { get; set; }
+        public JToken Milestone { get; set; }
 
         [JsonProperty("node_id")]
         public string NodeId { get; set; }
@@ -19088,10 +19088,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Rebaseable { get; set; }
 
         [JsonProperty("requested_reviewers")]
-        public List<JObject> RequestedReviewers { get; set; }
+        public List<JToken> RequestedReviewers { get; set; }
 
         [JsonProperty("requested_teams")]
-        public List<JObject> RequestedTeams { get; set; }
+        public List<JToken> RequestedTeams { get; set; }
 
         [JsonProperty("review_comment_url")]
         public string ReviewCommentUrl { get; set; }
@@ -19118,14 +19118,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
     public partial class WebhooksReviewComment
     {
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("author_association")]
         public string AuthorAssociation { get; set; }
@@ -19182,7 +19182,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PullRequestUrl { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("side")]
         public string Side { get; set; }
@@ -19203,14 +19203,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Url { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
     public partial class WebhooksReview
     {
         [JsonProperty("_links")]
-        public JObject Links { get; set; }
+        public JToken Links { get; set; }
 
         [JsonProperty("author_association")]
         public string AuthorAssociation { get; set; }
@@ -19243,7 +19243,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? UpdatedAt { get; set; }
 
         [JsonProperty("user")]
-        public JObject User { get; set; }
+        public JToken User { get; set; }
 
     }
 
@@ -19254,13 +19254,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksRelease
     {
         [JsonProperty("assets")]
-        public List<JObject> Assets { get; set; }
+        public List<JToken> Assets { get; set; }
 
         [JsonProperty("assets_url")]
         public string AssetsUrl { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -19299,7 +19299,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? PublishedAt { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("tag_name")]
         public string TagName { get; set; }
@@ -19324,13 +19324,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksRelease1
     {
         [JsonProperty("assets")]
-        public List<JObject> Assets { get; set; }
+        public List<JToken> Assets { get; set; }
 
         [JsonProperty("assets_url")]
         public string AssetsUrl { get; set; }
 
         [JsonProperty("author")]
-        public JObject Author { get; set; }
+        public JToken Author { get; set; }
 
         [JsonProperty("body")]
         public string Body { get; set; }
@@ -19366,7 +19366,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public System.DateTime? PublishedAt { get; set; }
 
         [JsonProperty("reactions")]
-        public JObject Reactions { get; set; }
+        public JToken Reactions { get; set; }
 
         [JsonProperty("tag_name")]
         public string TagName { get; set; }
@@ -19409,7 +19409,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string DismissedAt { get; set; }
 
         [JsonProperty("dismisser")]
-        public JObject Dismisser { get; set; }
+        public JToken Dismisser { get; set; }
 
         [JsonProperty("external_identifier")]
         public string ExternalIdentifier { get; set; }
@@ -19553,13 +19553,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksSecurityAdvisory
     {
         [JsonProperty("cvss")]
-        public JObject Cvss { get; set; }
+        public JToken Cvss { get; set; }
 
         [JsonProperty("cvss_severities")]
         public CvssSeverities CvssSeverities { get; set; }
 
         [JsonProperty("cwes")]
-        public List<JObject> Cwes { get; set; }
+        public List<JToken> Cwes { get; set; }
 
         [JsonProperty("description")]
         public string Description { get; set; }
@@ -19568,13 +19568,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string GhsaId { get; set; }
 
         [JsonProperty("identifiers")]
-        public List<JObject> Identifiers { get; set; }
+        public List<JToken> Identifiers { get; set; }
 
         [JsonProperty("published_at")]
         public string PublishedAt { get; set; }
 
         [JsonProperty("references")]
-        public List<JObject> References { get; set; }
+        public List<JToken> References { get; set; }
 
         [JsonProperty("severity")]
         public string Severity { get; set; }
@@ -19586,7 +19586,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string UpdatedAt { get; set; }
 
         [JsonProperty("vulnerabilities")]
-        public List<JObject> Vulnerabilities { get; set; }
+        public List<JToken> Vulnerabilities { get; set; }
 
         [JsonProperty("withdrawn_at")]
         public string WithdrawnAt { get; set; }
@@ -19599,7 +19599,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string CreatedAt { get; set; }
 
         [JsonProperty("maintainer")]
-        public JObject Maintainer { get; set; }
+        public JToken Maintainer { get; set; }
 
         [JsonProperty("node_id")]
         public string NodeId { get; set; }
@@ -19608,13 +19608,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string PrivacyLevel { get; set; }
 
         [JsonProperty("sponsor")]
-        public JObject Sponsor { get; set; }
+        public JToken Sponsor { get; set; }
 
         [JsonProperty("sponsorable")]
-        public JObject Sponsorable { get; set; }
+        public JToken Sponsorable { get; set; }
 
         [JsonProperty("tier")]
-        public JObject Tier { get; set; }
+        public JToken Tier { get; set; }
 
     }
 
@@ -19625,7 +19625,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhooksChanges8
     {
         [JsonProperty("tier")]
-        public JObject Tier { get; set; }
+        public JToken Tier { get; set; }
 
     }
 
@@ -19653,7 +19653,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string NodeId { get; set; }
 
         [JsonProperty("parent")]
-        public JObject Parent { get; set; }
+        public JToken Parent { get; set; }
 
         [JsonProperty("permission")]
         public string Permission { get; set; }
@@ -19784,7 +19784,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -19891,7 +19891,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("requested_action")]
-        public JObject RequestedAction { get; set; }
+        public JToken RequestedAction { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -19943,7 +19943,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("check_suite")]
-        public JObject CheckSuite { get; set; }
+        public JToken CheckSuite { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -19968,7 +19968,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("check_suite")]
-        public JObject CheckSuite { get; set; }
+        public JToken CheckSuite { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -19993,7 +19993,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("check_suite")]
-        public JObject CheckSuite { get; set; }
+        public JToken CheckSuite { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20018,7 +20018,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public WebhooksCodeScanningCommitOid CommitOid { get; set; }
@@ -20049,7 +20049,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public WebhooksCodeScanningCommitOid CommitOid { get; set; }
@@ -20080,7 +20080,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public WebhooksCodeScanningCommitOid CommitOid { get; set; }
@@ -20111,7 +20111,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public WebhooksCodeScanningCommitOid CommitOid { get; set; }
@@ -20142,7 +20142,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public string CommitOid { get; set; }
@@ -20173,7 +20173,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("commit_oid")]
         public WebhooksCodeScanningCommitOid CommitOid { get; set; }
@@ -20204,7 +20204,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20229,7 +20229,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("comment")]
-        public JObject Comment { get; set; }
+        public JToken Comment { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20310,7 +20310,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("definition")]
-        public JObject Definition { get; set; }
+        public JToken Definition { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20682,7 +20682,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("deployment")]
-        public JObject Deployment { get; set; }
+        public JToken Deployment { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20703,7 +20703,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflow Workflow { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -20783,10 +20783,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflowJobRun WorkflowJobRun { get; set; }
 
         [JsonProperty("workflow_job_runs")]
-        public List<JObject> WorkflowJobRuns { get; set; }
+        public List<JToken> WorkflowJobRuns { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -20826,10 +20826,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflowJobRun WorkflowJobRun { get; set; }
 
         [JsonProperty("workflow_job_runs")]
-        public List<JObject> WorkflowJobRuns { get; set; }
+        public List<JToken> WorkflowJobRuns { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -20857,7 +20857,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksUser Requestor { get; set; }
 
         [JsonProperty("reviewers")]
-        public List<JObject> Reviewers { get; set; }
+        public List<JToken> Reviewers { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -20866,10 +20866,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Since { get; set; }
 
         [JsonProperty("workflow_job_run")]
-        public JObject WorkflowJobRun { get; set; }
+        public JToken WorkflowJobRun { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -20879,13 +20879,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("check_run")]
-        public JObject CheckRun { get; set; }
+        public JToken CheckRun { get; set; }
 
         [JsonProperty("deployment")]
-        public JObject Deployment { get; set; }
+        public JToken Deployment { get; set; }
 
         [JsonProperty("deployment_status")]
-        public JObject DeploymentStatus { get; set; }
+        public JToken DeploymentStatus { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -20906,7 +20906,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflow Workflow { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -20944,7 +20944,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("discussion")]
         public Discussion Discussion { get; set; }
@@ -21053,7 +21053,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("comment")]
         public WebhooksComment Comment { get; set; }
@@ -21134,7 +21134,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("discussion")]
         public Discussion Discussion { get; set; }
@@ -21265,7 +21265,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("discussion")]
         public Discussion Discussion { get; set; }
@@ -21393,7 +21393,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public EnterpriseWebhooks Enterprise { get; set; }
 
         [JsonProperty("forkee")]
-        public JObject Forkee { get; set; }
+        public JToken Forkee { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -21431,7 +21431,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pages")]
-        public List<JObject> Pages { get; set; }
+        public List<JToken> Pages { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -21490,7 +21490,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("requester")]
-        public JObject Requester { get; set; }
+        public JToken Requester { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -21518,7 +21518,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("requester")]
-        public JObject Requester { get; set; }
+        public JToken Requester { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -21543,7 +21543,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksRepositoriesAdded RepositoriesAdded { get; set; }
 
         [JsonProperty("repositories_removed")]
-        public List<JObject> RepositoriesRemoved { get; set; }
+        public List<JToken> RepositoriesRemoved { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -21577,7 +21577,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksRepositoriesAdded RepositoriesAdded { get; set; }
 
         [JsonProperty("repositories_removed")]
-        public List<JObject> RepositoriesRemoved { get; set; }
+        public List<JToken> RepositoriesRemoved { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -21614,7 +21614,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("requester")]
-        public JObject Requester { get; set; }
+        public JToken Requester { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -21624,13 +21624,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhookInstallationTargetRenamed
     {
         [JsonProperty("account")]
-        public JObject Account { get; set; }
+        public JToken Account { get; set; }
 
         [JsonProperty("action")]
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -21673,7 +21673,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("requester")]
-        public JObject Requester { get; set; }
+        public JToken Requester { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -21686,7 +21686,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("comment")]
-        public JObject Comment { get; set; }
+        public JToken Comment { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -21695,7 +21695,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -21723,7 +21723,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -21754,7 +21754,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -21782,7 +21782,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -21810,7 +21810,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -21999,7 +21999,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22024,7 +22024,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22049,7 +22049,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("milestone")]
         public WebhooksMilestone Milestone { get; set; }
@@ -22071,7 +22071,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22080,7 +22080,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("label")]
         public WebhooksLabel Label { get; set; }
@@ -22111,13 +22111,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksIssue Issue { get; set; }
 
         [JsonProperty("issue_field")]
-        public JObject IssueField { get; set; }
+        public JToken IssueField { get; set; }
 
         [JsonProperty("issue_field_value")]
-        public JObject IssueFieldValue { get; set; }
+        public JToken IssueFieldValue { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22145,10 +22145,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksIssue Issue { get; set; }
 
         [JsonProperty("issue_field")]
-        public JObject IssueField { get; set; }
+        public JToken IssueField { get; set; }
 
         [JsonProperty("issue_field_value")]
-        public JObject IssueFieldValue { get; set; }
+        public JToken IssueFieldValue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22173,7 +22173,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("label")]
         public WebhooksLabel Label { get; set; }
@@ -22201,7 +22201,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22226,7 +22226,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("milestone")]
         public WebhooksMilestone Milestone { get; set; }
@@ -22248,7 +22248,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22257,7 +22257,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22307,7 +22307,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22326,7 +22326,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22444,7 +22444,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("issue")]
-        public JObject Issue { get; set; }
+        public JToken Issue { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22566,7 +22566,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22640,7 +22640,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("previous_marketplace_purchase")]
-        public JObject PreviousMarketplacePurchase { get; set; }
+        public JToken PreviousMarketplacePurchase { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -22671,7 +22671,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("previous_marketplace_purchase")]
-        public JObject PreviousMarketplacePurchase { get; set; }
+        public JToken PreviousMarketplacePurchase { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -22696,7 +22696,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("marketplace_purchase")]
-        public JObject MarketplacePurchase { get; set; }
+        public JToken MarketplacePurchase { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -22749,7 +22749,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22777,7 +22777,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -22848,7 +22848,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Scope { get; set; }
 
         [JsonProperty("sender")]
-        public JObject Sender { get; set; }
+        public JToken Sender { get; set; }
 
         [JsonProperty("team")]
         public WebhooksTeam Team { get; set; }
@@ -22879,7 +22879,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Scope { get; set; }
 
         [JsonProperty("sender")]
-        public JObject Sender { get; set; }
+        public JToken Sender { get; set; }
 
         [JsonProperty("team")]
         public WebhooksTeam Team { get; set; }
@@ -22942,7 +22942,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public EnterpriseWebhooks Enterprise { get; set; }
 
         [JsonProperty("hook")]
-        public JObject Hook { get; set; }
+        public JToken Hook { get; set; }
 
         [JsonProperty("hook_id")]
         public int? HookId { get; set; }
@@ -23042,7 +23042,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23201,7 +23201,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleInstallation Installation { get; set; }
 
         [JsonProperty("invitation")]
-        public JObject Invitation { get; set; }
+        public JToken Invitation { get; set; }
 
         [JsonProperty("organization")]
         public OrganizationSimpleWebhooks Organization { get; set; }
@@ -23248,7 +23248,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23285,7 +23285,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Homepage { get; set; }
 
         [JsonProperty("version_info")]
-        public JObject VersionInfo { get; set; }
+        public JToken VersionInfo { get; set; }
 
         [JsonProperty("platform")]
         public string Platform { get; set; }
@@ -23319,7 +23319,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("package")]
-        public JObject Package { get; set; }
+        public JToken Package { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -23344,7 +23344,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("package")]
-        public JObject Package { get; set; }
+        public JToken Package { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -23357,7 +23357,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhookPageBuild
     {
         [JsonProperty("build")]
-        public JObject Build { get; set; }
+        public JToken Build { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23470,7 +23470,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhookPing
     {
         [JsonProperty("hook")]
-        public JObject Hook { get; set; }
+        public JToken Hook { get; set; }
 
         [JsonProperty("hook_id")]
         public int? HookId { get; set; }
@@ -23502,7 +23502,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23564,7 +23564,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
         [JsonProperty("repository")]
         public NullableRepositoryWebhooks Repository { get; set; }
@@ -23580,7 +23580,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23608,7 +23608,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23620,7 +23620,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("project_card")]
-        public JObject ProjectCard { get; set; }
+        public JToken ProjectCard { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -23711,7 +23711,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23814,7 +23814,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -23924,7 +23924,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -23968,7 +23968,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -24028,7 +24028,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -24050,7 +24050,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -24151,7 +24151,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -24207,7 +24207,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24235,7 +24235,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -24266,7 +24266,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -24381,7 +24381,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("reason")]
         public string Reason { get; set; }
@@ -24400,7 +24400,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -24443,7 +24443,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24474,7 +24474,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24502,7 +24502,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24630,7 +24630,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("comment")]
-        public JObject Comment { get; set; }
+        public JToken Comment { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -24642,7 +24642,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24670,7 +24670,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24701,7 +24701,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24726,13 +24726,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("review")]
-        public JObject Review { get; set; }
+        public JToken Review { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -24745,7 +24745,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -24757,7 +24757,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24793,7 +24793,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24821,7 +24821,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24830,7 +24830,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("thread")]
-        public JObject Thread { get; set; }
+        public JToken Thread { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -24852,7 +24852,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24861,7 +24861,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("thread")]
-        public JObject Thread { get; set; }
+        public JToken Thread { get; set; }
 
         [JsonProperty("updated_at")]
         public System.DateTime? UpdatedAt { get; set; }
@@ -24892,7 +24892,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24923,7 +24923,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24954,7 +24954,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -24982,7 +24982,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pull_request")]
-        public JObject PullRequest { get; set; }
+        public JToken PullRequest { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -25004,7 +25004,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Before { get; set; }
 
         [JsonProperty("commits")]
-        public List<JObject> Commits { get; set; }
+        public List<JToken> Commits { get; set; }
 
         [JsonProperty("compare")]
         public string Compare { get; set; }
@@ -25022,7 +25022,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public bool? Forced { get; set; }
 
         [JsonProperty("head_commit")]
-        public JObject HeadCommit { get; set; }
+        public JToken HeadCommit { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -25031,13 +25031,13 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("pusher")]
-        public JObject Pusher { get; set; }
+        public JToken Pusher { get; set; }
 
         [JsonProperty("ref")]
         public string Ref { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -25059,7 +25059,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("registry_package")]
-        public JObject RegistryPackage { get; set; }
+        public JToken RegistryPackage { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -25084,7 +25084,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("registry_package")]
-        public JObject RegistryPackage { get; set; }
+        public JToken RegistryPackage { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -25150,7 +25150,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25187,7 +25187,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("release")]
-        public JObject Release { get; set; }
+        public JToken Release { get; set; }
 
         [JsonProperty("repository")]
         public RepositoryWebhooks Repository { get; set; }
@@ -25397,7 +25397,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Branch { get; set; }
 
         [JsonProperty("client_payload")]
-        public JObject ClientPayload { get; set; }
+        public JToken ClientPayload { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25422,7 +25422,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25513,7 +25513,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25603,7 +25603,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryRuleset RepositoryRuleset { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -25616,7 +25616,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25688,7 +25688,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -25738,7 +25738,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("alert")]
-        public JObject Alert { get; set; }
+        public JToken Alert { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -26081,7 +26081,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public RepositoryWebhooks Repository { get; set; }
 
         [JsonProperty("security_advisory")]
-        public JObject SecurityAdvisory { get; set; }
+        public JToken SecurityAdvisory { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26091,7 +26091,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
     public partial class WebhookSecurityAndAnalysis
     {
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -26166,7 +26166,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -26321,7 +26321,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("starred_at")]
-        public JObject StarredAt { get; set; }
+        public JToken StarredAt { get; set; }
 
     }
 
@@ -26331,10 +26331,10 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string AvatarUrl { get; set; }
 
         [JsonProperty("branches")]
-        public List<JObject> Branches { get; set; }
+        public List<JToken> Branches { get; set; }
 
         [JsonProperty("commit")]
-        public JObject Commit { get; set; }
+        public JToken Commit { get; set; }
 
         [JsonProperty("context")]
         public string Context { get; set; }
@@ -26553,7 +26553,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26578,7 +26578,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26603,7 +26603,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26619,7 +26619,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("changes")]
-        public JObject Changes { get; set; }
+        public JToken Changes { get; set; }
 
         [JsonProperty("enterprise")]
         public EnterpriseWebhooks Enterprise { get; set; }
@@ -26631,7 +26631,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26656,7 +26656,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public OrganizationSimpleWebhooks Organization { get; set; }
 
         [JsonProperty("repository")]
-        public JObject Repository { get; set; }
+        public JToken Repository { get; set; }
 
         [JsonProperty("sender")]
         public SimpleUser Sender { get; set; }
@@ -26694,7 +26694,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public EnterpriseWebhooks Enterprise { get; set; }
 
         [JsonProperty("inputs")]
-        public JObject Inputs { get; set; }
+        public JToken Inputs { get; set; }
 
         [JsonProperty("installation")]
         public SimpleInstallation Installation { get; set; }
@@ -26737,7 +26737,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("workflow_job")]
-        public JObject WorkflowJob { get; set; }
+        public JToken WorkflowJob { get; set; }
 
         [JsonProperty("deployment")]
         public Deployment Deployment { get; set; }
@@ -26765,7 +26765,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("workflow_job")]
-        public JObject WorkflowJob { get; set; }
+        public JToken WorkflowJob { get; set; }
 
         [JsonProperty("deployment")]
         public Deployment Deployment { get; set; }
@@ -26793,7 +26793,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("workflow_job")]
-        public JObject WorkflowJob { get; set; }
+        public JToken WorkflowJob { get; set; }
 
         [JsonProperty("deployment")]
         public Deployment Deployment { get; set; }
@@ -26821,7 +26821,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public SimpleUser Sender { get; set; }
 
         [JsonProperty("workflow_job")]
-        public JObject WorkflowJob { get; set; }
+        public JToken WorkflowJob { get; set; }
 
         [JsonProperty("deployment")]
         public Deployment Deployment { get; set; }
@@ -26852,7 +26852,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflow Workflow { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -26880,7 +26880,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflow Workflow { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -26908,7 +26908,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public WebhooksWorkflow Workflow { get; set; }
 
         [JsonProperty("workflow_run")]
-        public JObject WorkflowRun { get; set; }
+        public JToken WorkflowRun { get; set; }
 
     }
 
@@ -27001,14 +27001,14 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("forkee")]
-        public JObject Forkee { get; set; }
+        public JToken Forkee { get; set; }
 
     }
 
     public partial class GollumEvent
     {
         [JsonProperty("pages")]
-        public List<JObject> Pages { get; set; }
+        public List<JToken> Pages { get; set; }
 
     }
 
@@ -27079,7 +27079,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public PullRequestMinimal PullRequest { get; set; }
 
         [JsonProperty("comment")]
-        public JObject Comment { get; set; }
+        public JToken Comment { get; set; }
 
     }
 
@@ -27089,7 +27089,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("review")]
-        public JObject Review { get; set; }
+        public JToken Review { get; set; }
 
         [JsonProperty("pull_request")]
         public PullRequestMinimal PullRequest { get; set; }
@@ -27102,7 +27102,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("comment")]
-        public JObject Comment { get; set; }
+        public JToken Comment { get; set; }
 
     }
 
@@ -27112,7 +27112,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Models
         public string Action { get; set; }
 
         [JsonProperty("release")]
-        public JObject Release { get; set; }
+        public JToken Release { get; set; }
 
     }
 
