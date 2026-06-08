@@ -178,4 +178,94 @@ public class ActionTests
             Assert.That(actions.Count, Is.Not.Zero, $"Module '{assemblyTitle.Title}' doesn't have actions");
         }
     }
+
+    [Test]
+    public void Action_All_InputArguments_All_Enums_HaveDefaultValue()
+    {
+        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            var enumInputs = assembly.ExportedTypes
+                                     .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
+                                     .Where(pair => pair.ActionAttribute is not null)
+                                     .SelectMany(pair => pair.ActionType
+                                                             .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                                             .Select(property => (Property: property, InputArgumentAttribute: property.GetCustomAttribute<InputArgumentAttribute>()))
+                                                             .Where(t => t.InputArgumentAttribute is not null)
+                                                             .Where(t => GetUnderlyingType(t.Property.PropertyType).IsEnum)
+                                                             .Select(t => (pair.ActionAttribute.Id, t.Property)))
+                                     .ToList();
+
+            foreach (var (actionId, property) in enumInputs)
+            {
+                var hasDefault = property.GetCustomAttribute<System.ComponentModel.DefaultValueAttribute>() is not null;
+                Assert.That(hasDefault, Is.True, $"Enum input argument '{property.Name}' in action '{actionId}' must have a [DefaultValue] attribute.");
+            }
+        }
+    }
+
+    [Test]
+    public void Action_All_InputArguments_All_NonRequired_AreNullableOrHaveDefaultValue()
+    {
+        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            var nonRequiredInputs = assembly.ExportedTypes
+                                            .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
+                                            .Where(pair => pair.ActionAttribute is not null)
+                                            .SelectMany(pair => pair.ActionType
+                                                                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                                                    .Select(property => (Property: property, InputArgumentAttribute: property.GetCustomAttribute<InputArgumentAttribute>()))
+                                                                    .Where(t => t.InputArgumentAttribute is not null && !t.InputArgumentAttribute.Required)
+                                                                    .Select(t => (pair.ActionAttribute.Id, t.Property)))
+                                            .ToList();
+
+            foreach (var (actionId, property) in nonRequiredInputs)
+            {
+                var isNullable = !property.PropertyType.IsValueType
+                              || Nullable.GetUnderlyingType(property.PropertyType) is not null;
+                var hasDefault = property.GetCustomAttribute<System.ComponentModel.DefaultValueAttribute>() is not null;
+
+                Assert.That(isNullable || hasDefault, Is.True,
+                    $"Non-required input argument '{property.Name}' of action '{actionId}' (type '{property.PropertyType.FullName}') must be nullable or carry a [DefaultValue] attribute.");
+            }
+        }
+    }
+
+    [Test]
+    public void Action_All_Arguments_All_HaveNonReservedNames()
+    {
+        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        foreach (var assembly in assemblies)
+        {
+            var argumentNames = assembly.ExportedTypes
+                                        .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
+                                        .Where(pair => pair.ActionAttribute is not null)
+                                        .SelectMany(pair => pair.ActionType
+                                                                .GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                                                                .Where(property => property.GetCustomAttribute<InputArgumentAttribute>() is not null
+                                                                                || property.GetCustomAttribute<OutputArgumentAttribute>() is not null)
+                                                                .Select(property => (pair.ActionAttribute.Id, property.Name)))
+                                        .ToList();
+
+            foreach (var (actionId, propertyName) in argumentNames)
+            {
+                Assert.That(RobinReservedNames.Contains(propertyName), Is.False,
+                    $"Argument '{propertyName}' in action '{actionId}' is a Robin reserved keyword (case-insensitive) and is rejected by the Power Automate Desktop module loader.");
+            }
+        }
+    }
+
+    private static Type GetUnderlyingType(Type type) => Nullable.GetUnderlyingType(type) ?? type;
+
+    // Robin keyword tokens declared in
+    // Microsoft.Flow.RPA.Desktop.Robin.Language.Parsing.LanguageLexer.
+    // Robin is case-insensitive; compare accordingly.
+    private static readonly System.Collections.Generic.HashSet<string> RobinReservedNames = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Action","And","As","Block","Call","Case","Default","Disable","Else","End","Error",
+        "Exit","False","For","Foreach","From","Function","Global","Goto","If","Import","In",
+        "Input","Label","Loop","Mod","Next","No","Not","On","Or","Output","Repeat","Set",
+        "Step","Switch","Then","Throw","Times","To","True","Wait","While","Xor","Yes"
+    };
 }
