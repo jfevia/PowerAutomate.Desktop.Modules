@@ -13,6 +13,7 @@
         <PackageReference Include="Newtonsoft.Json" />
         <PackageReference Include="System.Net.Http" />
         <PackageReference Include="Microsoft.OpenApi" PrivateAssets="all" ExcludeAssets="runtime" GeneratePathProperty="true" />
+        <PackageReference Include="Microsoft.OpenApi.Readers" PrivateAssets="all" ExcludeAssets="runtime" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>
@@ -21,6 +22,11 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <Compile Update="Models.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Models.tt</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -28,6 +34,13 @@
             <Generator>PublicResXFileCodeGenerator</Generator>
             <LastGenOutput>Resources.Designer.cs</LastGenOutput>
         </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Models.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>Models.cs</LastGenOutput>
+        </None>
     </ItemGroup>
 
 </Project>
