@@ -7,6 +7,7 @@
   <Folder Name="/Modules/">
     <Project Path="modules/Modules.AzureKeyVault.Actions/Modules.AzureKeyVault.Actions.csproj" />
     <Project Path="modules/Modules.CloudFlows.Actions/Modules.CloudFlows.Actions.csproj" />
+    <Project Path="modules/Modules.GitHub.Actions/Modules.GitHub.Actions.csproj" />
     <Project Path="modules/Modules.GitHub.Copilot.Actions/Modules.GitHub.Copilot.Actions.csproj" />
     <Project Path="modules/Modules.HTML.Actions/Modules.HTML.Actions.csproj" />
     <Project Path="modules/Modules.Identity.Actions/Modules.Identity.Actions.csproj" />
