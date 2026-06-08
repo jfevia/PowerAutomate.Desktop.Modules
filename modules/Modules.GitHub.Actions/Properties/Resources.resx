@@ -134,4 +134,159 @@
     <data name="Error_UnknownError_Description" xml:space="preserve">
         <value>Indicates that there was a problem when executing the operation.</value>
     </data>
+
+    <!-- Custom type -->
+    <data name="GitHubAuthenticationContext_FriendlyName" xml:space="preserve">
+        <value>GitHub authentication</value>
+    </data>
+    <data name="GitHubAuthenticationContext_FriendlyNamePlural" xml:space="preserve">
+        <value>GitHub authentications</value>
+    </data>
+
+    <!-- Action: Login -->
+    <data name="Login_FriendlyName" xml:space="preserve">
+        <value>Sign in to GitHub</value>
+    </data>
+    <data name="Login_Description" xml:space="preserve">
+        <value>Authenticates against the GitHub REST API and returns an authentication context that other GitHub actions consume.</value>
+    </data>
+    <data name="Login_Summary" xml:space="preserve">
+        <value>Sign in to GitHub and return an authentication context.</value>
+    </data>
+
+    <!-- Action selectors -->
+    <data name="LoginWithPersonalAccessToken_Summary" xml:space="preserve">
+        <value>Sign in to GitHub using a personal access token.</value>
+    </data>
+    <data name="LoginWithDeviceFlow_Summary" xml:space="preserve">
+        <value>Sign in to GitHub using OAuth device flow.</value>
+    </data>
+    <data name="LoginWithGitHubCli_Summary" xml:space="preserve">
+        <value>Sign in to GitHub by reading the token stored by the GitHub CLI.</value>
+    </data>
+
+    <!-- Groups -->
+    <data name="Group_General_FriendlyName" xml:space="preserve">
+        <value>General</value>
+    </data>
+    <data name="Group_General_Description" xml:space="preserve">
+        <value>General settings.</value>
+    </data>
+    <data name="Group_PersonalAccessToken_FriendlyName" xml:space="preserve">
+        <value>Personal access token</value>
+    </data>
+    <data name="Group_PersonalAccessToken_Description" xml:space="preserve">
+        <value>Settings for the personal access token sign-in mode.</value>
+    </data>
+    <data name="Group_DeviceFlow_FriendlyName" xml:space="preserve">
+        <value>Device flow</value>
+    </data>
+    <data name="Group_DeviceFlow_Description" xml:space="preserve">
+        <value>Settings for the OAuth device flow sign-in mode.</value>
+    </data>
+    <data name="Group_GitHubCli_FriendlyName" xml:space="preserve">
+        <value>GitHub CLI</value>
+    </data>
+    <data name="Group_GitHubCli_Description" xml:space="preserve">
+        <value>Settings for the GitHub CLI sign-in mode.</value>
+    </data>
+    <data name="Group_Authentication_FriendlyName" xml:space="preserve">
+        <value>Authentication</value>
+    </data>
+    <data name="Group_Authentication_Description" xml:space="preserve">
+        <value>Authentication context produced by a sign-in action.</value>
+    </data>
+    <data name="Group_Path_FriendlyName" xml:space="preserve">
+        <value>Path</value>
+    </data>
+    <data name="Group_Path_Description" xml:space="preserve">
+        <value>Parameters substituted into the request URL path.</value>
+    </data>
+    <data name="Group_Query_FriendlyName" xml:space="preserve">
+        <value>Query</value>
+    </data>
+    <data name="Group_Query_Description" xml:space="preserve">
+        <value>Parameters appended to the request URL as query string.</value>
+    </data>
+    <data name="Group_Header_FriendlyName" xml:space="preserve">
+        <value>Header</value>
+    </data>
+    <data name="Group_Header_Description" xml:space="preserve">
+        <value>Parameters sent as request headers.</value>
+    </data>
+    <data name="Group_Body_FriendlyName" xml:space="preserve">
+        <value>Body</value>
+    </data>
+    <data name="Group_Body_Description" xml:space="preserve">
+        <value>Parameters serialized into the request body.</value>
+    </data>
+
+    <!-- Enum: LoginMode -->
+    <data name="LoginMode_PersonalAccessToken_FriendlyName" xml:space="preserve">
+        <value>Personal access token</value>
+    </data>
+    <data name="LoginMode_DeviceFlow_FriendlyName" xml:space="preserve">
+        <value>Device flow</value>
+    </data>
+    <data name="LoginMode_GitHubCli_FriendlyName" xml:space="preserve">
+        <value>GitHub CLI</value>
+    </data>
+
+    <!-- Input: General -->
+    <data name="Login_Mode_FriendlyName" xml:space="preserve">
+        <value>Mode</value>
+    </data>
+    <data name="Login_Mode_Description" xml:space="preserve">
+        <value>The sign-in mode to use.</value>
+    </data>
+    <data name="Login_BaseUrl_FriendlyName" xml:space="preserve">
+        <value>Base URL</value>
+    </data>
+    <data name="Login_BaseUrl_Description" xml:space="preserve">
+        <value>The GitHub REST API base URL. Leave empty for github.com (https://api.github.com); override for GitHub Enterprise Server (e.g. https://github.mycorp.com/api/v3).</value>
+    </data>
+    <data name="Login_UserAgent_FriendlyName" xml:space="preserve">
+        <value>User agent</value>
+    </data>
+    <data name="Login_UserAgent_Description" xml:space="preserve">
+        <value>The User-Agent header sent on every request. Leave empty to use a module-default value (required by the GitHub REST API).</value>
+    </data>
+
+    <!-- Input: PersonalAccessToken -->
+    <data name="Login_Token_FriendlyName" xml:space="preserve">
+        <value>Personal access token</value>
+    </data>
+    <data name="Login_Token_Description" xml:space="preserve">
+        <value>A GitHub personal access token (classic or fine-grained) used as the Bearer credential for subsequent requests.</value>
+    </data>
+
+    <!-- Input: DeviceFlow -->
+    <data name="Login_ClientId_FriendlyName" xml:space="preserve">
+        <value>Client id</value>
+    </data>
+    <data name="Login_ClientId_Description" xml:space="preserve">
+        <value>OAuth client id used for the device flow. Leave empty to use the publicly-known GitHub CLI client id.</value>
+    </data>
+    <data name="Login_Scopes_FriendlyName" xml:space="preserve">
+        <value>Scopes</value>
+    </data>
+    <data name="Login_Scopes_Description" xml:space="preserve">
+        <value>Comma-separated OAuth scopes requested during the device flow. Leave empty for a sensible default (repo,read:org,gist,workflow).</value>
+    </data>
+
+    <!-- Input: GitHubCli -->
+    <data name="Login_Host_FriendlyName" xml:space="preserve">
+        <value>Host</value>
+    </data>
+    <data name="Login_Host_Description" xml:space="preserve">
+        <value>The host name passed to the GitHub CLI (gh auth token --hostname &lt;host&gt;). Leave empty to use github.com.</value>
+    </data>
+
+    <!-- Output -->
+    <data name="Login_Authentication_FriendlyName" xml:space="preserve">
+        <value>Authentication context</value>
+    </data>
+    <data name="Login_Authentication_Description" xml:space="preserve">
+        <value>The authentication context produced by the sign-in. Pass this value as the Authentication input of any other GitHub action.</value>
+    </data>
 </root>
