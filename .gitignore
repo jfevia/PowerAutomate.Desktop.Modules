@@ -397,3 +397,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 .idea/
 *.sln.iml
+# GitHub REST API OpenAPI spec is fetched via .tools/update-github-openapi.ps1
+modules/Modules.GitHub.Actions/openapi.json

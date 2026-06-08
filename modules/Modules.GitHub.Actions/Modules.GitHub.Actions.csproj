@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <AssemblyTitle>GitHub</AssemblyTitle>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackCustomModule Condition=" '$(Configuration)' == 'Debug' ">true</PackCustomModule>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
+        <PackageReference Include="Newtonsoft.Json" />
+        <PackageReference Include="System.Net.Http" />
+        <PackageReference Include="Microsoft.OpenApi" PrivateAssets="all" ExcludeAssets="runtime" GeneratePathProperty="true" />
+        <PackageReference Include="Microsoft.OpenApi.Readers" PrivateAssets="all" ExcludeAssets="runtime" GeneratePathProperty="true" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+        <Compile Update="Models.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Models.tt</DependentUpon>
+        </Compile>
+        <Compile Update="Actions.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Actions.tt</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>PublicResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="Models.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>Models.cs</LastGenOutput>
+        </None>
+        <None Update="Actions.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>Actions.cs</LastGenOutput>
+        </None>
+    </ItemGroup>
+
+</Project>
