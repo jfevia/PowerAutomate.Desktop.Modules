@@ -339,7 +339,9 @@
     {
         if (string.IsNullOrEmpty(raw)) return "Value";
         var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
-        return SanitizeIdentifier(string.Concat(segments));
+        var name = SanitizeIdentifier(string.Concat(segments));
+        if (PadReservedPropertyNames.Contains(name)) name += "Argument";
+        return name;
     }
 
     private string ToEnumMember(string raw)
@@ -388,5 +390,17 @@
         "object","operator","out","override","params","private","protected","public","readonly","ref","return","sbyte",
         "sealed","short","sizeof","stackalloc","static","string","struct","switch","this","throw","true","try","typeof",
         "uint","ulong","unchecked","unsafe","ushort","using","virtual","void","volatile","while"
+    };
+
+    // Argument names rejected by the Power Automate Desktop module loader.
+    // Source: Robin keyword tokens declared in
+    // Microsoft.Flow.RPA.Desktop.Robin.Language.Parsing.LanguageLexer.
+    // Robin is case-insensitive; compare accordingly.
+    private static readonly HashSet<string> PadReservedPropertyNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "Action","And","As","Block","Call","Case","Default","Disable","Else","End","Error",
+        "Exit","False","For","Foreach","From","Function","Global","Goto","If","Import","In",
+        "Input","Label","Loop","Mod","Next","No","Not","On","Or","Output","Repeat","Set",
+        "Step","Switch","Then","Throw","Times","To","True","Wait","While","Xor","Yes"
     };
 #>

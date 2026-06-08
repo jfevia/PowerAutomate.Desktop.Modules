@@ -37305,10 +37305,10 @@
     <data name="ReposUploadReleaseAsset_Name_Description" xml:space="preserve">
         <value>name</value>
     </data>
-    <data name="ReposUploadReleaseAsset_Label_FriendlyName" xml:space="preserve">
+    <data name="ReposUploadReleaseAsset_LabelArgument_FriendlyName" xml:space="preserve">
         <value>label</value>
     </data>
-    <data name="ReposUploadReleaseAsset_Label_Description" xml:space="preserve">
+    <data name="ReposUploadReleaseAsset_LabelArgument_Description" xml:space="preserve">
         <value>label</value>
     </data>
     <data name="ReposUploadReleaseAsset_Result_FriendlyName" xml:space="preserve">

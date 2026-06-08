@@ -22,9 +22,25 @@
     }
 
     var emittedSchemaNames = new HashSet<string>();
-    foreach (var pair in doc.Components.Schemas) emittedSchemaNames.Add(ToClassName(pair.Key));
+    var enumFirstMember = new Dictionary<string, string>();
+    foreach (var pair in doc.Components.Schemas)
+    {
+        var name = ToClassName(pair.Key);
+        emittedSchemaNames.Add(name);
+        if (pair.Value.Type == "string" && pair.Value.Enum != null && pair.Value.Enum.Count > 0)
+        {
+            var firstValueRaw = pair.Value.Enum
+                .OfType<Microsoft.OpenApi.Any.OpenApiString>()
+                .Select(s => s.Value)
+                .FirstOrDefault(v => !string.IsNullOrEmpty(v));
+            if (firstValueRaw != null)
+            {
+                enumFirstMember[name] = ToEnumMember(firstValueRaw);
+            }
+        }
+    }
 
-    var operations = CollectOperations(doc).ToList();
+    var operations = CollectOperations(doc, enumFirstMember).ToList();
     var usedClassNames = new HashSet<string>();
     var usedActionIds = new HashSet<string>();
 #>
@@ -85,9 +101,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CSharpType;
         public string Location;
         public bool Required;
+        public bool IsEnum;
+        public string EnumTypeName;
+        public string EnumFirstMember;
     }
 
-    private IEnumerable<OperationInfo> CollectOperations(OpenApiDocument doc)
+    private IEnumerable<OperationInfo> CollectOperations(OpenApiDocument doc, Dictionary<string, string> enumFirstMember)
     {
         foreach (var pathPair in doc.Paths)
         {
@@ -117,14 +136,29 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                     if (p == null || string.IsNullOrEmpty(p.Name)) continue;
                     var cs = ToPropertyName(p.Name);
                     cs = MakeUnique(cs, usedCSharpNames);
-                    info.Parameters.Add(new ParameterInfo
+
+                    var pi = new ParameterInfo
                     {
                         OpenApiName = p.Name,
                         CSharpName = cs,
                         CSharpType = ResolveCSharpType(p.Schema),
                         Location = (p.In ?? ParameterLocation.Query).ToString(),
                         Required = p.Required
-                    });
+                    };
+
+                    if (p.Schema != null && p.Schema.Reference != null && p.Schema.Reference.Type == ReferenceType.Schema)
+                    {
+                        var refName = ToClassName(p.Schema.Reference.Id);
+                        if (enumFirstMember.TryGetValue(refName, out var firstMember))
+                        {
+                            pi.IsEnum = true;
+                            pi.EnumTypeName = refName;
+                            pi.EnumFirstMember = firstMember;
+                            pi.CSharpType = pi.Required ? "Models." + refName : "Models." + refName + "?";
+                        }
+                    }
+
+                    info.Parameters.Add(pi);
                 }
 
                 if (operation.RequestBody != null && operation.RequestBody.Content != null)
@@ -186,6 +220,23 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
             var groupName = LocationToGroup(p.Location);
 #>
         [InputArgument(Order = <#= inputOrder #>, Required = <#= p.Required ? "true" : "false" #>, Group = Groups.<#= groupName #>)]
+<#+
+            if (p.IsEnum)
+            {
+                if (p.Required)
+                {
+#>
+        [System.ComponentModel.DefaultValue(Models.<#= p.EnumTypeName #>.<#= p.EnumFirstMember #>)]
+<#+
+                }
+                else
+                {
+#>
+        [System.ComponentModel.DefaultValue(null)]
+<#+
+                }
+            }
+#>
         public <#= p.CSharpType #> <#= p.CSharpName #> { get; set; }
 
 <#+
@@ -309,6 +360,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 if (<#= p.CSharpName #>.HasValue) queryItems.Add("<#= p.OpenApiName #>=" + Uri.EscapeDataString(System.Convert.ToString(<#= p.CSharpName #>.Value, System.Globalization.CultureInfo.InvariantCulture)));
 <#+
         }
+        else if (p.IsEnum)
+        {
+#>
+                queryItems.Add("<#= p.OpenApiName #>=" + Uri.EscapeDataString(<#= p.CSharpName #>.ToString()));
+<#+
+        }
         else if (p.CSharpType.StartsWith("List<"))
         {
 #>
@@ -383,7 +440,19 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
     {
         if (string.IsNullOrEmpty(raw)) return "Value";
         var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
-        return SanitizeIdentifier(string.Concat(segments));
+        var name = SanitizeIdentifier(string.Concat(segments));
+        if (PadReservedPropertyNames.Contains(name)) name += "Argument";
+        return name;
+    }
+
+    private string ToEnumMember(string raw)
+    {
+        if (string.IsNullOrEmpty(raw)) return "Empty";
+        var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
+        var name = string.Concat(segments);
+        if (string.IsNullOrEmpty(name)) name = "Empty";
+        if (char.IsDigit(name[0])) name = "_" + name;
+        return SanitizeIdentifier(name);
     }
 
     private string ToCategoryName(string raw)
@@ -443,5 +512,17 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         "object","operator","out","override","params","private","protected","public","readonly","ref","return","sbyte",
         "sealed","short","sizeof","stackalloc","static","string","struct","switch","this","throw","true","try","typeof",
         "uint","ulong","unchecked","unsafe","ushort","using","virtual","void","volatile","while"
+    };
+
+    // Argument names rejected by the Power Automate Desktop module loader.
+    // Source: Robin keyword tokens declared in
+    // Microsoft.Flow.RPA.Desktop.Robin.Language.Parsing.LanguageLexer.
+    // Robin is case-insensitive; compare accordingly.
+    private static readonly HashSet<string> PadReservedPropertyNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+    {
+        "Action","And","As","Block","Call","Case","Default","Disable","Else","End","Error",
+        "Exit","False","For","Foreach","From","Function","Global","Goto","If","Import","In",
+        "Input","Label","Loop","Mod","Next","No","Not","On","Or","Output","Repeat","Set",
+        "Step","Switch","Then","Throw","Times","To","True","Wait","While","Xor","Yes"
     };
 #>

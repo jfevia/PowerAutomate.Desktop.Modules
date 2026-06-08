@@ -76,7 +76,8 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string CveId { get; set; }
 
         [InputArgument(Order = 5, Required = false, Group = Groups.Query)]
-        public Models.SecurityAdvisoryEcosystems Ecosystem { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.SecurityAdvisoryEcosystems? Ecosystem { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
         public string Severity { get; set; }
@@ -133,7 +134,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 if (!string.IsNullOrEmpty(GhsaId)) queryItems.Add("ghsa_id=" + Uri.EscapeDataString(GhsaId));
                 if (!string.IsNullOrEmpty(Type)) queryItems.Add("type=" + Uri.EscapeDataString(Type));
                 if (!string.IsNullOrEmpty(CveId)) queryItems.Add("cve_id=" + Uri.EscapeDataString(CveId));
-                if (Ecosystem != null) queryItems.Add("ecosystem=" + Uri.EscapeDataString(System.Convert.ToString(Ecosystem, System.Globalization.CultureInfo.InvariantCulture)));
+                if (Ecosystem.HasValue) queryItems.Add("ecosystem=" + Uri.EscapeDataString(System.Convert.ToString(Ecosystem.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Severity)) queryItems.Add("severity=" + Uri.EscapeDataString(Severity));
                 if (Cwes != null) queryItems.Add("cwes=" + Uri.EscapeDataString(System.Convert.ToString(Cwes, System.Globalization.CultureInfo.InvariantCulture)));
                 if (IsWithdrawn.HasValue) queryItems.Add("is_withdrawn=" + Uri.EscapeDataString(System.Convert.ToString(IsWithdrawn.Value, System.Globalization.CultureInfo.InvariantCulture)));
@@ -12315,7 +12316,8 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Direction { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
-        public Models.CampaignState State { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.CampaignState? State { get; set; }
 
         [InputArgument(Order = 7, Required = false, Group = Groups.Query)]
         public string Sort { get; set; }
@@ -12334,7 +12336,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 if (Page.HasValue) queryItems.Add("page=" + Uri.EscapeDataString(System.Convert.ToString(Page.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (PerPage.HasValue) queryItems.Add("per_page=" + Uri.EscapeDataString(System.Convert.ToString(PerPage.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Direction)) queryItems.Add("direction=" + Uri.EscapeDataString(Direction));
-                if (State != null) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State, System.Globalization.CultureInfo.InvariantCulture)));
+                if (State.HasValue) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Sort)) queryItems.Add("sort=" + Uri.EscapeDataString(Sort));
                 if (queryItems.Count > 0) pathTemplate += "?" + string.Join("&", queryItems);
 
@@ -12573,13 +12575,15 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Direction { get; set; }
 
         [InputArgument(Order = 10, Required = false, Group = Groups.Query)]
-        public Models.CodeScanningAlertStateQuery State { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.CodeScanningAlertStateQuery? State { get; set; }
 
         [InputArgument(Order = 11, Required = false, Group = Groups.Query)]
         public string Sort { get; set; }
 
         [InputArgument(Order = 12, Required = false, Group = Groups.Query)]
-        public Models.CodeScanningAlertSeverity Severity { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.CodeScanningAlertSeverity? Severity { get; set; }
 
         [InputArgument(Order = 13, Required = false, Group = Groups.Query)]
         public string Assignees { get; set; }
@@ -12602,9 +12606,9 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 if (Page.HasValue) queryItems.Add("page=" + Uri.EscapeDataString(System.Convert.ToString(Page.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (PerPage.HasValue) queryItems.Add("per_page=" + Uri.EscapeDataString(System.Convert.ToString(PerPage.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Direction)) queryItems.Add("direction=" + Uri.EscapeDataString(Direction));
-                if (State != null) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State, System.Globalization.CultureInfo.InvariantCulture)));
+                if (State.HasValue) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Sort)) queryItems.Add("sort=" + Uri.EscapeDataString(Sort));
-                if (Severity != null) queryItems.Add("severity=" + Uri.EscapeDataString(System.Convert.ToString(Severity, System.Globalization.CultureInfo.InvariantCulture)));
+                if (Severity.HasValue) queryItems.Add("severity=" + Uri.EscapeDataString(System.Convert.ToString(Severity.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Assignees)) queryItems.Add("assignees=" + Uri.EscapeDataString(Assignees));
                 if (queryItems.Count > 0) pathTemplate += "?" + string.Join("&", queryItems);
 
@@ -32315,10 +32319,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Sort { get; set; }
 
         [InputArgument(Order = 14, Required = false, Group = Groups.Query)]
-        public Models.CodeScanningAlertStateQuery State { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.CodeScanningAlertStateQuery? State { get; set; }
 
         [InputArgument(Order = 15, Required = false, Group = Groups.Query)]
-        public Models.CodeScanningAlertSeverity Severity { get; set; }
+        [System.ComponentModel.DefaultValue(null)]
+        public Models.CodeScanningAlertSeverity? Severity { get; set; }
 
         [InputArgument(Order = 16, Required = false, Group = Groups.Query)]
         public string Assignees { get; set; }
@@ -32345,8 +32351,8 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 if (!string.IsNullOrEmpty(Before)) queryItems.Add("before=" + Uri.EscapeDataString(Before));
                 if (!string.IsNullOrEmpty(After)) queryItems.Add("after=" + Uri.EscapeDataString(After));
                 if (!string.IsNullOrEmpty(Sort)) queryItems.Add("sort=" + Uri.EscapeDataString(Sort));
-                if (State != null) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State, System.Globalization.CultureInfo.InvariantCulture)));
-                if (Severity != null) queryItems.Add("severity=" + Uri.EscapeDataString(System.Convert.ToString(Severity, System.Globalization.CultureInfo.InvariantCulture)));
+                if (State.HasValue) queryItems.Add("state=" + Uri.EscapeDataString(System.Convert.ToString(State.Value, System.Globalization.CultureInfo.InvariantCulture)));
+                if (Severity.HasValue) queryItems.Add("severity=" + Uri.EscapeDataString(System.Convert.ToString(Severity.Value, System.Globalization.CultureInfo.InvariantCulture)));
                 if (!string.IsNullOrEmpty(Assignees)) queryItems.Add("assignees=" + Uri.EscapeDataString(Assignees));
                 if (queryItems.Count > 0) pathTemplate += "?" + string.Join("&", queryItems);
 
@@ -47140,7 +47146,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         public string Name { get; set; }
 
         [InputArgument(Order = 6, Required = false, Group = Groups.Query)]
-        public string Label { get; set; }
+        public string LabelArgument { get; set; }
 
         [OutputArgument(Order = 1)]
         public Models.ReleaseAsset Result { get; set; }
@@ -47156,7 +47162,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
 
                 var queryItems = new List<string>();
                 if (!string.IsNullOrEmpty(Name)) queryItems.Add("name=" + Uri.EscapeDataString(Name));
-                if (!string.IsNullOrEmpty(Label)) queryItems.Add("label=" + Uri.EscapeDataString(Label));
+                if (!string.IsNullOrEmpty(LabelArgument)) queryItems.Add("label=" + Uri.EscapeDataString(LabelArgument));
                 if (queryItems.Count > 0) pathTemplate += "?" + string.Join("&", queryItems);
 
                 var requestUri = new Uri(pathTemplate.TrimStart('/'), UriKind.Relative);
