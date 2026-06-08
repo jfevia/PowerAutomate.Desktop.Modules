@@ -28,13 +28,12 @@ foreach ($template in $templates) {
         $content = $content.Replace('%NUGET_PACKAGES%', $cache.TrimEnd('\'))
         Set-Content -Path $tempFile -Value $content -NoNewline
 
-        $extension = '.cs'
+        $output = Join-Path $module ($template.BaseName + '.cs')
         if ($template.BaseName -eq 'Resources') {
-            $extension = '.resx.generated'
+            $output = Join-Path $module 'Properties\Resources.resx'
         }
-        $output = Join-Path $module ($template.BaseName + $extension)
 
-        Write-Host "Generating $($template.Name) -> $($template.BaseName)$extension"
+        Write-Host "Generating $($template.Name) -> $output"
         & $t4 -o $output $tempFile
         if ($LASTEXITCODE -ne 0) {
             throw "t4 failed for $($template.Name) with exit code $LASTEXITCODE."

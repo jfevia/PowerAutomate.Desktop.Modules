@@ -27,6 +27,11 @@
             <DesignTime>True</DesignTime>
             <DependentUpon>Models.tt</DependentUpon>
         </Compile>
+        <Compile Update="Actions.cs">
+            <AutoGen>True</AutoGen>
+            <DesignTime>True</DesignTime>
+            <DependentUpon>Actions.tt</DependentUpon>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -40,6 +45,10 @@
         <None Update="Models.tt">
             <Generator>TextTemplatingFileGenerator</Generator>
             <LastGenOutput>Models.cs</LastGenOutput>
+        </None>
+        <None Update="Actions.tt">
+            <Generator>TextTemplatingFileGenerator</Generator>
+            <LastGenOutput>Actions.cs</LastGenOutput>
         </None>
     </ItemGroup>
 

@@ -1,0 +1,392 @@
+<#@ template language="C#" hostspecific="true" debug="false" #>
+<#@ output extension=".resx" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ assembly name="%NUGET_PACKAGES%\sharpyaml\2.1.1\lib\netstandard2.0\SharpYaml.dll" #>
+<#@ assembly name="%NUGET_PACKAGES%\microsoft.openapi\1.6.29\lib\netstandard2.0\Microsoft.OpenApi.dll" #>
+<#@ assembly name="%NUGET_PACKAGES%\microsoft.openapi.readers\1.6.29\lib\netstandard2.0\Microsoft.OpenApi.Readers.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Security" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#@ import namespace="Microsoft.OpenApi.Models" #>
+<#@ import namespace="Microsoft.OpenApi.Readers" #>
+<#
+    var moduleDir = Path.GetDirectoryName(Host.TemplateFile);
+    var specPath = Path.Combine(moduleDir, "openapi.json");
+    OpenApiDocument doc;
+    using (var stream = File.OpenRead(specPath))
+    {
+        doc = new OpenApiStreamReader().Read(stream, out _);
+    }
+#><?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+    <resheader name="version"><value>2.0</value></resheader>
+    <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+    <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+<#
+    // ---- Hand-written (module-level + Login) entries ----
+    WriteEntry("GitHub_FriendlyName", "GitHub");
+    WriteEntry("GitHub_Description", "Perform operations against the GitHub REST API.");
+
+    WriteEntry("Error_UnknownError_FriendlyName", "Operation failed");
+    WriteEntry("Error_UnknownError_Description", "Indicates that there was a problem when executing the operation.");
+
+    WriteEntry("GitHubAuthenticationContext_FriendlyName", "GitHub authentication");
+    WriteEntry("GitHubAuthenticationContext_FriendlyNamePlural", "GitHub authentications");
+
+    // -- Login action --
+    WriteEntry("Login_FriendlyName", "Sign in to GitHub");
+    WriteEntry("Login_Description", "Authenticates against the GitHub REST API and returns an authentication context that other GitHub actions consume.");
+    WriteEntry("Login_Summary", "Sign in to GitHub and return an authentication context.");
+
+    WriteEntry("LoginWithPersonalAccessToken_Summary", "Sign in to GitHub using a personal access token.");
+    WriteEntry("LoginWithDeviceFlow_Summary", "Sign in to GitHub using OAuth device flow.");
+    WriteEntry("LoginWithGitHubCli_Summary", "Sign in to GitHub by reading the token stored by the GitHub CLI.");
+
+    WriteEntry("LoginMode_PersonalAccessToken_FriendlyName", "Personal access token");
+    WriteEntry("LoginMode_DeviceFlow_FriendlyName", "Device flow");
+    WriteEntry("LoginMode_GitHubCli_FriendlyName", "GitHub CLI");
+
+    WriteEntry("Login_Mode_FriendlyName", "Mode");
+    WriteEntry("Login_Mode_Description", "The sign-in mode to use.");
+    WriteEntry("Login_BaseUrl_FriendlyName", "Base URL");
+    WriteEntry("Login_BaseUrl_Description", "The GitHub REST API base URL. Leave empty for github.com (https://api.github.com); override for GitHub Enterprise Server.");
+    WriteEntry("Login_UserAgent_FriendlyName", "User agent");
+    WriteEntry("Login_UserAgent_Description", "The User-Agent header sent on every request. Leave empty to use a module-default value (required by the GitHub REST API).");
+    WriteEntry("Login_Token_FriendlyName", "Personal access token");
+    WriteEntry("Login_Token_Description", "A GitHub personal access token (classic or fine-grained) used as the Bearer credential for subsequent requests.");
+    WriteEntry("Login_ClientId_FriendlyName", "Client id");
+    WriteEntry("Login_ClientId_Description", "OAuth client id used for the device flow. Leave empty to use the publicly-known GitHub CLI client id.");
+    WriteEntry("Login_Scopes_FriendlyName", "Scopes");
+    WriteEntry("Login_Scopes_Description", "Comma-separated OAuth scopes requested during the device flow. Leave empty for a sensible default (repo,read:org,gist,workflow).");
+    WriteEntry("Login_Host_FriendlyName", "Host");
+    WriteEntry("Login_Host_Description", "The host name passed to the GitHub CLI (gh auth token --hostname <host>). Leave empty to use github.com.");
+    WriteEntry("Login_Authentication_FriendlyName", "Authentication context");
+    WriteEntry("Login_Authentication_Description", "The authentication context produced by the sign-in. Pass this value as the Authentication input of any other GitHub action.");
+
+    // -- Group constants (every group string that any action declares must exist) --
+    var groups = new (string Name, string Friendly, string Description)[]
+    {
+        ("General", "General", "General settings."),
+        ("PersonalAccessToken", "Personal access token", "Settings for the personal access token sign-in mode."),
+        ("DeviceFlow", "Device flow", "Settings for the OAuth device flow sign-in mode."),
+        ("GitHubCli", "GitHub CLI", "Settings for the GitHub CLI sign-in mode."),
+        ("Authentication", "Authentication", "Authentication context produced by a sign-in action."),
+        ("Path", "Path", "Parameters substituted into the request URL path."),
+        ("Query", "Query", "Parameters appended to the request URL as query string."),
+        ("Header", "Header", "Parameters sent as request headers."),
+        ("Body", "Body", "Parameters serialized into the request body.")
+    };
+    foreach (var g in groups)
+    {
+        WriteEntry("Group_" + g.Name + "_FriendlyName", g.Friendly);
+        WriteEntry("Group_" + g.Name + "_Description", g.Description);
+    }
+
+    // ---- Generated REST action entries ----
+    var operations = CollectOperations(doc).ToList();
+    var assignedIds = new HashSet<string>();
+    foreach (var op in operations)
+    {
+        op.ActionId = MakeUnique(ToClassName(op.OperationId), assignedIds);
+    }
+
+    var emittedEnumNames = new HashSet<string>();
+    var enumWriteOrder = new List<(string Name, List<string> Members)>();
+
+    foreach (var op in operations)
+    {
+        var friendly = TrimForFriendlyName(op.Operation.Summary ?? op.ActionId);
+        var description = SanitizeForResx(op.Operation.Description ?? op.Operation.Summary ?? op.ActionId);
+        var summary = TrimForSummary(op.Operation.Summary ?? friendly);
+
+        WriteEntry(op.ActionId + "_FriendlyName", friendly);
+        WriteEntry(op.ActionId + "_Description", description);
+        WriteEntry(op.ActionId + "_Summary", summary);
+
+        WriteEntry(op.ActionId + "_Authentication_FriendlyName", "Authentication context");
+        WriteEntry(op.ActionId + "_Authentication_Description", "The authentication context produced by the Login action.");
+
+        foreach (var p in op.Parameters)
+        {
+            WriteEntry(op.ActionId + "_" + p.CSharpName + "_FriendlyName", TrimForFriendlyName(p.OpenApiName));
+            WriteEntry(op.ActionId + "_" + p.CSharpName + "_Description", SanitizeForResx(p.Description ?? p.OpenApiName));
+        }
+
+        if (op.BodyParameter != null)
+        {
+            WriteEntry(op.ActionId + "_" + op.BodyParameter.CSharpName + "_FriendlyName", "Body");
+            WriteEntry(op.ActionId + "_" + op.BodyParameter.CSharpName + "_Description", SanitizeForResx(op.BodyParameter.Description ?? "Request body."));
+        }
+
+        if (!string.IsNullOrEmpty(op.ResponseType))
+        {
+            WriteEntry(op.ActionId + "_Result_FriendlyName", "Result");
+            WriteEntry(op.ActionId + "_Result_Description", "The response returned by the operation.");
+        }
+    }
+
+    // -- Enum value friendly names (for top-level component enums that show up as arguments) --
+    foreach (var pair in doc.Components.Schemas)
+    {
+        if (pair.Value.Type != "string" || pair.Value.Enum == null || pair.Value.Enum.Count == 0) continue;
+        var enumName = ToClassName(pair.Key);
+        if (!emittedEnumNames.Add(enumName)) continue;
+        var values = pair.Value.Enum.OfType<Microsoft.OpenApi.Any.OpenApiString>().Select(s => s.Value).Where(v => !string.IsNullOrEmpty(v)).Distinct().ToList();
+        enumWriteOrder.Add((enumName, values));
+    }
+
+    foreach (var pair in enumWriteOrder)
+    {
+        var seenMembers = new HashSet<string>();
+        foreach (var v in pair.Members)
+        {
+            var member = ToEnumMember(v);
+            if (!seenMembers.Add(member)) continue;
+            WriteEntry(pair.Name + "_" + member + "_FriendlyName", v);
+        }
+    }
+#>
+</root>
+<#+
+    private class OperationInfo
+    {
+        public string OperationId;
+        public OpenApiOperation Operation;
+        public List<ParameterInfo> Parameters;
+        public ParameterInfo BodyParameter;
+        public string ResponseType;
+        public string ActionId;
+    }
+
+    private class ParameterInfo
+    {
+        public string OpenApiName;
+        public string CSharpName;
+        public string CSharpType;
+        public string Description;
+        public string EnumTypeName;
+        public List<string> EnumValues;
+    }
+
+    private IEnumerable<OperationInfo> CollectOperations(OpenApiDocument doc)
+    {
+        foreach (var pathPair in doc.Paths)
+        {
+            foreach (var opPair in pathPair.Value.Operations)
+            {
+                var operation = opPair.Value;
+                if (string.IsNullOrEmpty(operation.OperationId)) continue;
+
+                var allParameters = (pathPair.Value.Parameters ?? new List<OpenApiParameter>())
+                    .Concat(operation.Parameters ?? new List<OpenApiParameter>())
+                    .ToList();
+
+                var info = new OperationInfo
+                {
+                    OperationId = operation.OperationId,
+                    Operation = operation,
+                    Parameters = new List<ParameterInfo>(),
+                };
+
+                var usedNames = new HashSet<string> { "Authentication" };
+                foreach (var p in allParameters)
+                {
+                    if (p == null || string.IsNullOrEmpty(p.Name)) continue;
+                    var pi = new ParameterInfo
+                    {
+                        OpenApiName = p.Name,
+                        CSharpName = MakeUnique(ToPropertyName(p.Name), usedNames),
+                        CSharpType = "string",
+                        Description = p.Description,
+                    };
+                    if (p.Schema != null && p.Schema.Reference != null && p.Schema.Reference.Type == ReferenceType.Schema)
+                    {
+                        // Top-level enum reference - capture for resx emission.
+                        pi.EnumTypeName = ToClassName(p.Schema.Reference.Id);
+                    }
+                    info.Parameters.Add(pi);
+                }
+
+                if (operation.RequestBody != null && operation.RequestBody.Content != null)
+                {
+                    var jsonContent = operation.RequestBody.Content
+                        .FirstOrDefault(kv => string.Equals(kv.Key, "application/json", StringComparison.OrdinalIgnoreCase));
+                    if (jsonContent.Value != null)
+                    {
+                        info.BodyParameter = new ParameterInfo
+                        {
+                            OpenApiName = "body",
+                            CSharpName = MakeUnique("Body", usedNames),
+                            Description = operation.RequestBody.Description,
+                        };
+                    }
+                }
+
+                if (operation.Responses != null)
+                {
+                    var success = operation.Responses.Where(r => r.Key.StartsWith("2")).OrderBy(r => r.Key).FirstOrDefault();
+                    if (success.Value != null && success.Value.Content != null)
+                    {
+                        var jsonContent = success.Value.Content.FirstOrDefault(kv => string.Equals(kv.Key, "application/json", StringComparison.OrdinalIgnoreCase));
+                        if (jsonContent.Value != null && jsonContent.Value.Schema != null)
+                        {
+                            info.ResponseType = "Result";
+                        }
+                    }
+                }
+
+                yield return info;
+            }
+        }
+    }
+
+    private void WriteEntry(string name, string value)
+    {
+        var safeValue = SanitizeForResx(value ?? string.Empty);
+#>
+    <data name="<#= SecurityElement.Escape(name) #>" xml:space="preserve">
+        <value><#= SecurityElement.Escape(safeValue) #></value>
+    </data>
+<#+
+    }
+
+    private string SanitizeForResx(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return string.Empty;
+        // Collapse newlines so resx values stay single-line; trim length.
+        var compact = Regex.Replace(s, "\\s+", " ").Trim();
+        if (compact.Length > 4000) compact = compact.Substring(0, 4000) + "...";
+        return compact;
+    }
+
+    private string TrimForFriendlyName(string s)
+    {
+        var sanitized = SanitizeForResx(s);
+        if (sanitized.Length > 120) sanitized = sanitized.Substring(0, 120) + "...";
+        return sanitized;
+    }
+
+    private string TrimForSummary(string s)
+    {
+        var sanitized = SanitizeForResx(s);
+        if (sanitized.Length > 200) sanitized = sanitized.Substring(0, 200) + "...";
+        return sanitized;
+    }
+
+    private static readonly Regex SegmentSplitter = new Regex("[-_/. ]+");
+
+    private string ToClassName(string raw)
+    {
+        if (string.IsNullOrEmpty(raw)) return "Unnamed";
+        var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
+        return SanitizeIdentifier(string.Concat(segments));
+    }
+
+    private string ToPropertyName(string raw)
+    {
+        if (string.IsNullOrEmpty(raw)) return "Value";
+        var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
+        return SanitizeIdentifier(string.Concat(segments));
+    }
+
+    private string ToEnumMember(string raw)
+    {
+        if (string.IsNullOrEmpty(raw)) return "Empty";
+        var segments = SegmentSplitter.Split(raw).Where(s => s.Length > 0).Select(Capitalize);
+        var name = string.Concat(segments);
+        if (string.IsNullOrEmpty(name)) name = "Empty";
+        if (char.IsDigit(name[0])) name = "_" + name;
+        return SanitizeIdentifier(name);
+    }
+
+    private string MakeUnique(string candidate, HashSet<string> used)
+    {
+        if (used.Add(candidate)) return candidate;
+        var n = 2;
+        while (!used.Add(candidate + n)) n++;
+        return candidate + n;
+    }
+
+    private static string Capitalize(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return s;
+        return char.ToUpperInvariant(s[0]) + (s.Length > 1 ? s.Substring(1) : string.Empty);
+    }
+
+    private static string SanitizeIdentifier(string s)
+    {
+        if (string.IsNullOrEmpty(s)) return "Unnamed";
+        var sb = new StringBuilder();
+        foreach (var c in s)
+        {
+            if (char.IsLetterOrDigit(c) || c == '_') sb.Append(c);
+            else sb.Append('_');
+        }
+        var result = sb.ToString();
+        if (result.Length == 0 || char.IsDigit(result[0])) result = "_" + result;
+        return CSharpKeywords.Contains(result) ? "@" + result : result;
+    }
+
+    private static readonly HashSet<string> CSharpKeywords = new HashSet<string>
+    {
+        "abstract","as","base","bool","break","byte","case","catch","char","checked","class","const","continue","decimal",
+        "default","delegate","do","double","else","enum","event","explicit","extern","false","finally","fixed","float","for",
+        "foreach","goto","if","implicit","in","int","interface","internal","is","lock","long","namespace","new","null",
+        "object","operator","out","override","params","private","protected","public","readonly","ref","return","sbyte",
+        "sealed","short","sizeof","stackalloc","static","string","struct","switch","this","throw","true","try","typeof",
+        "uint","ulong","unchecked","unsafe","ushort","using","virtual","void","volatile","while"
+    };
+#>
