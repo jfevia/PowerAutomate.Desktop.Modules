@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="WindowsInputSimulation_FriendlyName" xml:space="preserve">
+        <value>Windows input simulation</value>
+    </data>
+    <data name="WindowsInputSimulation_Description" xml:space="preserve">
+        <value>Drives legacy Win32 windows and controls by posting window messages, without moving the mouse pointer or taking over the keyboard. Use it when the built-in UI automation actions, including their Simulate option, cannot reach a control because the application exposes no usable accessibility information.</value>
+    </data>
+    <data name="Error_AccessDeniedError_FriendlyName" xml:space="preserve">
+        <value>Access denied</value>
+    </data>
+    <data name="Error_AccessDeniedError_Description" xml:space="preserve">
+        <value>Indicates that Windows blocked the input because the target application runs with higher privileges than this flow.</value>
+    </data>
+    <data name="Error_ControlNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Control not found</value>
+    </data>
+    <data name="Error_ControlNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that no control matched the supplied search criteria.</value>
+    </data>
+    <data name="Error_MessageDeliveryError_FriendlyName" xml:space="preserve">
+        <value>Input not delivered</value>
+    </data>
+    <data name="Error_MessageDeliveryError_Description" xml:space="preserve">
+        <value>Indicates that the target window did not accept the input, or stopped responding before it was processed.</value>
+    </data>
+    <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
+        <value>Operation failed</value>
+    </data>
+    <data name="Error_UnknownError_Description" xml:space="preserve">
+        <value>Indicates that there was a problem when executing the operation.</value>
+    </data>
+    <data name="Error_WindowNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Window not found</value>
+    </data>
+    <data name="Error_WindowNotFoundError_Description" xml:space="preserve">
+        <value>Indicates that no window matched the supplied search criteria.</value>
+    </data>
+    <data name="FindWindow_FriendlyName" xml:space="preserve">
+        <value>Find window</value>
+    </data>
+    <data name="FindWindow_Description" xml:space="preserve">
+        <value>Finds a window on the desktop by title, class or owning process.</value>
+    </data>
+    <data name="FindWindow_Summary" xml:space="preserve">
+        <value>Find a window on the desktop.</value>
+    </data>
+    <data name="FindWindow_Title_FriendlyName" xml:space="preserve">
+        <value>Window title</value>
+    </data>
+    <data name="FindWindow_Title_Description" xml:space="preserve">
+        <value>The title of the window to look for. Leave empty to ignore the title.</value>
+    </data>
+    <data name="FindWindow_ClassName_FriendlyName" xml:space="preserve">
+        <value>Window class</value>
+    </data>
+    <data name="FindWindow_ClassName_Description" xml:space="preserve">
+        <value>The window class name to look for. Leave empty to ignore the class.</value>
+    </data>
+    <data name="FindWindow_MatchMode_FriendlyName" xml:space="preserve">
+        <value>Match mode</value>
+    </data>
+    <data name="FindWindow_MatchMode_Description" xml:space="preserve">
+        <value>How the title and class values are compared against each window.</value>
+    </data>
+    <data name="FindWindow_ProcessId_FriendlyName" xml:space="preserve">
+        <value>Process ID</value>
+    </data>
+    <data name="FindWindow_ProcessId_Description" xml:space="preserve">
+        <value>Restricts the search to windows owned by this process. Leave empty to search every process.</value>
+    </data>
+    <data name="FindWindow_TimeoutMilliseconds_FriendlyName" xml:space="preserve">
+        <value>Timeout (ms)</value>
+    </data>
+    <data name="FindWindow_TimeoutMilliseconds_Description" xml:space="preserve">
+        <value>How long to keep retrying while waiting for the window to appear. Use 0 to search only once.</value>
+    </data>
+    <data name="FindWindow_Window_FriendlyName" xml:space="preserve">
+        <value>Window</value>
+    </data>
+    <data name="FindWindow_Window_Description" xml:space="preserve">
+        <value>The window that was found.</value>
+    </data>
+    <data name="FindControl_FriendlyName" xml:space="preserve">
+        <value>Find control</value>
+    </data>
+    <data name="FindControl_Description" xml:space="preserve">
+        <value>Finds a control inside a window by text, class or control identifier.</value>
+    </data>
+    <data name="FindControl_Summary" xml:space="preserve">
+        <value>Find a control inside a window.</value>
+    </data>
+    <data name="FindControl_Window_FriendlyName" xml:space="preserve">
+        <value>Window</value>
+    </data>
+    <data name="FindControl_Window_Description" xml:space="preserve">
+        <value>The window to search in.</value>
+    </data>
+    <data name="FindControl_Text_FriendlyName" xml:space="preserve">
+        <value>Control text</value>
+    </data>
+    <data name="FindControl_Text_Description" xml:space="preserve">
+        <value>The text of the control to look for. Leave empty to ignore the text.</value>
+    </data>
+    <data name="FindControl_ClassName_FriendlyName" xml:space="preserve">
+        <value>Control class</value>
+    </data>
+    <data name="FindControl_ClassName_Description" xml:space="preserve">
+        <value>The control class name to look for, such as Button or Edit. Leave empty to ignore the class.</value>
+    </data>
+    <data name="FindControl_ControlId_FriendlyName" xml:space="preserve">
+        <value>Control ID</value>
+    </data>
+    <data name="FindControl_ControlId_Description" xml:space="preserve">
+        <value>The dialog control identifier to look for. Leave empty to ignore the identifier.</value>
+    </data>
+    <data name="FindControl_MatchMode_FriendlyName" xml:space="preserve">
+        <value>Match mode</value>
+    </data>
+    <data name="FindControl_MatchMode_Description" xml:space="preserve">
+        <value>How the text and class values are compared against each control.</value>
+    </data>
+    <data name="FindControl_Recursive_FriendlyName" xml:space="preserve">
+        <value>Search nested controls</value>
+    </data>
+    <data name="FindControl_Recursive_Description" xml:space="preserve">
+        <value>Specifies whether controls nested inside other controls are searched as well.</value>
+    </data>
+    <data name="FindControl_TimeoutMilliseconds_FriendlyName" xml:space="preserve">
+        <value>Timeout (ms)</value>
+    </data>
+    <data name="FindControl_TimeoutMilliseconds_Description" xml:space="preserve">
+        <value>How long to keep retrying while waiting for the control to appear. Use 0 to search only once.</value>
+    </data>
+    <data name="FindControl_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="FindControl_Control_Description" xml:space="preserve">
+        <value>The control that was found.</value>
+    </data>
+    <data name="GetControls_FriendlyName" xml:space="preserve">
+        <value>Get controls</value>
+    </data>
+    <data name="GetControls_Description" xml:space="preserve">
+        <value>Retrieves every control contained in a window.</value>
+    </data>
+    <data name="GetControls_Summary" xml:space="preserve">
+        <value>Get the controls of a window.</value>
+    </data>
+    <data name="GetControls_Window_FriendlyName" xml:space="preserve">
+        <value>Window</value>
+    </data>
+    <data name="GetControls_Window_Description" xml:space="preserve">
+        <value>The window to list the controls of.</value>
+    </data>
+    <data name="GetControls_Recursive_FriendlyName" xml:space="preserve">
+        <value>Include nested controls</value>
+    </data>
+    <data name="GetControls_Recursive_Description" xml:space="preserve">
+        <value>Specifies whether controls nested inside other controls are included.</value>
+    </data>
+    <data name="GetControls_Controls_FriendlyName" xml:space="preserve">
+        <value>Controls</value>
+    </data>
+    <data name="GetControls_Controls_Description" xml:space="preserve">
+        <value>The controls that were found.</value>
+    </data>
+    <data name="ClickControl_FriendlyName" xml:space="preserve">
+        <value>Click control</value>
+    </data>
+    <data name="ClickControl_Description" xml:space="preserve">
+        <value>Clicks a control by posting mouse messages to it, leaving the mouse pointer where it is. Unlike the Simulate option of the UI automation actions, the click can target an exact position inside the control.</value>
+    </data>
+    <data name="ClickControl_Summary" xml:space="preserve">
+        <value>Click a control without moving the mouse.</value>
+    </data>
+    <data name="ClickControl_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="ClickControl_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="ClickControl_Button_FriendlyName" xml:space="preserve">
+        <value>Mouse button</value>
+    </data>
+    <data name="ClickControl_Button_Description" xml:space="preserve">
+        <value>The mouse button to press.</value>
+    </data>
+    <data name="ClickControl_X_FriendlyName" xml:space="preserve">
+        <value>X position</value>
+    </data>
+    <data name="ClickControl_X_Description" xml:space="preserve">
+        <value>The horizontal position inside the control, in pixels. Leave empty to click the centre.</value>
+    </data>
+    <data name="ClickControl_Y_FriendlyName" xml:space="preserve">
+        <value>Y position</value>
+    </data>
+    <data name="ClickControl_Y_Description" xml:space="preserve">
+        <value>The vertical position inside the control, in pixels. Leave empty to click the centre.</value>
+    </data>
+    <data name="DoubleClickControl_FriendlyName" xml:space="preserve">
+        <value>Double-click control</value>
+    </data>
+    <data name="DoubleClickControl_Description" xml:space="preserve">
+        <value>Double-clicks a control by posting mouse messages to it, leaving the mouse pointer where it is. Unlike the Simulate option of the UI automation actions, the click can target an exact position inside the control.</value>
+    </data>
+    <data name="DoubleClickControl_Summary" xml:space="preserve">
+        <value>Double-click a control without moving the mouse.</value>
+    </data>
+    <data name="DoubleClickControl_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="DoubleClickControl_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="DoubleClickControl_Button_FriendlyName" xml:space="preserve">
+        <value>Mouse button</value>
+    </data>
+    <data name="DoubleClickControl_Button_Description" xml:space="preserve">
+        <value>The mouse button to press.</value>
+    </data>
+    <data name="DoubleClickControl_X_FriendlyName" xml:space="preserve">
+        <value>X position</value>
+    </data>
+    <data name="DoubleClickControl_X_Description" xml:space="preserve">
+        <value>The horizontal position inside the control, in pixels. Leave empty to click the centre.</value>
+    </data>
+    <data name="DoubleClickControl_Y_FriendlyName" xml:space="preserve">
+        <value>Y position</value>
+    </data>
+    <data name="DoubleClickControl_Y_Description" xml:space="preserve">
+        <value>The vertical position inside the control, in pixels. Leave empty to click the centre.</value>
+    </data>
+    <data name="ClickButton_FriendlyName" xml:space="preserve">
+        <value>Click button</value>
+    </data>
+    <data name="ClickButton_Description" xml:space="preserve">
+        <value>Presses a button, check box or radio button using its own click command instead of screen coordinates.</value>
+    </data>
+    <data name="ClickButton_Summary" xml:space="preserve">
+        <value>Press a button without moving the mouse.</value>
+    </data>
+    <data name="ClickButton_Control_FriendlyName" xml:space="preserve">
+        <value>Button</value>
+    </data>
+    <data name="ClickButton_Control_Description" xml:space="preserve">
+        <value>The button, check box or radio button to press.</value>
+    </data>
+    <data name="SetCheckBoxState_FriendlyName" xml:space="preserve">
+        <value>Set check box state</value>
+    </data>
+    <data name="SetCheckBoxState_Description" xml:space="preserve">
+        <value>Checks, unchecks or sets a check box to the indeterminate state.</value>
+    </data>
+    <data name="SetCheckBoxState_Summary" xml:space="preserve">
+        <value>Set the state of a check box.</value>
+    </data>
+    <data name="SetCheckBoxState_Control_FriendlyName" xml:space="preserve">
+        <value>Check box</value>
+    </data>
+    <data name="SetCheckBoxState_Control_Description" xml:space="preserve">
+        <value>The check box or radio button to update.</value>
+    </data>
+    <data name="SetCheckBoxState_State_FriendlyName" xml:space="preserve">
+        <value>State</value>
+    </data>
+    <data name="SetCheckBoxState_State_Description" xml:space="preserve">
+        <value>The state to apply to the check box.</value>
+    </data>
+    <data name="SetControlText_FriendlyName" xml:space="preserve">
+        <value>Set control text</value>
+    </data>
+    <data name="SetControlText_Description" xml:space="preserve">
+        <value>Replaces the whole text of a control in one step.</value>
+    </data>
+    <data name="SetControlText_Summary" xml:space="preserve">
+        <value>Set the text of a control.</value>
+    </data>
+    <data name="SetControlText_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="SetControlText_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="SetControlText_Text_FriendlyName" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="SetControlText_Text_Description" xml:space="preserve">
+        <value>The text to place in the control.</value>
+    </data>
+    <data name="GetControlText_FriendlyName" xml:space="preserve">
+        <value>Get control text</value>
+    </data>
+    <data name="GetControlText_Description" xml:space="preserve">
+        <value>Reads the text of a control, including controls owned by another application.</value>
+    </data>
+    <data name="GetControlText_Summary" xml:space="preserve">
+        <value>Get the text of a control.</value>
+    </data>
+    <data name="GetControlText_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="GetControlText_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="GetControlText_Text_FriendlyName" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="GetControlText_Text_Description" xml:space="preserve">
+        <value>The text of the control.</value>
+    </data>
+    <data name="SendText_FriendlyName" xml:space="preserve">
+        <value>Send text</value>
+    </data>
+    <data name="SendText_Description" xml:space="preserve">
+        <value>Types text into a control one character at a time by posting keyboard messages, for Win32 controls that reject a direct text replacement.</value>
+    </data>
+    <data name="SendText_Summary" xml:space="preserve">
+        <value>Type text into a control without using the keyboard.</value>
+    </data>
+    <data name="SendText_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="SendText_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="SendText_Text_FriendlyName" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="SendText_Text_Description" xml:space="preserve">
+        <value>The text to type into the control.</value>
+    </data>
+    <data name="SendText_DelayMilliseconds_FriendlyName" xml:space="preserve">
+        <value>Delay between characters (ms)</value>
+    </data>
+    <data name="SendText_DelayMilliseconds_Description" xml:space="preserve">
+        <value>How long to pause between characters, for applications that cannot keep up with fast typing.</value>
+    </data>
+    <data name="SendKey_FriendlyName" xml:space="preserve">
+        <value>Send key</value>
+    </data>
+    <data name="SendKey_Description" xml:space="preserve">
+        <value>Sends a single key, such as Enter or Tab, to a control without using the physical keyboard.</value>
+    </data>
+    <data name="SendKey_Summary" xml:space="preserve">
+        <value>Send a key to a control without using the keyboard.</value>
+    </data>
+    <data name="SendKey_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="SendKey_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="SendKey_Key_FriendlyName" xml:space="preserve">
+        <value>Key</value>
+    </data>
+    <data name="SendKey_Key_Description" xml:space="preserve">
+        <value>The key to send to the control.</value>
+    </data>
+    <data name="SelectComboBoxItem_FriendlyName" xml:space="preserve">
+        <value>Select combo box item</value>
+    </data>
+    <data name="SelectComboBoxItem_Description" xml:space="preserve">
+        <value>Selects an item in a combo box by text or position and notifies the application of the change.</value>
+    </data>
+    <data name="SelectComboBoxItem_Summary" xml:space="preserve">
+        <value>Select an item in a combo box.</value>
+    </data>
+    <data name="SelectComboBoxItem_Control_FriendlyName" xml:space="preserve">
+        <value>Combo box</value>
+    </data>
+    <data name="SelectComboBoxItem_Control_Description" xml:space="preserve">
+        <value>The combo box to update.</value>
+    </data>
+    <data name="SelectComboBoxItem_Text_FriendlyName" xml:space="preserve">
+        <value>Item text</value>
+    </data>
+    <data name="SelectComboBoxItem_Text_Description" xml:space="preserve">
+        <value>The exact text of the item to select. Ignored when a position is supplied.</value>
+    </data>
+    <data name="SelectComboBoxItem_Index_FriendlyName" xml:space="preserve">
+        <value>Item position</value>
+    </data>
+    <data name="SelectComboBoxItem_Index_Description" xml:space="preserve">
+        <value>The zero-based position of the item to select. Leave empty to select by text.</value>
+    </data>
+    <data name="SelectComboBoxItem_SelectedIndex_FriendlyName" xml:space="preserve">
+        <value>Selected position</value>
+    </data>
+    <data name="SelectComboBoxItem_SelectedIndex_Description" xml:space="preserve">
+        <value>The zero-based position of the item that was selected.</value>
+    </data>
+    <data name="SelectListBoxItem_FriendlyName" xml:space="preserve">
+        <value>Select list box item</value>
+    </data>
+    <data name="SelectListBoxItem_Description" xml:space="preserve">
+        <value>Selects an item in a list box by text or position and notifies the application of the change.</value>
+    </data>
+    <data name="SelectListBoxItem_Summary" xml:space="preserve">
+        <value>Select an item in a list box.</value>
+    </data>
+    <data name="SelectListBoxItem_Control_FriendlyName" xml:space="preserve">
+        <value>List box</value>
+    </data>
+    <data name="SelectListBoxItem_Control_Description" xml:space="preserve">
+        <value>The list box to update.</value>
+    </data>
+    <data name="SelectListBoxItem_Text_FriendlyName" xml:space="preserve">
+        <value>Item text</value>
+    </data>
+    <data name="SelectListBoxItem_Text_Description" xml:space="preserve">
+        <value>The exact text of the item to select. Ignored when a position is supplied.</value>
+    </data>
+    <data name="SelectListBoxItem_Index_FriendlyName" xml:space="preserve">
+        <value>Item position</value>
+    </data>
+    <data name="SelectListBoxItem_Index_Description" xml:space="preserve">
+        <value>The zero-based position of the item to select. Leave empty to select by text.</value>
+    </data>
+    <data name="SelectListBoxItem_SelectedIndex_FriendlyName" xml:space="preserve">
+        <value>Selected position</value>
+    </data>
+    <data name="SelectListBoxItem_SelectedIndex_Description" xml:space="preserve">
+        <value>The zero-based position of the item that was selected.</value>
+    </data>
+    <data name="ScrollControl_FriendlyName" xml:space="preserve">
+        <value>Scroll control</value>
+    </data>
+    <data name="ScrollControl_Description" xml:space="preserve">
+        <value>Scrolls a control by sending mouse wheel messages to it, leaving the mouse pointer where it is.</value>
+    </data>
+    <data name="ScrollControl_Summary" xml:space="preserve">
+        <value>Scroll a control without moving the mouse.</value>
+    </data>
+    <data name="ScrollControl_Control_FriendlyName" xml:space="preserve">
+        <value>Control</value>
+    </data>
+    <data name="ScrollControl_Control_Description" xml:space="preserve">
+        <value>The control to send the input to, as found by the Find control action.</value>
+    </data>
+    <data name="ScrollControl_Direction_FriendlyName" xml:space="preserve">
+        <value>Direction</value>
+    </data>
+    <data name="ScrollControl_Direction_Description" xml:space="preserve">
+        <value>The direction to scroll in.</value>
+    </data>
+    <data name="ScrollControl_Notches_FriendlyName" xml:space="preserve">
+        <value>Wheel notches</value>
+    </data>
+    <data name="ScrollControl_Notches_Description" xml:space="preserve">
+        <value>How many wheel notches to scroll.</value>
+    </data>
+    <data name="MouseButton_Left_FriendlyName" xml:space="preserve">
+        <value>Left</value>
+    </data>
+    <data name="MouseButton_Left_Description" xml:space="preserve">
+        <value>The left mouse button.</value>
+    </data>
+    <data name="MouseButton_Right_FriendlyName" xml:space="preserve">
+        <value>Right</value>
+    </data>
+    <data name="MouseButton_Right_Description" xml:space="preserve">
+        <value>The right mouse button.</value>
+    </data>
+    <data name="MouseButton_Middle_FriendlyName" xml:space="preserve">
+        <value>Middle</value>
+    </data>
+    <data name="MouseButton_Middle_Description" xml:space="preserve">
+        <value>The middle mouse button.</value>
+    </data>
+    <data name="CheckBoxState_Unchecked_FriendlyName" xml:space="preserve">
+        <value>Unchecked</value>
+    </data>
+    <data name="CheckBoxState_Unchecked_Description" xml:space="preserve">
+        <value>The check box is cleared.</value>
+    </data>
+    <data name="CheckBoxState_Checked_FriendlyName" xml:space="preserve">
+        <value>Checked</value>
+    </data>
+    <data name="CheckBoxState_Checked_Description" xml:space="preserve">
+        <value>The check box is selected.</value>
+    </data>
+    <data name="CheckBoxState_Indeterminate_FriendlyName" xml:space="preserve">
+        <value>Indeterminate</value>
+    </data>
+    <data name="CheckBoxState_Indeterminate_Description" xml:space="preserve">
+        <value>The check box is neither selected nor cleared.</value>
+    </data>
+    <data name="ScrollDirection_Up_FriendlyName" xml:space="preserve">
+        <value>Up</value>
+    </data>
+    <data name="ScrollDirection_Up_Description" xml:space="preserve">
+        <value>Scroll towards the beginning of the content.</value>
+    </data>
+    <data name="ScrollDirection_Down_FriendlyName" xml:space="preserve">
+        <value>Down</value>
+    </data>
+    <data name="ScrollDirection_Down_Description" xml:space="preserve">
+        <value>Scroll towards the end of the content.</value>
+    </data>
+    <data name="TextMatchMode_Equals_FriendlyName" xml:space="preserve">
+        <value>Equals</value>
+    </data>
+    <data name="TextMatchMode_Equals_Description" xml:space="preserve">
+        <value>The value must match the whole text.</value>
+    </data>
+    <data name="TextMatchMode_Contains_FriendlyName" xml:space="preserve">
+        <value>Contains</value>
+    </data>
+    <data name="TextMatchMode_Contains_Description" xml:space="preserve">
+        <value>The value must appear anywhere in the text.</value>
+    </data>
+    <data name="TextMatchMode_StartsWith_FriendlyName" xml:space="preserve">
+        <value>Starts with</value>
+    </data>
+    <data name="TextMatchMode_StartsWith_Description" xml:space="preserve">
+        <value>The text must begin with the value.</value>
+    </data>
+    <data name="VirtualKey_Backspace_FriendlyName" xml:space="preserve">
+        <value>Backspace</value>
+    </data>
+    <data name="VirtualKey_Backspace_Description" xml:space="preserve">
+        <value>The Backspace key.</value>
+    </data>
+    <data name="VirtualKey_Tab_FriendlyName" xml:space="preserve">
+        <value>Tab</value>
+    </data>
+    <data name="VirtualKey_Tab_Description" xml:space="preserve">
+        <value>The Tab key.</value>
+    </data>
+    <data name="VirtualKey_Enter_FriendlyName" xml:space="preserve">
+        <value>Enter</value>
+    </data>
+    <data name="VirtualKey_Enter_Description" xml:space="preserve">
+        <value>The Enter key.</value>
+    </data>
+    <data name="VirtualKey_Escape_FriendlyName" xml:space="preserve">
+        <value>Escape</value>
+    </data>
+    <data name="VirtualKey_Escape_Description" xml:space="preserve">
+        <value>The Escape key.</value>
+    </data>
+    <data name="VirtualKey_Space_FriendlyName" xml:space="preserve">
+        <value>Space</value>
+    </data>
+    <data name="VirtualKey_Space_Description" xml:space="preserve">
+        <value>The Space key.</value>
+    </data>
+    <data name="VirtualKey_PageUp_FriendlyName" xml:space="preserve">
+        <value>Page up</value>
+    </data>
+    <data name="VirtualKey_PageUp_Description" xml:space="preserve">
+        <value>The Page up key.</value>
+    </data>
+    <data name="VirtualKey_PageDown_FriendlyName" xml:space="preserve">
+        <value>Page down</value>
+    </data>
+    <data name="VirtualKey_PageDown_Description" xml:space="preserve">
+        <value>The Page down key.</value>
+    </data>
+    <data name="VirtualKey_End_FriendlyName" xml:space="preserve">
+        <value>End</value>
+    </data>
+    <data name="VirtualKey_End_Description" xml:space="preserve">
+        <value>The End key.</value>
+    </data>
+    <data name="VirtualKey_Home_FriendlyName" xml:space="preserve">
+        <value>Home</value>
+    </data>
+    <data name="VirtualKey_Home_Description" xml:space="preserve">
+        <value>The Home key.</value>
+    </data>
+    <data name="VirtualKey_ArrowLeft_FriendlyName" xml:space="preserve">
+        <value>Left arrow</value>
+    </data>
+    <data name="VirtualKey_ArrowLeft_Description" xml:space="preserve">
+        <value>The Left arrow key.</value>
+    </data>
+    <data name="VirtualKey_ArrowUp_FriendlyName" xml:space="preserve">
+        <value>Up arrow</value>
+    </data>
+    <data name="VirtualKey_ArrowUp_Description" xml:space="preserve">
+        <value>The Up arrow key.</value>
+    </data>
+    <data name="VirtualKey_ArrowRight_FriendlyName" xml:space="preserve">
+        <value>Right arrow</value>
+    </data>
+    <data name="VirtualKey_ArrowRight_Description" xml:space="preserve">
+        <value>The Right arrow key.</value>
+    </data>
+    <data name="VirtualKey_ArrowDown_FriendlyName" xml:space="preserve">
+        <value>Down arrow</value>
+    </data>
+    <data name="VirtualKey_ArrowDown_Description" xml:space="preserve">
+        <value>The Down arrow key.</value>
+    </data>
+    <data name="VirtualKey_Insert_FriendlyName" xml:space="preserve">
+        <value>Insert</value>
+    </data>
+    <data name="VirtualKey_Insert_Description" xml:space="preserve">
+        <value>The Insert key.</value>
+    </data>
+    <data name="VirtualKey_Delete_FriendlyName" xml:space="preserve">
+        <value>Delete</value>
+    </data>
+    <data name="VirtualKey_Delete_Description" xml:space="preserve">
+        <value>The Delete key.</value>
+    </data>
+    <data name="VirtualKey_F1_FriendlyName" xml:space="preserve">
+        <value>F1</value>
+    </data>
+    <data name="VirtualKey_F1_Description" xml:space="preserve">
+        <value>The F1 key.</value>
+    </data>
+    <data name="VirtualKey_F2_FriendlyName" xml:space="preserve">
+        <value>F2</value>
+    </data>
+    <data name="VirtualKey_F2_Description" xml:space="preserve">
+        <value>The F2 key.</value>
+    </data>
+    <data name="VirtualKey_F3_FriendlyName" xml:space="preserve">
+        <value>F3</value>
+    </data>
+    <data name="VirtualKey_F3_Description" xml:space="preserve">
+        <value>The F3 key.</value>
+    </data>
+    <data name="VirtualKey_F4_FriendlyName" xml:space="preserve">
+        <value>F4</value>
+    </data>
+    <data name="VirtualKey_F4_Description" xml:space="preserve">
+        <value>The F4 key.</value>
+    </data>
+    <data name="VirtualKey_F5_FriendlyName" xml:space="preserve">
+        <value>F5</value>
+    </data>
+    <data name="VirtualKey_F5_Description" xml:space="preserve">
+        <value>The F5 key.</value>
+    </data>
+    <data name="VirtualKey_F6_FriendlyName" xml:space="preserve">
+        <value>F6</value>
+    </data>
+    <data name="VirtualKey_F6_Description" xml:space="preserve">
+        <value>The F6 key.</value>
+    </data>
+    <data name="VirtualKey_F7_FriendlyName" xml:space="preserve">
+        <value>F7</value>
+    </data>
+    <data name="VirtualKey_F7_Description" xml:space="preserve">
+        <value>The F7 key.</value>
+    </data>
+    <data name="VirtualKey_F8_FriendlyName" xml:space="preserve">
+        <value>F8</value>
+    </data>
+    <data name="VirtualKey_F8_Description" xml:space="preserve">
+        <value>The F8 key.</value>
+    </data>
+    <data name="VirtualKey_F9_FriendlyName" xml:space="preserve">
+        <value>F9</value>
+    </data>
+    <data name="VirtualKey_F9_Description" xml:space="preserve">
+        <value>The F9 key.</value>
+    </data>
+    <data name="VirtualKey_F10_FriendlyName" xml:space="preserve">
+        <value>F10</value>
+    </data>
+    <data name="VirtualKey_F10_Description" xml:space="preserve">
+        <value>The F10 key.</value>
+    </data>
+    <data name="VirtualKey_F11_FriendlyName" xml:space="preserve">
+        <value>F11</value>
+    </data>
+    <data name="VirtualKey_F11_Description" xml:space="preserve">
+        <value>The F11 key.</value>
+    </data>
+    <data name="VirtualKey_F12_FriendlyName" xml:space="preserve">
+        <value>F12</value>
+    </data>
+    <data name="VirtualKey_F12_Description" xml:space="preserve">
+        <value>The F12 key.</value>
+    </data>
+</root>

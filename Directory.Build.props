@@ -5,6 +5,7 @@
         <RootNamespace>$(ProductName).$(MSBuildProjectName)</RootNamespace>
         <AssemblyName>$(ProductName).$(MSBuildProjectName)</AssemblyName>
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <NuGetAudit>false</NuGetAudit>
         <Environment Condition=" '$(Environment)' == '' ">Development</Environment>
     </PropertyGroup>
 
