@@ -1,0 +1,7 @@
+﻿// ---------------------------------------------------
+// Copyright (c) Jesus Fernandez. All Rights Reserved.
+// ---------------------------------------------------
+
+<#@ template language="C#" hostspecific="true" debug="false" #>
+<#@ output extension=".cs" #>
+<# // Tests.cs is generated from the PetStore action inventory. #>

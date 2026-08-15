@@ -43,6 +43,14 @@ if ($reports.Count -eq 0) {
     throw "No coverage reports were produced under '$ResultsDirectory'. Every test project must reference coverlet.collector."
 }
 
+# The gate is only meaningful if every assembly it claims to watch actually reported.
+[xml]$settings = Get-Content $runSettings
+$expectedModules = @()
+$includeFilter = $settings.RunSettings.DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Include
+if ($includeFilter) {
+    $expectedModules = @([regex]::Matches($includeFilter, '\[([^\]]+)\]') | ForEach-Object { $_.Groups[1].Value })
+}
+
 $modules = @{}
 $gaps = New-Object System.Collections.Generic.List[string]
 
@@ -130,6 +138,12 @@ Write-Host ('{0,-62} {1,10} {2,6}% {3,10} {4,6}%' -f
     "$totalCoveredLines/$totalLines", (Get-Percentage $totalCoveredLines $totalLines),
     "$totalCoveredBranches/$totalBranches", (Get-Percentage $totalCoveredBranches $totalBranches))
 Write-Host ''
+
+foreach ($expected in $expectedModules) {
+    if (-not $modules.ContainsKey($expected)) {
+        $gaps.Add("$expected is watched by the coverage filter but produced no report; its tests may have stopped running.")
+    }
+}
 
 if ($gaps.Count -gt 0) {
     foreach ($gap in $gaps) {

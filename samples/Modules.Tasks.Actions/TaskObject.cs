@@ -22,7 +22,7 @@ public class TaskObject : IComparable<TaskObject>, IComparable
     {
     }
 
-    internal TaskObject(string name, Task task)
+    public TaskObject(string name, Task task)
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Task = task ?? throw new ArgumentNullException(nameof(task));
