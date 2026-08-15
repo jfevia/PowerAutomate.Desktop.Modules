@@ -2,13 +2,11 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
@@ -20,8 +18,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetControlsAction : ActionBase
+public class GetControlsAction : InputSimulationActionBase
 {
+    public GetControlsAction()
+    {
+    }
+
+    public GetControlsAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [OutputArgument(Order = 1)]
     public List<WindowObject> Controls { get; set; } = null!;
 
@@ -32,28 +38,17 @@ public class GetControlsAction : ActionBase
     [InputArgument(Order = 1, Required = true)]
     public WindowObject Window { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
+        var parent = RequireHandle(Window, nameof(Window));
+        var handles = Context.WindowService.EnumerateChildWindows(parent, Recursive);
+        var controls = new List<WindowObject>(handles.Count);
+
+        foreach (var handle in handles)
         {
-            if (Window is null)
-            {
-                throw new ArgumentException("A window is required to enumerate controls.", nameof(Window));
-            }
-
-            var handles = WindowExtensions.EnumerateChildWindows(Window.NativeHandle, Recursive);
-            var controls = new List<WindowObject>(handles.Count);
-
-            foreach (var handle in handles)
-            {
-                controls.Add(WindowExtensions.ToWindowObject(handle));
-            }
-
-            Controls = controls;
+            controls.Add(Context.WindowService.ToWindowObject(handle));
         }
-        catch (Exception ex)
-        {
-            throw ex.ToActionException();
-        }
+
+        Controls = controls;
     }
 }

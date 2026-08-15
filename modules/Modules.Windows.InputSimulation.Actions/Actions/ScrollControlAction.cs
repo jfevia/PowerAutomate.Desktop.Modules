@@ -8,8 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Enums;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Interop;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
@@ -23,8 +21,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class ScrollControlAction : ActionBase
+public class ScrollControlAction : InputSimulationActionBase
 {
+    public ScrollControlAction()
+    {
+    }
+
+    public ScrollControlAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 1, Required = true)]
     public WindowObject Control { get; set; } = null!;
 
@@ -36,25 +42,17 @@ public class ScrollControlAction : ActionBase
     [DefaultValue(3)]
     public int Notches { get; set; } = 3;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            if (Control is null)
-            {
-                throw new ArgumentException("A control is required to scroll.", nameof(Control));
-            }
+        var handle = RequireHandle(Control, nameof(Control));
 
-            if (Notches <= 0)
-            {
-                throw new ArgumentOutOfRangeException(nameof(Notches), Notches, "The number of notches must be greater than zero.");
-            }
-
-            InputSender.Scroll(Control.NativeHandle, Direction, Notches);
-        }
-        catch (Exception ex)
+        if (Notches <= 0)
         {
-            throw ex.ToActionException();
+            throw new ArgumentOutOfRangeException(nameof(Notches), Notches, "The number of notches must be greater than zero.");
         }
+
+        Context.WindowService.GetCenter(handle, out var centerX, out var centerY);
+        Context.WindowService.ClientToScreen(handle, centerX, centerY, out var screenX, out var screenY);
+        Context.InputSender.Scroll(handle, Direction, Notches, screenX, screenY);
     }
 }

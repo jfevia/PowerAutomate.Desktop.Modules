@@ -2,14 +2,11 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Enums;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Interop;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
@@ -23,8 +20,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class SendKeyAction : ActionBase
+public class SendKeyAction : InputSimulationActionBase
 {
+    public SendKeyAction()
+    {
+    }
+
+    public SendKeyAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 1, Required = true)]
     public WindowObject Control { get; set; } = null!;
 
@@ -32,20 +37,9 @@ public class SendKeyAction : ActionBase
     [DefaultValue(VirtualKey.Enter)]
     public VirtualKey Key { get; set; } = VirtualKey.Enter;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            if (Control is null)
-            {
-                throw new ArgumentException("A control is required to send a key.", nameof(Control));
-            }
-
-            InputSender.SendKey(Control.NativeHandle, Key);
-        }
-        catch (Exception ex)
-        {
-            throw ex.ToActionException();
-        }
+        var handle = RequireHandle(Control, nameof(Control));
+        Context.InputSender.SendKey(handle, Key);
     }
 }

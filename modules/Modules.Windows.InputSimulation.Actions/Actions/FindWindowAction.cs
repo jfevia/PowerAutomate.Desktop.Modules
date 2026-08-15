@@ -9,7 +9,7 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Enums;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Exceptions;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
+using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Services;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
@@ -22,8 +22,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class FindWindowAction : ActionBase
+public class FindWindowAction : InputSimulationActionBase
 {
+    public FindWindowAction()
+    {
+    }
+
+    public FindWindowAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 2, Required = false)]
     public string ClassName { get; set; } = null!;
 
@@ -44,28 +52,17 @@ public class FindWindowAction : ActionBase
     [OutputArgument(Order = 1)]
     public WindowObject Window { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
+        var handle = Context.WindowService.FindWindow(Title, ClassName, ProcessId, MatchMode, TimeoutMilliseconds);
+        if (handle == IntPtr.Zero)
         {
-            var handle = WindowSearch.FindFirst(
-                WindowExtensions.EnumerateTopLevelWindows,
-                candidate => WindowSearch.MatchesWindow(candidate, Title, ClassName, ProcessId, MatchMode),
-                TimeoutMilliseconds);
-
-            if (handle == IntPtr.Zero)
-            {
-                throw new WindowNotFoundException(WindowSearch.DescribeCriteria(
-                    ("title", Title),
-                    ("class", ClassName),
-                    ("process", ProcessId)));
-            }
-
-            Window = WindowExtensions.ToWindowObject(handle);
+            throw new WindowNotFoundException(Context.WindowService.DescribeCriteria(
+                new SearchCriterion("title", Title),
+                new SearchCriterion("class", ClassName),
+                new SearchCriterion("process", ProcessId)));
         }
-        catch (Exception ex)
-        {
-            throw ex.ToActionException();
-        }
+
+        Window = Context.WindowService.ToWindowObject(handle);
     }
 }

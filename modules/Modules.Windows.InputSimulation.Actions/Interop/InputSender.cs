@@ -3,77 +3,100 @@
 // ---------------------------------------------------
 
 using System;
-using System.Threading;
+using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Abstractions;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Enums;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Interop;
 
-/// <summary>
-/// Builds the message sequences Windows itself would produce for mouse and keyboard input.
-/// </summary>
-internal static class InputSender
+/// <inheritdoc />
+public sealed class InputSender : IInputSender
 {
-    public static void Click(IntPtr handle, MouseButton button, int x, int y, bool isDoubleClick)
+    private const uint MapVirtualKeyToScanCode = 0;
+
+    private readonly IClock _clock;
+    private readonly IMessageDispatcher _messageDispatcher;
+    private readonly INativeMethods _nativeMethods;
+
+    public InputSender(IMessageDispatcher messageDispatcher, INativeMethods nativeMethods, IClock clock)
     {
+        _messageDispatcher = messageDispatcher ?? throw new ArgumentNullException(nameof(messageDispatcher));
+        _nativeMethods = nativeMethods ?? throw new ArgumentNullException(nameof(nativeMethods));
+        _clock = clock ?? throw new ArgumentNullException(nameof(clock));
+    }
+
+    public void Click(IntPtr handle, MouseButton button, int x, int y, bool isDoubleClick)
+    {
+        var messages = GetButtonMessages(button);
         var coordinates = MessageDispatcher.MakeCoordinates(x, y);
-        var buttonState = (IntPtr)GetButtonState(button);
+        var buttonState = (IntPtr)messages.KeyState;
 
         // Controls that track hover state need the move before they accept the press.
-        MessageDispatcher.Post(handle, WindowMessages.MouseMove, IntPtr.Zero, coordinates);
-        MessageDispatcher.Post(handle, GetButtonDownMessage(button), buttonState, coordinates);
-        MessageDispatcher.Post(handle, GetButtonUpMessage(button), IntPtr.Zero, coordinates);
+        _messageDispatcher.Post(handle, WindowMessages.MouseMove, IntPtr.Zero, coordinates);
+        _messageDispatcher.Post(handle, messages.Down, buttonState, coordinates);
+        _messageDispatcher.Post(handle, messages.Up, IntPtr.Zero, coordinates);
 
         if (!isDoubleClick)
         {
             return;
         }
 
-        MessageDispatcher.Post(handle, GetButtonDoubleClickMessage(button), buttonState, coordinates);
-        MessageDispatcher.Post(handle, GetButtonUpMessage(button), IntPtr.Zero, coordinates);
+        _messageDispatcher.Post(handle, messages.DoubleClick, buttonState, coordinates);
+        _messageDispatcher.Post(handle, messages.Up, IntPtr.Zero, coordinates);
     }
 
-    public static void SendText(IntPtr handle, string text, int delayMilliseconds)
+    public void SendText(IntPtr handle, string text, int delayMilliseconds)
     {
+        if (text is null)
+        {
+            throw new ArgumentNullException(nameof(text));
+        }
+
         foreach (var character in text)
         {
-            MessageDispatcher.Post(handle, WindowMessages.Char, (IntPtr)character, (IntPtr)1);
+            _messageDispatcher.Post(handle, WindowMessages.Char, (IntPtr)character, (IntPtr)1);
 
             if (delayMilliseconds > 0)
             {
-                Thread.Sleep(delayMilliseconds);
+                _clock.Sleep(delayMilliseconds);
             }
         }
     }
 
-    public static void SendKey(IntPtr handle, VirtualKey key)
+    public void SendKey(IntPtr handle, VirtualKey key)
     {
         var keyCode = (uint)key;
-        var scanCode = NativeMethods.MapVirtualKey(keyCode, NativeMethods.MapVirtualKeyToScanCode);
+        var scanCode = _nativeMethods.MapVirtualKey(keyCode, MapVirtualKeyToScanCode);
         var extendedFlag = IsExtendedKey(key) ? 1u << 24 : 0u;
 
         var downParameter = 1u | ((scanCode & 0xFF) << 16) | extendedFlag;
         var upParameter = downParameter | 0xC0000000;
 
-        MessageDispatcher.Post(handle, WindowMessages.KeyDown, (IntPtr)keyCode, (IntPtr)downParameter);
-        MessageDispatcher.Post(handle, WindowMessages.KeyUp, (IntPtr)keyCode, unchecked((IntPtr)(int)upParameter));
+        _messageDispatcher.Post(handle, WindowMessages.KeyDown, (IntPtr)keyCode, (IntPtr)downParameter);
+        _messageDispatcher.Post(handle, WindowMessages.KeyUp, (IntPtr)keyCode, unchecked((IntPtr)(int)upParameter));
     }
 
-    public static void Scroll(IntPtr handle, ScrollDirection direction, int notches)
+    public void Scroll(IntPtr handle, ScrollDirection direction, int notches, int screenX, int screenY)
     {
-        var delta = direction == ScrollDirection.Up ? WindowMessages.WheelDelta : -WindowMessages.WheelDelta;
-
-        WindowExtensions.GetCenter(handle, out var centerX, out var centerY);
+        var delta = GetWheelDelta(direction);
 
         // Unlike other mouse messages, the wheel carries screen coordinates.
-        WindowExtensions.ClientToScreen(handle, centerX, centerY, out var screenX, out var screenY);
         var coordinates = MessageDispatcher.MakeCoordinates(screenX, screenY);
+        var wheelParameter = (IntPtr)((delta & 0xFFFF) << 16);
 
         for (var index = 0; index < notches; index++)
         {
-            var wheelParameter = (IntPtr)((delta & 0xFFFF) << 16);
-            MessageDispatcher.Post(handle, WindowMessages.MouseWheel, wheelParameter, coordinates);
+            _messageDispatcher.Post(handle, WindowMessages.MouseWheel, wheelParameter, coordinates);
         }
+    }
+
+    private static int GetWheelDelta(ScrollDirection direction)
+    {
+        return direction switch
+        {
+            ScrollDirection.Up => WindowMessages.WheelDelta,
+            ScrollDirection.Down => -WindowMessages.WheelDelta,
+            _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, "Unknown scroll direction.")
+        };
     }
 
     private static bool IsExtendedKey(VirtualKey key)
@@ -96,47 +119,33 @@ internal static class InputSender
         }
     }
 
-    private static int GetButtonState(MouseButton button)
+    /// <summary>
+    /// Resolved in one place so an unknown button cannot leave part of the sequence undefined.
+    /// </summary>
+    private static ButtonMessages GetButtonMessages(MouseButton button)
     {
         return button switch
         {
-            MouseButton.Left => WindowMessages.MouseKeyLeftButton,
-            MouseButton.Right => WindowMessages.MouseKeyRightButton,
-            MouseButton.Middle => WindowMessages.MouseKeyMiddleButton,
+            MouseButton.Left => new ButtonMessages(WindowMessages.LeftButtonDown, WindowMessages.LeftButtonUp, WindowMessages.LeftButtonDoubleClick, WindowMessages.MouseKeyLeftButton),
+            MouseButton.Right => new ButtonMessages(WindowMessages.RightButtonDown, WindowMessages.RightButtonUp, WindowMessages.RightButtonDoubleClick, WindowMessages.MouseKeyRightButton),
+            MouseButton.Middle => new ButtonMessages(WindowMessages.MiddleButtonDown, WindowMessages.MiddleButtonUp, WindowMessages.MiddleButtonDoubleClick, WindowMessages.MouseKeyMiddleButton),
             _ => throw new ArgumentOutOfRangeException(nameof(button), button, "Unknown mouse button.")
         };
     }
 
-    private static uint GetButtonDownMessage(MouseButton button)
+    private readonly struct ButtonMessages
     {
-        return button switch
+        public ButtonMessages(uint down, uint up, uint doubleClick, int keyState)
         {
-            MouseButton.Left => WindowMessages.LeftButtonDown,
-            MouseButton.Right => WindowMessages.RightButtonDown,
-            MouseButton.Middle => WindowMessages.MiddleButtonDown,
-            _ => throw new ArgumentOutOfRangeException(nameof(button), button, "Unknown mouse button.")
-        };
-    }
+            Down = down;
+            Up = up;
+            DoubleClick = doubleClick;
+            KeyState = keyState;
+        }
 
-    private static uint GetButtonUpMessage(MouseButton button)
-    {
-        return button switch
-        {
-            MouseButton.Left => WindowMessages.LeftButtonUp,
-            MouseButton.Right => WindowMessages.RightButtonUp,
-            MouseButton.Middle => WindowMessages.MiddleButtonUp,
-            _ => throw new ArgumentOutOfRangeException(nameof(button), button, "Unknown mouse button.")
-        };
-    }
-
-    private static uint GetButtonDoubleClickMessage(MouseButton button)
-    {
-        return button switch
-        {
-            MouseButton.Left => WindowMessages.LeftButtonDoubleClick,
-            MouseButton.Right => WindowMessages.RightButtonDoubleClick,
-            MouseButton.Middle => WindowMessages.MiddleButtonDoubleClick,
-            _ => throw new ArgumentOutOfRangeException(nameof(button), button, "Unknown mouse button.")
-        };
+        public uint Down { get; }
+        public uint DoubleClick { get; }
+        public int KeyState { get; }
+        public uint Up { get; }
     }
 }

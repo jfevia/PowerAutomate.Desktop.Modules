@@ -27,7 +27,7 @@ public class WindowObject : IComparable<WindowObject>, IComparable
     {
     }
 
-    internal WindowObject(
+    public WindowObject(
         long handle,
         string className,
         string title,
@@ -75,7 +75,7 @@ public class WindowObject : IComparable<WindowObject>, IComparable
 
     [JsonIgnore]
     [PropertyIgnore]
-    internal IntPtr NativeHandle => new(Handle);
+    public IntPtr NativeHandle => new(Handle);
 
     public int CompareTo(object? obj)
     {
