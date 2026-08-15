@@ -29,16 +29,7 @@ public class TaskObject : IComparable<TaskObject>, IComparable
     {
     }
 
-    internal TaskObject(
-        string name,
-        string path,
-        bool enabled,
-        TaskState state,
-        bool isReadOnly,
-        DateTime lastRunTime,
-        int lastTaskResult,
-        DateTime nextRunTime,
-        int numberOfMissedRuns)
+    public TaskObject(string name, string path, bool enabled, TaskState state, bool isReadOnly, DateTime lastRunTime, int lastTaskResult, DateTime nextRunTime, int numberOfMissedRuns)
     {
         Name = name;
         Path = path;
@@ -65,8 +56,5 @@ public class TaskObject : IComparable<TaskObject>, IComparable
         return string.Compare(Name, other.Name, StringComparison.InvariantCultureIgnoreCase);
     }
 
-    public override string ToString()
-    {
-        return Name;
-    }
+    public override string ToString() => Name;
 }

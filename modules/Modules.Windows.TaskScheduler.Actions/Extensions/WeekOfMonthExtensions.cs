@@ -10,7 +10,7 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class WeekOfMonthExtensions
+public static class WeekOfMonthExtensions
 {
     public static WhichWeek ToAbstraction(this IEnumerable<WeekOfMonth> values)
     {

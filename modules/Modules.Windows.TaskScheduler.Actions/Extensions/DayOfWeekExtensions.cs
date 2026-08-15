@@ -10,7 +10,7 @@ using DayOfWeek = PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.En
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class DayOfWeekExtensions
+public static class DayOfWeekExtensions
 {
     public static DaysOfTheWeek ToAbstraction(this IEnumerable<DayOfWeek> values)
     {

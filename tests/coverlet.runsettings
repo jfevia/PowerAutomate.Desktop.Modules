@@ -5,7 +5,7 @@
             <DataCollector friendlyName="XPlat code coverage">
                 <Configuration>
                     <Format>cobertura</Format>
-                    <Include>[PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions]*</Include>
+                    <Include>[PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions]*;[PowerAutomate.Desktop.Modules.Windows.Registry.Actions]*;[PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions]*</Include>
                     <!-- Resource accessors and interop adapters are generated or pure forwarding. -->
                     <ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
                     <ExcludeByFile>**/Properties/Resources.Designer.cs</ExcludeByFile>

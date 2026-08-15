@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
@@ -21,7 +20,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class CreateTaskActionAction : ActionBase
+public class CreateTaskActionAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 7, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -47,28 +46,20 @@ public class CreateTaskActionAction : ActionBase
     [InputArgument(Order = 4, Group = Groups.General, Required = false)]
     public string WorkingDirectory { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+
+    public CreateTaskActionAction()
     {
-        try
-        {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
+    }
 
-            using var task = taskService.FindTask(TaskName);
-            if (task is null)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
+    public CreateTaskActionAction(TaskSchedulerContext context) : base(context)
+    {
+    }
 
-            using var execAction = new ExecAction(Path, Arguments, WorkingDirectory);
-            task.Definition.Actions.Add(execAction);
-        }
-        catch (TaskNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        using var task = RequireTask(taskService, TaskName);
+
+        task.Definition.Actions.AddExec(Path, Arguments, WorkingDirectory);
     }
 }

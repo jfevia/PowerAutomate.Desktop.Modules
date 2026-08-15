@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
@@ -19,7 +18,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class ImportTaskAction : ActionBase
+public class ImportTaskAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 5, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -39,16 +38,18 @@ public class ImportTaskAction : ActionBase
     [InputArgument(Order = 4, Required = false)]
     public string UserName { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+
+    public ImportTaskAction()
     {
-        try
-        {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
-            taskService.RootFolder.ImportTask(TaskName, FileName).Dispose();
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+    }
+
+    public ImportTaskAction(TaskSchedulerContext context) : base(context)
+    {
+    }
+
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        using var task = taskService.RootFolder.ImportTask(TaskName, FileName);
     }
 }

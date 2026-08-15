@@ -4,7 +4,7 @@
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions;
 
-internal static class ErrorCodes
+public static class ErrorCodes
 {
     public const string FolderNotFound = "FolderNotFoundError";
     public const string TaskActionNotFound = "TaskActionNotFoundError";

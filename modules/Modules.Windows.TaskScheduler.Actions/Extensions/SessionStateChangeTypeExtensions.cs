@@ -8,7 +8,7 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class SessionStateChangeTypeExtensions
+public static class SessionStateChangeTypeExtensions
 {
     public static TaskSessionStateChangeType ToAbstraction(this SessionStateChangeType value)
     {

@@ -8,7 +8,7 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class TriggerTypeExtensions
+public static class TriggerTypeExtensions
 {
     public static TriggerType ToAction(this TaskTriggerType value)
     {
