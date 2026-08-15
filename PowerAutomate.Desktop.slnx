@@ -19,6 +19,17 @@
   </Folder>
   <Folder Name="/Modules/Tests/">
     <Project Path="tests/Modules.Actions.Tests/Modules.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.AzureKeyVault.Actions.Tests/Modules.AzureKeyVault.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.CloudFlows.Actions.Tests/Modules.CloudFlows.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.GitHub.Actions.Tests/Modules.GitHub.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.GitHub.Copilot.Actions.Tests/Modules.GitHub.Copilot.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.HTML.Actions.Tests/Modules.HTML.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.Identity.Actions.Tests/Modules.Identity.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.PowerFx.Actions.Tests/Modules.PowerFx.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.Windows.InputSimulation.Actions.Tests/Modules.Windows.InputSimulation.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.Windows.Notifications.Actions.Tests/Modules.Windows.Notifications.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.Windows.Registry.Actions.Tests/Modules.Windows.Registry.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.Windows.TaskScheduler.Actions.Tests/Modules.Windows.TaskScheduler.Actions.Tests.csproj" />
   </Folder>
   <Folder Name="/Samples/" />
   <Folder Name="/Samples/Modules/" />

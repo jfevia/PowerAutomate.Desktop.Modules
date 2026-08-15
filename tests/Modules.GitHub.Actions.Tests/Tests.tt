@@ -1,0 +1,143 @@
+﻿// ---------------------------------------------------
+// Copyright (c) Jesus Fernandez. All Rights Reserved.
+// ---------------------------------------------------
+<#@ template language="C#" hostspecific="true" debug="false" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#
+    var keywords = new HashSet<string>
+    {
+        "abstract","as","base","bool","break","byte","case","catch","char","checked","class","const","continue","decimal",
+        "default","delegate","do","double","else","enum","event","explicit","extern","false","finally","fixed","float","for",
+        "foreach","goto","if","implicit","in","int","interface","internal","is","lock","long","namespace","new","null",
+        "object","operator","out","override","params","private","protected","public","readonly","ref","return","sbyte",
+        "sealed","short","sizeof","stackalloc","static","string","struct","switch","this","throw","true","try","typeof",
+        "uint","ulong","unchecked","unsafe","ushort","using","virtual","void","volatile","while"
+    };
+    var splitter = new Regex("[-_/. ]+");
+    Func<string, string> sanitize = s =>
+    {
+        if (string.IsNullOrEmpty(s)) return "Unnamed";
+        var sb = new StringBuilder();
+        foreach (var c in s)
+        {
+            if (char.IsLetterOrDigit(c) || c == '_') sb.Append(c);
+            else sb.Append('_');
+        }
+        var result = sb.ToString();
+        if (result.Length == 0 || char.IsDigit(result[0])) result = "_" + result;
+        return keywords.Contains(result) ? "@" + result : result;
+    };
+    Func<string, string> capitalize = s => string.IsNullOrEmpty(s) ? s : char.ToUpperInvariant(s[0]) + (s.Length > 1 ? s.Substring(1) : string.Empty);
+    Func<string, string> toClassName = raw =>
+    {
+        if (string.IsNullOrEmpty(raw)) return "Unnamed";
+        var segments = splitter.Split(raw).Where(s => s.Length > 0).Select(capitalize);
+        return sanitize(string.Concat(segments));
+    };
+    Func<string, HashSet<string>, string> makeUnique = (candidate, used) =>
+    {
+        if (used.Add(candidate)) return candidate;
+        var n = 2;
+        while (!used.Add(candidate + n)) n++;
+        return candidate + n;
+    };
+    Func<string, int, int> matchingBrace = (text, start) =>
+    {
+        var depth = 0;
+        var inString = false;
+        for (var i = start; i < text.Length; i++)
+        {
+            var ch = text[i];
+            if (inString)
+            {
+                if (ch == '\\') i++;
+                else if (ch == '"') inString = false;
+                continue;
+            }
+            if (ch == '"') inString = true;
+            else if (ch == '{') depth++;
+            else if (ch == '}' && --depth == 0) return i;
+        }
+        return text.Length - 1;
+    };
+
+    var templateDir = Path.GetDirectoryName(Host.TemplateFile);
+    var specPath = Path.GetFullPath(Path.Combine(templateDir, "..", "..", "modules", "Modules.GitHub.Actions", "openapi.json"));
+    var json = File.ReadAllText(specPath);
+    var operations = new List<Tuple<string, string>>();
+    var usedClassNames = new HashSet<string>();
+    var usedActionIds = new HashSet<string>();
+    var usedFixtureNames = new HashSet<string>();
+    var methods = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "get", "put", "post", "delete", "patch", "head", "options", "trace" };
+    var pathsKey = Regex.Match(json, "\"paths\"\\s*:");
+    var pathsStart = json.IndexOf('{', pathsKey.Index + pathsKey.Length);
+    var pathsEnd = matchingBrace(json, pathsStart);
+    var keyPattern = new Regex("\"((?:\\\\.|[^\"])*)\"\\s*:");
+    var pos = pathsStart + 1;
+    while (pos < pathsEnd)
+    {
+        var pathMatch = keyPattern.Match(json, pos);
+        if (!pathMatch.Success || pathMatch.Index >= pathsEnd) break;
+        var pathObjectStart = json.IndexOf('{', pathMatch.Index + pathMatch.Length);
+        if (pathObjectStart < 0 || pathObjectStart >= pathsEnd) break;
+        var pathObjectEnd = matchingBrace(json, pathObjectStart);
+        var inner = pathObjectStart + 1;
+        while (inner < pathObjectEnd)
+        {
+            var opMatch = keyPattern.Match(json, inner);
+            if (!opMatch.Success || opMatch.Index >= pathObjectEnd) break;
+            var method = Regex.Unescape(opMatch.Groups[1].Value);
+            var opObjectStart = json.IndexOf('{', opMatch.Index + opMatch.Length);
+            if (opObjectStart < 0 || opObjectStart >= pathObjectEnd) break;
+            var opObjectEnd = matchingBrace(json, opObjectStart);
+            if (methods.Contains(method))
+            {
+                var segment = json.Substring(opObjectStart, opObjectEnd - opObjectStart + 1);
+                var idMatch = Regex.Match(segment, "\"operationId\"\\s*:\\s*\"((?:\\\\.|[^\"])*)\"");
+                if (idMatch.Success)
+                {
+                    var operationId = Regex.Unescape(idMatch.Groups[1].Value);
+                    var className = makeUnique(toClassName(operationId) + "Action", usedClassNames);
+                    makeUnique(toClassName(operationId), usedActionIds);
+                    operations.Add(Tuple.Create(className, makeUnique(className + "Tests", usedFixtureNames)));
+                }
+            }
+            inner = opObjectEnd + 1;
+        }
+        pos = pathObjectEnd + 1;
+    }
+#>
+
+using NUnit.Framework;
+using PowerAutomate.Desktop.Modules.GitHub.Actions;
+
+namespace PowerAutomate.Desktop.Modules.GitHub.Actions.Tests;
+
+<# foreach (var op in operations) { #>
+[TestFixture]
+public class <#= op.Item2 #>
+{
+    [Test]
+    public void Execute_WithoutOptionalArguments_CoversFalseBranches() => ActionCoverageTestRunner<<#= op.Item1 #>>.ExecuteWithoutOptionalArguments();
+
+    [Test]
+    public void Execute_WithAllArguments_CoversTrueBranches() => ActionCoverageTestRunner<<#= op.Item1 #>>.ExecuteWithAllArguments();
+
+    [Test]
+    public void Execute_WithNullPathArguments_CoversFallbackPathValues() => ActionCoverageTestRunner<<#= op.Item1 #>>.ExecuteWithNullPathArguments();
+
+    [Test]
+    public void Execute_WithEmptyResponseBody_CoversDefaultResult() => ActionCoverageTestRunner<<#= op.Item1 #>>.ExecuteWithEmptyResponseBody();
+
+    [Test]
+    public void Execute_WhenHttpFails_WrapsActionException() => ActionCoverageTestRunner<<#= op.Item1 #>>.ExecuteWrapsHttpFailure();
+}
+
+<# } #>

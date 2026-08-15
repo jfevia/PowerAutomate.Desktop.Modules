@@ -20,6 +20,17 @@ namespace PowerAutomate.Desktop.Modules.CloudFlows.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class RunFlowAction : ActionBase
 {
+    private readonly ICloudFlowHttpClient httpClient;
+
+    public RunFlowAction() : this(new CloudFlowHttpClient())
+    {
+    }
+
+    public RunFlowAction(ICloudFlowHttpClient httpClient)
+    {
+        this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+    }
+
     [InputArgument(Order = 3)]
     public string AccessToken { get; set; } = null!;
 
@@ -36,36 +47,52 @@ public class RunFlowAction : ActionBase
     {
         try
         {
-            using var client = new HttpClient();
-            using var request = new HttpRequestMessage(HttpMethod.Post, $"{BaseUrl}/api/data/v9.2/workflows({WorkflowId})/Microsoft.Dynamics.CRM.ExecuteWorkflow");
-            request.Headers.Add("Authorization", $"Bearer {AccessToken}");
-
-            var payloadBuilder = new StringBuilder();
-            payloadBuilder.AppendLine("{");
-            payloadBuilder.AppendLine($"  \"EntityId\": \"{Guid.NewGuid()}\",");
-            payloadBuilder.AppendLine("  \"InputArguments\": {");
-            payloadBuilder.AppendLine("    \"Arguments\": {");
-            payloadBuilder.AppendLine("      \"Count\": 0,");
-            payloadBuilder.AppendLine("      \"IsReadOnly\": true,");
-            payloadBuilder.AppendLine("      \"Keys\": [],");
-            payloadBuilder.AppendLine("      \"Values\": []");
-            payloadBuilder.AppendLine("    }");
-            payloadBuilder.AppendLine("  }");
-            payloadBuilder.AppendLine("}");
-
-            var payload = payloadBuilder.ToString();
-            var content = new StringContent(payload, null, "application/json");
-            request.Content = content;
-
-            var response = client.SendAsync(request).GetAwaiter().GetResult();
+            using var request = CreateRequest();
+            using var response = httpClient.Send(request);
             response.EnsureSuccessStatusCode();
-
-            var responseAsString = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
-            Response = responseAsString;
+            Response = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
         catch (Exception ex)
         {
             throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
         }
+    }
+
+    private HttpRequestMessage CreateRequest()
+    {
+        var baseUrl = new Uri(RequireValue(BaseUrl, nameof(BaseUrl)), UriKind.Absolute).ToString().TrimEnd('/');
+        var workflowId = Uri.EscapeDataString(RequireValue(WorkflowId, nameof(WorkflowId)));
+        var token = RequireValue(AccessToken, nameof(AccessToken));
+        var request = new HttpRequestMessage(HttpMethod.Post, $"{baseUrl}/api/data/v9.2/workflows({workflowId})/Microsoft.Dynamics.CRM.ExecuteWorkflow");
+        request.Headers.Add("Authorization", $"Bearer {token}");
+        request.Content = new StringContent(BuildPayload(), Encoding.UTF8, "application/json");
+        return request;
+    }
+
+    private static string BuildPayload()
+    {
+        var payloadBuilder = new StringBuilder();
+        payloadBuilder.AppendLine("{");
+        payloadBuilder.AppendLine($"  \"EntityId\": \"{Guid.NewGuid()}\",");
+        payloadBuilder.AppendLine("  \"InputArguments\": {");
+        payloadBuilder.AppendLine("    \"Arguments\": {");
+        payloadBuilder.AppendLine("      \"Count\": 0,");
+        payloadBuilder.AppendLine("      \"IsReadOnly\": true,");
+        payloadBuilder.AppendLine("      \"Keys\": [],");
+        payloadBuilder.AppendLine("      \"Values\": []");
+        payloadBuilder.AppendLine("    }");
+        payloadBuilder.AppendLine("  }");
+        payloadBuilder.AppendLine("}");
+        return payloadBuilder.ToString();
+    }
+
+    private static string RequireValue(string value, string argumentName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException("A value is required.", argumentName);
+        }
+
+        return value;
     }
 }
