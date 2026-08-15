@@ -12,6 +12,7 @@
     <Project Path="modules/Modules.HTML.Actions/Modules.HTML.Actions.csproj" />
     <Project Path="modules/Modules.Identity.Actions/Modules.Identity.Actions.csproj" />
     <Project Path="modules/Modules.PowerFx.Actions/Modules.PowerFx.Actions.csproj" />
+    <Project Path="modules/Modules.Windows.InputSimulation.Actions/Modules.Windows.InputSimulation.Actions.csproj" />
     <Project Path="modules/Modules.Windows.Notifications.Actions/Modules.Windows.Notifications.Actions.csproj" />
     <Project Path="modules/Modules.Windows.Registry.Actions/Modules.Windows.Registry.Actions.csproj" />
     <Project Path="modules/Modules.Windows.TaskScheduler.Actions/Modules.Windows.TaskScheduler.Actions.csproj" />

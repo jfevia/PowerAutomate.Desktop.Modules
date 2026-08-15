@@ -18,6 +18,7 @@
         <ProjectReference Include="..\..\modules\Modules.HTML.Actions\Modules.HTML.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Identity.Actions\Modules.Identity.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.PowerFx.Actions\Modules.PowerFx.Actions.csproj" />
+        <ProjectReference Include="..\..\modules\Modules.Windows.InputSimulation.Actions\Modules.Windows.InputSimulation.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.Notifications.Actions\Modules.Windows.Notifications.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.Registry.Actions\Modules.Windows.Registry.Actions.csproj" />
         <ProjectReference Include="..\..\modules\Modules.Windows.TaskScheduler.Actions\Modules.Windows.TaskScheduler.Actions.csproj" />
