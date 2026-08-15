@@ -31,6 +31,14 @@ jobs:
       if: ${{ success() }}
       run: msbuild PowerAutomate.Desktop.slnx -target:rebuild -property:Configuration=${{ env.CONFIGURATION }} -property:Environment=${{ env.ENVIRONMENT }}
 
-    - name: Run unit tests
+    - name: Run unit tests and enforce coverage
       if: ${{ success() }}
-      run: dotnet test PowerAutomate.Desktop.slnx
+      run: powershell -ExecutionPolicy Bypass -File .tools/test-coverage.ps1 -Configuration ${{ env.CONFIGURATION }}
+
+    - name: Publish coverage
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage-${{ github.workflow }}
+        path: artifacts/coverage/**/coverage.cobertura.xml
+        if-no-files-found: ignore
