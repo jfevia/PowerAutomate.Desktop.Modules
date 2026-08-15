@@ -71,7 +71,7 @@
     var templateDir = Path.GetDirectoryName(Host.TemplateFile);
     var specPath = Path.GetFullPath(Path.Combine(templateDir, "..", "..", "modules", "Modules.GitHub.Actions", "openapi.json"));
     var json = File.ReadAllText(specPath);
-    var operations = new List<Tuple<string, string>>();
+    var operations = new List<Tuple<string, string, string, string>>();
     var usedClassNames = new HashSet<string>();
     var usedActionIds = new HashSet<string>();
     var usedFixtureNames = new HashSet<string>();
@@ -85,6 +85,7 @@
     {
         var pathMatch = keyPattern.Match(json, pos);
         if (!pathMatch.Success || pathMatch.Index >= pathsEnd) break;
+        var path = Regex.Unescape(pathMatch.Groups[1].Value);
         var pathObjectStart = json.IndexOf('{', pathMatch.Index + pathMatch.Length);
         if (pathObjectStart < 0 || pathObjectStart >= pathsEnd) break;
         var pathObjectEnd = matchingBrace(json, pathObjectStart);
@@ -106,7 +107,7 @@
                     var operationId = Regex.Unescape(idMatch.Groups[1].Value);
                     var className = makeUnique(toClassName(operationId) + "Action", usedClassNames);
                     makeUnique(toClassName(operationId), usedActionIds);
-                    operations.Add(Tuple.Create(className, makeUnique(className + "Tests", usedFixtureNames)));
+                    operations.Add(Tuple.Create(className, makeUnique(className + "Tests", usedFixtureNames), method.ToUpperInvariant(), path));
                 }
             }
             inner = opObjectEnd + 1;
@@ -115,6 +116,7 @@
     }
 #>
 
+using System.Collections.Generic;
 using NUnit.Framework;
 using PowerAutomate.Desktop.Modules.GitHub.Actions;
 
@@ -141,3 +143,15 @@ public class <#= op.Item2 #>
 }
 
 <# } #>
+internal static class GeneratedEndpointExpectations
+{
+    public static IEnumerable<TestCaseData> EndpointExpectations
+    {
+        get
+        {
+<# foreach (var op in operations) { #>
+            yield return new TestCaseData(new EndpointExpectation(typeof(<#= op.Item1 #>), "<#= op.Item3 #>", "<#= op.Item4.Replace("\\", "\\\\").Replace("\"", "\\\"") #>")).SetName("<#= op.Item1 #>_UsesOpenApiEndpoint");
+<# } #>
+        }
+    }
+}
