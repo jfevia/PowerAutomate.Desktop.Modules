@@ -2,7 +2,6 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
@@ -17,8 +16,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class DeleteRegistryValueAction : ActionBase
+public class DeleteRegistryValueAction : RegistryActionBase
 {
+    public DeleteRegistryValueAction()
+    {
+    }
+
+    public DeleteRegistryValueAction(RegistryContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 2, Required = true)]
     public string Name { get; set; } = null!;
 
@@ -29,16 +36,9 @@ public class DeleteRegistryValueAction : ActionBase
     [DefaultValue(false)]
     public bool ThrowOnMissingValue { get; set; }
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            using var registryKey = RegistryExtensions.ParseKey(Path, true);
-            registryKey.DeleteValue(Name, ThrowOnMissingValue);
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+        using var registryKey = Context.RegistryService.OpenKey(Path, true);
+        registryKey.DeleteValue(Name, ThrowOnMissingValue);
     }
 }

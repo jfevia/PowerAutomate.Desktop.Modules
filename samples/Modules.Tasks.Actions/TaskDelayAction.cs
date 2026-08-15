@@ -12,6 +12,17 @@ namespace PowerAutomate.Desktop.Modules.Tasks.Actions;
 [Throws(ErrorCodes.Unknown)]
 public class TaskDelayAction : ActionBase
 {
+    private readonly ITaskRunner taskRunner;
+
+    public TaskDelayAction() : this(new TaskRunner())
+    {
+    }
+
+    public TaskDelayAction(ITaskRunner taskRunner)
+    {
+        this.taskRunner = taskRunner ?? throw new ArgumentNullException(nameof(taskRunner));
+    }
+
     [InputArgument(Order = 2)]
     public int DelayInMilliseconds { get; set; }
 
@@ -25,8 +36,7 @@ public class TaskDelayAction : ActionBase
     {
         try
         {
-            var task = System.Threading.Tasks.Task.Delay(DelayInMilliseconds);
-            Task = new TaskObject(Name, task);
+            Task = new TaskObject(Name, taskRunner.Delay(DelayInMilliseconds));
         }
         catch (Exception ex)
         {

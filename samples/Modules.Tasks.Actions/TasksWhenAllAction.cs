@@ -4,8 +4,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
@@ -15,6 +13,17 @@ namespace PowerAutomate.Desktop.Modules.Tasks.Actions;
 [Throws(ErrorCodes.Unknown)]
 public class TasksWhenAllAction : ActionBase
 {
+    private readonly ITaskRunner taskRunner;
+
+    public TasksWhenAllAction() : this(new TaskRunner())
+    {
+    }
+
+    public TasksWhenAllAction(ITaskRunner taskRunner)
+    {
+        this.taskRunner = taskRunner ?? throw new ArgumentNullException(nameof(taskRunner));
+    }
+
     [InputArgument]
     public List<TaskObject> Tasks { get; set; } = null!;
 
@@ -22,8 +31,7 @@ public class TasksWhenAllAction : ActionBase
     {
         try
         {
-            var tasks = Tasks.Select(task => task.Task).ToList();
-            Task.WhenAll(tasks).GetAwaiter().GetResult();
+            taskRunner.WhenAll(Tasks).GetAwaiter().GetResult();
         }
         catch (Exception ex)
         {

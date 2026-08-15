@@ -8,7 +8,6 @@ using System.IO;
 using System.Linq;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
@@ -25,7 +24,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class DeleteTaskTriggerAction : ActionBase
+public class DeleteTaskTriggerAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 5, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -45,50 +44,20 @@ public class DeleteTaskTriggerAction : ActionBase
     [InputArgument(Order = 4, Required = false)]
     public string UserName { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+
+    public DeleteTaskTriggerAction()
     {
-        try
-        {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
-            using var task = taskService.FindTask(TaskName);
-            if (task is null)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
+    }
 
-            try
-            {
-                using var trigger = task.Definition.Triggers.FirstOrDefault(trigger => trigger.Id == TriggerId);
-                if (trigger is null)
-                {
-                    throw new TaskTriggerNotFoundException(TaskName, TriggerId);
-                }
+    public DeleteTaskTriggerAction(TaskSchedulerContext context) : base(context)
+    {
+    }
 
-                if (!task.Definition.Triggers.Remove(trigger))
-                {
-                    throw new TaskTriggerException(TaskName, TriggerId, $"Could not delete trigger '{TriggerId}' in task '{TaskName}'");
-                }
-            }
-            catch (FileNotFoundException)
-            {
-                throw new TaskTriggerNotFoundException(TaskName, TriggerId);
-            }
-        }
-        catch (TaskNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
-        }
-        catch (TaskTriggerNotFoundException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
-        }
-        catch (TaskTriggerException ex)
-        {
-            throw new ActionException(ErrorCodes.TaskTriggerNotFound, ex.Message, ex);
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        using var task = RequireTask(taskService, TaskName);
+
+        RemoveTrigger(task, TriggerId);
     }
 }

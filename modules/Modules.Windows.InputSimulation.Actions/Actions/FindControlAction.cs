@@ -9,7 +9,7 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Enums;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Exceptions;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
+using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Services;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
@@ -22,8 +22,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class FindControlAction : ActionBase
+public class FindControlAction : InputSimulationActionBase
 {
+    public FindControlAction()
+    {
+    }
+
+    public FindControlAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 3, Required = false)]
     public string ClassName { get; set; } = null!;
 
@@ -51,34 +59,18 @@ public class FindControlAction : ActionBase
     [InputArgument(Order = 1, Required = true)]
     public WindowObject Window { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
+        var parent = RequireHandle(Window, nameof(Window));
+        var handle = Context.WindowService.FindControl(parent, Text, ClassName, ControlId, MatchMode, Recursive, TimeoutMilliseconds);
+        if (handle == IntPtr.Zero)
         {
-            if (Window is null)
-            {
-                throw new ArgumentException("A window is required to search for a control.", nameof(Window));
-            }
-
-            var parent = Window.NativeHandle;
-            var handle = WindowSearch.FindFirst(
-                () => WindowExtensions.EnumerateChildWindows(parent, Recursive),
-                candidate => WindowSearch.MatchesControl(candidate, Text, ClassName, ControlId, MatchMode),
-                TimeoutMilliseconds);
-
-            if (handle == IntPtr.Zero)
-            {
-                throw new ControlNotFoundException(WindowSearch.DescribeCriteria(
-                    ("text", Text),
-                    ("class", ClassName),
-                    ("id", ControlId)));
-            }
-
-            Control = WindowExtensions.ToWindowObject(handle);
+            throw new ControlNotFoundException(Context.WindowService.DescribeCriteria(
+                new SearchCriterion("text", Text),
+                new SearchCriterion("class", ClassName),
+                new SearchCriterion("id", ControlId)));
         }
-        catch (Exception ex)
-        {
-            throw ex.ToActionException();
-        }
+
+        Control = Context.WindowService.ToWindowObject(handle);
     }
 }

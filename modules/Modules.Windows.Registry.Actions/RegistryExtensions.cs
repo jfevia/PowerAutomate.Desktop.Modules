@@ -5,25 +5,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
 public static class RegistryExtensions
 {
-    private static IEnumerable<RegistryKey> GetHives()
+    public static IRegistryKey ParseHive(string name, IEnumerable<IRegistryKey> hives)
     {
-        yield return Microsoft.Win32.Registry.ClassesRoot;
-        yield return Microsoft.Win32.Registry.CurrentConfig;
-        yield return Microsoft.Win32.Registry.CurrentUser;
-        yield return Microsoft.Win32.Registry.PerformanceData;
-        yield return Microsoft.Win32.Registry.LocalMachine;
-        yield return Microsoft.Win32.Registry.Users;
-    }
-
-    public static RegistryKey ParseHive(string name)
-    {
-        foreach (var registryHive in GetHives())
+        foreach (var registryHive in hives)
         {
             if (registryHive.Name.Equals(name, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -34,11 +23,11 @@ public static class RegistryExtensions
         throw new InvalidOperationException("Could not parse registry hive");
     }
 
-    public static RegistryKey ParseKey(string path, bool writable)
+    public static IRegistryKey ParseKey(string path, bool writable, IEnumerable<IRegistryKey> hives)
     {
         var items = path.Split(['\\'], StringSplitOptions.RemoveEmptyEntries);
-        using var registryHive = ParseHive(items.First());
-        RegistryKey? registryKey = null;
+        var registryHive = ParseHive(items.First(), hives);
+        IRegistryKey? registryKey = null;
 
         foreach (var name in items.Skip(1))
         {

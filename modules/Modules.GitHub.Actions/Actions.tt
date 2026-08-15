@@ -1,3 +1,7 @@
+﻿// ---------------------------------------------------
+// Copyright (c) Jesus Fernandez. All Rights Reserved.
+// ---------------------------------------------------
+
 <#@ template language="C#" hostspecific="true" debug="false" #>
 <#@ output extension=".cs" #>
 <#@ assembly name="System.Core" #>
@@ -279,12 +283,12 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         {
             var placeholder = "{" + p.OpenApiName + "}";
 #>
-                pathTemplate = pathTemplate.Replace("<#= placeholder #>", Uri.EscapeDataString(System.Convert.ToString(<#= p.CSharpName #>, System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                pathTemplate = pathTemplate.Replace("<#= placeholder #>", GeneratedActionHelpers.Escape(<#= p.CSharpName #>));
 <#+
         }
 #>
 
-                var queryItems = new List<string>();
+                <# if (op.Parameters.Any(x => x.Location == "Query")) { #>var queryItems = new List<string>();
 <#+
         foreach (var p in op.Parameters.Where(x => x.Location == "Query"))
         {
@@ -292,7 +296,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         }
 #>
                 if (queryItems.Count > 0) pathTemplate += "?" + string.Join("&", queryItems);
-
+                <# } #>
                 var requestUri = new Uri(pathTemplate.TrimStart('/'), UriKind.Relative);
                 using var request = new HttpRequestMessage(new HttpMethod("<#= op.HttpMethod.ToString().ToUpperInvariant() #>"), requestUri);
 <#+
@@ -357,7 +361,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         else if (p.CSharpType.EndsWith("?"))
         {
 #>
-                if (<#= p.CSharpName #>.HasValue) queryItems.Add("<#= p.OpenApiName #>=" + Uri.EscapeDataString(System.Convert.ToString(<#= p.CSharpName #>.Value, System.Globalization.CultureInfo.InvariantCulture)));
+                if (<#= p.CSharpName #>.HasValue) queryItems.Add("<#= p.OpenApiName #>=" + GeneratedActionHelpers.Escape(<#= p.CSharpName #>.Value));
 <#+
         }
         else if (p.IsEnum)
@@ -373,7 +377,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
                 {
                     foreach (var item in <#= p.CSharpName #>)
                     {
-                        queryItems.Add("<#= p.OpenApiName #>=" + Uri.EscapeDataString(System.Convert.ToString(item, System.Globalization.CultureInfo.InvariantCulture) ?? string.Empty));
+                        queryItems.Add("<#= p.OpenApiName #>=" + GeneratedActionHelpers.Escape(item));
                     }
                 }
 <#+
@@ -381,7 +385,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions
         else
         {
 #>
-                if (<#= p.CSharpName #> != null) queryItems.Add("<#= p.OpenApiName #>=" + Uri.EscapeDataString(System.Convert.ToString(<#= p.CSharpName #>, System.Globalization.CultureInfo.InvariantCulture)));
+                if (<#= p.CSharpName #> != null) queryItems.Add("<#= p.OpenApiName #>=" + GeneratedActionHelpers.Escape(<#= p.CSharpName #>));
 <#+
         }
     }

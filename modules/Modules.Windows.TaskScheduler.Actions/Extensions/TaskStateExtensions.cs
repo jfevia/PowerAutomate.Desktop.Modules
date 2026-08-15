@@ -7,7 +7,7 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class TaskStateExtensions
+public static class TaskStateExtensions
 {
     public static TaskState ToAction(this Microsoft.Win32.TaskScheduler.TaskState value)
     {

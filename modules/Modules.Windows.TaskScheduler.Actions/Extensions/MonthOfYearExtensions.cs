@@ -10,14 +10,14 @@ using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
 
-internal static class MonthOfYearExtensions
+public static class MonthOfYearExtensions
 {
     public static MonthsOfTheYear ToAbstraction(this IEnumerable<MonthOfYear> values)
     {
         return values.Select(ToAbstraction).Aggregate<MonthsOfTheYear, MonthsOfTheYear>(0, (current, val) => current | val);
     }
 
-    private static MonthsOfTheYear ToAbstraction(MonthOfYear value)
+    public static MonthsOfTheYear ToAbstraction(this MonthOfYear value)
     {
         return value switch
         {

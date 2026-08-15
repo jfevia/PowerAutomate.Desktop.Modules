@@ -5,11 +5,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Threading;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 using Newtonsoft.Json.Linq;
@@ -37,7 +35,26 @@ public class LoginAction : ActionBase
     private const string DeviceFlowTokenUrl = "https://github.com/login/oauth/access_token";
     private const string DeviceFlowGrantType = "urn:ietf:params:oauth:grant-type:device_code";
 
-    // -- General ----------------------------------------------------------------
+    private readonly IGitHubHttpClientFactory httpClientFactory;
+    private readonly IGitHubProcessRunner processRunner;
+    private readonly IGitHubClock clock;
+    private readonly IGitHubClipboard clipboard;
+    private readonly IGitHubBrowserLauncher browserLauncher;
+
+    public LoginAction()
+        : this(new GitHubHttpClientFactory(), new GitHubProcessRunner(), new GitHubClock(), new GitHubClipboard(), new GitHubBrowserLauncher())
+    {
+    }
+
+    public LoginAction(IGitHubHttpClientFactory httpClientFactory, IGitHubProcessRunner processRunner, IGitHubClock clock, IGitHubClipboard clipboard, IGitHubBrowserLauncher browserLauncher)
+    {
+        this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+        this.processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));
+        this.clock = clock ?? throw new ArgumentNullException(nameof(clock));
+        this.clipboard = clipboard ?? throw new ArgumentNullException(nameof(clipboard));
+        this.browserLauncher = browserLauncher ?? throw new ArgumentNullException(nameof(browserLauncher));
+    }
+
     [InputArgument(Order = 1, Group = Groups.General)]
     [DefaultValue(LoginMode.PersonalAccessToken)]
     public LoginMode Mode { get; set; } = LoginMode.PersonalAccessToken;
@@ -48,22 +65,18 @@ public class LoginAction : ActionBase
     [InputArgument(Order = 3, Required = false, Group = Groups.General)]
     public string UserAgent { get; set; } = string.Empty;
 
-    // -- PersonalAccessToken ----------------------------------------------------
     [InputArgument(Order = 4, Required = true, Group = Groups.PersonalAccessToken)]
     public string Token { get; set; } = string.Empty;
 
-    // -- DeviceFlow -------------------------------------------------------------
     [InputArgument(Order = 5, Required = false, Group = Groups.DeviceFlow)]
     public string ClientId { get; set; } = string.Empty;
 
     [InputArgument(Order = 6, Required = false, Group = Groups.DeviceFlow)]
     public string Scopes { get; set; } = string.Empty;
 
-    // -- GitHubCli --------------------------------------------------------------
     [InputArgument(Order = 7, Required = false, Group = Groups.GitHubCli)]
     public string Host { get; set; } = string.Empty;
 
-    // -- Output -----------------------------------------------------------------
     [OutputArgument(Order = 1)]
     public GitHubAuthenticationContext Authentication { get; set; } = null!;
 
@@ -106,7 +119,7 @@ public class LoginAction : ActionBase
         var clientId = string.IsNullOrWhiteSpace(ClientId) ? GitHubCliOAuthClientId : ClientId.Trim();
         var scopes = (string.IsNullOrWhiteSpace(Scopes) ? DefaultDeviceFlowScopes : Scopes).Replace(',', ' ').Trim();
 
-        using var http = new HttpClient();
+        using var http = httpClientFactory.CreateClient();
         http.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
         var deviceCodeResp = http.PostAsync(DeviceCodeUrl, new FormUrlEncodedContent(new[]
@@ -123,17 +136,17 @@ public class LoginAction : ActionBase
         var interval = (int?)deviceCodeJson["interval"] ?? 5;
         var expiresIn = (int?)deviceCodeJson["expires_in"] ?? 900;
 
-        CopyTextToClipboard(userCode);
-        OpenInDefaultBrowser(verificationUri);
+        TrySetClipboard(userCode);
+        TryOpenBrowser(verificationUri);
         Console.WriteLine();
         Console.WriteLine("GitHub device flow: open " + verificationUri + " in a browser and enter user code " + userCode + ".");
         Console.WriteLine("The user code has been copied to your clipboard and the verification URL has been opened in your default browser.");
         Console.WriteLine("Waiting for authorization (expires in " + expiresIn + "s)...");
 
-        var deadline = DateTime.UtcNow.AddSeconds(expiresIn);
-        while (DateTime.UtcNow < deadline)
+        var deadline = clock.UtcNow.AddSeconds(expiresIn);
+        while (clock.UtcNow < deadline)
         {
-            Thread.Sleep(TimeSpan.FromSeconds(interval));
+            clock.Sleep(TimeSpan.FromSeconds(interval));
 
             var tokenResp = http.PostAsync(DeviceFlowTokenUrl, new FormUrlEncodedContent(new[]
             {
@@ -168,22 +181,13 @@ public class LoginAction : ActionBase
     private GitHubAuthenticationContext LoginWithGitHubCli()
     {
         var host = string.IsNullOrWhiteSpace(Host) ? DefaultGitHubCliHost : Host.Trim();
-        var startInfo = new ProcessStartInfo("gh", "auth token --hostname " + host)
-        {
-            RedirectStandardOutput = true,
-            RedirectStandardError = true,
-            UseShellExecute = false,
-            CreateNoWindow = true
-        };
+        var result = processRunner.Run(new GitHubProcessStartInfo("gh", "auth token --hostname " + host));
+        var stdOut = result.StandardOutput.Trim();
+        var stdErr = result.StandardError.Trim();
 
-        using var process = Process.Start(startInfo) ?? throw new InvalidOperationException("Failed to start the gh CLI process.");
-        var stdOut = process.StandardOutput.ReadToEnd().Trim();
-        var stdErr = process.StandardError.ReadToEnd().Trim();
-        process.WaitForExit();
-
-        if (process.ExitCode != 0 || string.IsNullOrEmpty(stdOut))
+        if (result.ExitCode != 0 || string.IsNullOrEmpty(stdOut))
         {
-            throw new InvalidOperationException("gh CLI returned exit code " + process.ExitCode + ". " + stdErr);
+            throw new InvalidOperationException("gh CLI returned exit code " + result.ExitCode + ". " + stdErr);
         }
 
         return CreateAuthenticatedContext(stdOut);
@@ -192,12 +196,13 @@ public class LoginAction : ActionBase
     private GitHubAuthenticationContext CreateAuthenticatedContext(string token)
     {
         var baseUrl = (string.IsNullOrWhiteSpace(BaseUrl) ? DefaultBaseUrl : BaseUrl.Trim()).TrimEnd('/');
-        var assemblyVersion = GetType().Assembly.GetName().Version?.ToString() ?? "0.0.0.0";
+        var assemblyVersion = GetType().Assembly.GetName().Version!.ToString();
         var userAgent = string.IsNullOrWhiteSpace(UserAgent)
             ? "PowerAutomate.Desktop.Modules.GitHub/" + assemblyVersion
             : UserAgent.Trim();
 
-        var httpClient = new HttpClient { BaseAddress = new Uri(baseUrl + "/") };
+        var httpClient = httpClientFactory.CreateClient();
+        httpClient.BaseAddress = new Uri(baseUrl + "/");
         httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
         httpClient.DefaultRequestHeaders.UserAgent.ParseAdd(userAgent);
         httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
@@ -214,40 +219,31 @@ public class LoginAction : ActionBase
         }
         catch
         {
-            // Best-effort: leave login empty if /user is unreachable or denied.
+            login = string.Empty;
         }
 
         return new GitHubAuthenticationContext(httpClient, baseUrl, userAgent, login);
     }
 
-    private static void CopyTextToClipboard(string text)
+    private void TrySetClipboard(string text)
     {
         try
         {
-            var psi = new ProcessStartInfo("cmd.exe", "/c echo|set /p=\"" + text + "\"|clip")
-            {
-                CreateNoWindow = true,
-                UseShellExecute = false
-            };
-            using var process = Process.Start(psi);
-            process?.WaitForExit(2000);
+            clipboard.SetText(text);
         }
         catch
         {
-            // Best-effort: clipboard is a convenience, not a requirement.
         }
     }
 
-    private static void OpenInDefaultBrowser(string url)
+    private void TryOpenBrowser(string url)
     {
         try
         {
-            var psi = new ProcessStartInfo(url) { UseShellExecute = true };
-            Process.Start(psi);
+            browserLauncher.Open(url);
         }
         catch
         {
-            // Best-effort: the user can still navigate to the URL manually.
         }
     }
 }

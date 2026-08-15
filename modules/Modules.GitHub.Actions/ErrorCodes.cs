@@ -4,7 +4,7 @@
 
 namespace PowerAutomate.Desktop.Modules.GitHub.Actions;
 
-internal static class ErrorCodes
+public static class ErrorCodes
 {
     public const string Unknown = "UnknownError";
 }

@@ -4,7 +4,7 @@
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions;
 
-internal static class ErrorCodes
+public static class ErrorCodes
 {
     public const string AccessDenied = "AccessDeniedError";
     public const string ControlNotFound = "ControlNotFoundError";

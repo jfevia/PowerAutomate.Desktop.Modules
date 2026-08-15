@@ -1,11 +1,10 @@
-// ---------------------------------------------------
+﻿// ---------------------------------------------------
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
@@ -29,6 +28,17 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Copilot.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class LaunchCopilotCliAction : ActionBase
 {
+    private readonly ICopilotProcessRunner processRunner;
+
+    public LaunchCopilotCliAction() : this(new CopilotProcessRunner())
+    {
+    }
+
+    public LaunchCopilotCliAction(ICopilotProcessRunner processRunner)
+    {
+        this.processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));
+    }
+
     // -- General ----------------------------------------------------------------
     [InputArgument(Order = 1, Required = false, Group = Groups.General)]
     public string ExecutablePath { get; set; } = string.Empty;
@@ -248,28 +258,12 @@ public class LaunchCopilotCliAction : ActionBase
         {
             var args = BuildArguments();
             var exePath = string.IsNullOrEmpty(ExecutablePath) ? "copilot" : ExecutablePath;
-            var workDir = string.IsNullOrEmpty(WorkingDirectory) ? null : WorkingDirectory;
+            var workDir = string.IsNullOrEmpty(WorkingDirectory) ? string.Empty : WorkingDirectory;
+            var result = processRunner.Run(new CopilotProcessStartInfo(exePath, string.Join(" ", args), workDir));
 
-            var startInfo = new ProcessStartInfo
-            {
-                FileName = exePath,
-                Arguments = string.Join(" ", args),
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            if (workDir != null)
-                startInfo.WorkingDirectory = workDir;
-
-            using var process = Process.Start(startInfo)!;
-            var stdOut = process.StandardOutput.ReadToEnd();
-            var stdErr = process.StandardError.ReadToEnd();
-            process.WaitForExit();
-
-            ExitCode = process.ExitCode;
-            StandardOutput = stdOut;
-            StandardError = stdErr;
+            ExitCode = result.ExitCode;
+            StandardOutput = result.StandardOutput;
+            StandardError = result.StandardError;
         }
         catch (Exception ex)
         {

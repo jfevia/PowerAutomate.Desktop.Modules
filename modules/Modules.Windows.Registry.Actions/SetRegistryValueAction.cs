@@ -19,8 +19,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class SetRegistryValueAction : ActionBase
+public class SetRegistryValueAction : RegistryActionBase
 {
+    public SetRegistryValueAction()
+    {
+    }
+
+    public SetRegistryValueAction(RegistryContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 2, Required = true)]
     public string Name { get; set; } = null!;
 
@@ -49,41 +57,21 @@ public class SetRegistryValueAction : ActionBase
     [InputArgument(Order = 3)]
     public string String { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
+        using var registryKey = Context.RegistryService.OpenKey(Path, true);
+        var value = Kind switch
         {
-            using var registryKey = RegistryExtensions.ParseKey(Path, true);
-            var valueKind = Kind.ToAbstractions();
+            RegistryValueKind.String => String,
+            RegistryValueKind.ExpandString => ExpandString,
+            RegistryValueKind.Binary => Binary,
+            RegistryValueKind.DWord => DWord,
+            RegistryValueKind.MultiString => MultiString.ToArray(),
+            RegistryValueKind.QWord => QWord,
+            _ => throw new NotSupportedException($"Registry value kind '{Kind}' is not supported")
+        };
 
-            switch (Kind)
-            {
-                case RegistryValueKind.String:
-                    registryKey.SetValue(Name, String, valueKind);
-                    break;
-                case RegistryValueKind.ExpandString:
-                    registryKey.SetValue(Name, ExpandString, valueKind);
-                    break;
-                case RegistryValueKind.Binary:
-                    registryKey.SetValue(Name, Binary, valueKind);
-                    break;
-                case RegistryValueKind.DWord:
-                    registryKey.SetValue(Name, DWord, valueKind);
-                    break;
-                case RegistryValueKind.MultiString:
-                    registryKey.SetValue(Name, MultiString.ToArray(), valueKind);
-                    break;
-                case RegistryValueKind.QWord:
-                    registryKey.SetValue(Name, QWord, valueKind);
-                    break;
-                default:
-                    throw new NotSupportedException($"Registry value kind '{Kind}' is not supported");
-            }
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+        registryKey.SetValue(Name, value, Kind);
     }
 }
 

@@ -2,12 +2,10 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32;
 
 namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 
@@ -18,8 +16,16 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetRegistryValueAction : ActionBase
+public class GetRegistryValueAction : RegistryActionBase
 {
+    public GetRegistryValueAction()
+    {
+    }
+
+    public GetRegistryValueAction(RegistryContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 3, Required = false)]
     public object DefaultValue { get; set; } = null!;
 
@@ -36,21 +42,10 @@ public class GetRegistryValueAction : ActionBase
     [OutputArgument(Order = 1)]
     public object Value { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            using var registryKey = RegistryExtensions.ParseKey(Path, true);
-            var valueKind = registryKey.GetValueKind(Name)
-                                       .ToNative();
-
-            Value = valueKind.CanExpandEnvironmentVariables() && ExpandEnvironmentVariables
-                ? registryKey.GetValue(Name, DefaultValue)
-                : registryKey.GetValue(Name, DefaultValue, RegistryValueOptions.DoNotExpandEnvironmentNames);
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+        using var registryKey = Context.RegistryService.OpenKey(Path, true);
+        var valueKind = registryKey.GetValueKind(Name);
+        Value = registryKey.GetValue(Name, DefaultValue, valueKind.CanExpandEnvironmentVariables() && ExpandEnvironmentVariables)!;
     }
 }

@@ -13,12 +13,23 @@ namespace PowerAutomate.Desktop.Modules.AssemblyResolution.Actions;
 [Action]
 public class AssemblyResolutionAction : ActionBase
 {
+    private readonly IAssemblyResolutionContext resolutionContext;
+
+    public AssemblyResolutionAction() : this(new AssemblyResolutionContext())
+    {
+    }
+
+    public AssemblyResolutionAction(IAssemblyResolutionContext resolutionContext)
+    {
+        this.resolutionContext = resolutionContext ?? throw new ArgumentNullException(nameof(resolutionContext));
+    }
+
     public override void Execute(ActionContext context)
     {
         try
         {
             AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-            throw new NotImplementedException();
+            resolutionContext.Run();
         }
         finally
         {
@@ -26,17 +37,19 @@ public class AssemblyResolutionAction : ActionBase
         }
     }
 
-    private static Assembly? CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args)
+    public Assembly? Resolve(ResolveEventArgs args)
     {
         try
         {
             var assemblyName = new AssemblyName(args.Name);
-            var directoryName = AppDomain.CurrentDomain.BaseDirectory;
-            return !string.IsNullOrEmpty(directoryName) ? Assembly.LoadFile(Path.Combine(directoryName, $"{assemblyName.Name}.dll")) : null;
+            var directoryName = resolutionContext.BaseDirectory;
+            return !string.IsNullOrEmpty(directoryName) ? resolutionContext.LoadFile(Path.Combine(directoryName, $"{assemblyName.Name}.dll")) : null;
         }
         catch (Exception)
         {
             return null;
         }
     }
+
+    private Assembly? CurrentDomain_AssemblyResolve(object sender, ResolveEventArgs args) => Resolve(args);
 }

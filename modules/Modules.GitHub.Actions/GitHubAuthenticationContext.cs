@@ -20,7 +20,7 @@ namespace PowerAutomate.Desktop.Modules.GitHub.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Type")]
 public sealed class GitHubAuthenticationContext : IDisposable
 {
-    internal GitHubAuthenticationContext(HttpClient httpClient, string baseUrl, string userAgent, string login)
+    public GitHubAuthenticationContext(HttpClient httpClient, string baseUrl, string userAgent, string login)
     {
         HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
         BaseUrl = baseUrl ?? throw new ArgumentNullException(nameof(baseUrl));

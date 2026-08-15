@@ -8,7 +8,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
@@ -23,7 +22,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetFolderTasksAction : ActionBase
+public class GetFolderTasksAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 5, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -46,42 +45,35 @@ public class GetFolderTasksAction : ActionBase
     [InputArgument(Order = 4, Required = false)]
     public string UserName { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+
+    public GetFolderTasksAction()
     {
-        try
+    }
+
+    public GetFolderTasksAction(TaskSchedulerContext context) : base(context)
+    {
+    }
+
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        Regex? regex = null;
+
+        if (!string.IsNullOrWhiteSpace(Filter))
         {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
-            Regex? regex = null;
-
-            if (!string.IsNullOrWhiteSpace(Filter))
-            {
-                regex = new Regex(Filter);
-            }
-
-            using var taskFolder = taskService.GetFolder(FolderPath);
-            if (taskFolder is null)
-            {
-                throw new FolderNotFoundException(FolderPath);
-            }
-
-            using var taskCollection = taskFolder.GetTasks(regex);
-            var taskNames = new List<string>();
-
-            foreach (var task in taskCollection)
-            {
-                taskNames.Add(task.Name);
-                task.Dispose();
-            }
-
-            TaskNames = taskNames;
+            regex = new Regex(Filter);
         }
-        catch (FolderNotFoundException ex)
+
+        using var taskFolder = RequireFolder(taskService, FolderPath);
+        using var taskCollection = taskFolder.GetTasks(regex);
+        var taskNames = new List<string>();
+
+        foreach (var task in taskCollection)
         {
-            throw new ActionException(ErrorCodes.FolderNotFound, ex.Message, ex);
+            taskNames.Add(task.Name);
+            task.Dispose();
         }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+
+        TaskNames = taskNames;
     }
 }

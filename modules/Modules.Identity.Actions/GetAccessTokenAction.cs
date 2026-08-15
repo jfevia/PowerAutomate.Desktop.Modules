@@ -5,7 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using Microsoft.Identity.Client;
+using System.Linq;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
@@ -20,6 +20,17 @@ namespace PowerAutomate.Desktop.Modules.Identity.Actions;
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 public class GetAccessTokenAction : ActionBase
 {
+    private readonly IAccessTokenProvider tokenProvider;
+
+    public GetAccessTokenAction() : this(new MsalAccessTokenProvider())
+    {
+    }
+
+    public GetAccessTokenAction(IAccessTokenProvider tokenProvider)
+    {
+        this.tokenProvider = tokenProvider ?? throw new ArgumentNullException(nameof(tokenProvider));
+    }
+
     [InputArgument(Order = 3, Required = true)]
     public string Authority { get; set; } = null!;
 
@@ -39,18 +50,40 @@ public class GetAccessTokenAction : ActionBase
     {
         try
         {
-            var app = ConfidentialClientApplicationBuilder.Create(ClientId)
-                                                          .WithClientSecret(ClientSecret)
-                                                          .WithAuthority(new Uri(Authority))
-                                                          .Build();
-
-            var clientParameterBuilder = app.AcquireTokenForClient(Scopes);
-            var authenticationResult = clientParameterBuilder.ExecuteAsync().GetAwaiter().GetResult();
-            Token = authenticationResult.AccessToken;
+            var clientId = RequireValue(ClientId, nameof(ClientId));
+            var clientSecret = RequireValue(ClientSecret, nameof(ClientSecret));
+            var authority = new Uri(RequireValue(Authority, nameof(Authority)), UriKind.Absolute);
+            var scopes = RequireScopes();
+            Token = tokenProvider.GetAccessToken(authority, clientId, clientSecret, scopes);
         }
         catch (Exception ex)
         {
             throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
         }
+    }
+
+    private IReadOnlyCollection<string> RequireScopes()
+    {
+        if (Scopes is null || Scopes.Count == 0)
+        {
+            throw new ArgumentException("At least one scope is required.", nameof(Scopes));
+        }
+
+        if (Scopes.Any(string.IsNullOrWhiteSpace))
+        {
+            throw new ArgumentException("Scopes cannot be empty.", nameof(Scopes));
+        }
+
+        return Scopes.ToArray();
+    }
+
+    private static string RequireValue(string value, string argumentName)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            throw new ArgumentException("A value is required.", argumentName);
+        }
+
+        return value;
     }
 }

@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Interop;
 using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Types;
 
@@ -21,29 +20,27 @@ namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class SetControlTextAction : ActionBase
+public class SetControlTextAction : InputSimulationActionBase
 {
+    public SetControlTextAction()
+    {
+    }
+
+    public SetControlTextAction(InputSimulationContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 1, Required = true)]
     public WindowObject Control { get; set; } = null!;
 
     [InputArgument(Order = 2, Required = true)]
     public string Text { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            if (Control is null)
-            {
-                throw new ArgumentException("A control is required to set text.", nameof(Control));
-            }
+        var handle = RequireHandle(Control, nameof(Control));
 
-            // WM_SETTEXT is marshalled across process boundaries by Windows itself.
-            MessageDispatcher.SendText(Control.NativeHandle, WindowMessages.SetText, IntPtr.Zero, Text ?? string.Empty);
-        }
-        catch (Exception ex)
-        {
-            throw ex.ToActionException();
-        }
+        // WM_SETTEXT is marshalled across process boundaries by Windows itself.
+        Context.MessageDispatcher.SendText(handle, WindowMessages.SetText, IntPtr.Zero, Text ?? string.Empty);
     }
 }

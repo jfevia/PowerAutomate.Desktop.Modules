@@ -2,7 +2,6 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -18,24 +17,25 @@ namespace PowerAutomate.Desktop.Modules.Windows.Registry.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class GetValuesInRegistryKeyAction : ActionBase
+public class GetValuesInRegistryKeyAction : RegistryActionBase
 {
+    public GetValuesInRegistryKeyAction()
+    {
+    }
+
+    public GetValuesInRegistryKeyAction(RegistryContext context) : base(context)
+    {
+    }
+
     [InputArgument(Order = 1, Required = true)]
     public string Path { get; set; } = null!;
 
     [OutputArgument(Order = 1)]
     public List<string> Values { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+    protected override void Run(ActionContext context)
     {
-        try
-        {
-            using var registryKey = RegistryExtensions.ParseKey(Path, true);
-            Values = registryKey.GetValueNames().ToList();
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+        using var registryKey = Context.RegistryService.OpenKey(Path, true);
+        Values = registryKey.GetValueNames().ToList();
     }
 }

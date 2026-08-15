@@ -9,10 +9,10 @@ using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionSelectors;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Exceptions;
 using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Extensions;
+using PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Interop;
 using DayOfWeek = PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Enums.DayOfWeek;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
@@ -27,7 +27,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class CreateTaskTriggerAction : ActionBase
+public class CreateTaskTriggerAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 24, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -115,100 +115,45 @@ public class CreateTaskTriggerAction : ActionBase
     [InputArgument(Order = 10, Group = Groups.General)]
     public List<WeekOfMonth> WeeksOfMonth { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
+
+    public CreateTaskTriggerAction()
     {
-        try
-        {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
+    }
 
-            using var task = taskService.FindTask(TaskName);
-            if (task is null)
-            {
-                throw new TaskNotFoundException(TaskName);
-            }
+    public CreateTaskTriggerAction(TaskSchedulerContext context) : base(context)
+    {
+    }
 
-            using Trigger trigger = Type switch
-            {
-                TriggerType.Boot => new BootTrigger
-                {
-                    Delay = Delay
-                },
-                TriggerType.Daily => new DailyTrigger
-                {
-                    StartBoundary = StartBoundary,
-                    DaysInterval = DaysInterval,
-                    RandomDelay = RandomDelay
-                },
-                TriggerType.Event => new EventTrigger
-                {
-                    Subscription = Subscription,
-                    ValueQueries =
-                    {
-                        ["Name"] = "Value"
-                    }
-                },
-                TriggerType.Idle => new IdleTrigger
-                {
-                    StartBoundary = StartBoundary
-                },
-                TriggerType.Logon => new LogonTrigger
-                {
-                    Delay = Delay,
-                    UserId = UserId
-                },
-                TriggerType.MonthlyDayOfWeek => new MonthlyDOWTrigger
-                {
-                    StartBoundary = StartBoundary,
-                    DaysOfWeek = DaysOfWeek.ToAbstraction(),
-                    MonthsOfYear = MonthsOfYear.ToAbstraction(),
-                    WeeksOfMonth = WeeksOfMonth.ToAbstraction()
-                },
-                TriggerType.Monthly => new MonthlyTrigger
-                {
-                    StartBoundary = StartBoundary,
-                    DaysOfMonth = DaysOfMonth.ToArray(),
-                    MonthsOfYear = MonthsOfYear.ToAbstraction(),
-                    RunOnLastDayOfMonth = RunOnLastDayOfMonth
-                },
-                TriggerType.Registration => new RegistrationTrigger
-                {
-                    Delay = Delay
-                },
-                TriggerType.SessionStateChange => new SessionStateChangeTrigger
-                {
-                    StateChange = State.ToAbstraction()
-                },
-                TriggerType.Time => new TimeTrigger
-                {
-                    StartBoundary = StartBoundary
-                },
-                TriggerType.Weekly => new WeeklyTrigger
-                {
-                    StartBoundary = StartBoundary,
-                    DaysOfWeek = DaysOfWeek.ToAbstraction(),
-                    WeeksInterval = WeeksInterval
-                },
-                _ => throw new ArgumentOutOfRangeException()
-            };
-            trigger.Id = Id;
-            trigger.Enabled = Enabled;
-            trigger.StartBoundary = StartBoundary;
-            trigger.EndBoundary = EndBoundary;
-            trigger.ExecutionTimeLimit = Timeout;
-            trigger.Repetition.Duration = RepetitionDuration;
-            trigger.Repetition.Interval = RepetitionInterval;
-            trigger.Repetition.StopAtDurationEnd = RepetitionStopAtDurationEnd;
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        using var task = RequireTask(taskService, TaskName);
 
-            task.Definition.Triggers.Add(trigger);
-        }
-        catch (TaskNotFoundException ex)
+        task.Definition.Triggers.Add(new TaskTriggerDefinition
         {
-            throw new ActionException(ErrorCodes.TaskNotFound, ex.Message, ex);
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+            DaysInterval = DaysInterval,
+            DaysOfMonth = DaysOfMonth,
+            DaysOfWeek = DaysOfWeek,
+            Delay = Delay,
+            Enabled = Enabled,
+            EndBoundary = EndBoundary,
+            Id = Id,
+            MonthsOfYear = MonthsOfYear,
+            RandomDelay = RandomDelay,
+            RepetitionDuration = RepetitionDuration,
+            RepetitionInterval = RepetitionInterval,
+            RepetitionStopAtDurationEnd = RepetitionStopAtDurationEnd,
+            RunOnLastDayOfMonth = RunOnLastDayOfMonth,
+            StartBoundary = StartBoundary,
+            State = State,
+            Subscription = Subscription,
+            Timeout = Timeout,
+            Type = Type,
+            UserId = UserId,
+            ValueQueries = new Dictionary<string, string> { ["Name"] = "Value" },
+            WeeksInterval = WeeksInterval,
+            WeeksOfMonth = WeeksOfMonth
+        });
     }
 }
 

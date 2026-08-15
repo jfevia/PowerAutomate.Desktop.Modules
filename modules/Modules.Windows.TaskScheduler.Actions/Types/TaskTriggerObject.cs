@@ -12,7 +12,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Types;
 
 [JsonObject(MemberSerialization.OptOut)]
 [Type(DefaultPropertyVisibility = Visibility.Visible)]
-public class TaskTriggerObject
+public class TaskTriggerObject : IComparable<TaskTriggerObject>, IComparable
 {
     public bool Enabled { get; private set; }
     public DateTime EndBoundary { get; private set; }
@@ -30,17 +30,7 @@ public class TaskTriggerObject
     {
     }
 
-    internal TaskTriggerObject(
-        string taskName,
-        string id,
-        TriggerType type,
-        bool enabled,
-        DateTime startBoundary,
-        DateTime endBoundary,
-        TimeSpan executionTimeLimit,
-        bool repetitionStopAtDurationEnd,
-        TimeSpan repetitionInterval,
-        TimeSpan repetitionDuration)
+    public TaskTriggerObject(string taskName, string id, TriggerType type, bool enabled, DateTime startBoundary, DateTime endBoundary, TimeSpan executionTimeLimit, bool repetitionStopAtDurationEnd, TimeSpan repetitionInterval, TimeSpan repetitionDuration)
     {
         TaskName = taskName;
         ID = id;
@@ -54,8 +44,23 @@ public class TaskTriggerObject
         RepetitionDuration = repetitionDuration;
     }
 
-    public override string ToString()
+    public int CompareTo(object? obj)
     {
-        return $"{ID} ({Type})";
+        if (ReferenceEquals(null, obj)) return 1;
+        if (ReferenceEquals(this, obj)) return 0;
+        return obj is TaskTriggerObject other ? CompareTo(other) : throw new ArgumentException($"Object must be of type {nameof(TaskTriggerObject)}");
     }
+
+    public int CompareTo(TaskTriggerObject? other)
+    {
+        if (ReferenceEquals(this, other)) return 0;
+        if (ReferenceEquals(null, other)) return 1;
+        var triggerTypeComparison = Type.CompareTo(other.Type);
+        if (triggerTypeComparison != 0) return triggerTypeComparison;
+        var idComparison = string.Compare(ID, other.ID, StringComparison.InvariantCultureIgnoreCase);
+        if (idComparison != 0) return idComparison;
+        return string.Compare(TaskName, other.TaskName, StringComparison.InvariantCultureIgnoreCase);
+    }
+
+    public override string ToString() => $"{ID} ({Type})";
 }

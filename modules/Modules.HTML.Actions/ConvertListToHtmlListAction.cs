@@ -2,11 +2,9 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Text;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
 
@@ -19,8 +17,16 @@ namespace PowerAutomate.Desktop.Modules.HTML.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class ConvertListToHtmlListAction : ActionBase
+public class ConvertListToHtmlListAction : HtmlActionBase
 {
+    public ConvertListToHtmlListAction()
+    {
+    }
+
+    public ConvertListToHtmlListAction(HtmlActionsContext context) : base(context)
+    {
+    }
+
     [OutputArgument(Order = 1)]
     public string HtmlList { get; set; } = null!;
 
@@ -31,24 +37,5 @@ public class ConvertListToHtmlListAction : ActionBase
     [InputArgument(Order = 1)]
     public List<object> List { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
-    {
-        try
-        {
-            var rootTag = IsOrdered ? "ol" : "ul";
-            var html = new StringBuilder();
-            html.Append($"<{rootTag}>");
-            foreach (var item in List)
-            {
-                html.Append("<li>").Append(item).Append("</li>");
-            }
-
-            html.Append($"</{rootTag}>");
-            HtmlList = html.ToString();
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
-    }
+    protected override void Run(ActionContext context) => HtmlList = Context.MarkupService.ConvertListToHtmlList(List, IsOrdered);
 }

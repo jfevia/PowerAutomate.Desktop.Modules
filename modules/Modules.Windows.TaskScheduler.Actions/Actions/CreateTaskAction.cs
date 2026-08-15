@@ -6,7 +6,6 @@ using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
-using Microsoft.Win32.TaskScheduler;
 
 namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 
@@ -19,7 +18,7 @@ namespace PowerAutomate.Desktop.Modules.Windows.TaskScheduler.Actions.Actions;
 [SuppressMessage("ReSharper", "UnusedAutoPropertyAccessor.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "ClassNeverInstantiated.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
 [SuppressMessage("ReSharper", "UnusedType.Global", Justification = "PowerAutomate.Desktop.Module.Action")]
-public class CreateTaskAction : ActionBase
+public class CreateTaskAction : TaskSchedulerActionBase
 {
     [InputArgument(Order = 4, Required = false)]
     public string AccountDomain { get; set; } = null!;
@@ -36,20 +35,19 @@ public class CreateTaskAction : ActionBase
     [InputArgument(Order = 3, Required = false)]
     public string UserName { get; set; } = null!;
 
-    public override void Execute(ActionContext context)
-    {
-        try
-        {
-            using var taskService = new TaskService(TargetServer, UserName, AccountDomain, Password);
-            using var task = taskService.NewTask();
 
-            taskService.RootFolder
-                       .RegisterTaskDefinition(TaskName, task)
-                       .Dispose();
-        }
-        catch (Exception ex)
-        {
-            throw new ActionException(ErrorCodes.Unknown, ex.Message, ex);
-        }
+    public CreateTaskAction()
+    {
+    }
+
+    public CreateTaskAction(TaskSchedulerContext context) : base(context)
+    {
+    }
+
+    protected override void Run(ActionContext context)
+    {
+        using var taskService = Connect(TargetServer, UserName, AccountDomain, Password);
+        using var task = taskService.NewTask();
+        using var registeredTask = taskService.RootFolder.RegisterTaskDefinition(TaskName, task);
     }
 }
