@@ -8,13 +8,12 @@ using PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Exceptions;
 
 namespace PowerAutomate.Desktop.Modules.Windows.InputSimulation.Actions.Extensions;
 
-internal static class ExceptionExtensions
+public static class ExceptionExtensions
 {
     /// <summary>
     /// Maps an internal failure onto the error code the flow author can branch on.
     /// </summary>
-    public static ActionException ToActionException(this Exception value)
-    {
+    public static ActionException ToActionException(this Exception value)    {
         return value switch
         {
             ActionException actionException => actionException,

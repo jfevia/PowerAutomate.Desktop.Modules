@@ -100,7 +100,7 @@ internal sealed class FakeNativeMethods : INativeMethods
 
     public int GetWindowText(IntPtr handle, StringBuilder buffer, int maximumCount)
     {
-        if (!WindowTexts.TryGetValue(handle, out var value))
+        if (FailWindowTextCopy || !WindowTexts.TryGetValue(handle, out var value))
         {
             return 0;
         }
@@ -108,6 +108,11 @@ internal sealed class FakeNativeMethods : INativeMethods
         buffer.Append(value);
         return value.Length;
     }
+
+    /// <summary>
+    /// Reproduces a window that reports a length but then copies nothing.
+    /// </summary>
+    public bool FailWindowTextCopy { get; set; }
 
     public int GetWindowTextLength(IntPtr handle) => WindowTexts.TryGetValue(handle, out var value) ? value.Length : 0;
 
