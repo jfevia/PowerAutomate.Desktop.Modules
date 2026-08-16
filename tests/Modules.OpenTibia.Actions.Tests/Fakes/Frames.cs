@@ -18,7 +18,7 @@ internal static class Frames
         writer.WriteByte((byte)GameServerOpcode.Challenge);
         writer.WriteUInt32(0x11223344);
         writer.WriteByte(0x55);
-        return FrameCodec.EncodePlain(writer.ToArray());
+        return FrameCodec.EncodeInboundPlain(writer.ToArray());
     }
 
     public static byte[] GamePendingStatePayload()

@@ -4,7 +4,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Text;
 using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
+using PowerAutomate.Desktop.OpenTibia.Protocol;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Framing;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages;
 
@@ -56,10 +58,10 @@ public sealed class InboundPipeline
         while (_frames.TryReadFrame(out var body))
         {
             var payload = _key == null
-                ? FrameCodec.DecodePlain(body)
+                ? FrameCodec.DecodeInboundPlain(body)
                 : FrameCodec.DecodeEncrypted(body, _key);
 
-            foreach (var message in _registry.ReadAll(payload))
+            foreach (var message in ReadPayload(payload))
             {
                 decoded.Add(message);
 
@@ -75,5 +77,51 @@ public sealed class InboundPipeline
         }
 
         return decoded;
+    }
+
+    /// <summary>
+    /// Attaches the offending payload to a decode failure, which is the only way to diagnose a live mismatch.
+    /// </summary>
+    private IReadOnlyList<IProtocolMessage> ReadPayload(byte[] payload)
+    {
+        try
+        {
+            return _registry.ReadAll(payload);
+        }
+        catch (ProtocolException exception)
+        {
+            throw new PayloadDecodeException(exception.Message, payload, exception);
+        }
+    }
+}
+
+/// <summary>
+/// A decode failure that carries the whole frame payload so the bad bytes can be inspected.
+/// </summary>
+public class PayloadDecodeException : ProtocolException
+{
+    public PayloadDecodeException(string message, byte[] payload, Exception innerException)
+        : base(message, innerException)
+    {
+        Payload = payload ?? throw new ArgumentNullException(nameof(payload));
+    }
+
+    public byte[] Payload { get; }
+
+    /// <summary>
+    /// The payload as spaced hex, ready to paste into a bug report.
+    /// </summary>
+    public string PayloadHex
+    {
+        get
+        {
+            var hex = new StringBuilder(Payload.Length * 3);
+            foreach (var value in Payload)
+            {
+                hex.Append(value.ToString("X2")).Append(' ');
+            }
+
+            return hex.ToString().TrimEnd();
+        }
     }
 }

@@ -30,6 +30,7 @@ public class CreaturesMessageReadersTests
             Assert.That(registry.IsRegistered(GameServerOpcode.CreatureParty), Is.True);
             Assert.That(registry.IsRegistered(GameServerOpcode.CreatureSquare), Is.True);
             Assert.That(registry.IsRegistered(GameServerOpcode.CreatureUnpass), Is.True);
+            Assert.That(registry.IsRegistered(GameServerOpcode.ChooseOutfit), Is.True);
         });
     }
 

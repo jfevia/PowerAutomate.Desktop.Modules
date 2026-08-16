@@ -58,6 +58,53 @@ public static class FrameCodec
     }
 
     /// <summary>
+    /// Builds an unencrypted server-to-client frame, which carries an inner length prefix.
+    /// </summary>
+    public static byte[] EncodeInboundPlain(byte[] payload)
+    {
+        if (payload == null)
+        {
+            throw new ArgumentNullException(nameof(payload));
+        }
+
+        var writer = new PacketWriter(payload.Length + 2);
+        writer.WriteUInt16((ushort)payload.Length);
+        writer.WriteBytes(payload);
+        return Frame(writer.ToArray());
+    }
+
+    /// <summary>
+    /// Validates an unencrypted server-to-client frame and strips its inner length prefix.
+    /// </summary>
+    /// <remarks>
+    /// Inbound frames always carry the inner length, encrypted or not; outbound first packets do not.
+    /// </remarks>
+    public static byte[] DecodeInboundPlain(byte[] body)
+    {
+        var content = Unwrap(body);
+        return StripInnerLength(content);
+    }
+
+    internal static byte[] StripInnerLength(byte[] content)
+    {
+        if (content.Length < 2)
+        {
+            throw new ProtocolException("An inbound frame must contain the inner length prefix.");
+        }
+
+        var declared = content[0] | (content[1] << 8);
+        if (declared + 2 > content.Length)
+        {
+            throw new ProtocolException(
+                $"The inner length prefix declares {declared} byte(s) but only {content.Length - 2} are present.");
+        }
+
+        var payload = new byte[declared];
+        Array.Copy(content, 2, payload, 0, declared);
+        return payload;
+    }
+
+    /// <summary>
     /// Validates the checksum of an encrypted frame body and returns its decrypted payload.
     /// </summary>
     public static byte[] DecodeEncrypted(byte[] body, uint[] key)

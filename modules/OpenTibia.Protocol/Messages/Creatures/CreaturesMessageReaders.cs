@@ -27,5 +27,6 @@ public static class CreaturesMessageReaders
         registry.Register(GameServerOpcode.CreatureParty, GameServerCreatureShieldMessage.Read);
         registry.Register(GameServerOpcode.CreatureSquare, GameServerCreatureSquareMessage.Read);
         registry.Register(GameServerOpcode.CreatureUnpass, GameServerCreatureUnpassMessage.Read);
+        registry.Register(GameServerOpcode.ChooseOutfit, GameServerChooseOutfitMessage.Read);
     }
 }

@@ -35,7 +35,7 @@ public class TibiaGameClientTests
         writer.WriteByte((byte)GameServerOpcode.Challenge);
         writer.WriteUInt32(0x11223344);
         writer.WriteByte(0x55);
-        return FrameCodec.EncodePlain(writer.ToArray());
+        return FrameCodec.EncodeInboundPlain(writer.ToArray());
     }
 
     private static byte[] PendingStatePayload()
@@ -202,7 +202,7 @@ public class TibiaGameClientTests
     public void EnterGame_WhenFirstFrameIsNotAChallenge_ThrowsProtocolException()
     {
         var transport = new FakeSocketTransport();
-        transport.EnqueueRead(FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.PlayerData }));
+        transport.EnqueueRead(FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.PlayerData }));
 
         using var client = Client(transport);
 
@@ -405,6 +405,38 @@ public class TibiaGameClientTests
         }
 
         Assert.That(client.FaultReason, Is.EqualTo("The server closed the connection."));
+    }
+
+    [Test]
+    public void Fault_IsNullBeforeAnyConnection()
+    {
+        using var client = Client(new FakeSocketTransport());
+
+        Assert.That(client.Fault, Is.Null);
+    }
+
+    [Test]
+    public void EnterGame_WhenReaderFaultsBeforeEntryIsConfirmed_ThrowsProtocolExceptionWrappingTheFault()
+    {
+        var transport = new FakeSocketTransport();
+        transport.EnqueueRead(ChallengeFrame());
+
+        // A flipped checksum byte makes the reader thread fault before the entry signal ever arrives.
+        var corrupted = FrameCodec.EncodeEncrypted(PingPayload(), Key);
+        corrupted[FrameCodec.LengthPrefixSize] ^= 0xFF;
+        transport.EnqueueRead(corrupted);
+
+        using var client = Client(transport);
+
+        var exception = Assert.Throws<ProtocolException>(
+            () => client.EnterGame(Options(), TimeSpan.FromMilliseconds(500)))!;
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(exception.Message, Does.Contain("checksum"));
+            Assert.That(exception.InnerException, Is.Not.Null);
+            Assert.That(client.Fault, Is.SameAs(exception.InnerException));
+        });
     }
 
     [Test]

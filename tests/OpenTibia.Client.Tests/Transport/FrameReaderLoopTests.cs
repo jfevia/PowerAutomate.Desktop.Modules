@@ -38,7 +38,7 @@ public class FrameReaderLoopTests
     public void Run_DecodesFramesAndObservesEveryMessage()
     {
         var transport = new FakeSocketTransport();
-        transport.EnqueueRead(FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping }));
+        transport.EnqueueRead(FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping }));
         var queue = new ServerMessageQueue(8);
         var observed = new List<IProtocolMessage>();
 
@@ -57,7 +57,7 @@ public class FrameReaderLoopTests
     public void Run_WhenReadTimesOut_KeepsRunningInsteadOfFaulting()
     {
         var transport = new FakeSocketTransport { TimeoutsBeforeData = 3 };
-        transport.EnqueueRead(FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping }));
+        transport.EnqueueRead(FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping }));
         var queue = new ServerMessageQueue(8);
         var observed = new List<IProtocolMessage>();
 
@@ -111,7 +111,7 @@ public class FrameReaderLoopTests
     public void Start_WhenAlreadyRunning_Throws()
     {
         var transport = new FakeSocketTransport();
-        transport.EnqueueRead(FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping }));
+        transport.EnqueueRead(FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping }));
         var queue = new ServerMessageQueue(8);
         var observed = new List<IProtocolMessage>();
         var pipeline = new InboundPipeline(Registry(), new OpcodeFilter(), queue);

@@ -73,6 +73,11 @@ public sealed class TibiaGameClient : IDisposable
     /// </summary>
     public string? FaultReason => _reader?.FaultReason;
 
+    /// <summary>
+    /// The exception that stopped the reader, kept so a decode failure can be inspected.
+    /// </summary>
+    public Exception? Fault => _reader?.Fault;
+
     public void EnterGame(GameOptions options, TimeSpan timeout)
     {
         if (options == null)
@@ -212,7 +217,7 @@ public sealed class TibiaGameClient : IDisposable
             leftover = new byte[pending.Count - total];
             pending.CopyTo(total, leftover, 0, leftover.Length);
 
-            var payload = FrameCodec.DecodePlain(body);
+            var payload = FrameCodec.DecodeInboundPlain(body);
             var reader = new PacketReader(payload);
             var opcode = reader.ReadByte();
 
@@ -239,7 +244,15 @@ public sealed class TibiaGameClient : IDisposable
 
         if (!signalled)
         {
+            var fault = _reader!.Fault;
             Disconnect();
+
+            if (fault != null)
+            {
+                throw new ProtocolException(
+                    "The reader stopped before entry was confirmed: " + fault.Message, fault);
+            }
+
             throw new TimeoutException($"The game server did not confirm entry within {timeout.TotalMilliseconds} ms.");
         }
 

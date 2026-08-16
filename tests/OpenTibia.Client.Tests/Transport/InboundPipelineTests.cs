@@ -7,6 +7,7 @@ using System.Linq;
 using NUnit.Framework;
 using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
 using PowerAutomate.Desktop.OpenTibia.Client.Transport;
+using PowerAutomate.Desktop.OpenTibia.Protocol;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Framing;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Opcodes;
@@ -31,7 +32,7 @@ public class InboundPipelineTests
     {
         var queue = new ServerMessageQueue(8);
         var pipeline = new InboundPipeline(Registry(), new OpcodeFilter(), queue);
-        var frame = FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping });
+        var frame = FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping });
 
         var decoded = pipeline.Push(frame, 0, frame.Length);
 
@@ -65,7 +66,7 @@ public class InboundPipelineTests
     {
         var queue = new ServerMessageQueue(8);
         var pipeline = new InboundPipeline(Registry(), new OpcodeFilter(), queue);
-        var frame = FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping });
+        var frame = FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping });
 
         var first = pipeline.Push(frame, 0, frame.Length - 1);
         var second = pipeline.Push(frame, frame.Length - 1, 1);
@@ -84,7 +85,7 @@ public class InboundPipelineTests
         var filter = new OpcodeFilter();
         filter.Allow(new[] { (byte)GameServerOpcode.PlayerData });
         var pipeline = new InboundPipeline(Registry(), filter, queue);
-        var frame = FrameCodec.EncodePlain(new[] { (byte)GameServerOpcode.Ping });
+        var frame = FrameCodec.EncodeInboundPlain(new[] { (byte)GameServerOpcode.Ping });
 
         var decoded = pipeline.Push(frame, 0, frame.Length);
 
@@ -94,6 +95,30 @@ public class InboundPipelineTests
             Assert.That(queue.Depth, Is.Zero);
             Assert.That(queue.GetStatistics().Filtered, Is.EqualTo(1));
         });
+    }
+
+    [Test]
+    public void Push_WhenAnOpcodeCannotBeDecoded_CarriesThePayloadForDiagnosis()
+    {
+        var queue = new ServerMessageQueue(8);
+        var pipeline = new InboundPipeline(Registry(), new OpcodeFilter(), queue);
+        var frame = FrameCodec.EncodeInboundPlain(new byte[] { (byte)GameServerOpcode.Ping, 0xFE, 0x11 });
+
+        var exception = Assert.Throws<PayloadDecodeException>(() => pipeline.Push(frame, 0, frame.Length))!;
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(exception.Payload, Is.EqualTo(new byte[] { (byte)GameServerOpcode.Ping, 0xFE, 0x11 }));
+            Assert.That(exception.PayloadHex, Is.EqualTo("1E FE 11"));
+            Assert.That(exception.InnerException, Is.InstanceOf<ProtocolException>());
+        });
+    }
+
+    [Test]
+    public void PayloadDecodeException_WithNullPayload_Throws()
+    {
+        Assert.Throws<ArgumentNullException>(
+            () => new PayloadDecodeException("boom", null!, new ProtocolException("inner")));
     }
 
     [Test]

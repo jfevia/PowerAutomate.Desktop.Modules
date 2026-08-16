@@ -25,5 +25,6 @@ public static class ChatMessageReaders
         registry.Register(GameServerOpcode.OpenChannel, GameServerOpenChannelMessage.Read);
         registry.Register(GameServerOpcode.CloseChannel, GameServerCloseChannelMessage.Read);
         registry.Register(GameServerOpcode.OpenPrivateChannel, GameServerOpenPrivateChannelMessage.Read);
+        registry.Register(GameServerOpcode.OpenOwnChannel, GameServerOpenOwnChannelMessage.Read);
     }
 }

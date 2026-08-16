@@ -28,6 +28,7 @@ public class ChatMessageReadersTests
             Assert.That(registry.IsRegistered(GameServerOpcode.OpenChannel), Is.True);
             Assert.That(registry.IsRegistered(GameServerOpcode.CloseChannel), Is.True);
             Assert.That(registry.IsRegistered(GameServerOpcode.OpenPrivateChannel), Is.True);
+            Assert.That(registry.IsRegistered(GameServerOpcode.OpenOwnChannel), Is.True);
         });
     }
 

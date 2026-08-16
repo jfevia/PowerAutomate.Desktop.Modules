@@ -76,6 +76,52 @@ public class FrameCodecTests
     }
 
     [Test]
+    public void DecodeInboundPlain_StripsTheInnerLengthPrefix()
+    {
+        // Byte-for-byte the challenge frame a real TFS r3884 server sends.
+        var frame = new byte[]
+        {
+            0x0C, 0x00, 0xF0, 0x00, 0xF0, 0x03, 0x06, 0x00, 0x1F, 0x87, 0x08, 0x00, 0x00, 0x3B
+        };
+
+        var payload = FrameCodec.DecodeInboundPlain(BodyOf(frame));
+
+        Assert.That(payload, Is.EqualTo(new byte[] { 0x1F, 0x87, 0x08, 0x00, 0x00, 0x3B }));
+    }
+
+    [Test]
+    public void EncodeInboundPlain_RoundTripsThroughDecodeInboundPlain()
+    {
+        var payload = new byte[] { 0x1F, 1, 2, 3 };
+
+        var frame = FrameCodec.EncodeInboundPlain(payload);
+
+        Assert.That(FrameCodec.DecodeInboundPlain(BodyOf(frame)), Is.EqualTo(payload));
+    }
+
+    [Test]
+    public void EncodeInboundPlain_WithNullPayload_Throws()
+    {
+        Assert.Throws<ArgumentNullException>(() => FrameCodec.EncodeInboundPlain(null!));
+    }
+
+    [Test]
+    public void DecodeInboundPlain_WithoutRoomForTheInnerLength_ThrowsProtocolException()
+    {
+        var frame = FrameCodec.EncodePlain(new byte[] { 0x01 });
+
+        Assert.Throws<ProtocolException>(() => FrameCodec.DecodeInboundPlain(BodyOf(frame)));
+    }
+
+    [Test]
+    public void DecodeInboundPlain_WithOverstatedInnerLength_ThrowsProtocolException()
+    {
+        var frame = FrameCodec.EncodePlain(new byte[] { 0xFF, 0x00, 0x01 });
+
+        Assert.Throws<ProtocolException>(() => FrameCodec.DecodeInboundPlain(BodyOf(frame)));
+    }
+
+    [Test]
     public void EncodePlain_WithNullPayload_Throws()
     {
         Assert.Throws<ArgumentNullException>(() => FrameCodec.EncodePlain(null!));

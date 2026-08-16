@@ -7,13 +7,19 @@ using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Items;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Chat;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Container;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Creatures;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Editable;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Effects;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Login;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Map;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Misc;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Moderation;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Player;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Quest;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Social;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Trade;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Opcodes;
 
 namespace PowerAutomate.Desktop.OpenTibia.Client.Handshake;
@@ -68,6 +74,12 @@ public static class GameServerRegistryFactory
         SocialMessageReaders.RegisterTo(registry);
         MovementMessageReaders.RegisterTo(registry);
         MapMessageReaders.RegisterTo(registry, itemTypes);
+        ContainerMessageReaders.RegisterTo(registry, itemTypes);
+        TradeMessageReaders.RegisterTo(registry, itemTypes);
+        QuestMessageReaders.RegisterTo(registry);
+        EditableMessageReaders.RegisterTo(registry);
+        ModerationMessageReaders.RegisterTo(registry);
+        MiscMessageReaders.RegisterTo(registry);
 
         // Overwrites the six throwing registrations now that live floor context is available.
         registry.Register(GameServerOpcode.MapTopRow,

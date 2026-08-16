@@ -44,6 +44,11 @@ public sealed class FrameReaderLoop : IDisposable
     /// </summary>
     public string? FaultReason { get; private set; }
 
+    /// <summary>
+    /// The exception that ended the loop, kept so callers can inspect decode failures.
+    /// </summary>
+    public Exception? Fault { get; private set; }
+
     public void Start()
     {
         if (_running)
@@ -53,6 +58,7 @@ public sealed class FrameReaderLoop : IDisposable
 
         _running = true;
         FaultReason = null;
+        Fault = null;
         _stopped.Reset();
 
         // Background so a finished flow is never held open by this thread.
@@ -111,6 +117,7 @@ public sealed class FrameReaderLoop : IDisposable
         catch (Exception exception)
         {
             FaultReason = exception.Message;
+            Fault = exception;
         }
         finally
         {
