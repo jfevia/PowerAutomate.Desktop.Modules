@@ -62,9 +62,18 @@ public sealed class HarnessOptions
 
     public int ObserveSeconds { get; private set; } = 20;
 
+    /// <summary>
+    /// Slice used when draining the queue; the module clamps anything above 1000 ms.
+    /// </summary>
+    public int SliceMs { get; private set; } = 300;
+
     public bool Trace { get; private set; } = true;
 
     public bool Walk { get; private set; }
+
+    public bool Diagonal { get; private set; }
+
+    public bool AutoWalk { get; private set; }
 
     public bool Turn { get; private set; }
 
@@ -109,6 +118,7 @@ public sealed class HarnessOptions
                 case "--phase": options.Phase = Next().ToLowerInvariant(); break;
                 case "--timeout-ms": options.TimeoutMs = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--observe-seconds": options.ObserveSeconds = int.Parse(Next(), CultureInfo.InvariantCulture); break;
+                case "--slice-ms": options.SliceMs = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--items-xml": options.ItemsXml = Next(); break;
                 case "--items-otb": options.ItemsOtb = Next(); break;
                 case "--stackable-ids": options.StackableIds = Next(); break;
@@ -116,6 +126,8 @@ public sealed class HarnessOptions
                 case "--say": options.Say = Next(); break;
                 case "--look": options.Look = Next(); break;
                 case "--walk": options.Walk = true; break;
+                case "--diagonal": options.Diagonal = true; break;
+                case "--autowalk": options.AutoWalk = true; break;
                 case "--turn": options.Turn = true; break;
                 case "--no-trace": options.Trace = false; break;
                 case "--i-know-what-im-doing": options.Override = true; break;
@@ -161,9 +173,11 @@ public sealed class HarnessOptions
         yield return "  --items-xml <path>       TFS items.xml, for map item decoding";
         yield return "  --items-otb <path>       TFS items.otb, keyed by client id (stackable/fluid/splash)";
         yield return "  --stackable-ids <path>   plain list of stackable item ids";
-        yield return "  --say <text>             say this once entry is confirmed";
+        yield return "  --say <text>             say this once entry is confirmed; use | to send several in order";
         yield return "  --look <x,y,z>           look at a position";
         yield return "  --walk                   step north, east, south, west";
+        yield return "  --diagonal               step north-east, south-east, south-west, north-west";
+        yield return "  --autowalk               send a multi step path in one message";
         yield return "  --turn                   turn to each cardinal direction";
         yield return "  --no-trace               do not write the raw wire hex dump";
         yield return "  --out <dir>              output root (default artifacts/live)";

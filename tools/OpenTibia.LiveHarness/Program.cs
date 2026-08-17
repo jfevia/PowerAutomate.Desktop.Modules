@@ -26,6 +26,8 @@ namespace OpenTibia.LiveHarness;
 public static class Program
 {
     private static StreamWriter _log = StreamWriter.Null;
+    private static int _sliceMs = 300;
+    private static long _drainCalls;
 
     public static int Main(string[] args)
     {
@@ -67,6 +69,7 @@ public static class Program
 
             Say($"run directory : {Path.GetFullPath(runDirectory)}");
             Say($"target        : {options.Host}:{options.LoginPort}  account={options.Account}  phase={options.Phase}");
+            _sliceMs = options.SliceMs;
 
             try
             {
@@ -157,8 +160,8 @@ public static class Program
             PerformScriptedActions(options, client, observed, floors);
             Observe(options, client, observed, floors);
 
-            // A fault recorded after we ask to leave is the server acknowledging the logout.
-            var faultBeforeExit = client.Fault;
+            // A fault recorded before we ask to leave means the session was interrupted.
+            var faultBeforeExit = client.FaultReason;
 
             Say(string.Empty);
             Say("logging out");
@@ -177,9 +180,19 @@ public static class Program
     {
         if (!string.IsNullOrEmpty(options.Say))
         {
-            Say($"ACTION say: {options.Say}");
-            client.Send(new ClientTalkMessage(SpeakType.Say, null, null, options.Say!));
-            Drain(client, observed, TimeSpan.FromSeconds(2), floors);
+            // Several messages can be chained with |, which is how GM talkactions are driven.
+            foreach (var line in options.Say!.Split('|'))
+            {
+                var text = line.Trim();
+                if (text.Length == 0)
+                {
+                    continue;
+                }
+
+                Say($"ACTION say: {text}");
+                client.Send(new ClientTalkMessage(SpeakType.Say, null, null, text));
+                Drain(client, observed, TimeSpan.FromSeconds(2), floors);
+            }
         }
 
         if (options.Turn)
@@ -201,6 +214,28 @@ public static class Program
                 Drain(client, observed, TimeSpan.FromMilliseconds(900), floors);
                 Say($"    floor z={floors.CurrentZ}");
             }
+        }
+
+        if (options.Diagonal)
+        {
+            foreach (var direction in new[]
+                     {
+                         Direction.NorthEast, Direction.SouthEast, Direction.SouthWest, Direction.NorthWest
+                     })
+            {
+                Say($"ACTION diagonal: {direction}");
+                client.Send(new ClientWalkMessage(direction));
+                Drain(client, observed, TimeSpan.FromMilliseconds(1100), floors);
+            }
+        }
+
+        if (options.AutoWalk)
+        {
+            var path = new[] { Direction.North, Direction.North, Direction.East, Direction.South, Direction.South, Direction.West };
+            Say($"ACTION autowalk: {string.Join(",", path)}");
+            client.Send(new ClientAutoWalkMessage(path));
+            Drain(client, observed, TimeSpan.FromSeconds(5), floors);
+            Say($"    floor z={floors.CurrentZ}");
         }
 
         if (!string.IsNullOrEmpty(options.Look))
@@ -244,7 +279,8 @@ public static class Program
 
         while (clock.Elapsed < duration)
         {
-            var batch = client.Queue!.DequeueBatch(64, TimeSpan.FromMilliseconds(300));
+            _drainCalls++;
+            var batch = client.Queue!.DequeueBatch(64, TimeSpan.FromMilliseconds(_sliceMs));
 
             foreach (var message in batch)
             {
@@ -252,10 +288,11 @@ public static class Program
                 Say("  " + MessageRenderer.Describe(message));
             }
 
-            if (client.Fault != null)
+            // Any recorded fault ends observation immediately; spinning out the clock hides it.
+            if (client.FaultReason != null)
             {
-                Say($"FAULTED: {client.FaultReason}");
-                throw client.Fault;
+                Say($"CONNECTION LOST: {client.FaultReason}");
+                return;
             }
         }
     }
@@ -362,7 +399,7 @@ public static class Program
         string runDirectory,
         IReadOnlyList<IProtocolMessage> observed,
         TibiaGameClient client,
-        Exception? faultBeforeExit)
+        string? faultBeforeExit)
     {
         var statistics = client.Queue!.GetStatistics();
 
@@ -375,9 +412,10 @@ public static class Program
             "dropped           : " + statistics.Dropped,
             "filtered          : " + statistics.Filtered,
             "max depth seen    : " + statistics.MaxDepthSeen,
-            "fault before exit : " + (faultBeforeExit == null ? "none" : faultBeforeExit.Message),
-            "close after exit  : " + (client.FaultReason ?? "none") + "  (expected after logout)",
-            "verdict           : " + (faultBeforeExit == null ? "PASS" : "FAIL"),
+            "drain calls       : " + _drainCalls + "  at slice " + _sliceMs + " ms",
+            "interrupted       : " + (faultBeforeExit ?? "no"),
+            "logout write      : " + (client.ExitFailure ?? "ok"),
+            "verdict           : " + (faultBeforeExit == null ? "PASS" : "FAIL (session interrupted)"),
             string.Empty,
             "opcode histogram:"
         };

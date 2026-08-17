@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Threading;
 using PowerAutomate.Desktop.OpenTibia.Client.Handshake;
 using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
@@ -144,15 +145,37 @@ public sealed class TibiaGameClient : IDisposable
         _writer!.Send(message);
     }
 
+    /// <summary>
+    /// Why the last logout attempt could not be written, or null when it succeeded or was skipped.
+    /// </summary>
+    public string? ExitFailure { get; private set; }
+
     public void ExitGame()
     {
-        if (State == ConnectionState.InGame)
+        // Any recorded fault, exception or clean peer close, means writing a logout would be pointless.
+        if (State == ConnectionState.InGame && FaultReason == null)
         {
             State = ConnectionState.Disconnecting;
-            _writer!.Send(ClientMessages.Logout());
+            TrySendLogout();
         }
 
         Disconnect();
+    }
+
+    private void TrySendLogout()
+    {
+        try
+        {
+            _writer!.Send(ClientMessages.Logout());
+        }
+        catch (IOException exception)
+        {
+            ExitFailure = exception.Message;
+        }
+        catch (InvalidOperationException exception)
+        {
+            ExitFailure = exception.Message;
+        }
     }
 
     /// <summary>

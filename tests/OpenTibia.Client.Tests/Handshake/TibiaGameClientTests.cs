@@ -267,7 +267,8 @@ public class TibiaGameClientTests
     [Test]
     public void ExitGame_SendsLogoutAndDisconnects()
     {
-        var transport = new FakeSocketTransport();
+        // A real server stays connected after login, so the fake must not report EOF immediately.
+        var transport = new FakeSocketTransport { KeepAliveWhenDrained = true };
         transport.EnqueueRead(ChallengeFrame());
         transport.EnqueueRead(FrameCodec.EncodeEncrypted(PendingStatePayload(), Key));
 
@@ -491,6 +492,102 @@ public class TibiaGameClientTests
         using var client = Client(new FakeSocketTransport());
 
         Assert.Throws<ArgumentNullException>(() => client.EnterGame(null!, Patience));
+    }
+
+    [Test]
+    public void ExitGame_WhenTheReaderHasFaulted_DoesNotAttemptALogoutWrite()
+    {
+        var transport = new FakeSocketTransport();
+        transport.EnqueueRead(ChallengeFrame());
+        transport.EnqueueRead(FrameCodec.EncodeEncrypted(PendingStatePayload(), Key));
+
+        using var client = Client(transport);
+        client.EnterGame(Options(), Patience);
+
+        // Drain the fake so the reader sees a closed peer and records a fault.
+        var deadline = System.Diagnostics.Stopwatch.StartNew();
+        while (client.FaultReason == null && deadline.Elapsed < Patience)
+        {
+            System.Threading.Thread.Sleep(10);
+        }
+
+        var before = transport.Written.Count;
+        client.ExitGame();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(transport.Written, Has.Count.EqualTo(before), "No logout may be written to a dead peer.");
+            Assert.That(client.ExitFailure, Is.Null);
+            Assert.That(client.State, Is.EqualTo(ConnectionState.Disconnected));
+        });
+    }
+
+    [Test]
+    public void ExitGame_WhenTheLogoutWriteFails_RecordsItAndStillDisconnects()
+    {
+        var transport = new ThrowOnWriteTransport();
+        transport.EnqueueRead(ChallengeFrame());
+        transport.EnqueueRead(FrameCodec.EncodeEncrypted(PendingStatePayload(), Key));
+
+        using var client = Client(transport);
+        client.EnterGame(Options(), Patience);
+        transport.FailWrites = true;
+
+        client.ExitGame();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(client.ExitFailure, Is.EqualTo("peer vanished"));
+            Assert.That(client.State, Is.EqualTo(ConnectionState.Disconnected));
+        });
+    }
+
+    /// <summary>
+    /// Replays scripted reads but can be told to fail every write, as a dead peer does.
+    /// </summary>
+    private sealed class ThrowOnWriteTransport : ISocketTransport
+    {
+        private readonly System.Collections.Generic.Queue<byte[]> _reads =
+            new System.Collections.Generic.Queue<byte[]>();
+
+        public bool FailWrites { get; set; }
+
+        public bool IsConnected => true;
+
+        public void EnqueueRead(byte[] data) => _reads.Enqueue(data);
+
+        public void Connect(string host, int port, TimeSpan timeout)
+        {
+        }
+
+        public int Read(byte[] buffer, int offset, int count)
+        {
+            if (_reads.Count == 0)
+            {
+                System.Threading.Thread.Sleep(20);
+                return -1;
+            }
+
+            var chunk = _reads.Dequeue();
+            Array.Copy(chunk, 0, buffer, offset, chunk.Length);
+            return chunk.Length;
+        }
+
+        public void Write(byte[] data)
+        {
+            if (FailWrites)
+            {
+                throw new System.IO.IOException("peer vanished");
+            }
+        }
+
+        public void Close()
+        {
+        }
+
+        public void Dispose()
+        {
+        }
     }
 
     /// <summary>

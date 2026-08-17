@@ -28,6 +28,11 @@ internal sealed class FakeSocketTransport : ISocketTransport
     /// </summary>
     public int TimeoutsBeforeData { get; set; }
 
+    /// <summary>
+    /// Keeps the connection alive once the scripted reads run out, as a real quiet server does.
+    /// </summary>
+    public bool KeepAliveWhenDrained { get; set; }
+
     public void EnqueueRead(byte[] data)
     {
         _reads.Enqueue(data);
@@ -55,7 +60,13 @@ internal sealed class FakeSocketTransport : ISocketTransport
 
         if (_reads.Count == 0)
         {
-            return 0;
+            if (!KeepAliveWhenDrained)
+            {
+                return 0;
+            }
+
+            System.Threading.Thread.Sleep(10);
+            return -1;
         }
 
         var chunk = _reads.Dequeue();
