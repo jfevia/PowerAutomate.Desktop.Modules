@@ -79,6 +79,11 @@ public sealed class HarnessOptions
 
     public string? Say { get; private set; }
 
+    /// <summary>
+    /// Attacks the first creature seen that is not the player.
+    /// </summary>
+    public bool AttackFirst { get; private set; }
+
     public string? Look { get; private set; }
 
     /// <summary>
@@ -131,6 +136,7 @@ public sealed class HarnessOptions
                 case "--say": options.Say = Next(); break;
                 case "--look": options.Look = Next(); break;
                 case "--use-slot": options.UseSlot = int.Parse(Next(), CultureInfo.InvariantCulture); break;
+                case "--attack-first": options.AttackFirst = true; break;
                 case "--walk": options.Walk = true; break;
                 case "--diagonal": options.Diagonal = true; break;
                 case "--autowalk": options.AutoWalk = true; break;

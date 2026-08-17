@@ -18,6 +18,7 @@ using PowerAutomate.Desktop.OpenTibia.Protocol.Geometry;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Items;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Chat;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Creatures;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.ItemActions;
 using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement;
 
@@ -247,6 +248,21 @@ public static class Program
             Drain(client, observed, TimeSpan.FromSeconds(3), floors);
         }
 
+        if (options.AttackFirst)
+        {
+            var target = FindCreatureId(observed);
+            if (target == 0)
+            {
+                Say("ACTION attack: skipped, no creature id seen yet");
+            }
+            else
+            {
+                Say($"ACTION attack: creature {target}");
+                client.Send(new ClientAttackMessage(target, 1));
+                Drain(client, observed, TimeSpan.FromSeconds(4), floors);
+            }
+        }
+
         if (!string.IsNullOrEmpty(options.Look))
         {
             var parts = options.Look!.Split(',');
@@ -264,6 +280,46 @@ public static class Program
                 Say($"skipping --look, expected x,y,z but got '{options.Look}'");
             }
         }
+    }
+
+    /// <summary>
+    /// Picks a creature id out of anything already observed, ignoring the player's own id.
+    /// </summary>
+    private static uint FindCreatureId(IEnumerable<IProtocolMessage> observed)
+    {
+        uint own = 0;
+        var candidates = new List<uint>();
+
+        foreach (var message in observed)
+        {
+            foreach (var property in message.GetType().GetProperties())
+            {
+                if (property.GetIndexParameters().Length > 0)
+                {
+                    continue;
+                }
+
+                if (property.Name == "PlayerId" && property.GetValue(message, null) is uint playerId)
+                {
+                    own = playerId;
+                }
+
+                if (property.Name == "CreatureId" && property.GetValue(message, null) is uint creatureId)
+                {
+                    candidates.Add(creatureId);
+                }
+            }
+        }
+
+        foreach (var candidate in candidates)
+        {
+            if (candidate != own)
+            {
+                return candidate;
+            }
+        }
+
+        return 0;
     }
 
     private static void Observe(
