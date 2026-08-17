@@ -238,6 +238,15 @@ public static class Program
             Say($"    floor z={floors.CurrentZ}");
         }
 
+        if (options.UseSlot > 0)
+        {
+            // An inventory item lives at the pseudo position 0xFFFF with the slot in x.
+            Say($"ACTION use inventory slot {options.UseSlot}");
+            client.Send(new ClientUseItemMessage(
+                new Position(0xFFFF, (ushort)options.UseSlot, 0), 0, 0, 0));
+            Drain(client, observed, TimeSpan.FromSeconds(3), floors);
+        }
+
         if (!string.IsNullOrEmpty(options.Look))
         {
             var parts = options.Look!.Split(',');

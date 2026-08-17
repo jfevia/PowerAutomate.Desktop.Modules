@@ -81,6 +81,11 @@ public sealed class HarnessOptions
 
     public string? Look { get; private set; }
 
+    /// <summary>
+    /// Inventory slot to use, which opens a container such as the backpack.
+    /// </summary>
+    public int UseSlot { get; private set; }
+
     public string? ItemsXml { get; private set; }
 
     public string? ItemsOtb { get; private set; }
@@ -125,6 +130,7 @@ public sealed class HarnessOptions
                 case "--out": options.OutputRoot = Next(); break;
                 case "--say": options.Say = Next(); break;
                 case "--look": options.Look = Next(); break;
+                case "--use-slot": options.UseSlot = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--walk": options.Walk = true; break;
                 case "--diagonal": options.Diagonal = true; break;
                 case "--autowalk": options.AutoWalk = true; break;

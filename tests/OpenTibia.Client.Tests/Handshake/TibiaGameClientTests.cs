@@ -531,13 +531,33 @@ public class TibiaGameClientTests
 
         using var client = Client(transport);
         client.EnterGame(Options(), Patience);
-        transport.FailWrites = true;
+        transport.WriteFailure = new System.IO.IOException("peer vanished");
 
         client.ExitGame();
 
         Assert.Multiple(() =>
         {
             Assert.That(client.ExitFailure, Is.EqualTo("peer vanished"));
+            Assert.That(client.State, Is.EqualTo(ConnectionState.Disconnected));
+        });
+    }
+
+    [Test]
+    public void ExitGame_WhenTheTransportIsAlreadyClosed_RecordsItAndStillDisconnects()
+    {
+        var transport = new ThrowOnWriteTransport();
+        transport.EnqueueRead(ChallengeFrame());
+        transport.EnqueueRead(FrameCodec.EncodeEncrypted(PendingStatePayload(), Key));
+
+        using var client = Client(transport);
+        client.EnterGame(Options(), Patience);
+        transport.WriteFailure = new InvalidOperationException("transport is not connected");
+
+        client.ExitGame();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(client.ExitFailure, Is.EqualTo("transport is not connected"));
             Assert.That(client.State, Is.EqualTo(ConnectionState.Disconnected));
         });
     }
@@ -550,7 +570,7 @@ public class TibiaGameClientTests
         private readonly System.Collections.Generic.Queue<byte[]> _reads =
             new System.Collections.Generic.Queue<byte[]>();
 
-        public bool FailWrites { get; set; }
+        public Exception? WriteFailure { get; set; }
 
         public bool IsConnected => true;
 
@@ -575,9 +595,9 @@ public class TibiaGameClientTests
 
         public void Write(byte[] data)
         {
-            if (FailWrites)
+            if (WriteFailure != null)
             {
-                throw new System.IO.IOException("peer vanished");
+                throw WriteFailure;
             }
         }
 
