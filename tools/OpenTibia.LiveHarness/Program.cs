@@ -1,0 +1,348 @@
+﻿// ---------------------------------------------------
+// Copyright (c) Jesus Fernandez. All Rights Reserved.
+// ---------------------------------------------------
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using PowerAutomate.Desktop.OpenTibia.Client;
+using PowerAutomate.Desktop.OpenTibia.Client.Handshake;
+using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
+using PowerAutomate.Desktop.OpenTibia.Client.Transport;
+using PowerAutomate.Desktop.OpenTibia.Protocol;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Geometry;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Items;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Chat;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.ItemActions;
+using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement;
+
+namespace OpenTibia.LiveHarness;
+
+public static class Program
+{
+    private static StreamWriter _log = StreamWriter.Null;
+
+    public static int Main(string[] args)
+    {
+        if (args.Length == 0 || args.Contains("--help") || args.Contains("-h"))
+        {
+            foreach (var line in HarnessOptions.Usage())
+            {
+                Console.WriteLine(line);
+            }
+
+            return 2;
+        }
+
+        HarnessOptions options;
+        try
+        {
+            options = HarnessOptions.Parse(args);
+        }
+        catch (Exception exception)
+        {
+            Console.Error.WriteLine("Refused: " + exception.Message);
+            return 2;
+        }
+
+        var runDirectory = Path.Combine(options.OutputRoot, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+        Directory.CreateDirectory(runDirectory);
+
+        using (_log = new StreamWriter(Path.Combine(runDirectory, "messages.log"), false) { AutoFlush = true })
+        {
+            if (options.Trace)
+            {
+                SocketTransport.TraceFilePath = Path.Combine(runDirectory, "wire.log");
+            }
+
+            Say($"run directory : {Path.GetFullPath(runDirectory)}");
+            Say($"target        : {options.Host}:{options.LoginPort}  account={options.Account}  phase={options.Phase}");
+
+            try
+            {
+                return options.Phase == "login" ? RunLogin(options) : RunGame(options, runDirectory);
+            }
+            catch (Exception exception)
+            {
+                Report(exception);
+                return 1;
+            }
+        }
+    }
+
+    private static int RunLogin(HarnessOptions options)
+    {
+        var result = Authenticate(options);
+
+        Say(string.Empty);
+        Say($"motd          : {result.Motd.Replace("\n", " | ")}");
+        Say($"premium days  : {result.PremiumDays}");
+        Say($"characters    : {result.Characters.Count}");
+
+        foreach (var character in result.Characters)
+        {
+            Say($"  {character.Name,-20} {character.World,-14} {character.HostName}:{character.Port}");
+        }
+
+        Say(string.Empty);
+        Say("PHASE 1 PASSED: RSA, XTEA, Adler32, framing and the login protocol round-tripped against a real server.");
+        return 0;
+    }
+
+    private static LoginResult Authenticate(HarnessOptions options)
+    {
+        var clock = Stopwatch.StartNew();
+
+        using (var transport = new SocketTransport())
+        {
+            var client = new TibiaLoginClient(transport);
+            var result = client.Authenticate(
+                new LoginOptions(options.Host, options.LoginPort, options.Account, options.Password),
+                TimeSpan.FromMilliseconds(options.TimeoutMs));
+
+            Say($"login ok in {clock.ElapsedMilliseconds} ms");
+            return result;
+        }
+    }
+
+    private static int RunGame(HarnessOptions options, string runDirectory)
+    {
+        var login = Authenticate(options);
+
+        var character = login.Characters
+            .FirstOrDefault(entry => string.Equals(entry.Name, options.Character, StringComparison.OrdinalIgnoreCase));
+
+        if (character == null)
+        {
+            Say($"character '{options.Character}' not found. Available: "
+                + string.Join(", ", login.Characters.Select(entry => entry.Name)));
+            return 1;
+        }
+
+        TargetAllowList.Ensure(character.HostName, character.Port, options.Override);
+
+        var itemTypes = BuildItemTypes(options);
+        var floors = new MapFloorTracker();
+        var registry = GameServerRegistryFactory.CreateDefault(itemTypes, floors);
+        var observed = new List<IProtocolMessage>();
+
+        Say(string.Empty);
+        Say($"entering game as {character.Name} at {character.HostName}:{character.Port}");
+
+        using (var transport = new SocketTransport())
+        using (var client = new TibiaGameClient(transport, registry, XteaKeyGenerator.Generate, floors))
+        {
+            var gameOptions = new GameOptions(
+                character.HostName,
+                character.Port,
+                options.Account,
+                character.Name,
+                options.Password);
+
+            var clock = Stopwatch.StartNew();
+            client.EnterGame(gameOptions, TimeSpan.FromMilliseconds(options.TimeoutMs));
+            Say($"ENTERED GAME in {clock.ElapsedMilliseconds} ms  state={client.State}  floor z={floors.CurrentZ}");
+
+            Drain(client, observed, TimeSpan.FromSeconds(3), floors);
+            PerformScriptedActions(options, client, observed, floors);
+            Observe(options, client, observed, floors);
+
+            Say(string.Empty);
+            Say("logging out");
+            client.ExitGame();
+
+            WriteSummary(runDirectory, observed, client);
+            return client.Fault == null ? 0 : 1;
+        }
+    }
+
+    private static void PerformScriptedActions(
+        HarnessOptions options,
+        TibiaGameClient client,
+        ICollection<IProtocolMessage> observed,
+        MapFloorTracker floors)
+    {
+        if (!string.IsNullOrEmpty(options.Say))
+        {
+            Say($"ACTION say: {options.Say}");
+            client.Send(new ClientTalkMessage(SpeakType.Say, null, null, options.Say!));
+            Drain(client, observed, TimeSpan.FromSeconds(2), floors);
+        }
+
+        if (options.Turn)
+        {
+            foreach (var direction in new[] { Direction.North, Direction.East, Direction.South, Direction.West })
+            {
+                Say($"ACTION turn: {direction}");
+                client.Send(new ClientTurnMessage(direction));
+                Drain(client, observed, TimeSpan.FromMilliseconds(700), floors);
+            }
+        }
+
+        if (options.Walk)
+        {
+            foreach (var direction in new[] { Direction.North, Direction.East, Direction.South, Direction.West })
+            {
+                Say($"ACTION walk: {direction}");
+                client.Send(new ClientWalkMessage(direction));
+                Drain(client, observed, TimeSpan.FromMilliseconds(900), floors);
+                Say($"    floor z={floors.CurrentZ}");
+            }
+        }
+
+        if (!string.IsNullOrEmpty(options.Look))
+        {
+            var parts = options.Look!.Split(',');
+            if (parts.Length == 3
+                && ushort.TryParse(parts[0], out var x)
+                && ushort.TryParse(parts[1], out var y)
+                && byte.TryParse(parts[2], out var z))
+            {
+                Say($"ACTION look: {x},{y},{z}");
+                client.Send(new ClientLookMessage(new Position(x, y, z), 0, 0));
+                Drain(client, observed, TimeSpan.FromSeconds(2), floors);
+            }
+            else
+            {
+                Say($"skipping --look, expected x,y,z but got '{options.Look}'");
+            }
+        }
+    }
+
+    private static void Observe(
+        HarnessOptions options,
+        TibiaGameClient client,
+        ICollection<IProtocolMessage> observed,
+        MapFloorTracker floors)
+    {
+        Say(string.Empty);
+        Say($"observing for {options.ObserveSeconds}s");
+        Drain(client, observed, TimeSpan.FromSeconds(options.ObserveSeconds), floors);
+        Say($"observed {observed.Count} message(s) in total, floor z={floors.CurrentZ}");
+    }
+
+    private static void Drain(
+        TibiaGameClient client,
+        ICollection<IProtocolMessage> observed,
+        TimeSpan duration,
+        MapFloorTracker floors)
+    {
+        var clock = Stopwatch.StartNew();
+
+        while (clock.Elapsed < duration)
+        {
+            var batch = client.Queue!.DequeueBatch(64, TimeSpan.FromMilliseconds(300));
+
+            foreach (var message in batch)
+            {
+                observed.Add(message);
+                Say("  " + MessageRenderer.Describe(message));
+            }
+
+            if (client.Fault != null)
+            {
+                Say($"FAULTED: {client.FaultReason}");
+                throw client.Fault;
+            }
+        }
+    }
+
+    private static IItemTypeProvider BuildItemTypes(HarnessOptions options)
+    {
+        var provider = new ConfiguredItemTypeProvider();
+
+        if (options.ItemsXml != null)
+        {
+            provider.LoadItemsXml(options.ItemsXml);
+            Say($"items.xml: stackable={provider.StackableCount} fluid={provider.FluidCount} splash={provider.SplashCount}");
+        }
+
+        if (options.StackableIds != null)
+        {
+            provider.LoadIdList(options.StackableIds, "stackable");
+            Say($"stackable id list loaded: total stackable={provider.StackableCount}");
+        }
+
+        if (provider.IsEmpty)
+        {
+            Say("WARNING: no item classification supplied. A stackable, fluid or splash item on a visible tile");
+            Say("         will be mis-read and the map parse will desynchronize. Use --items-xml or --stackable-ids.");
+        }
+
+        return provider;
+    }
+
+    private static void WriteSummary(string runDirectory, IReadOnlyList<IProtocolMessage> observed, TibiaGameClient client)
+    {
+        var statistics = client.Queue!.GetStatistics();
+
+        var lines = new List<string>
+        {
+            "messages observed : " + observed.Count,
+            "queue depth       : " + statistics.Depth + "/" + statistics.Capacity,
+            "enqueued          : " + statistics.Enqueued,
+            "dequeued          : " + statistics.Dequeued,
+            "dropped           : " + statistics.Dropped,
+            "filtered          : " + statistics.Filtered,
+            "max depth seen    : " + statistics.MaxDepthSeen,
+            "fault             : " + (client.FaultReason ?? "none"),
+            string.Empty,
+            "opcode histogram:"
+        };
+
+        lines.AddRange(MessageRenderer.Histogram(observed));
+
+        File.WriteAllLines(Path.Combine(runDirectory, "summary.txt"), lines);
+
+        Say(string.Empty);
+        foreach (var line in lines)
+        {
+            Say(line);
+        }
+    }
+
+    private static void Report(Exception exception)
+    {
+        Say(string.Empty);
+        Say("=== FAILURE ===");
+
+        var decode = exception as PayloadDecodeException ?? exception.InnerException as PayloadDecodeException;
+
+        if (decode != null)
+        {
+            Say("A frame passed its checksum but a message body could not be parsed.");
+            Say($"  reason  : {decode.Message}");
+            Say($"  first byte (opcode) : 0x{decode.Payload[0]:X2} {MessageRenderer.NameOf(decode.Payload[0])}");
+            Say($"  payload ({decode.Payload.Length} bytes):");
+            Say("    " + decode.PayloadHex);
+            Say(string.Empty);
+            Say("Likely causes, most probable first:");
+            Say("  1. An opcode whose reader has the wrong field widths for this server build.");
+            Say("  2. Missing item classification, so a stackable or fluid item consumed the wrong byte count.");
+            Say("  3. An opcode this module does not implement at all.");
+        }
+        else if (exception is ProtocolException)
+        {
+            Say("Protocol failure before any message could be parsed (framing, checksum or crypto).");
+            Say($"  {exception.Message}");
+        }
+        else
+        {
+            Say($"{exception.GetType().Name}: {exception.Message}");
+        }
+
+        Say(string.Empty);
+        Say(exception.ToString());
+    }
+
+    private static void Say(string line)
+    {
+        Console.WriteLine(line);
+        _log.WriteLine(line);
+    }
+}
