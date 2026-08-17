@@ -58,6 +58,15 @@ public sealed class PacketReader
         return _buffer[_origin + _position];
     }
 
+    /// <summary>
+    /// Reads a little-endian word without consuming it.
+    /// </summary>
+    public ushort PeekUInt16()
+    {
+        EnsureAvailable(2);
+        return (ushort)(_buffer[_origin + _position] | (_buffer[_origin + _position + 1] << 8));
+    }
+
     public byte ReadByte()
     {
         EnsureAvailable(1);

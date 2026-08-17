@@ -60,6 +60,32 @@ public sealed class ConfiguredItemTypeProvider : IItemTypeProvider
     }
 
     /// <summary>
+    /// Reads a TFS items.otb, classifying by the client id the map description actually carries.
+    /// </summary>
+    public void LoadItemsOtb(string path)
+    {
+        var items = OtbItemDatabase.Load(path);
+
+        foreach (var item in items.Values)
+        {
+            if (item.IsStackable)
+            {
+                _stackable.Add(item.ClientId);
+            }
+
+            if (item.IsFluidContainer)
+            {
+                _fluids.Add(item.ClientId);
+            }
+
+            if (item.IsSplash)
+            {
+                _splashes.Add(item.ClientId);
+            }
+        }
+    }
+
+    /// <summary>
     /// Reads a TFS items.xml, picking up whichever classification attributes it carries.
     /// </summary>
     public void LoadItemsXml(string path)

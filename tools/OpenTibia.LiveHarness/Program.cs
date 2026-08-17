@@ -39,6 +39,11 @@ public static class Program
             return 2;
         }
 
+        if (string.Equals(args[0], "--dump-items", StringComparison.Ordinal))
+        {
+            return RunDumpItems(args);
+        }
+
         HarnessOptions options;
         try
         {
@@ -152,12 +157,15 @@ public static class Program
             PerformScriptedActions(options, client, observed, floors);
             Observe(options, client, observed, floors);
 
+            // A fault recorded after we ask to leave is the server acknowledging the logout.
+            var faultBeforeExit = client.Fault;
+
             Say(string.Empty);
             Say("logging out");
             client.ExitGame();
 
-            WriteSummary(runDirectory, observed, client);
-            return client.Fault == null ? 0 : 1;
+            WriteSummary(runDirectory, observed, client, faultBeforeExit);
+            return faultBeforeExit == null ? 0 : 1;
         }
     }
 
@@ -252,9 +260,82 @@ public static class Program
         }
     }
 
+    private static readonly ushort[] WellKnownClientIds = { 2148, 2152, 2160 };
+
+    /// <summary>
+    /// Offline mode: parses an items.otb and prints classification counts, no network involved.
+    /// </summary>
+    private static int RunDumpItems(string[] args)
+    {
+        if (args.Length < 2)
+        {
+            Console.Error.WriteLine("Refused: --dump-items requires a path to items.otb.");
+            return 2;
+        }
+
+        var path = args[1];
+        IReadOnlyDictionary<ushort, OtbItemRecord> items;
+        try
+        {
+            items = OtbItemDatabase.Load(path);
+        }
+        catch (Exception exception)
+        {
+            Console.Error.WriteLine($"Refused: failed to parse '{path}': {exception.Message}");
+            return 1;
+        }
+
+        var stackable = items.Values.Count(item => item.IsStackable);
+        var fluid = items.Values.Count(item => item.IsFluidContainer);
+        var splash = items.Values.Count(item => item.IsSplash);
+
+        Console.WriteLine($"items.otb          : {path}");
+        Console.WriteLine($"total items parsed : {items.Count}");
+        Console.WriteLine($"stackable          : {stackable}");
+        Console.WriteLine($"fluid container    : {fluid}");
+        Console.WriteLine($"splash             : {splash}");
+        Console.WriteLine();
+        Console.WriteLine("well known 8.60 client ids:");
+
+        foreach (var clientId in WellKnownClientIds)
+        {
+            if (items.TryGetValue(clientId, out var item))
+            {
+                Console.WriteLine(
+                    $"  client id {clientId,-6} server id {item.ServerId,-6} group={item.Group,-10} "
+                    + $"stackable={item.IsStackable} fluid={item.IsFluidContainer} splash={item.IsSplash}");
+            }
+            else
+            {
+                Console.WriteLine($"  client id {clientId,-6} not found");
+            }
+        }
+
+        Console.WriteLine();
+        Console.WriteLine("sample fluid container items (group=Fluid):");
+        foreach (var item in items.Values.Where(item => item.IsFluidContainer).Take(5))
+        {
+            Console.WriteLine($"  client id {item.ClientId,-6} server id {item.ServerId}");
+        }
+
+        Console.WriteLine("sample splash items (group=Splash):");
+        foreach (var item in items.Values.Where(item => item.IsSplash).Take(5))
+        {
+            Console.WriteLine($"  client id {item.ClientId,-6} server id {item.ServerId}");
+        }
+
+        return 0;
+    }
+
     private static IItemTypeProvider BuildItemTypes(HarnessOptions options)
     {
         var provider = new ConfiguredItemTypeProvider();
+
+        if (options.ItemsOtb != null)
+        {
+            provider.LoadItemsOtb(options.ItemsOtb);
+            Say($"items.otb: stackable={provider.StackableCount} fluid={provider.FluidCount} splash={provider.SplashCount}");
+        }
 
         if (options.ItemsXml != null)
         {
@@ -277,7 +358,11 @@ public static class Program
         return provider;
     }
 
-    private static void WriteSummary(string runDirectory, IReadOnlyList<IProtocolMessage> observed, TibiaGameClient client)
+    private static void WriteSummary(
+        string runDirectory,
+        IReadOnlyList<IProtocolMessage> observed,
+        TibiaGameClient client,
+        Exception? faultBeforeExit)
     {
         var statistics = client.Queue!.GetStatistics();
 
@@ -290,7 +375,9 @@ public static class Program
             "dropped           : " + statistics.Dropped,
             "filtered          : " + statistics.Filtered,
             "max depth seen    : " + statistics.MaxDepthSeen,
-            "fault             : " + (client.FaultReason ?? "none"),
+            "fault before exit : " + (faultBeforeExit == null ? "none" : faultBeforeExit.Message),
+            "close after exit  : " + (client.FaultReason ?? "none") + "  (expected after logout)",
+            "verdict           : " + (faultBeforeExit == null ? "PASS" : "FAIL"),
             string.Empty,
             "opcode histogram:"
         };

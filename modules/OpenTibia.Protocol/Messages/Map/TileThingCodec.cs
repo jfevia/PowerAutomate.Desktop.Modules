@@ -14,8 +14,8 @@ namespace PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Map;
 /// </summary>
 public static class TileThingCodec
 {
-    private const byte UnknownCreatureMarker = 0x61;
-    private const byte KnownCreatureMarker = 0x62;
+    private const ushort UnknownCreatureMarker = 0x0061;
+    private const ushort KnownCreatureMarker = 0x0062;
 
     public static TileThing Read(PacketReader reader, IItemTypeProvider itemTypes)
     {
@@ -38,11 +38,21 @@ public static class TileThingCodec
     }
 
     /// <summary>
-    /// Peeks only the low byte, so an item id of 0x61/0x62 with a nonzero high byte misreads as a creature.
+    /// Compares the whole word, because item ids such as 0x0E61 share the low byte of a creature marker.
     /// </summary>
-    internal static bool HasCreatureMarker(PacketReader reader)
+    public static bool HasCreatureMarker(PacketReader reader)
     {
-        var marker = reader.PeekByte();
+        if (reader == null)
+        {
+            throw new ArgumentNullException(nameof(reader));
+        }
+
+        if (reader.Remaining < 2)
+        {
+            return false;
+        }
+
+        var marker = reader.PeekUInt16();
         return marker == UnknownCreatureMarker || marker == KnownCreatureMarker;
     }
 }

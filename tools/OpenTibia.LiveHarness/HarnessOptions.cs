@@ -74,6 +74,8 @@ public sealed class HarnessOptions
 
     public string? ItemsXml { get; private set; }
 
+    public string? ItemsOtb { get; private set; }
+
     public string? StackableIds { get; private set; }
 
     public bool Override { get; private set; }
@@ -108,6 +110,7 @@ public sealed class HarnessOptions
                 case "--timeout-ms": options.TimeoutMs = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--observe-seconds": options.ObserveSeconds = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--items-xml": options.ItemsXml = Next(); break;
+                case "--items-otb": options.ItemsOtb = Next(); break;
                 case "--stackable-ids": options.StackableIds = Next(); break;
                 case "--out": options.OutputRoot = Next(); break;
                 case "--say": options.Say = Next(); break;
@@ -145,6 +148,8 @@ public sealed class HarnessOptions
         yield return "OpenTibia live acceptance harness";
         yield return "  restricted to 127.0.0.1 ports 10101-10104 (the dedicated test server)";
         yield return string.Empty;
+        yield return "  --dump-items <otb-path>  offline mode: parse items.otb and print classification counts, no network";
+        yield return string.Empty;
         yield return "  --account <name>         account name           REQUIRED";
         yield return "  --password <pw>          account password       REQUIRED";
         yield return "  --character <name>       character to enter as  (required for --phase game)";
@@ -154,6 +159,7 @@ public sealed class HarnessOptions
         yield return "  --timeout-ms <ms>        handshake timeout (default 15000)";
         yield return "  --observe-seconds <s>    how long to drain the queue in game (default 20)";
         yield return "  --items-xml <path>       TFS items.xml, for map item decoding";
+        yield return "  --items-otb <path>       TFS items.otb, keyed by client id (stackable/fluid/splash)";
         yield return "  --stackable-ids <path>   plain list of stackable item ids";
         yield return "  --say <text>             say this once entry is confirmed";
         yield return "  --look <x,y,z>           look at a position";
