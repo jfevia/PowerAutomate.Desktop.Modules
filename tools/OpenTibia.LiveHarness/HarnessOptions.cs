@@ -77,6 +77,11 @@ public sealed class HarnessOptions
 
     public bool Turn { get; private set; }
 
+    /// <summary>
+    /// An explicit step sequence such as n,n,e, walked one message at a time.
+    /// </summary>
+    public string? Steps { get; private set; }
+
     public string? Say { get; private set; }
 
     /// <summary>
@@ -134,6 +139,7 @@ public sealed class HarnessOptions
                 case "--stackable-ids": options.StackableIds = Next(); break;
                 case "--out": options.OutputRoot = Next(); break;
                 case "--say": options.Say = Next(); break;
+                case "--steps": options.Steps = Next(); break;
                 case "--look": options.Look = Next(); break;
                 case "--use-slot": options.UseSlot = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--attack-first": options.AttackFirst = true; break;
@@ -173,6 +179,7 @@ public sealed class HarnessOptions
         yield return "  restricted to 127.0.0.1 ports 10101-10104 (the dedicated test server)";
         yield return string.Empty;
         yield return "  --dump-items <otb-path>  offline mode: parse items.otb and print classification counts, no network";
+        yield return "  --find-floorchange <map.otbm> <items.xml> [x,y,z]  offline mode: list stair/hole tiles, no network";
         yield return string.Empty;
         yield return "  --account <name>         account name           REQUIRED";
         yield return "  --password <pw>          account password       REQUIRED";
@@ -186,6 +193,7 @@ public sealed class HarnessOptions
         yield return "  --items-otb <path>       TFS items.otb, keyed by client id (stackable/fluid/splash)";
         yield return "  --stackable-ids <path>   plain list of stackable item ids";
         yield return "  --say <text>             say this once entry is confirmed; use | to send several in order";
+        yield return "  --steps <n,e,s,w>        walk an explicit step sequence, one message per step";
         yield return "  --look <x,y,z>           look at a position";
         yield return "  --walk                   step north, east, south, west";
         yield return "  --diagonal               step north-east, south-east, south-west, north-west";

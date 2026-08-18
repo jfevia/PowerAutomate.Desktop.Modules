@@ -47,6 +47,11 @@ public static class Program
             return RunDumpItems(args);
         }
 
+        if (string.Equals(args[0], "--find-floorchange", StringComparison.Ordinal))
+        {
+            return RunFindFloorChange(args);
+        }
+
         HarnessOptions options;
         try
         {
@@ -196,6 +201,24 @@ public static class Program
             }
         }
 
+        if (!string.IsNullOrEmpty(options.Steps))
+        {
+            foreach (var token in options.Steps!.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (!TryParseDirection(token.Trim(), out var direction))
+                {
+                    Say($"skipping step '{token}', expected one of n, e, s, w, ne, se, sw, nw");
+                    continue;
+                }
+
+                var before = floors.CurrentZ;
+                Say($"ACTION step: {direction}  (floor z={before})");
+                client.Send(new ClientWalkMessage(direction));
+                Drain(client, observed, TimeSpan.FromMilliseconds(1200), floors);
+                Say($"    floor z={floors.CurrentZ}{(floors.CurrentZ == before ? string.Empty : "   FLOOR CHANGED")}");
+            }
+        }
+
         if (options.Turn)
         {
             foreach (var direction in new[] { Direction.North, Direction.East, Direction.South, Direction.West })
@@ -285,6 +308,22 @@ public static class Program
     /// <summary>
     /// Picks a creature id out of anything already observed, ignoring the player's own id.
     /// </summary>
+    private static bool TryParseDirection(string token, out Direction direction)
+    {
+        switch (token.ToLowerInvariant())
+        {
+            case "n": direction = Direction.North; return true;
+            case "e": direction = Direction.East; return true;
+            case "s": direction = Direction.South; return true;
+            case "w": direction = Direction.West; return true;
+            case "ne": direction = Direction.NorthEast; return true;
+            case "se": direction = Direction.SouthEast; return true;
+            case "sw": direction = Direction.SouthWest; return true;
+            case "nw": direction = Direction.NorthWest; return true;
+            default: direction = Direction.North; return false;
+        }
+    }
+
     private static uint FindCreatureId(IEnumerable<IProtocolMessage> observed)
     {
         uint own = 0;
@@ -363,6 +402,79 @@ public static class Program
     }
 
     private static readonly ushort[] WellKnownClientIds = { 2148, 2152, 2160 };
+
+    /// <summary>
+    /// Offline mode: finds map tiles whose items move a walker between floors, no network involved.
+    /// </summary>
+    private static int RunFindFloorChange(string[] args)
+    {
+        if (args.Length < 3)
+        {
+            Console.Error.WriteLine("Refused: --find-floorchange requires <map.otbm> <items.xml> [x,y,z]");
+            return 2;
+        }
+
+        IReadOnlyDictionary<ushort, string> wanted;
+        IReadOnlyList<FloorChangeTile> tiles;
+        try
+        {
+            wanted = OtbmMapScanner.LoadFloorChangeIds(args[2]);
+            tiles = OtbmMapScanner.FindTiles(args[1], wanted);
+        }
+        catch (Exception exception)
+        {
+            Console.Error.WriteLine($"Refused: {exception.Message}");
+            return 1;
+        }
+
+        Console.WriteLine($"map                : {args[1]}");
+        Console.WriteLine($"floorchange ids    : {wanted.Count}");
+        Console.WriteLine($"floorchange tiles  : {tiles.Count}");
+        Console.WriteLine();
+        Console.WriteLine("by change type:");
+        foreach (var group in tiles.GroupBy(tile => tile.Change).OrderByDescending(group => group.Count()))
+        {
+            Console.WriteLine($"  {group.Key,-14} {group.Count(),6}");
+        }
+
+        var ordered = tiles.AsEnumerable();
+        if (args.Length > 3 && TryParsePosition(args[3], out var near))
+        {
+            Console.WriteLine();
+            Console.WriteLine($"nearest to {near.X},{near.Y},{near.Z}:");
+            ordered = tiles
+                .Where(tile => tile.Z == near.Z)
+                .OrderBy(tile => Math.Max(Math.Abs(tile.X - near.X), Math.Abs(tile.Y - near.Y)));
+        }
+        else
+        {
+            Console.WriteLine();
+            Console.WriteLine("first candidates:");
+        }
+
+        foreach (var tile in ordered.Take(25))
+        {
+            Console.WriteLine($"  {tile}");
+        }
+
+        return 0;
+    }
+
+    private static bool TryParsePosition(string text, out Position position)
+    {
+        position = default;
+        var parts = text.Split(',');
+        if (parts.Length != 3
+            || !ushort.TryParse(parts[0], out var x)
+            || !ushort.TryParse(parts[1], out var y)
+            || !byte.TryParse(parts[2], out var z))
+        {
+            return false;
+        }
+
+        position = new Position(x, y, z);
+        return true;
+    }
 
     /// <summary>
     /// Offline mode: parses an items.otb and prints classification counts, no network involved.

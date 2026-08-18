@@ -85,11 +85,25 @@ Each of these passed the entire unit suite and would have failed on first contac
 
 ## Not validated
 
-- **`FloorChangeUp` / `FloorChangeDown`.** TFS sends a fresh `FullMap` for teleports, so these fire
-  only when walking onto a stair or hole tile, which needs map-specific navigation.
-  `MapFloorTracker` *was* proven to follow a floor change (z 7 → 6) from the `FullMap`. The opcodes
-  themselves remain covered by byte-exact unit tests whose pre-reveal counts come from
+- **`FloorChangeUp` / `FloorChangeDown` cannot be produced by this server at all.** This is now a
+  proven statement, not a gap in the testing. `Tile::moveCreature` sets `teleport = true` whenever
+  the move is not `Position::areInRange<1,1,0>`, and that template requires `|Δz| ≤ 0`
+  (`tile.cpp` 449-451, `position.h` 51). `ProtocolGame::sendMoveCreature` only reaches
+  `MoveUpCreature` / `MoveDownCreature` inside its `else` branch, which requires `teleport == false`,
+  while those calls require `newPos.z != oldPos.z` (`protocolgame.cpp` 2297-2318). The two conditions
+  are mutually exclusive, so `0xBE` / `0xBF` are unreachable in this revision.
+  Confirmed live twice by walking onto real map tiles rather than teleporting:
+
+  | walk                      | tile                          | wire sequence                          | z      |
+  | ------------------------- | ----------------------------- | -------------------------------------- | ------ |
+  | east onto stairs up       | `101,114,7` item 5258 `west`  | `0x6D` `0x66` `0x6C` **`0x64 FullMap`** | 7 → 6  |
+  | east onto a hole down     | `94,145,7` item 409 `down`    | `0x6D` `0x6C` **`0x64 FullMap`**        | 7 → 8  |
+
+  Both walks are a normal same-floor step onto the tile, then a second server-side move that is
+  flagged as a teleport and therefore re-describes the whole map. `MapFloorTracker` followed both.
+  The opcodes remain covered by byte-exact unit tests whose pre-reveal counts come from
   tfs-old-svn r3884 `protocolgame.cpp` (`MoveUpCreature` 2984-3020, `MoveDownCreature` 3027-3062).
+  A stock Tibia server does send them, which is why the decoders stay in.
 - **Trade, quest log, editable text and rule violation messages.** Implemented and unit tested, but
   no live scenario triggered them.
 - **PAD designer and portal upload.** No Power Automate Desktop installation or tenant is available
@@ -104,4 +118,8 @@ Each of these passed the entire unit suite and would have failed on first contac
   there is blocked. BotTester2 is the better character for movement tests.
 - GM talkactions (`/arenatp`, `/arenaclean`, `/arenaspawn`, `/arenagive`) are available on account
   `22` and can build a deterministic scenario. Chain them with `--say "cmd1|cmd2"`.
+- To find a stair or hole to walk onto, use the offline map scan, which needs no network:
+  `--find-floorchange <map.otbm> <items.xml> [x,y,z]`. It reads the floorchange ids out of
+  `items.xml`, walks the OTBM node tree and lists matching tiles nearest a position. On this map it
+  finds 608 such tiles. Then drive the walk with `--say "/arenatp <char>,<x>,<y>,<z>" --steps e`.
 - A slice of 500 ms is the measured sweet spot; smaller slices only multiply action invocations.
