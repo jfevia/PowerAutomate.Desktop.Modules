@@ -7,7 +7,7 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using NUnit.Framework;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Actions.Client;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Tests.Fakes;
-using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement;
+using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Enums;
 
 namespace PowerAutomate.Desktop.Modules.OpenTibia.Actions.Tests.Actions.Client;
 

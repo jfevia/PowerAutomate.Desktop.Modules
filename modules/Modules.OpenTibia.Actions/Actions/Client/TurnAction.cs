@@ -6,9 +6,12 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
+using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Enums;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Services;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Types;
-using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement;
+using ClientAutoWalkMessage = PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement.ClientAutoWalkMessage;
+using ClientTurnMessage = PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement.ClientTurnMessage;
+using ClientWalkMessage = PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Movement.ClientWalkMessage;
 
 namespace PowerAutomate.Desktop.Modules.OpenTibia.Actions.Actions.Client;
 
@@ -39,6 +42,6 @@ public class TurnAction : OpenTibiaActionBase
     {
         var session = SessionGuards.RequireInGame(GameSession);
 
-        session.Client.Send(new ClientTurnMessage(Direction));
+        session.Client.Send(new ClientTurnMessage(Direction.ToProtocol()));
     }
 }

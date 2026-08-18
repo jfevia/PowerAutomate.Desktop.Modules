@@ -6,9 +6,10 @@ using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
+using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Enums;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Services;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Types;
-using PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Chat;
+using ClientTalkMessage = PowerAutomate.Desktop.OpenTibia.Protocol.Messages.Chat.ClientTalkMessage;
 
 namespace PowerAutomate.Desktop.Modules.OpenTibia.Actions.Actions.Client;
 
@@ -51,6 +52,6 @@ public class SendTalkAction : OpenTibiaActionBase
         var receiverName = string.IsNullOrEmpty(ReceiverName) ? null : ReceiverName;
         ushort? channelId = ChannelId > 0 ? (ushort)ChannelId.Value : (ushort?)null;
 
-        session.Client.Send(new ClientTalkMessage(Type, receiverName, channelId, Text ?? string.Empty));
+        session.Client.Send(new ClientTalkMessage(Type.ToProtocol(), receiverName, channelId, Text ?? string.Empty));
     }
 }
