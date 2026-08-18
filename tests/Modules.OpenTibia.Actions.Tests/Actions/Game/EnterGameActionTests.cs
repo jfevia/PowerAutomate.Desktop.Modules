@@ -24,6 +24,7 @@ public class EnterGameActionTests
         {
             LoginSession = SessionFactory.CreateLoginSession(new FakeSocketTransport(), "Rook"),
             Character = new TibiaCharacter("Rook", "Antica", "game.example", 7172),
+            ItemDatabase = DatFixture.CreateDatabase(),
             QueueCapacity = 64,
             TimeoutMs = 15000
         };
@@ -40,6 +41,17 @@ public class EnterGameActionTests
         var exception = Assert.Throws<ActionException>(() => action.Execute(new ActionContext()))!;
 
         Assert.That(exception.Name, Is.EqualTo("NotConnectedError"));
+    }
+
+    [Test]
+    public void Execute_WithoutItemDatabase_ThrowsInvalidArgument()
+    {
+        var action = CreateAction(new FakeSocketTransport());
+        action.ItemDatabase = null!;
+
+        var exception = Assert.Throws<ActionException>(() => action.Execute(new ActionContext()))!;
+
+        Assert.That(exception.Name, Is.EqualTo("InvalidArgumentError"));
     }
 
     [Test]

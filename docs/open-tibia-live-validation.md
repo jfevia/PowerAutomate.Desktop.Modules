@@ -112,8 +112,16 @@ Each of these passed the entire unit suite and would have failed on first contac
 ## Notes for whoever runs this next
 
 - `items.xml` on this server has **no** stackable flags; they live in binary `items.otb`. The
-  harness parses it, keyed on **client id** (`ITEM_ATTR_CLIENTID`), not server id. This server ships
-  a custom table where the two diverge, so gold coin is server id 2148 but client id 3031.
+  harness can read either that or, preferably, a client `Tibia.dat` via `--items-dat`, which is
+  what a real client classifies from and needs no server files. Both agree exactly on this
+  install: 11,604 items, 480 stackable, 28 fluid, 12 splash. Note the two id spaces differ, so
+  gold coin is server id 2148 but client id 3031.
+- **Item classification is mandatory.** Without it every stackable, fluid and splash item decodes
+  one byte short and the map description desynchronizes, surfacing as a bogus "opcode has no
+  reader" error somewhere later in the stream. Reproduced deliberately: entering at the temple
+  with no item data fails with `Opcode 0xE8 has no reader`, and the same character with
+  `--items-dat` enters in 41 ms with 0 dropped messages. The PAD module therefore requires the
+  Load item database action and fails fast with a clear message when it is missing.
 - BotTester spawns at the temple surrounded by dragons and loses health continuously; movement
   there is blocked. BotTester2 is the better character for movement tests.
 - GM talkactions (`/arenatp`, `/arenaclean`, `/arenaspawn`, `/arenagive`) are available on account

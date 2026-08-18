@@ -100,6 +100,11 @@ public sealed class HarnessOptions
 
     public string? ItemsOtb { get; private set; }
 
+    /// <summary>
+    /// A client Tibia.dat, which is what a real client classifies items from.
+    /// </summary>
+    public string? ItemsDat { get; private set; }
+
     public string? StackableIds { get; private set; }
 
     public bool Override { get; private set; }
@@ -136,6 +141,7 @@ public sealed class HarnessOptions
                 case "--slice-ms": options.SliceMs = int.Parse(Next(), CultureInfo.InvariantCulture); break;
                 case "--items-xml": options.ItemsXml = Next(); break;
                 case "--items-otb": options.ItemsOtb = Next(); break;
+                case "--items-dat": options.ItemsDat = Next(); break;
                 case "--stackable-ids": options.StackableIds = Next(); break;
                 case "--out": options.OutputRoot = Next(); break;
                 case "--say": options.Say = Next(); break;
@@ -191,6 +197,7 @@ public sealed class HarnessOptions
         yield return "  --observe-seconds <s>    how long to drain the queue in game (default 20)";
         yield return "  --items-xml <path>       TFS items.xml, for map item decoding";
         yield return "  --items-otb <path>       TFS items.otb, keyed by client id (stackable/fluid/splash)";
+        yield return "  --items-dat <path>       client Tibia.dat; preferred over the server files";
         yield return "  --stackable-ids <path>   plain list of stackable item ids";
         yield return "  --say <text>             say this once entry is confirmed; use | to send several in order";
         yield return "  --steps <n,e,s,w>        walk an explicit step sequence, one message per step";

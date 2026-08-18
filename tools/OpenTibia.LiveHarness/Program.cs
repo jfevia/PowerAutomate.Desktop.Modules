@@ -52,6 +52,11 @@ public static class Program
             return RunFindFloorChange(args);
         }
 
+        if (string.Equals(args[0], "--dump-dat", StringComparison.Ordinal))
+        {
+            return RunDumpDat(args);
+        }
+
         HarnessOptions options;
         try
         {
@@ -404,6 +409,56 @@ public static class Program
     private static readonly ushort[] WellKnownClientIds = { 2148, 2152, 2160 };
 
     /// <summary>
+    /// Offline mode: parses a Tibia.dat and prints classification counts, no network involved.
+    /// </summary>
+    private static int RunDumpDat(string[] args)
+    {
+        if (args.Length < 2)
+        {
+            Console.Error.WriteLine("Refused: --dump-dat requires a path to Tibia.dat.");
+            return 2;
+        }
+
+        DatItemDatabase database;
+        try
+        {
+            database = DatItemDatabase.Load(args[1]);
+        }
+        catch (Exception exception)
+        {
+            Console.Error.WriteLine($"Refused: failed to parse '{args[1]}': {exception.Message}");
+            return 1;
+        }
+
+        Console.WriteLine($"Tibia.dat          : {args[1]}");
+        Console.WriteLine($"signature          : 0x{database.Signature:X8}");
+        Console.WriteLine($"items parsed       : {database.Count}");
+        Console.WriteLine($"stackable          : {database.StackableCount}");
+        Console.WriteLine($"fluid container    : {database.FluidContainerCount}");
+        Console.WriteLine($"splash             : {database.SplashCount}");
+
+        if (args.Length > 2)
+        {
+            Console.WriteLine();
+            Console.WriteLine("requested client ids:");
+            foreach (var token in args[2].Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (!ushort.TryParse(token.Trim(), out var clientId))
+                {
+                    continue;
+                }
+
+                var flags = database.Lookup(clientId);
+                Console.WriteLine(flags == null
+                    ? $"  {clientId,-6} not present"
+                    : $"  {clientId,-6} stackable={flags.IsStackable} fluid={flags.IsFluidContainer} splash={flags.IsSplash}");
+            }
+        }
+
+        return 0;
+    }
+
+    /// <summary>
     /// Offline mode: finds map tiles whose items move a walker between floors, no network involved.
     /// </summary>
     private static int RunFindFloorChange(string[] args)
@@ -543,6 +598,14 @@ public static class Program
 
     private static IItemTypeProvider BuildItemTypes(HarnessOptions options)
     {
+        // A .dat is what the real client reads, so prefer it over the server-side files.
+        if (options.ItemsDat != null)
+        {
+            var dat = DatItemDatabase.Load(options.ItemsDat);
+            Say($"Tibia.dat: items={dat.Count} stackable={dat.StackableCount} fluid={dat.FluidContainerCount} splash={dat.SplashCount}");
+            return dat;
+        }
+
         var provider = new ConfiguredItemTypeProvider();
 
         if (options.ItemsOtb != null)

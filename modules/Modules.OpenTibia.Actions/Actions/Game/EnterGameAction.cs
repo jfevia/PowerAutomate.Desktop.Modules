@@ -12,6 +12,7 @@ using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Services;
 using PowerAutomate.Desktop.Modules.OpenTibia.Actions.Types;
 using PowerAutomate.Desktop.OpenTibia.Client;
 using PowerAutomate.Desktop.OpenTibia.Client.Handshake;
+using PowerAutomate.Desktop.OpenTibia.Client.Streaming;
 using PowerAutomate.Desktop.OpenTibia.Client.Transport;
 
 namespace PowerAutomate.Desktop.Modules.OpenTibia.Actions.Actions.Game;
@@ -52,11 +53,14 @@ public class EnterGameAction : OpenTibiaActionBase
     [InputArgument(Order = 2, Group = Groups.General)]
     public TibiaCharacter Character { get; set; } = null!;
 
-    [InputArgument(Order = 3)]
+    [InputArgument(Order = 3, Group = Groups.General)]
+    public TibiaItemDatabase ItemDatabase { get; set; } = null!;
+
+    [InputArgument(Order = 4)]
     [DefaultValue(4096)]
     public int QueueCapacity { get; set; } = 4096;
 
-    [InputArgument(Order = 4)]
+    [InputArgument(Order = 5)]
     [DefaultValue(15000)]
     public int TimeoutMs { get; set; } = 15000;
 
@@ -72,13 +76,21 @@ public class EnterGameAction : OpenTibiaActionBase
             throw new ArgumentNullException(nameof(Character));
         }
 
+        // Without item classification the map decoder desynchronizes and reports a bogus opcode.
+        if (ItemDatabase == null)
+        {
+            throw ActionErrors.Create(ErrorCodes.InvalidArgument, ActionErrors.ItemDatabaseMissing);
+        }
+
         var options = new GameOptions(Character.Host, Character.Port, session.AccountName, Character.Name, session.Password)
         {
             QueueCapacity = QueueCapacity
         };
 
         var transport = _transportFactory();
-        var client = new TibiaGameClient(transport, GameServerRegistryFactory.CreateDefault(), _keyFactory);
+        var floors = new MapFloorTracker();
+        var registry = GameServerRegistryFactory.CreateDefault(ItemDatabase.Provider, floors);
+        var client = new TibiaGameClient(transport, registry, _keyFactory, floors);
 
         try
         {

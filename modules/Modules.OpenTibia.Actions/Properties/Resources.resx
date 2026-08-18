@@ -1037,4 +1037,40 @@
   <data name="SpeakType_MonsterYell_Description" xml:space="preserve">
     <value>A monster yelling.</value>
   </data>
+  <data name="LoadItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Load item database</value>
+  </data>
+  <data name="LoadItemDatabase_Description" xml:space="preserve">
+    <value>Reads a client Tibia.dat so map descriptions can be decoded.</value>
+  </data>
+  <data name="LoadItemDatabase_Summary" xml:space="preserve">
+    <value>Load item database from {DatPath}</value>
+  </data>
+  <data name="LoadItemDatabase_DatPath_FriendlyName" xml:space="preserve">
+    <value>Tibia.dat path</value>
+  </data>
+  <data name="LoadItemDatabase_DatPath_Description" xml:space="preserve">
+    <value>Full path to the 8.60 client&apos;s Tibia.dat file.</value>
+  </data>
+  <data name="LoadItemDatabase_ItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Item database</value>
+  </data>
+  <data name="LoadItemDatabase_ItemDatabase_Description" xml:space="preserve">
+    <value>The parsed item classification, to pass to Enter game.</value>
+  </data>
+  <data name="EnterGame_ItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Item database</value>
+  </data>
+  <data name="EnterGame_ItemDatabase_Description" xml:space="preserve">
+    <value>The output of Load item database; required to decode the map.</value>
+  </data>
+  <data name="TibiaItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Tibia item database</value>
+  </data>
+  <data name="TibiaItemDatabase_Description" xml:space="preserve">
+    <value>Item classification read from a client Tibia.dat.</value>
+  </data>
+  <data name="TibiaItemDatabase_FriendlyNamePlural" xml:space="preserve">
+    <value>Tibia item databases</value>
+  </data>
 </root>
