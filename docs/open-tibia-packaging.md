@@ -81,20 +81,36 @@ certificate for `CN=DESKTOP-57LCC73` (valid until 2027-06-09) — exactly what `
 produces when it is run. `sign.ps1` found and used that store certificate without ever touching
 the `.pfx`.
 
-## Upload and smoke test — not possible in this environment
+## Upload — done, and verified by a byte-exact round trip
 
-* **Uploading to make.powerautomate.com**: not attempted. There is no credential or network path
-  to a Power Platform tenant available to this session, and the upload flow requires interactive
-  sign-in.
-* **Smoke-testing in the PAD designer**: not possible. This machine has no working Power Automate
-  Desktop install to test against — `C:\Program Files (x86)\Power Automate Desktop` contains only
-  four 123-byte `*.Proxy.config` stub files, there is no `PAD.RobotV2.exe` or any other `.exe`
-  anywhere under that folder or `%LOCALAPPDATA%\Microsoft\Power Automate Desktop`, no matching
-  entry exists in the Windows installed-apps registry, and no PAD process is running.
+Power Automate for desktop **2.70.00187.26189** is now installed on this machine (via
+`winget install Microsoft.PowerAutomateDesktop`), so the earlier "no PAD install" limitation no
+longer applies.
 
-Both are stated plainly as environment limitations, not worked around.
+The `.cab` was uploaded straight to Dataverse rather than through the portal, because the Power
+Platform CLI has **no command that creates a `desktopflowmodule` record** — `pac env fetch` is
+read-only, `pac solution add-solution-component` only adds components that already exist, and
+`pac auth token` mints a token for `api.powerplatform.com`, which is the wrong audience for the
+Dataverse Web API. What worked:
 
-## Deploying to a real tenant (procedure; steps 3–4 unverified end-to-end here)
+```
+az account get-access-token --resource https://<org>.crm4.dynamics.com
+POST  /api/data/v9.2/desktopflowmodules            {"name":"OpenTibia","type":0}
+PATCH /api/data/v9.2/desktopflowmodules(<id>)/data  <cab bytes>, header x-ms-file-name
+```
+
+The account must be **licensed**: an unlicensed System Administrator is downgraded to
+Administrative access mode and fails with *missing `prvReaddesktopflowmodule` privilege*.
+
+Verified after upload: the record carries `type=0`, `data_name=Modules.OpenTibia.Actions.cab` and
+the same `solutionid` as the other 18 modules, and downloading `data/$value` back returns
+84,856 bytes with a SHA256 identical to the local `.cab`.
+
+* **Smoke-testing in the PAD designer**: still outstanding. PAD caches a downloaded module under
+  `%LOCALAPPDATA%\Microsoft\Power Automate Desktop\DesktopFlowModules\CustomModule\<id>\`, where
+  `<id>` is the `desktopflowmoduleid` — confirmed against the pre-existing GitHub module.
+
+## Deploying to a real tenant (procedure; step 4 still unverified here)
 
 1. `dotnet build modules\Modules.OpenTibia.Actions\Modules.OpenTibia.Actions.csproj -c Release -p:PackCustomModule=true`
    (or a Debug build, matching every other module's convention) to produce the signed 3 DLLs and
@@ -104,7 +120,8 @@ Both are stated plainly as environment limitations, not worked around.
    this module. `setup.ps1` already does this for `CurrentUser\Root` on the machine that generates
    the certificate; other machines need the same public certificate imported the same way, or PAD
    will reject the module as untrusted.
-3. Sign in to make.powerautomate.com → **Data → Custom actions → Upload custom action**, and
-   upload the `.cab` (well under the 30 MB cap measured above).
+3. Upload the `.cab` (well under the 30 MB cap measured above), either through
+   make.powerautomate.com → **Data → Custom actions → Upload custom action**, or with the
+   Dataverse Web API calls shown above.
 4. Add the module to a desktop flow via **Actions → Custom** in the PAD designer and confirm all
    21 actions resolve and run correctly.
