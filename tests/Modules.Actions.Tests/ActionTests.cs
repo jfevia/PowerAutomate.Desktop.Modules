@@ -243,6 +243,36 @@ public class ActionTests
     }
 
     [Test]
+    public void Action_All_InputArguments_All_Enums_AreBackedByInt()
+    {
+        var violations = new List<string>();
+
+        foreach (var assembly in ModuleEnumerator.GetAllAssemblies())
+        {
+            foreach (var (actionType, actionAttribute) in GetActions(assembly))
+            {
+                foreach (var property in GetInputArguments(actionType))
+                {
+                    var propertyType = GetUnderlyingType(property.PropertyType);
+                    if (!propertyType.IsEnum || Enum.GetUnderlyingType(propertyType) == typeof(int))
+                    {
+                        continue;
+                    }
+
+                    violations.Add($"{Describe(assembly, actionType, actionAttribute)} argument '{property.Name}' uses "
+                                   + $"{propertyType.Name} backed by {Enum.GetUnderlyingType(propertyType).Name}");
+                }
+            }
+        }
+
+        Assert.That(violations, Is.Empty,
+            "The Power Automate Desktop module loader reads enum values with (int)Enum.Parse. A narrower underlying "
+            + "type throws, the loader swallows it, and the enum is silently never registered, so the designer "
+            + "reports the module name as an undefined variable wherever the literal is used."
+            + Environment.NewLine + string.Join(Environment.NewLine, violations));
+    }
+
+    [Test]
     public void Action_All_HaveExactlyOneConstructor()
     {
         var violations = new List<string>();

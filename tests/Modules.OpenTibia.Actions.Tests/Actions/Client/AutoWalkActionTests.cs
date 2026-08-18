@@ -17,7 +17,7 @@ public class AutoWalkActionTests
     [Test]
     public void Execute_WithNullSession_ThrowsNotConnected()
     {
-        var action = new AutoWalkAction { Directions = new List<Direction> { Direction.North } };
+        var action = new AutoWalkAction { Directions = "n" };
 
         var exception = Assert.Throws<ActionException>(() => action.Execute(new ActionContext()))!;
 
@@ -28,7 +28,7 @@ public class AutoWalkActionTests
     public void Execute_WhenNotInGame_ThrowsNotConnected()
     {
         var session = SessionFactory.CreateDisconnectedGameSession(new FakeSocketTransport());
-        var action = new AutoWalkAction { GameSession = session, Directions = new List<Direction> { Direction.North } };
+        var action = new AutoWalkAction { GameSession = session, Directions = "n" };
 
         Assert.Throws<ActionException>(() => action.Execute(new ActionContext()));
     }
@@ -45,14 +45,14 @@ public class AutoWalkActionTests
     }
 
     [Test]
-    public void Execute_WithEmptyDirections_ThrowsProtocolError()
+    public void Execute_WithEmptyDirections_ThrowsInvalidArgument()
     {
         var session = SessionFactory.CreateInGameSession(new FakeSocketTransport());
-        var action = new AutoWalkAction { GameSession = session, Directions = new List<Direction>() };
+        var action = new AutoWalkAction { GameSession = session, Directions = "   " };
 
         var exception = Assert.Throws<ActionException>(() => action.Execute(new ActionContext()))!;
 
-        Assert.That(exception.Name, Is.EqualTo("ProtocolErrorError"));
+        Assert.That(exception.Name, Is.EqualTo("InvalidArgumentError"));
     }
 
     [Test]
@@ -64,7 +64,7 @@ public class AutoWalkActionTests
         var action = new AutoWalkAction
         {
             GameSession = session,
-            Directions = new List<Direction> { Direction.North, Direction.East }
+            Directions = "n,e"
         };
 
         action.Execute(new ActionContext());

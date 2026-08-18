@@ -33,8 +33,16 @@ public class AutoWalkAction : OpenTibiaActionBase
     [InputArgument(Order = 1, Group = Groups.General)]
     public TibiaGameSession GameSession { get; set; } = null!;
 
+    /// <summary>
+    /// A comma separated path such as n,n,e,s,s,w; full names like North are also accepted.
+    /// </summary>
+    /// <remarks>
+    /// A string rather than a list of Direction because the designer cannot express an enum literal
+    /// inside a list: a list argument is not flagged as an enum, so each element is validated as a
+    /// variable and rejected.
+    /// </remarks>
     [InputArgument(Order = 2, Group = Groups.General)]
-    public List<Direction> Directions { get; set; } = null!;
+    public string Directions { get; set; } = null!;
 
     protected override void Run(ActionContext context)
     {
@@ -45,6 +53,6 @@ public class AutoWalkAction : OpenTibiaActionBase
             throw new ArgumentNullException(nameof(Directions));
         }
 
-        session.Client.Send(new ClientAutoWalkMessage(Directions.ToProtocol()));
+        session.Client.Send(new ClientAutoWalkMessage(DirectionPath.Parse(Directions).ToProtocol()));
     }
 }

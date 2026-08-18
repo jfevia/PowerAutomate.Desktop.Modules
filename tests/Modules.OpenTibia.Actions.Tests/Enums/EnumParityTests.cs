@@ -63,7 +63,10 @@ public class EnumParityTests
         Assert.Multiple(() =>
         {
             Assert.That(moduleValues, Is.EqualTo(protocolValues), $"{moduleEnum.Name} names differ from the protocol enum.");
-            Assert.That(Enum.GetUnderlyingType(moduleEnum), Is.EqualTo(Enum.GetUnderlyingType(protocolEnum)));
+            Assert.That(Enum.GetUnderlyingType(moduleEnum), Is.EqualTo(typeof(int)),
+                $"{moduleEnum.Name} must be backed by int. The module loader reads values with (int)Enum.Parse and "
+                + "silently drops the enum when the underlying type is narrower, which leaves the designer unable to "
+                + "resolve a literal for it.");
 
             foreach (var name in moduleValues)
             {

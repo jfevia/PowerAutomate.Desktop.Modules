@@ -681,7 +681,7 @@
         <value>Directions</value>
     </data>
     <data name="AutoWalk_Directions_Description" xml:space="preserve">
-        <value>The ordered steps to walk, one at a time.</value>
+        <value>A comma separated path such as n,n,e,s,s,w. Full names such as North are also accepted.</value>
     </data>
     <data name="SendClientMessage_FriendlyName" xml:space="preserve">
         <value>Send client message</value>
