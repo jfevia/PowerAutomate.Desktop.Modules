@@ -19,7 +19,7 @@ public class AssemblyResolutionAction : ActionBase
     {
     }
 
-    public AssemblyResolutionAction(IAssemblyResolutionContext resolutionContext)
+    internal AssemblyResolutionAction(IAssemblyResolutionContext resolutionContext)
     {
         this.resolutionContext = resolutionContext ?? throw new ArgumentNullException(nameof(resolutionContext));
     }

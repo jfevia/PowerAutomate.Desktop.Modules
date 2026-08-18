@@ -42,14 +42,14 @@ public class SendTalkAction : OpenTibiaActionBase
 
     [InputArgument(Order = 5, Group = Groups.Target, Required = false)]
     [DefaultValue(0)]
-    public int ChannelId { get; set; }
+    public int? ChannelId { get; set; }
 
     protected override void Run(ActionContext context)
     {
         var session = SessionGuards.RequireInGame(GameSession);
 
         var receiverName = string.IsNullOrEmpty(ReceiverName) ? null : ReceiverName;
-        ushort? channelId = ChannelId > 0 ? (ushort)ChannelId : (ushort?)null;
+        ushort? channelId = ChannelId > 0 ? (ushort)ChannelId.Value : (ushort?)null;
 
         session.Client.Send(new ClientTalkMessage(Type, receiverName, channelId, Text ?? string.Empty));
     }

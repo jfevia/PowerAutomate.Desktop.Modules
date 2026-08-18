@@ -259,7 +259,7 @@ public class PetStoreInfrastructureTests
     public void Context_WithNullFactory_Throws() => Assert.Throws<ArgumentNullException>(() => new PetStoreContext(null!));
 
     [Test]
-    public void Constructor_WithNullContext_Throws() => Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(AddPetAction), new object?[] { null }));
+    public void Constructor_WithNullContext_Throws() => Assert.Throws<TargetInvocationException>(() => Activator.CreateInstance(typeof(AddPetAction), BindingFlags.Instance | BindingFlags.NonPublic, null, new object?[] { null }, null));
 }
 
 internal static class PetStoreActionCoverageTestRunner<TAction>
@@ -285,9 +285,14 @@ internal static class PetStoreActionCoverageTestRunner<TAction>
         Assert.That(exception!.Name, Is.EqualTo("UnknownError"));
     }
 
+    /// <summary>
+    /// The dependency-injection constructor is internal so the action keeps a single public one.
+    /// </summary>
+    internal const BindingFlags NonPublicInstance = BindingFlags.Instance | BindingFlags.NonPublic;
+
     private static TAction CreateAction(FakePetStoreClientFactory factory)
     {
-        var action = (TAction)Activator.CreateInstance(typeof(TAction), new PetStoreContext(factory))!;
+        var action = (TAction)Activator.CreateInstance(typeof(TAction), NonPublicInstance, null, new object[] { new PetStoreContext(factory) }, null)!;
         foreach (var property in typeof(TAction).GetProperties(BindingFlags.Instance | BindingFlags.Public))
         {
             if (property.GetCustomAttribute<InputArgumentAttribute>() is not null)

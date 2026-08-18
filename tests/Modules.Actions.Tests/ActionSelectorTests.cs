@@ -13,9 +13,9 @@ namespace PowerAutomate.Desktop.Modules.Actions.Tests;
 public class ActionSelectorTests
 {
     [Test]
-    public void Action_All_HasLocalizableResources()
+    public void ActionSelector_All_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();

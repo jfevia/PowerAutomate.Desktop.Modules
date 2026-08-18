@@ -26,7 +26,7 @@ public class RunFlowAction : ActionBase
     {
     }
 
-    public RunFlowAction(ICloudFlowHttpClient httpClient)
+    internal RunFlowAction(ICloudFlowHttpClient httpClient)
     {
         this.httpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
     }

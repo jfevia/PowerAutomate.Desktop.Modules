@@ -26,7 +26,7 @@ public class SelectListBoxItemAction : InputSimulationActionBase
     {
     }
 
-    public SelectListBoxItemAction(InputSimulationContext context) : base(context)
+    internal SelectListBoxItemAction(InputSimulationContext context) : base(context)
     {
     }
 

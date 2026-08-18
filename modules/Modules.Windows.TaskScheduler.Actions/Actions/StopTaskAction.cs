@@ -42,7 +42,7 @@ public class StopTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public StopTaskAction(TaskSchedulerContext context) : base(context)
+    internal StopTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

@@ -39,7 +39,7 @@ public class LoginAction : OpenTibiaActionBase
     {
     }
 
-    public LoginAction(Func<ISocketTransport> transportFactory, Func<uint[]> keyFactory)
+    internal LoginAction(Func<ISocketTransport> transportFactory, Func<uint[]> keyFactory)
     {
         _transportFactory = transportFactory ?? throw new ArgumentNullException(nameof(transportFactory));
         _keyFactory = keyFactory ?? throw new ArgumentNullException(nameof(keyFactory));

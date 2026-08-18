@@ -28,7 +28,7 @@ public class FindControlAction : InputSimulationActionBase
     {
     }
 
-    public FindControlAction(InputSimulationContext context) : base(context)
+    internal FindControlAction(InputSimulationContext context) : base(context)
     {
     }
 

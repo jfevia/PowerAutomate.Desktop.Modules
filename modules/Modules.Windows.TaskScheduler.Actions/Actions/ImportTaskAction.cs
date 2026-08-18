@@ -43,7 +43,7 @@ public class ImportTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public ImportTaskAction(TaskSchedulerContext context) : base(context)
+    internal ImportTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

@@ -26,7 +26,7 @@ public class GetAccessTokenAction : ActionBase
     {
     }
 
-    public GetAccessTokenAction(IAccessTokenProvider tokenProvider)
+    internal GetAccessTokenAction(IAccessTokenProvider tokenProvider)
     {
         this.tokenProvider = tokenProvider ?? throw new ArgumentNullException(nameof(tokenProvider));
     }

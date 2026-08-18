@@ -51,7 +51,7 @@ public class CreateTaskActionAction : TaskSchedulerActionBase
     {
     }
 
-    public CreateTaskActionAction(TaskSchedulerContext context) : base(context)
+    internal CreateTaskActionAction(TaskSchedulerContext context) : base(context)
     {
     }
 

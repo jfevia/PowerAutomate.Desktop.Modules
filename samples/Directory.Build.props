@@ -1,4 +1,4 @@
-<Project>
+﻿<Project>
 
     <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)..\'))" />
 
@@ -6,5 +6,10 @@
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <OutputPath>bin\$(Configuration)</OutputPath>
     </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Test seams stay internal: Power Automate Desktop allows an action only one public constructor. -->
+        <InternalsVisibleTo Include="$(AssemblyName).Tests" />
+    </ItemGroup>
 
 </Project>

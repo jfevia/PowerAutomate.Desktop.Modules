@@ -42,7 +42,7 @@ public class StartTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public StartTaskAction(TaskSchedulerContext context) : base(context)
+    internal StartTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

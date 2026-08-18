@@ -43,7 +43,7 @@ public class DeleteTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public DeleteTaskAction(TaskSchedulerContext context) : base(context)
+    internal DeleteTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

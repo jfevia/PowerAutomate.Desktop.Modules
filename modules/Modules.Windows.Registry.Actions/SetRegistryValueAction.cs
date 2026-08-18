@@ -25,7 +25,7 @@ public class SetRegistryValueAction : RegistryActionBase
     {
     }
 
-    public SetRegistryValueAction(RegistryContext context) : base(context)
+    internal SetRegistryValueAction(RegistryContext context) : base(context)
     {
     }
 

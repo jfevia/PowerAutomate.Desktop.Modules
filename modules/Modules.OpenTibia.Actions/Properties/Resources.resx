@@ -875,4 +875,166 @@
     <data name="GetStreamStatistics_MaxDepthSeen_Description" xml:space="preserve">
         <value>The highest depth the queue has reached.</value>
     </data>
+  <data name="Direction_North_FriendlyName" xml:space="preserve">
+    <value>North</value>
+  </data>
+  <data name="Direction_North_Description" xml:space="preserve">
+    <value>Towards the north.</value>
+  </data>
+  <data name="Direction_East_FriendlyName" xml:space="preserve">
+    <value>East</value>
+  </data>
+  <data name="Direction_East_Description" xml:space="preserve">
+    <value>Towards the east.</value>
+  </data>
+  <data name="Direction_South_FriendlyName" xml:space="preserve">
+    <value>South</value>
+  </data>
+  <data name="Direction_South_Description" xml:space="preserve">
+    <value>Towards the south.</value>
+  </data>
+  <data name="Direction_West_FriendlyName" xml:space="preserve">
+    <value>West</value>
+  </data>
+  <data name="Direction_West_Description" xml:space="preserve">
+    <value>Towards the west.</value>
+  </data>
+  <data name="Direction_NorthEast_FriendlyName" xml:space="preserve">
+    <value>North-east</value>
+  </data>
+  <data name="Direction_NorthEast_Description" xml:space="preserve">
+    <value>Diagonally towards the north-east.</value>
+  </data>
+  <data name="Direction_SouthEast_FriendlyName" xml:space="preserve">
+    <value>South-east</value>
+  </data>
+  <data name="Direction_SouthEast_Description" xml:space="preserve">
+    <value>Diagonally towards the south-east.</value>
+  </data>
+  <data name="Direction_SouthWest_FriendlyName" xml:space="preserve">
+    <value>South-west</value>
+  </data>
+  <data name="Direction_SouthWest_Description" xml:space="preserve">
+    <value>Diagonally towards the south-west.</value>
+  </data>
+  <data name="Direction_NorthWest_FriendlyName" xml:space="preserve">
+    <value>North-west</value>
+  </data>
+  <data name="Direction_NorthWest_Description" xml:space="preserve">
+    <value>Diagonally towards the north-west.</value>
+  </data>
+  <data name="SpeakType_None_FriendlyName" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SpeakType_None_Description" xml:space="preserve">
+    <value>No classification.</value>
+  </data>
+  <data name="SpeakType_Say_FriendlyName" xml:space="preserve">
+    <value>Say</value>
+  </data>
+  <data name="SpeakType_Say_Description" xml:space="preserve">
+    <value>Normal speech, heard by nearby players.</value>
+  </data>
+  <data name="SpeakType_Whisper_FriendlyName" xml:space="preserve">
+    <value>Whisper</value>
+  </data>
+  <data name="SpeakType_Whisper_Description" xml:space="preserve">
+    <value>Quiet speech, heard only by adjacent players.</value>
+  </data>
+  <data name="SpeakType_Yell_FriendlyName" xml:space="preserve">
+    <value>Yell</value>
+  </data>
+  <data name="SpeakType_Yell_Description" xml:space="preserve">
+    <value>Loud speech, heard across a wide area.</value>
+  </data>
+  <data name="SpeakType_PrivatePlayerToName_FriendlyName" xml:space="preserve">
+    <value>Private message sent</value>
+  </data>
+  <data name="SpeakType_PrivatePlayerToName_Description" xml:space="preserve">
+    <value>A private message sent to another player.</value>
+  </data>
+  <data name="SpeakType_PrivateNameToPlayer_FriendlyName" xml:space="preserve">
+    <value>Private message received</value>
+  </data>
+  <data name="SpeakType_PrivateNameToPlayer_Description" xml:space="preserve">
+    <value>A private message received from another player.</value>
+  </data>
+  <data name="SpeakType_Private_FriendlyName" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="SpeakType_Private_Description" xml:space="preserve">
+    <value>A private message.</value>
+  </data>
+  <data name="SpeakType_ChannelYellow_FriendlyName" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="SpeakType_ChannelYellow_Description" xml:space="preserve">
+    <value>A normal message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_ChannelWhite_FriendlyName" xml:space="preserve">
+    <value>Channel announcement</value>
+  </data>
+  <data name="SpeakType_ChannelWhite_Description" xml:space="preserve">
+    <value>A white message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_RuleViolationChannel_FriendlyName" xml:space="preserve">
+    <value>Rule violation report</value>
+  </data>
+  <data name="SpeakType_RuleViolationChannel_Description" xml:space="preserve">
+    <value>A report opened in the rule violation channel.</value>
+  </data>
+  <data name="SpeakType_RuleViolationAnswer_FriendlyName" xml:space="preserve">
+    <value>Rule violation answer</value>
+  </data>
+  <data name="SpeakType_RuleViolationAnswer_Description" xml:space="preserve">
+    <value>A gamemaster reply to a rule violation report.</value>
+  </data>
+  <data name="SpeakType_RuleViolationContinue_FriendlyName" xml:space="preserve">
+    <value>Rule violation continued</value>
+  </data>
+  <data name="SpeakType_RuleViolationContinue_Description" xml:space="preserve">
+    <value>A continued rule violation conversation.</value>
+  </data>
+  <data name="SpeakType_Broadcast_FriendlyName" xml:space="preserve">
+    <value>Broadcast</value>
+  </data>
+  <data name="SpeakType_Broadcast_Description" xml:space="preserve">
+    <value>A server-wide broadcast.</value>
+  </data>
+  <data name="SpeakType_ChannelRed_FriendlyName" xml:space="preserve">
+    <value>Channel gamemaster</value>
+  </data>
+  <data name="SpeakType_ChannelRed_Description" xml:space="preserve">
+    <value>A gamemaster message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_PrivateRed_FriendlyName" xml:space="preserve">
+    <value>Private gamemaster</value>
+  </data>
+  <data name="SpeakType_PrivateRed_Description" xml:space="preserve">
+    <value>A private gamemaster message.</value>
+  </data>
+  <data name="SpeakType_ChannelOrange_FriendlyName" xml:space="preserve">
+    <value>Channel orange</value>
+  </data>
+  <data name="SpeakType_ChannelOrange_Description" xml:space="preserve">
+    <value>An orange message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_ChannelRedAnonymous_FriendlyName" xml:space="preserve">
+    <value>Channel anonymous gamemaster</value>
+  </data>
+  <data name="SpeakType_ChannelRedAnonymous_Description" xml:space="preserve">
+    <value>An anonymous gamemaster message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_MonsterSay_FriendlyName" xml:space="preserve">
+    <value>Monster say</value>
+  </data>
+  <data name="SpeakType_MonsterSay_Description" xml:space="preserve">
+    <value>Speech from a monster.</value>
+  </data>
+  <data name="SpeakType_MonsterYell_FriendlyName" xml:space="preserve">
+    <value>Monster yell</value>
+  </data>
+  <data name="SpeakType_MonsterYell_Description" xml:space="preserve">
+    <value>A monster yelling.</value>
+  </data>
 </root>

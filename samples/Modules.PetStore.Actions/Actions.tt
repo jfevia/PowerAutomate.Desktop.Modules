@@ -63,7 +63,7 @@
         WriteLine("{");
         WriteLine("}");
         WriteLine(string.Empty);
-        WriteLine($"public {methodName}Action(PetStoreContext context) : base(context)");
+        WriteLine($"internal {methodName}Action(PetStoreContext context) : base(context)");
         WriteLine("{");
         WriteLine("}");
         WriteLine(string.Empty);

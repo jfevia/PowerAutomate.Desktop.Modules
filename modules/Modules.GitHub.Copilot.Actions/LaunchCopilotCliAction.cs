@@ -34,7 +34,7 @@ public class LaunchCopilotCliAction : ActionBase
     {
     }
 
-    public LaunchCopilotCliAction(ICopilotProcessRunner processRunner)
+    internal LaunchCopilotCliAction(ICopilotProcessRunner processRunner)
     {
         this.processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));
     }

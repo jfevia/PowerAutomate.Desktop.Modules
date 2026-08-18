@@ -24,7 +24,7 @@ public class UploadFileAction : PetStoreActionBase
     {
     }
 
-    public UploadFileAction(PetStoreContext context) : base(context)
+    internal UploadFileAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -51,7 +51,7 @@ public class AddPetAction : PetStoreActionBase
     {
     }
 
-    public AddPetAction(PetStoreContext context) : base(context)
+    internal AddPetAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -72,7 +72,7 @@ public class UpdatePetAction : PetStoreActionBase
     {
     }
 
-    public UpdatePetAction(PetStoreContext context) : base(context)
+    internal UpdatePetAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -93,7 +93,7 @@ public class FindPetsByStatusAction : PetStoreActionBase
     {
     }
 
-    public FindPetsByStatusAction(PetStoreContext context) : base(context)
+    internal FindPetsByStatusAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -116,7 +116,7 @@ public class FindPetsByTagsAction : PetStoreActionBase
     {
     }
 
-    public FindPetsByTagsAction(PetStoreContext context) : base(context)
+    internal FindPetsByTagsAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -139,7 +139,7 @@ public class GetPetByIdAction : PetStoreActionBase
     {
     }
 
-    public GetPetByIdAction(PetStoreContext context) : base(context)
+    internal GetPetByIdAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -162,7 +162,7 @@ public class UpdatePetWithFormAction : PetStoreActionBase
     {
     }
 
-    public UpdatePetWithFormAction(PetStoreContext context) : base(context)
+    internal UpdatePetWithFormAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -187,7 +187,7 @@ public class DeletePetAction : PetStoreActionBase
     {
     }
 
-    public DeletePetAction(PetStoreContext context) : base(context)
+    internal DeletePetAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -210,7 +210,7 @@ public class GetInventoryAction : PetStoreActionBase
     {
     }
 
-    public GetInventoryAction(PetStoreContext context) : base(context)
+    internal GetInventoryAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -231,7 +231,7 @@ public class PlaceOrderAction : PetStoreActionBase
     {
     }
 
-    public PlaceOrderAction(PetStoreContext context) : base(context)
+    internal PlaceOrderAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -254,7 +254,7 @@ public class GetOrderByIdAction : PetStoreActionBase
     {
     }
 
-    public GetOrderByIdAction(PetStoreContext context) : base(context)
+    internal GetOrderByIdAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -277,7 +277,7 @@ public class DeleteOrderAction : PetStoreActionBase
     {
     }
 
-    public DeleteOrderAction(PetStoreContext context) : base(context)
+    internal DeleteOrderAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -298,7 +298,7 @@ public class CreateUsersWithListInputAction : PetStoreActionBase
     {
     }
 
-    public CreateUsersWithListInputAction(PetStoreContext context) : base(context)
+    internal CreateUsersWithListInputAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -319,7 +319,7 @@ public class GetUserByNameAction : PetStoreActionBase
     {
     }
 
-    public GetUserByNameAction(PetStoreContext context) : base(context)
+    internal GetUserByNameAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -342,7 +342,7 @@ public class UpdateUserAction : PetStoreActionBase
     {
     }
 
-    public UpdateUserAction(PetStoreContext context) : base(context)
+    internal UpdateUserAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -365,7 +365,7 @@ public class DeleteUserAction : PetStoreActionBase
     {
     }
 
-    public DeleteUserAction(PetStoreContext context) : base(context)
+    internal DeleteUserAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -386,7 +386,7 @@ public class LoginUserAction : PetStoreActionBase
     {
     }
 
-    public LoginUserAction(PetStoreContext context) : base(context)
+    internal LoginUserAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -411,7 +411,7 @@ public class LogoutUserAction : PetStoreActionBase
     {
     }
 
-    public LogoutUserAction(PetStoreContext context) : base(context)
+    internal LogoutUserAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -429,7 +429,7 @@ public class CreateUsersWithArrayInputAction : PetStoreActionBase
     {
     }
 
-    public CreateUsersWithArrayInputAction(PetStoreContext context) : base(context)
+    internal CreateUsersWithArrayInputAction(PetStoreContext context) : base(context)
     {
     }
 
@@ -450,7 +450,7 @@ public class CreateUserAction : PetStoreActionBase
     {
     }
 
-    public CreateUserAction(PetStoreContext context) : base(context)
+    internal CreateUserAction(PetStoreContext context) : base(context)
     {
     }
 

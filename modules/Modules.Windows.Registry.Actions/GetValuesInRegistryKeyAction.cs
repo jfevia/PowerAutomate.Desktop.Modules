@@ -23,7 +23,7 @@ public class GetValuesInRegistryKeyAction : RegistryActionBase
     {
     }
 
-    public GetValuesInRegistryKeyAction(RegistryContext context) : base(context)
+    internal GetValuesInRegistryKeyAction(RegistryContext context) : base(context)
     {
     }
 

@@ -21,7 +21,7 @@ public class ExecuteExpressionAction : PowerFxActionBase
     {
     }
 
-    public ExecuteExpressionAction(PowerFxContext context) : base(context)
+    internal ExecuteExpressionAction(PowerFxContext context) : base(context)
     {
     }
 

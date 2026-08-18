@@ -28,7 +28,7 @@ public class SetCheckBoxStateAction : InputSimulationActionBase
     {
     }
 
-    public SetCheckBoxStateAction(InputSimulationContext context) : base(context)
+    internal SetCheckBoxStateAction(InputSimulationContext context) : base(context)
     {
     }
 

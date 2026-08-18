@@ -26,7 +26,7 @@ public class SendKeyAction : InputSimulationActionBase
     {
     }
 
-    public SendKeyAction(InputSimulationContext context) : base(context)
+    internal SendKeyAction(InputSimulationContext context) : base(context)
     {
     }
 

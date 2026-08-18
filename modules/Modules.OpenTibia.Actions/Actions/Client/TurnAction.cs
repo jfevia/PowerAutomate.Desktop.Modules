@@ -2,6 +2,7 @@
 // Copyright (c) Jesus Fernandez. All Rights Reserved.
 // ---------------------------------------------------
 
+using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
@@ -31,7 +32,8 @@ public class TurnAction : OpenTibiaActionBase
     public TibiaGameSession GameSession { get; set; } = null!;
 
     [InputArgument(Order = 2, Group = Groups.General)]
-    public Direction Direction { get; set; }
+    [DefaultValue(Direction.North)]
+    public Direction Direction { get; set; } = Direction.North;
 
     protected override void Run(ActionContext context)
     {

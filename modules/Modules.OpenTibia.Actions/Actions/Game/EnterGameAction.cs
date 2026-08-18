@@ -40,7 +40,7 @@ public class EnterGameAction : OpenTibiaActionBase
     {
     }
 
-    public EnterGameAction(Func<ISocketTransport> transportFactory, Func<uint[]> keyFactory)
+    internal EnterGameAction(Func<ISocketTransport> transportFactory, Func<uint[]> keyFactory)
     {
         _transportFactory = transportFactory ?? throw new ArgumentNullException(nameof(transportFactory));
         _keyFactory = keyFactory ?? throw new ArgumentNullException(nameof(keyFactory));

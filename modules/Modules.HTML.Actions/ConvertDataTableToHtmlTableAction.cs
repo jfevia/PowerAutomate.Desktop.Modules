@@ -22,7 +22,7 @@ public class ConvertDataTableToHtmlTableAction : HtmlActionBase
     {
     }
 
-    public ConvertDataTableToHtmlTableAction(HtmlActionsContext context) : base(context)
+    internal ConvertDataTableToHtmlTableAction(HtmlActionsContext context) : base(context)
     {
     }
 
