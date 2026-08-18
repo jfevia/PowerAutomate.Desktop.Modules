@@ -28,7 +28,7 @@ public class FindWindowAction : InputSimulationActionBase
     {
     }
 
-    public FindWindowAction(InputSimulationContext context) : base(context)
+    internal FindWindowAction(InputSimulationContext context) : base(context)
     {
     }
 

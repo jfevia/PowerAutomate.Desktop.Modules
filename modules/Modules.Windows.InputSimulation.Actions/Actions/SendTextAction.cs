@@ -25,7 +25,7 @@ public class SendTextAction : InputSimulationActionBase
     {
     }
 
-    public SendTextAction(InputSimulationContext context) : base(context)
+    internal SendTextAction(InputSimulationContext context) : base(context)
     {
     }
 

@@ -47,7 +47,7 @@ public class ToggleTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public ToggleTaskAction(TaskSchedulerContext context) : base(context)
+    internal ToggleTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

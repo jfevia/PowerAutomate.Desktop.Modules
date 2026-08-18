@@ -27,7 +27,7 @@ public class ScrollControlAction : InputSimulationActionBase
     {
     }
 
-    public ScrollControlAction(InputSimulationContext context) : base(context)
+    internal ScrollControlAction(InputSimulationContext context) : base(context)
     {
     }
 

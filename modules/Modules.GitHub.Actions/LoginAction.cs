@@ -46,7 +46,7 @@ public class LoginAction : ActionBase
     {
     }
 
-    public LoginAction(IGitHubHttpClientFactory httpClientFactory, IGitHubProcessRunner processRunner, IGitHubClock clock, IGitHubClipboard clipboard, IGitHubBrowserLauncher browserLauncher)
+    internal LoginAction(IGitHubHttpClientFactory httpClientFactory, IGitHubProcessRunner processRunner, IGitHubClock clock, IGitHubClipboard clipboard, IGitHubBrowserLauncher browserLauncher)
     {
         this.httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
         this.processRunner = processRunner ?? throw new ArgumentNullException(nameof(processRunner));

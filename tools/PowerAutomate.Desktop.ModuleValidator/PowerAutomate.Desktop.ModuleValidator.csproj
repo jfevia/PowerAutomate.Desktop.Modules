@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <AssemblyName>PowerAutomate.Desktop.ModuleValidator</AssemblyName>
+        <RootNamespace>PowerAutomate.Desktop.ModuleValidator</RootNamespace>
+        <IsPackable>false</IsPackable>
+        <PadInstallDir Condition=" '$(PadInstallDir)' == '' ">C:\Program Files (x86)\Power Automate Desktop</PadInstallDir>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Power Automate Desktop ships these only inside its install; they are never redistributed. -->
+        <Reference Include="Microsoft.Flow.RPA.Desktop.Robin.Core">
+            <HintPath>$(PadInstallDir)\Microsoft.Flow.RPA.Desktop.Robin.Core.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="Microsoft.Flow.RPA.Desktop.Robin.Engine">
+            <HintPath>$(PadInstallDir)\Microsoft.Flow.RPA.Desktop.Robin.Engine.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK">
+            <HintPath>$(PadInstallDir)\Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+    </ItemGroup>
+
+</Project>

@@ -3,6 +3,7 @@
 // ---------------------------------------------------
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.Attributes;
@@ -16,7 +17,8 @@ public class ActionTests
     [Test]
     public void Action_All_Arguments_All_Enums_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var missing = new List<string>();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();
@@ -43,18 +45,26 @@ public class ActionTests
                                                                   .ToList();
             foreach (var enumValuesByPropertyType in enumValuesByPropertyTypes)
             {
-                foreach (var friendlyNameResource in enumValuesByPropertyType.Values.Select(value => resourceManager.GetString($"{enumValuesByPropertyType.PropertyType.Name}_{value}_FriendlyName")))
+                foreach (var value in enumValuesByPropertyType.Values)
                 {
-                    Assert.That(friendlyNameResource, Is.Not.Null.Or.Empty, $"Enum argument '{enumValuesByPropertyType.PropertyType.Name}' doesn't have a friendly name resource");
+                    var key = $"{enumValuesByPropertyType.PropertyType.Name}_{value}_FriendlyName";
+                    if (string.IsNullOrEmpty(resourceManager.GetString(key)))
+                    {
+                        missing.Add($"{assembly.GetName().Name} :: {key}");
+                    }
                 }
             }
         }
+
+        Assert.That(missing, Is.Empty,
+            "Enum arguments need a friendly name resource per value."
+            + Environment.NewLine + string.Join(Environment.NewLine, missing));
     }
 
     [Test]
     public void Action_All_Arguments_All_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();
@@ -89,7 +99,7 @@ public class ActionTests
     [Test]
     public void Action_All_Errors_All_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();
@@ -115,7 +125,7 @@ public class ActionTests
     [Test]
     public void Action_All_Groups_All_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();
@@ -141,7 +151,7 @@ public class ActionTests
     [Test]
     public void Action_All_HasLocalizableResources()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var resourceManager = assembly.GetResourceManager();
@@ -166,7 +176,7 @@ public class ActionTests
     [Test]
     public void Action_Any_Exists()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
+        var assemblies = ModuleEnumerator.GetProductAssemblies();
         foreach (var assembly in assemblies)
         {
             var assemblyTitle = assembly.GetCustomAttribute<AssemblyTitleAttribute>();
@@ -182,54 +192,30 @@ public class ActionTests
     [Test]
     public void Action_All_InputArguments_All_Enums_HaveDefaultValue()
     {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
-        foreach (var assembly in assemblies)
-        {
-            var enumInputs = assembly.ExportedTypes
-                                     .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
-                                     .Where(pair => pair.ActionAttribute is not null)
-                                     .SelectMany(pair => pair.ActionType
-                                                             .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                                             .Select(property => (Property: property, InputArgumentAttribute: property.GetCustomAttribute<InputArgumentAttribute>()))
-                                                             .Where(t => t.InputArgumentAttribute is not null)
-                                                             .Where(t => GetUnderlyingType(t.Property.PropertyType).IsEnum)
-                                                             .Select(t => (pair.ActionAttribute.Id, t.Property)))
-                                     .ToList();
+        var violations = new List<string>();
 
-            foreach (var (actionId, property) in enumInputs)
+        foreach (var assembly in ModuleEnumerator.GetAllAssemblies())
+        {
+            foreach (var (actionType, actionAttribute) in GetActions(assembly))
             {
-                var hasDefault = property.GetCustomAttribute<System.ComponentModel.DefaultValueAttribute>() is not null;
-                Assert.That(hasDefault, Is.True, $"Enum input argument '{property.Name}' in action '{actionId}' must have a [DefaultValue] attribute.");
+                foreach (var property in GetInputArguments(actionType))
+                {
+                    if (!GetUnderlyingType(property.PropertyType).IsEnum)
+                    {
+                        continue;
+                    }
+
+                    if (property.GetCustomAttribute<System.ComponentModel.DefaultValueAttribute>() is null)
+                    {
+                        violations.Add($"{Describe(assembly, actionType, actionAttribute)} enum argument '{property.Name}' has no [DefaultValue]");
+                    }
+                }
             }
         }
-    }
 
-    [Test]
-    public void Action_All_InputArguments_All_NonRequired_AreNullableOrHaveDefaultValue()
-    {
-        var assemblies = ModuleEnumerator.GetAllAssemblies();
-        foreach (var assembly in assemblies)
-        {
-            var nonRequiredInputs = assembly.ExportedTypes
-                                            .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()))
-                                            .Where(pair => pair.ActionAttribute is not null)
-                                            .SelectMany(pair => pair.ActionType
-                                                                    .GetProperties(BindingFlags.Public | BindingFlags.Instance)
-                                                                    .Select(property => (Property: property, InputArgumentAttribute: property.GetCustomAttribute<InputArgumentAttribute>()))
-                                                                    .Where(t => t.InputArgumentAttribute is not null && !t.InputArgumentAttribute.Required)
-                                                                    .Select(t => (pair.ActionAttribute.Id, t.Property)))
-                                            .ToList();
-
-            foreach (var (actionId, property) in nonRequiredInputs)
-            {
-                var isNullable = !property.PropertyType.IsValueType
-                              || Nullable.GetUnderlyingType(property.PropertyType) is not null;
-                var hasDefault = property.GetCustomAttribute<System.ComponentModel.DefaultValueAttribute>() is not null;
-
-                Assert.That(isNullable || hasDefault, Is.True,
-                    $"Non-required input argument '{property.Name}' of action '{actionId}' (type '{property.PropertyType.FullName}') must be nullable or carry a [DefaultValue] attribute.");
-            }
-        }
+        Assert.That(violations, Is.Empty,
+            "Power Automate Desktop rejects the whole module when an enum argument has no default value."
+            + Environment.NewLine + string.Join(Environment.NewLine, violations));
     }
 
     [Test]
@@ -254,6 +240,114 @@ public class ActionTests
                     $"Argument '{propertyName}' in action '{actionId}' is a Robin reserved keyword (case-insensitive) and is rejected by the Power Automate Desktop module loader.");
             }
         }
+    }
+
+    [Test]
+    public void Action_All_InputArguments_All_Enums_AreBackedByInt()
+    {
+        var violations = new List<string>();
+
+        foreach (var assembly in ModuleEnumerator.GetAllAssemblies())
+        {
+            foreach (var (actionType, actionAttribute) in GetActions(assembly))
+            {
+                foreach (var property in GetInputArguments(actionType))
+                {
+                    var propertyType = GetUnderlyingType(property.PropertyType);
+                    if (!propertyType.IsEnum || Enum.GetUnderlyingType(propertyType) == typeof(int))
+                    {
+                        continue;
+                    }
+
+                    violations.Add($"{Describe(assembly, actionType, actionAttribute)} argument '{property.Name}' uses "
+                                   + $"{propertyType.Name} backed by {Enum.GetUnderlyingType(propertyType).Name}");
+                }
+            }
+        }
+
+        Assert.That(violations, Is.Empty,
+            "The Power Automate Desktop module loader reads enum values with (int)Enum.Parse. A narrower underlying "
+            + "type throws, the loader swallows it, and the enum is silently never registered, so the designer "
+            + "reports the module name as an undefined variable wherever the literal is used."
+            + Environment.NewLine + string.Join(Environment.NewLine, violations));
+    }
+
+    [Test]
+    public void Action_All_HaveExactlyOneConstructor()
+    {
+        var violations = new List<string>();
+
+        foreach (var assembly in ModuleEnumerator.GetAllAssemblies())
+        {
+            foreach (var (actionType, actionAttribute) in GetActions(assembly))
+            {
+                var constructors = actionType.GetConstructors(BindingFlags.Public | BindingFlags.Instance);
+                if (constructors.Length != 1)
+                {
+                    violations.Add($"{Describe(assembly, actionType, actionAttribute)} declares {constructors.Length} public constructors");
+                }
+            }
+        }
+
+        Assert.That(violations, Is.Empty,
+            "Power Automate Desktop rejects the whole module with 'Only one constructor can be defined for an "
+            + "action type'. Expose test seams as settable properties instead of a second constructor."
+            + Environment.NewLine + string.Join(Environment.NewLine, violations));
+    }
+
+    [Test]
+    public void Action_All_InputArguments_All_NonRequired_AreNullable()
+    {
+        var violations = new List<string>();
+
+        foreach (var assembly in ModuleEnumerator.GetAllAssemblies())
+        {
+            foreach (var (actionType, actionAttribute) in GetActions(assembly))
+            {
+                foreach (var property in GetInputArguments(actionType))
+                {
+                    var attribute = property.GetCustomAttribute<InputArgumentAttribute>()!;
+                    if (attribute.Required)
+                    {
+                        continue;
+                    }
+
+                    var isNullable = !property.PropertyType.IsValueType
+                                  || Nullable.GetUnderlyingType(property.PropertyType) is not null;
+                    if (!isNullable)
+                    {
+                        violations.Add($"{Describe(assembly, actionType, actionAttribute)} argument '{property.Name}' is Required = false but '{property.PropertyType.FullName}' is not nullable");
+                    }
+                }
+            }
+        }
+
+        Assert.That(violations, Is.Empty,
+            "Power Automate Desktop rejects the whole module when a non-required argument is not nullable. "
+            + "A [DefaultValue] does not satisfy the rule."
+            + Environment.NewLine + string.Join(Environment.NewLine, violations));
+    }
+
+    private static IEnumerable<(Type ActionType, ActionAttribute ActionAttribute)> GetActions(Assembly assembly)
+    {
+        return assembly.ExportedTypes
+                       .Select(type => (ActionType: type, ActionAttribute: type.GetCustomAttribute<ActionAttribute>()!))
+                       .Where(pair => pair.ActionAttribute is not null);
+    }
+
+    private static IEnumerable<PropertyInfo> GetInputArguments(Type actionType)
+    {
+        return actionType.GetProperties(BindingFlags.Public | BindingFlags.Instance)
+                         .Where(property => property.GetCustomAttribute<InputArgumentAttribute>() is not null);
+    }
+
+    /// <summary>
+    /// Names the action by module and type, because the Id is optional and often blank.
+    /// </summary>
+    private static string Describe(Assembly assembly, Type actionType, ActionAttribute actionAttribute)
+    {
+        var id = string.IsNullOrEmpty(actionAttribute.Id) ? actionType.Name : actionAttribute.Id;
+        return $"{assembly.GetName().Name} :: action '{id}'";
     }
 
     private static Type GetUnderlyingType(Type type) => Nullable.GetUnderlyingType(type) ?? type;

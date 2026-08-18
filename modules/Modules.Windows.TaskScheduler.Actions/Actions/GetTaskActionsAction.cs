@@ -46,7 +46,7 @@ public class GetTaskActionsAction : TaskSchedulerActionBase
     {
     }
 
-    public GetTaskActionsAction(TaskSchedulerContext context) : base(context)
+    internal GetTaskActionsAction(TaskSchedulerContext context) : base(context)
     {
     }
 

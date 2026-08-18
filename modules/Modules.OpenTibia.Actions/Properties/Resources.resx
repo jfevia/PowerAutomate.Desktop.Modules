@@ -1,0 +1,1076 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <!-- 
+      Microsoft ResX Schema 
+      
+      Version 2.0
+      
+      The primary goals of this format is to allow a simple XML format 
+      that is mostly human readable. The generation and parsing of the 
+      various data types are done through the TypeConverter classes 
+      associated with the data types.
+      
+      Example:
+      
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+                  
+      There are any number of "resheader" rows that contain simple 
+      name/value pairs.
+      
+      Each data row contains a name, and value. The row also contains a 
+      type or mimetype. Type corresponds to a .NET class that support 
+      text/value conversion through the TypeConverter architecture. 
+      Classes that don't support this are serialized and stored with the 
+      mimetype set.
+      
+      The mimetype is used for serialized objects, and tells the 
+      ResXResourceReader how to depersist the object. This is currently not 
+      extensible. For a given mimetype the value must be set accordingly:
+      
+      Note - application/x-microsoft.net.object.binary.base64 is the format 
+      that the ResXResourceWriter will generate, however the reader can 
+      read any of the formats listed below.
+      
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+      
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with 
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+  
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array 
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="OpenTibia_FriendlyName" xml:space="preserve">
+        <value>OpenTibia</value>
+    </data>
+    <data name="OpenTibia_Description" xml:space="preserve">
+        <value>Connect to and play on an OpenTibia 8.60 game server.</value>
+    </data>
+    <data name="Category_Authentication_FriendlyName" xml:space="preserve">
+        <value>Authentication</value>
+    </data>
+    <data name="Category_Authentication_Description" xml:space="preserve">
+        <value>Log into and out of the account server.</value>
+    </data>
+    <data name="Category_Characters_FriendlyName" xml:space="preserve">
+        <value>Characters</value>
+    </data>
+    <data name="Category_Characters_Description" xml:space="preserve">
+        <value>List and select characters on the account.</value>
+    </data>
+    <data name="Category_Game_FriendlyName" xml:space="preserve">
+        <value>Game</value>
+    </data>
+    <data name="Category_Game_Description" xml:space="preserve">
+        <value>Enter, exit and monitor a game session.</value>
+    </data>
+    <data name="Category_ClientMessages_FriendlyName" xml:space="preserve">
+        <value>Client Messages</value>
+    </data>
+    <data name="Category_ClientMessages_Description" xml:space="preserve">
+        <value>Send messages from the client to the game server.</value>
+    </data>
+    <data name="Category_ServerMessages_FriendlyName" xml:space="preserve">
+        <value>Server Messages</value>
+    </data>
+    <data name="Category_ServerMessages_Description" xml:space="preserve">
+        <value>Receive and inspect messages from the game server.</value>
+    </data>
+    <data name="Group_General_FriendlyName" xml:space="preserve">
+        <value>General</value>
+    </data>
+    <data name="Group_General_Description" xml:space="preserve">
+        <value>The main arguments needed for common use.</value>
+    </data>
+    <data name="Group_Advanced_FriendlyName" xml:space="preserve">
+        <value>Advanced</value>
+    </data>
+    <data name="Group_Advanced_Description" xml:space="preserve">
+        <value>Secondary arguments for fine-tuning.</value>
+    </data>
+    <data name="Group_Target_FriendlyName" xml:space="preserve">
+        <value>Target</value>
+    </data>
+    <data name="Group_Target_Description" xml:space="preserve">
+        <value>Arguments identifying who or what the action affects.</value>
+    </data>
+    <data name="Error_ConnectionFailedError_FriendlyName" xml:space="preserve">
+        <value>Connection failed</value>
+    </data>
+    <data name="Error_ConnectionFailedError_Description" xml:space="preserve">
+        <value>The socket could not connect to the server.</value>
+    </data>
+    <data name="Error_AuthenticationFailedError_FriendlyName" xml:space="preserve">
+        <value>Authentication failed</value>
+    </data>
+    <data name="Error_AuthenticationFailedError_Description" xml:space="preserve">
+        <value>The server rejected the supplied credentials.</value>
+    </data>
+    <data name="Error_CharacterNotFoundError_FriendlyName" xml:space="preserve">
+        <value>Character not found</value>
+    </data>
+    <data name="Error_CharacterNotFoundError_Description" xml:space="preserve">
+        <value>The requested character is not on the account.</value>
+    </data>
+    <data name="Error_NotConnectedError_FriendlyName" xml:space="preserve">
+        <value>Not connected</value>
+    </data>
+    <data name="Error_NotConnectedError_Description" xml:space="preserve">
+        <value>No active session is available for this action.</value>
+    </data>
+    <data name="Error_AlreadyConnectedError_FriendlyName" xml:space="preserve">
+        <value>Already connected</value>
+    </data>
+    <data name="Error_AlreadyConnectedError_Description" xml:space="preserve">
+        <value>The session is already connected.</value>
+    </data>
+    <data name="Error_ProtocolErrorError_FriendlyName" xml:space="preserve">
+        <value>Protocol error</value>
+    </data>
+    <data name="Error_ProtocolErrorError_Description" xml:space="preserve">
+        <value>The server sent a message the client could not process.</value>
+    </data>
+    <data name="Error_TimeoutError_FriendlyName" xml:space="preserve">
+        <value>Timeout</value>
+    </data>
+    <data name="Error_TimeoutError_Description" xml:space="preserve">
+        <value>The server did not respond in time.</value>
+    </data>
+    <data name="Error_InvalidArgumentError_FriendlyName" xml:space="preserve">
+        <value>Invalid argument</value>
+    </data>
+    <data name="Error_InvalidArgumentError_Description" xml:space="preserve">
+        <value>An input value was missing or out of range.</value>
+    </data>
+    <data name="Error_UnknownError_FriendlyName" xml:space="preserve">
+        <value>Unknown error</value>
+    </data>
+    <data name="Error_UnknownError_Description" xml:space="preserve">
+        <value>An unexpected failure occurred.</value>
+    </data>
+    <data name="TibiaCharacter_FriendlyName" xml:space="preserve">
+        <value>Tibia character</value>
+    </data>
+    <data name="TibiaCharacter_FriendlyNamePlural" xml:space="preserve">
+        <value>Tibia characters</value>
+    </data>
+    <data name="TibiaServerMessage_FriendlyName" xml:space="preserve">
+        <value>Tibia server message</value>
+    </data>
+    <data name="TibiaServerMessage_FriendlyNamePlural" xml:space="preserve">
+        <value>Tibia server messages</value>
+    </data>
+    <data name="TibiaLoginSession_FriendlyName" xml:space="preserve">
+        <value>Tibia login session</value>
+    </data>
+    <data name="TibiaLoginSession_FriendlyNamePlural" xml:space="preserve">
+        <value>Tibia login sessions</value>
+    </data>
+    <data name="TibiaGameSession_FriendlyName" xml:space="preserve">
+        <value>Tibia game session</value>
+    </data>
+    <data name="TibiaGameSession_FriendlyNamePlural" xml:space="preserve">
+        <value>Tibia game sessions</value>
+    </data>
+    <data name="Login_FriendlyName" xml:space="preserve">
+        <value>Login</value>
+    </data>
+    <data name="Login_Description" xml:space="preserve">
+        <value>Authenticates against the login server and lists the account's characters.</value>
+    </data>
+    <data name="Login_Summary" xml:space="preserve">
+        <value>Log into the account server.</value>
+    </data>
+    <data name="Login_Host_FriendlyName" xml:space="preserve">
+        <value>Host</value>
+    </data>
+    <data name="Login_Host_Description" xml:space="preserve">
+        <value>The login server's hostname or IP address.</value>
+    </data>
+    <data name="Login_Port_FriendlyName" xml:space="preserve">
+        <value>Port</value>
+    </data>
+    <data name="Login_Port_Description" xml:space="preserve">
+        <value>The login server's TCP port.</value>
+    </data>
+    <data name="Login_AccountName_FriendlyName" xml:space="preserve">
+        <value>Account name</value>
+    </data>
+    <data name="Login_AccountName_Description" xml:space="preserve">
+        <value>The account name to authenticate with.</value>
+    </data>
+    <data name="Login_Password_FriendlyName" xml:space="preserve">
+        <value>Password</value>
+    </data>
+    <data name="Login_Password_Description" xml:space="preserve">
+        <value>The account password.</value>
+    </data>
+    <data name="Login_TimeoutMs_FriendlyName" xml:space="preserve">
+        <value>Timeout (ms)</value>
+    </data>
+    <data name="Login_TimeoutMs_Description" xml:space="preserve">
+        <value>How long to wait for the server to answer, in milliseconds.</value>
+    </data>
+    <data name="Login_LoginSession_FriendlyName" xml:space="preserve">
+        <value>Login session</value>
+    </data>
+    <data name="Login_LoginSession_Description" xml:space="preserve">
+        <value>The session to pass to later actions.</value>
+    </data>
+    <data name="Login_Motd_FriendlyName" xml:space="preserve">
+        <value>Message of the day</value>
+    </data>
+    <data name="Login_Motd_Description" xml:space="preserve">
+        <value>The server's message of the day.</value>
+    </data>
+    <data name="Login_Characters_FriendlyName" xml:space="preserve">
+        <value>Characters</value>
+    </data>
+    <data name="Login_Characters_Description" xml:space="preserve">
+        <value>The characters available on the account.</value>
+    </data>
+    <data name="Logout_FriendlyName" xml:space="preserve">
+        <value>Logout</value>
+    </data>
+    <data name="Logout_Description" xml:space="preserve">
+        <value>Closes a login session's socket; calling it twice is a no-op.</value>
+    </data>
+    <data name="Logout_Summary" xml:space="preserve">
+        <value>Log out of the account server.</value>
+    </data>
+    <data name="Logout_LoginSession_FriendlyName" xml:space="preserve">
+        <value>Login session</value>
+    </data>
+    <data name="Logout_LoginSession_Description" xml:space="preserve">
+        <value>The session returned by Login.</value>
+    </data>
+    <data name="GetCharacterList_FriendlyName" xml:space="preserve">
+        <value>Get character list</value>
+    </data>
+    <data name="GetCharacterList_Description" xml:space="preserve">
+        <value>Returns the characters available on the login session's account.</value>
+    </data>
+    <data name="GetCharacterList_Summary" xml:space="preserve">
+        <value>Get the account's character list.</value>
+    </data>
+    <data name="GetCharacterList_LoginSession_FriendlyName" xml:space="preserve">
+        <value>Login session</value>
+    </data>
+    <data name="GetCharacterList_LoginSession_Description" xml:space="preserve">
+        <value>The session returned by Login.</value>
+    </data>
+    <data name="GetCharacterList_Characters_FriendlyName" xml:space="preserve">
+        <value>Characters</value>
+    </data>
+    <data name="GetCharacterList_Characters_Description" xml:space="preserve">
+        <value>The characters available on the account.</value>
+    </data>
+    <data name="SelectCharacter_FriendlyName" xml:space="preserve">
+        <value>Select character</value>
+    </data>
+    <data name="SelectCharacter_Description" xml:space="preserve">
+        <value>Finds a character by name among the account's characters.</value>
+    </data>
+    <data name="SelectCharacter_Summary" xml:space="preserve">
+        <value>Select a character by name.</value>
+    </data>
+    <data name="SelectCharacter_LoginSession_FriendlyName" xml:space="preserve">
+        <value>Login session</value>
+    </data>
+    <data name="SelectCharacter_LoginSession_Description" xml:space="preserve">
+        <value>The session returned by Login.</value>
+    </data>
+    <data name="SelectCharacter_CharacterName_FriendlyName" xml:space="preserve">
+        <value>Character name</value>
+    </data>
+    <data name="SelectCharacter_CharacterName_Description" xml:space="preserve">
+        <value>The name of the character to select.</value>
+    </data>
+    <data name="SelectCharacter_Character_FriendlyName" xml:space="preserve">
+        <value>Character</value>
+    </data>
+    <data name="SelectCharacter_Character_Description" xml:space="preserve">
+        <value>The selected character.</value>
+    </data>
+    <data name="EnterGame_FriendlyName" xml:space="preserve">
+        <value>Enter game</value>
+    </data>
+    <data name="EnterGame_Description" xml:space="preserve">
+        <value>Connects to the game server and enters the world with the selected character.</value>
+    </data>
+    <data name="EnterGame_Summary" xml:space="preserve">
+        <value>Enter the game with a character.</value>
+    </data>
+    <data name="EnterGame_LoginSession_FriendlyName" xml:space="preserve">
+        <value>Login session</value>
+    </data>
+    <data name="EnterGame_LoginSession_Description" xml:space="preserve">
+        <value>The session returned by Login.</value>
+    </data>
+    <data name="EnterGame_Character_FriendlyName" xml:space="preserve">
+        <value>Character</value>
+    </data>
+    <data name="EnterGame_Character_Description" xml:space="preserve">
+        <value>The character to enter the game with.</value>
+    </data>
+    <data name="EnterGame_QueueCapacity_FriendlyName" xml:space="preserve">
+        <value>Queue capacity</value>
+    </data>
+    <data name="EnterGame_QueueCapacity_Description" xml:space="preserve">
+        <value>The maximum number of server messages buffered at once.</value>
+    </data>
+    <data name="EnterGame_TimeoutMs_FriendlyName" xml:space="preserve">
+        <value>Timeout (ms)</value>
+    </data>
+    <data name="EnterGame_TimeoutMs_Description" xml:space="preserve">
+        <value>How long to wait for the game server to confirm entry, in milliseconds.</value>
+    </data>
+    <data name="EnterGame_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="EnterGame_GameSession_Description" xml:space="preserve">
+        <value>The session to pass to later actions.</value>
+    </data>
+    <data name="ExitGame_FriendlyName" xml:space="preserve">
+        <value>Exit game</value>
+    </data>
+    <data name="ExitGame_Description" xml:space="preserve">
+        <value>Sends a graceful logout and disconnects from the game server.</value>
+    </data>
+    <data name="ExitGame_Summary" xml:space="preserve">
+        <value>Exit the game.</value>
+    </data>
+    <data name="ExitGame_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="ExitGame_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="Disconnect_FriendlyName" xml:space="preserve">
+        <value>Disconnect</value>
+    </data>
+    <data name="Disconnect_Description" xml:space="preserve">
+        <value>Force-closes the connection; safe to call repeatedly and after a fault.</value>
+    </data>
+    <data name="Disconnect_Summary" xml:space="preserve">
+        <value>Force-close the game connection.</value>
+    </data>
+    <data name="Disconnect_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="Disconnect_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="IsInGame_FriendlyName" xml:space="preserve">
+        <value>Is in game</value>
+    </data>
+    <data name="IsInGame_Description" xml:space="preserve">
+        <value>Checks whether the game session is connected and not faulted.</value>
+    </data>
+    <data name="IsInGame_Summary" xml:space="preserve">
+        <value>Check whether the session is in game.</value>
+    </data>
+    <data name="IsInGame_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="IsInGame_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="IsInGame_IsInGame_FriendlyName" xml:space="preserve">
+        <value>Is in game</value>
+    </data>
+    <data name="IsInGame_IsInGame_Description" xml:space="preserve">
+        <value>True while the session is connected and in game.</value>
+    </data>
+    <data name="SendTalk_FriendlyName" xml:space="preserve">
+        <value>Send talk</value>
+    </data>
+    <data name="SendTalk_Description" xml:space="preserve">
+        <value>Sends a chat message of the given speak type.</value>
+    </data>
+    <data name="SendTalk_Summary" xml:space="preserve">
+        <value>Send a chat message.</value>
+    </data>
+    <data name="SendTalk_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="SendTalk_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="SendTalk_Type_FriendlyName" xml:space="preserve">
+        <value>Speak type</value>
+    </data>
+    <data name="SendTalk_Type_Description" xml:space="preserve">
+        <value>The kind of chat message to send.</value>
+    </data>
+    <data name="SendTalk_Text_FriendlyName" xml:space="preserve">
+        <value>Text</value>
+    </data>
+    <data name="SendTalk_Text_Description" xml:space="preserve">
+        <value>The message text.</value>
+    </data>
+    <data name="SendTalk_ReceiverName_FriendlyName" xml:space="preserve">
+        <value>Receiver name</value>
+    </data>
+    <data name="SendTalk_ReceiverName_Description" xml:space="preserve">
+        <value>The recipient's name, required for private messages.</value>
+    </data>
+    <data name="SendTalk_ChannelId_FriendlyName" xml:space="preserve">
+        <value>Channel ID</value>
+    </data>
+    <data name="SendTalk_ChannelId_Description" xml:space="preserve">
+        <value>The target channel id, required for channel messages.</value>
+    </data>
+    <data name="Move_FriendlyName" xml:space="preserve">
+        <value>Move</value>
+    </data>
+    <data name="Move_Description" xml:space="preserve">
+        <value>Takes a single step in the given direction.</value>
+    </data>
+    <data name="Move_Summary" xml:space="preserve">
+        <value>Take a step.</value>
+    </data>
+    <data name="Move_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="Move_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="Move_Direction_FriendlyName" xml:space="preserve">
+        <value>Direction</value>
+    </data>
+    <data name="Move_Direction_Description" xml:space="preserve">
+        <value>The direction to step toward.</value>
+    </data>
+    <data name="Turn_FriendlyName" xml:space="preserve">
+        <value>Turn</value>
+    </data>
+    <data name="Turn_Description" xml:space="preserve">
+        <value>Turns toward a cardinal direction without moving.</value>
+    </data>
+    <data name="Turn_Summary" xml:space="preserve">
+        <value>Turn without moving.</value>
+    </data>
+    <data name="Turn_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="Turn_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="Turn_Direction_FriendlyName" xml:space="preserve">
+        <value>Direction</value>
+    </data>
+    <data name="Turn_Direction_Description" xml:space="preserve">
+        <value>The cardinal direction to face.</value>
+    </data>
+    <data name="Attack_FriendlyName" xml:space="preserve">
+        <value>Attack</value>
+    </data>
+    <data name="Attack_Description" xml:space="preserve">
+        <value>Attacks the given creature.</value>
+    </data>
+    <data name="Attack_Summary" xml:space="preserve">
+        <value>Attack a creature.</value>
+    </data>
+    <data name="Attack_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="Attack_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="Attack_CreatureId_FriendlyName" xml:space="preserve">
+        <value>Creature ID</value>
+    </data>
+    <data name="Attack_CreatureId_Description" xml:space="preserve">
+        <value>The id of the creature to attack.</value>
+    </data>
+    <data name="UseItem_FriendlyName" xml:space="preserve">
+        <value>Use item</value>
+    </data>
+    <data name="UseItem_Description" xml:space="preserve">
+        <value>Uses an item at the given map position.</value>
+    </data>
+    <data name="UseItem_Summary" xml:space="preserve">
+        <value>Use an item.</value>
+    </data>
+    <data name="UseItem_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="UseItem_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="UseItem_X_FriendlyName" xml:space="preserve">
+        <value>X</value>
+    </data>
+    <data name="UseItem_X_Description" xml:space="preserve">
+        <value>The item's X map coordinate.</value>
+    </data>
+    <data name="UseItem_Y_FriendlyName" xml:space="preserve">
+        <value>Y</value>
+    </data>
+    <data name="UseItem_Y_Description" xml:space="preserve">
+        <value>The item's Y map coordinate.</value>
+    </data>
+    <data name="UseItem_Z_FriendlyName" xml:space="preserve">
+        <value>Z</value>
+    </data>
+    <data name="UseItem_Z_Description" xml:space="preserve">
+        <value>The item's floor (Z) coordinate.</value>
+    </data>
+    <data name="UseItem_ItemId_FriendlyName" xml:space="preserve">
+        <value>Item ID</value>
+    </data>
+    <data name="UseItem_ItemId_Description" xml:space="preserve">
+        <value>The item's server id.</value>
+    </data>
+    <data name="UseItem_StackPosition_FriendlyName" xml:space="preserve">
+        <value>Stack position</value>
+    </data>
+    <data name="UseItem_StackPosition_Description" xml:space="preserve">
+        <value>The item's position within the tile stack.</value>
+    </data>
+    <data name="UseItem_ContainerIndex_FriendlyName" xml:space="preserve">
+        <value>Container index</value>
+    </data>
+    <data name="UseItem_ContainerIndex_Description" xml:space="preserve">
+        <value>The container or hotkey slot the use was invoked from.</value>
+    </data>
+    <data name="Look_FriendlyName" xml:space="preserve">
+        <value>Look</value>
+    </data>
+    <data name="Look_Description" xml:space="preserve">
+        <value>Looks at an item at the given map position.</value>
+    </data>
+    <data name="Look_Summary" xml:space="preserve">
+        <value>Look at an item.</value>
+    </data>
+    <data name="Look_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="Look_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="Look_X_FriendlyName" xml:space="preserve">
+        <value>X</value>
+    </data>
+    <data name="Look_X_Description" xml:space="preserve">
+        <value>The item's X map coordinate.</value>
+    </data>
+    <data name="Look_Y_FriendlyName" xml:space="preserve">
+        <value>Y</value>
+    </data>
+    <data name="Look_Y_Description" xml:space="preserve">
+        <value>The item's Y map coordinate.</value>
+    </data>
+    <data name="Look_Z_FriendlyName" xml:space="preserve">
+        <value>Z</value>
+    </data>
+    <data name="Look_Z_Description" xml:space="preserve">
+        <value>The item's floor (Z) coordinate.</value>
+    </data>
+    <data name="Look_ItemId_FriendlyName" xml:space="preserve">
+        <value>Item ID</value>
+    </data>
+    <data name="Look_ItemId_Description" xml:space="preserve">
+        <value>The item's server id.</value>
+    </data>
+    <data name="Look_StackPosition_FriendlyName" xml:space="preserve">
+        <value>Stack position</value>
+    </data>
+    <data name="Look_StackPosition_Description" xml:space="preserve">
+        <value>The item's position within the tile stack.</value>
+    </data>
+    <data name="AutoWalk_FriendlyName" xml:space="preserve">
+        <value>Auto walk</value>
+    </data>
+    <data name="AutoWalk_Description" xml:space="preserve">
+        <value>Walks an ordered path of one or more steps.</value>
+    </data>
+    <data name="AutoWalk_Summary" xml:space="preserve">
+        <value>Walk a path automatically.</value>
+    </data>
+    <data name="AutoWalk_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="AutoWalk_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="AutoWalk_Directions_FriendlyName" xml:space="preserve">
+        <value>Directions</value>
+    </data>
+    <data name="AutoWalk_Directions_Description" xml:space="preserve">
+        <value>A comma separated path such as n,n,e,s,s,w. Full names such as North are also accepted.</value>
+    </data>
+    <data name="SendClientMessage_FriendlyName" xml:space="preserve">
+        <value>Send client message</value>
+    </data>
+    <data name="SendClientMessage_Description" xml:space="preserve">
+        <value>Sends a raw opcode and hex-encoded payload not otherwise modelled.</value>
+    </data>
+    <data name="SendClientMessage_Summary" xml:space="preserve">
+        <value>Send a raw client message.</value>
+    </data>
+    <data name="SendClientMessage_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="SendClientMessage_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="SendClientMessage_Opcode_FriendlyName" xml:space="preserve">
+        <value>Opcode</value>
+    </data>
+    <data name="SendClientMessage_Opcode_Description" xml:space="preserve">
+        <value>The message opcode, from 0 to 255.</value>
+    </data>
+    <data name="SendClientMessage_PayloadHex_FriendlyName" xml:space="preserve">
+        <value>Payload (hex)</value>
+    </data>
+    <data name="SendClientMessage_PayloadHex_Description" xml:space="preserve">
+        <value>The message body as an even-length hex string.</value>
+    </data>
+    <data name="ReceiveServerMessages_FriendlyName" xml:space="preserve">
+        <value>Receive server messages</value>
+    </data>
+    <data name="ReceiveServerMessages_Description" xml:space="preserve">
+        <value>Drains a bounded batch of messages from the inbound queue.</value>
+    </data>
+    <data name="ReceiveServerMessages_Summary" xml:space="preserve">
+        <value>Receive server messages.</value>
+    </data>
+    <data name="ReceiveServerMessages_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="ReceiveServerMessages_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="ReceiveServerMessages_MaxCount_FriendlyName" xml:space="preserve">
+        <value>Max count</value>
+    </data>
+    <data name="ReceiveServerMessages_MaxCount_Description" xml:space="preserve">
+        <value>The maximum number of messages to return.</value>
+    </data>
+    <data name="ReceiveServerMessages_SliceTimeoutMs_FriendlyName" xml:space="preserve">
+        <value>Slice timeout (ms)</value>
+    </data>
+    <data name="ReceiveServerMessages_SliceTimeoutMs_Description" xml:space="preserve">
+        <value>How long to wait for the first message, clamped to 1000 ms.</value>
+    </data>
+    <data name="ReceiveServerMessages_Messages_FriendlyName" xml:space="preserve">
+        <value>Messages</value>
+    </data>
+    <data name="ReceiveServerMessages_Messages_Description" xml:space="preserve">
+        <value>The messages received during this call.</value>
+    </data>
+    <data name="ReceiveServerMessages_Count_FriendlyName" xml:space="preserve">
+        <value>Count</value>
+    </data>
+    <data name="ReceiveServerMessages_Count_Description" xml:space="preserve">
+        <value>The number of messages received.</value>
+    </data>
+    <data name="ReceiveServerMessages_TimedOut_FriendlyName" xml:space="preserve">
+        <value>Timed out</value>
+    </data>
+    <data name="ReceiveServerMessages_TimedOut_Description" xml:space="preserve">
+        <value>True when no message arrived within the slice.</value>
+    </data>
+    <data name="HasServerMessage_FriendlyName" xml:space="preserve">
+        <value>Has server message</value>
+    </data>
+    <data name="HasServerMessage_Description" xml:space="preserve">
+        <value>A single-shot, non-blocking peek at whether a message is queued.</value>
+    </data>
+    <data name="HasServerMessage_Summary" xml:space="preserve">
+        <value>Check whether a server message is waiting.</value>
+    </data>
+    <data name="HasServerMessage_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="HasServerMessage_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="HasServerMessage_HasMessage_FriendlyName" xml:space="preserve">
+        <value>Has message</value>
+    </data>
+    <data name="HasServerMessage_HasMessage_Description" xml:space="preserve">
+        <value>True while at least one message is queued.</value>
+    </data>
+    <data name="SubscribeOpcodes_FriendlyName" xml:space="preserve">
+        <value>Subscribe opcodes</value>
+    </data>
+    <data name="SubscribeOpcodes_Description" xml:space="preserve">
+        <value>Restricts the inbound queue to a set of opcodes; empty clears the restriction.</value>
+    </data>
+    <data name="SubscribeOpcodes_Summary" xml:space="preserve">
+        <value>Restrict which opcodes are queued.</value>
+    </data>
+    <data name="SubscribeOpcodes_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="SubscribeOpcodes_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="SubscribeOpcodes_Opcodes_FriendlyName" xml:space="preserve">
+        <value>Opcodes</value>
+    </data>
+    <data name="SubscribeOpcodes_Opcodes_Description" xml:space="preserve">
+        <value>The opcodes to allow; empty or omitted allows all opcodes.</value>
+    </data>
+    <data name="ClearServerMessages_FriendlyName" xml:space="preserve">
+        <value>Clear server messages</value>
+    </data>
+    <data name="ClearServerMessages_Description" xml:space="preserve">
+        <value>Discards every message currently queued.</value>
+    </data>
+    <data name="ClearServerMessages_Summary" xml:space="preserve">
+        <value>Clear the server message queue.</value>
+    </data>
+    <data name="ClearServerMessages_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="ClearServerMessages_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="ClearServerMessages_Cleared_FriendlyName" xml:space="preserve">
+        <value>Cleared</value>
+    </data>
+    <data name="ClearServerMessages_Cleared_Description" xml:space="preserve">
+        <value>The number of messages discarded.</value>
+    </data>
+    <data name="GetStreamStatistics_FriendlyName" xml:space="preserve">
+        <value>Get stream statistics</value>
+    </data>
+    <data name="GetStreamStatistics_Description" xml:space="preserve">
+        <value>Returns point-in-time counters for the inbound message queue.</value>
+    </data>
+    <data name="GetStreamStatistics_Summary" xml:space="preserve">
+        <value>Get server message queue statistics.</value>
+    </data>
+    <data name="GetStreamStatistics_GameSession_FriendlyName" xml:space="preserve">
+        <value>Game session</value>
+    </data>
+    <data name="GetStreamStatistics_GameSession_Description" xml:space="preserve">
+        <value>The session returned by Enter game.</value>
+    </data>
+    <data name="GetStreamStatistics_Depth_FriendlyName" xml:space="preserve">
+        <value>Depth</value>
+    </data>
+    <data name="GetStreamStatistics_Depth_Description" xml:space="preserve">
+        <value>The number of messages currently queued.</value>
+    </data>
+    <data name="GetStreamStatistics_Capacity_FriendlyName" xml:space="preserve">
+        <value>Capacity</value>
+    </data>
+    <data name="GetStreamStatistics_Capacity_Description" xml:space="preserve">
+        <value>The maximum number of messages the queue can hold.</value>
+    </data>
+    <data name="GetStreamStatistics_Enqueued_FriendlyName" xml:space="preserve">
+        <value>Enqueued</value>
+    </data>
+    <data name="GetStreamStatistics_Enqueued_Description" xml:space="preserve">
+        <value>The total number of messages ever enqueued.</value>
+    </data>
+    <data name="GetStreamStatistics_Dequeued_FriendlyName" xml:space="preserve">
+        <value>Dequeued</value>
+    </data>
+    <data name="GetStreamStatistics_Dequeued_Description" xml:space="preserve">
+        <value>The total number of messages ever dequeued.</value>
+    </data>
+    <data name="GetStreamStatistics_Dropped_FriendlyName" xml:space="preserve">
+        <value>Dropped</value>
+    </data>
+    <data name="GetStreamStatistics_Dropped_Description" xml:space="preserve">
+        <value>Messages discarded because the queue was full.</value>
+    </data>
+    <data name="GetStreamStatistics_Filtered_FriendlyName" xml:space="preserve">
+        <value>Filtered</value>
+    </data>
+    <data name="GetStreamStatistics_Filtered_Description" xml:space="preserve">
+        <value>Messages discarded because their opcode was not subscribed.</value>
+    </data>
+    <data name="GetStreamStatistics_MaxDepthSeen_FriendlyName" xml:space="preserve">
+        <value>Max depth seen</value>
+    </data>
+    <data name="GetStreamStatistics_MaxDepthSeen_Description" xml:space="preserve">
+        <value>The highest depth the queue has reached.</value>
+    </data>
+  <data name="Direction_North_FriendlyName" xml:space="preserve">
+    <value>North</value>
+  </data>
+  <data name="Direction_North_Description" xml:space="preserve">
+    <value>Towards the north.</value>
+  </data>
+  <data name="Direction_East_FriendlyName" xml:space="preserve">
+    <value>East</value>
+  </data>
+  <data name="Direction_East_Description" xml:space="preserve">
+    <value>Towards the east.</value>
+  </data>
+  <data name="Direction_South_FriendlyName" xml:space="preserve">
+    <value>South</value>
+  </data>
+  <data name="Direction_South_Description" xml:space="preserve">
+    <value>Towards the south.</value>
+  </data>
+  <data name="Direction_West_FriendlyName" xml:space="preserve">
+    <value>West</value>
+  </data>
+  <data name="Direction_West_Description" xml:space="preserve">
+    <value>Towards the west.</value>
+  </data>
+  <data name="Direction_NorthEast_FriendlyName" xml:space="preserve">
+    <value>North-east</value>
+  </data>
+  <data name="Direction_NorthEast_Description" xml:space="preserve">
+    <value>Diagonally towards the north-east.</value>
+  </data>
+  <data name="Direction_SouthEast_FriendlyName" xml:space="preserve">
+    <value>South-east</value>
+  </data>
+  <data name="Direction_SouthEast_Description" xml:space="preserve">
+    <value>Diagonally towards the south-east.</value>
+  </data>
+  <data name="Direction_SouthWest_FriendlyName" xml:space="preserve">
+    <value>South-west</value>
+  </data>
+  <data name="Direction_SouthWest_Description" xml:space="preserve">
+    <value>Diagonally towards the south-west.</value>
+  </data>
+  <data name="Direction_NorthWest_FriendlyName" xml:space="preserve">
+    <value>North-west</value>
+  </data>
+  <data name="Direction_NorthWest_Description" xml:space="preserve">
+    <value>Diagonally towards the north-west.</value>
+  </data>
+  <data name="SpeakType_None_FriendlyName" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="SpeakType_None_Description" xml:space="preserve">
+    <value>No classification.</value>
+  </data>
+  <data name="SpeakType_Say_FriendlyName" xml:space="preserve">
+    <value>Say</value>
+  </data>
+  <data name="SpeakType_Say_Description" xml:space="preserve">
+    <value>Normal speech, heard by nearby players.</value>
+  </data>
+  <data name="SpeakType_Whisper_FriendlyName" xml:space="preserve">
+    <value>Whisper</value>
+  </data>
+  <data name="SpeakType_Whisper_Description" xml:space="preserve">
+    <value>Quiet speech, heard only by adjacent players.</value>
+  </data>
+  <data name="SpeakType_Yell_FriendlyName" xml:space="preserve">
+    <value>Yell</value>
+  </data>
+  <data name="SpeakType_Yell_Description" xml:space="preserve">
+    <value>Loud speech, heard across a wide area.</value>
+  </data>
+  <data name="SpeakType_PrivatePlayerToName_FriendlyName" xml:space="preserve">
+    <value>Private message sent</value>
+  </data>
+  <data name="SpeakType_PrivatePlayerToName_Description" xml:space="preserve">
+    <value>A private message sent to another player.</value>
+  </data>
+  <data name="SpeakType_PrivateNameToPlayer_FriendlyName" xml:space="preserve">
+    <value>Private message received</value>
+  </data>
+  <data name="SpeakType_PrivateNameToPlayer_Description" xml:space="preserve">
+    <value>A private message received from another player.</value>
+  </data>
+  <data name="SpeakType_Private_FriendlyName" xml:space="preserve">
+    <value>Private</value>
+  </data>
+  <data name="SpeakType_Private_Description" xml:space="preserve">
+    <value>A private message.</value>
+  </data>
+  <data name="SpeakType_ChannelYellow_FriendlyName" xml:space="preserve">
+    <value>Channel</value>
+  </data>
+  <data name="SpeakType_ChannelYellow_Description" xml:space="preserve">
+    <value>A normal message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_ChannelWhite_FriendlyName" xml:space="preserve">
+    <value>Channel announcement</value>
+  </data>
+  <data name="SpeakType_ChannelWhite_Description" xml:space="preserve">
+    <value>A white message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_RuleViolationChannel_FriendlyName" xml:space="preserve">
+    <value>Rule violation report</value>
+  </data>
+  <data name="SpeakType_RuleViolationChannel_Description" xml:space="preserve">
+    <value>A report opened in the rule violation channel.</value>
+  </data>
+  <data name="SpeakType_RuleViolationAnswer_FriendlyName" xml:space="preserve">
+    <value>Rule violation answer</value>
+  </data>
+  <data name="SpeakType_RuleViolationAnswer_Description" xml:space="preserve">
+    <value>A gamemaster reply to a rule violation report.</value>
+  </data>
+  <data name="SpeakType_RuleViolationContinue_FriendlyName" xml:space="preserve">
+    <value>Rule violation continued</value>
+  </data>
+  <data name="SpeakType_RuleViolationContinue_Description" xml:space="preserve">
+    <value>A continued rule violation conversation.</value>
+  </data>
+  <data name="SpeakType_Broadcast_FriendlyName" xml:space="preserve">
+    <value>Broadcast</value>
+  </data>
+  <data name="SpeakType_Broadcast_Description" xml:space="preserve">
+    <value>A server-wide broadcast.</value>
+  </data>
+  <data name="SpeakType_ChannelRed_FriendlyName" xml:space="preserve">
+    <value>Channel gamemaster</value>
+  </data>
+  <data name="SpeakType_ChannelRed_Description" xml:space="preserve">
+    <value>A gamemaster message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_PrivateRed_FriendlyName" xml:space="preserve">
+    <value>Private gamemaster</value>
+  </data>
+  <data name="SpeakType_PrivateRed_Description" xml:space="preserve">
+    <value>A private gamemaster message.</value>
+  </data>
+  <data name="SpeakType_ChannelOrange_FriendlyName" xml:space="preserve">
+    <value>Channel orange</value>
+  </data>
+  <data name="SpeakType_ChannelOrange_Description" xml:space="preserve">
+    <value>An orange message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_ChannelRedAnonymous_FriendlyName" xml:space="preserve">
+    <value>Channel anonymous gamemaster</value>
+  </data>
+  <data name="SpeakType_ChannelRedAnonymous_Description" xml:space="preserve">
+    <value>An anonymous gamemaster message in a chat channel.</value>
+  </data>
+  <data name="SpeakType_MonsterSay_FriendlyName" xml:space="preserve">
+    <value>Monster say</value>
+  </data>
+  <data name="SpeakType_MonsterSay_Description" xml:space="preserve">
+    <value>Speech from a monster.</value>
+  </data>
+  <data name="SpeakType_MonsterYell_FriendlyName" xml:space="preserve">
+    <value>Monster yell</value>
+  </data>
+  <data name="SpeakType_MonsterYell_Description" xml:space="preserve">
+    <value>A monster yelling.</value>
+  </data>
+  <data name="LoadItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Load item database</value>
+  </data>
+  <data name="LoadItemDatabase_Description" xml:space="preserve">
+    <value>Reads a client Tibia.dat so map descriptions can be decoded.</value>
+  </data>
+  <data name="LoadItemDatabase_Summary" xml:space="preserve">
+    <value>Load item database from {DatPath}</value>
+  </data>
+  <data name="LoadItemDatabase_DatPath_FriendlyName" xml:space="preserve">
+    <value>Tibia.dat path</value>
+  </data>
+  <data name="LoadItemDatabase_DatPath_Description" xml:space="preserve">
+    <value>Full path to the 8.60 client&apos;s Tibia.dat file.</value>
+  </data>
+  <data name="LoadItemDatabase_ItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Item database</value>
+  </data>
+  <data name="LoadItemDatabase_ItemDatabase_Description" xml:space="preserve">
+    <value>The parsed item classification, to pass to Enter game.</value>
+  </data>
+  <data name="EnterGame_ItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Item database</value>
+  </data>
+  <data name="EnterGame_ItemDatabase_Description" xml:space="preserve">
+    <value>The output of Load item database; required to decode the map.</value>
+  </data>
+  <data name="TibiaItemDatabase_FriendlyName" xml:space="preserve">
+    <value>Tibia item database</value>
+  </data>
+  <data name="TibiaItemDatabase_Description" xml:space="preserve">
+    <value>Item classification read from a client Tibia.dat.</value>
+  </data>
+  <data name="TibiaItemDatabase_FriendlyNamePlural" xml:space="preserve">
+    <value>Tibia item databases</value>
+  </data>
+</root>

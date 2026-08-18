@@ -23,7 +23,7 @@ public class ConvertListToHtmlListAction : HtmlActionBase
     {
     }
 
-    public ConvertListToHtmlListAction(HtmlActionsContext context) : base(context)
+    internal ConvertListToHtmlListAction(HtmlActionsContext context) : base(context)
     {
     }
 

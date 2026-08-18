@@ -24,7 +24,7 @@ public class GetControlTextAction : InputSimulationActionBase
     {
     }
 
-    public GetControlTextAction(InputSimulationContext context) : base(context)
+    internal GetControlTextAction(InputSimulationContext context) : base(context)
     {
     }
 

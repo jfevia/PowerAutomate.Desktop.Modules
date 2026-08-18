@@ -26,7 +26,7 @@ public class SetControlTextAction : InputSimulationActionBase
     {
     }
 
-    public SetControlTextAction(InputSimulationContext context) : base(context)
+    internal SetControlTextAction(InputSimulationContext context) : base(context)
     {
     }
 

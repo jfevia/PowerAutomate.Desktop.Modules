@@ -26,7 +26,7 @@ public class ClickButtonAction : InputSimulationActionBase
     {
     }
 
-    public ClickButtonAction(InputSimulationContext context) : base(context)
+    internal ClickButtonAction(InputSimulationContext context) : base(context)
     {
     }
 

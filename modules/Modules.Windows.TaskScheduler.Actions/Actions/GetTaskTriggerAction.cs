@@ -52,7 +52,7 @@ public class GetTaskTriggerAction : TaskSchedulerActionBase
     {
     }
 
-    public GetTaskTriggerAction(TaskSchedulerContext context) : base(context)
+    internal GetTaskTriggerAction(TaskSchedulerContext context) : base(context)
     {
     }
 

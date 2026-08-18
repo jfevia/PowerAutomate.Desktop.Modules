@@ -22,7 +22,7 @@ public class GetRegistryValueAction : RegistryActionBase
     {
     }
 
-    public GetRegistryValueAction(RegistryContext context) : base(context)
+    internal GetRegistryValueAction(RegistryContext context) : base(context)
     {
     }
 

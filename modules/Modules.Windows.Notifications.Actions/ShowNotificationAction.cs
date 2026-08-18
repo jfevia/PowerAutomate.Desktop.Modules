@@ -23,7 +23,7 @@ public class ShowNotificationAction : NotificationsActionBase
     {
     }
 
-    public ShowNotificationAction(NotificationsContext context) : base(context)
+    internal ShowNotificationAction(NotificationsContext context) : base(context)
     {
     }
 

@@ -21,7 +21,7 @@ public class CreateRegistryKeyAction : RegistryActionBase
     {
     }
 
-    public CreateRegistryKeyAction(RegistryContext context) : base(context)
+    internal CreateRegistryKeyAction(RegistryContext context) : base(context)
     {
     }
 

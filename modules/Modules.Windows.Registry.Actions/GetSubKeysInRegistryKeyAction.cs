@@ -23,7 +23,7 @@ public class GetSubKeysInRegistryKeyAction : RegistryActionBase
     {
     }
 
-    public GetSubKeysInRegistryKeyAction(RegistryContext context) : base(context)
+    internal GetSubKeysInRegistryKeyAction(RegistryContext context) : base(context)
     {
     }
 

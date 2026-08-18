@@ -26,7 +26,7 @@ public class DoubleClickControlAction : InputSimulationActionBase
     {
     }
 
-    public DoubleClickControlAction(InputSimulationContext context) : base(context)
+    internal DoubleClickControlAction(InputSimulationContext context) : base(context)
     {
     }
 

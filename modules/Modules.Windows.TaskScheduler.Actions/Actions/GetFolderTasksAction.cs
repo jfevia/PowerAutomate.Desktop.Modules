@@ -50,7 +50,7 @@ public class GetFolderTasksAction : TaskSchedulerActionBase
     {
     }
 
-    public GetFolderTasksAction(TaskSchedulerContext context) : base(context)
+    internal GetFolderTasksAction(TaskSchedulerContext context) : base(context)
     {
     }
 

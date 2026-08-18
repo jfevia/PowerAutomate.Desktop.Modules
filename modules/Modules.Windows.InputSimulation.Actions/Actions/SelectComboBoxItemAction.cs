@@ -28,7 +28,7 @@ public class SelectComboBoxItemAction : InputSimulationActionBase
     {
     }
 
-    public SelectComboBoxItemAction(InputSimulationContext context) : base(context)
+    internal SelectComboBoxItemAction(InputSimulationContext context) : base(context)
     {
     }
 

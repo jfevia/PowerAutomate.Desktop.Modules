@@ -45,7 +45,7 @@ public class ExportTaskAction : TaskSchedulerActionBase
     {
     }
 
-    public ExportTaskAction(TaskSchedulerContext context) : base(context)
+    internal ExportTaskAction(TaskSchedulerContext context) : base(context)
     {
     }
 

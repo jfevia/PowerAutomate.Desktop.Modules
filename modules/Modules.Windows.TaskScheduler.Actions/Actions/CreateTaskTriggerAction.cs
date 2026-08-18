@@ -120,7 +120,7 @@ public class CreateTaskTriggerAction : TaskSchedulerActionBase
     {
     }
 
-    public CreateTaskTriggerAction(TaskSchedulerContext context) : base(context)
+    internal CreateTaskTriggerAction(TaskSchedulerContext context) : base(context)
     {
     }
 

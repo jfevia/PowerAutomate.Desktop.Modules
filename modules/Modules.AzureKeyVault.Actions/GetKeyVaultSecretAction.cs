@@ -24,7 +24,7 @@ public class GetKeyVaultSecretAction : ActionBase
     {
     }
 
-    public GetKeyVaultSecretAction(IKeyVaultSecretProvider secretProvider)
+    internal GetKeyVaultSecretAction(IKeyVaultSecretProvider secretProvider)
     {
         this.secretProvider = secretProvider ?? throw new ArgumentNullException(nameof(secretProvider));
     }

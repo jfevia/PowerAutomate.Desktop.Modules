@@ -18,7 +18,7 @@ public class TaskDelayAction : ActionBase
     {
     }
 
-    public TaskDelayAction(ITaskRunner taskRunner)
+    internal TaskDelayAction(ITaskRunner taskRunner)
     {
         this.taskRunner = taskRunner ?? throw new ArgumentNullException(nameof(taskRunner));
     }

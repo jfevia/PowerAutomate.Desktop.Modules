@@ -19,7 +19,7 @@ public class TasksWhenAllAction : ActionBase
     {
     }
 
-    public TasksWhenAllAction(ITaskRunner taskRunner)
+    internal TasksWhenAllAction(ITaskRunner taskRunner)
     {
         this.taskRunner = taskRunner ?? throw new ArgumentNullException(nameof(taskRunner));
     }

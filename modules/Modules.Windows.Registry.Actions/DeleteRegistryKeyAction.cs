@@ -22,7 +22,7 @@ public class DeleteRegistryKeyAction : RegistryActionBase
     {
     }
 
-    public DeleteRegistryKeyAction(RegistryContext context) : base(context)
+    internal DeleteRegistryKeyAction(RegistryContext context) : base(context)
     {
     }
 
