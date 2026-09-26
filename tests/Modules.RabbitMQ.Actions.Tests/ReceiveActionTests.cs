@@ -11,22 +11,33 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class ReceiveActionTests : RabbitMqActionFixture
 {
     /// <summary>
-    ///     Distinguishes an empty queue from a successful delivery.
+    ///     Rejects a poll without the channel that owns deliveries.
     /// </summary>
     [Test]
-    public void Execute_WhenQueueIsEmpty_ReturnsNotFound()
+    public void Execute_WhenConnectionIsMissing_ReportsInvalidArgument()
     {
+        var action = new ReceiveAction
+        {
+            Queue = "queue"
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
+    ///     Reports an I/O failure rather than an empty queue.
+    /// </summary>
+    [Test]
+    public void Execute_WhenIoFails_ReportsBrokerError()
+    {
+        Client.Failure = new IOException("disconnected");
         var action = new ReceiveAction
         {
             Connection = Connection,
             Queue = "queue"
         };
 
-        RunAction(action);
-
-        Assert.That(Client.Queue, Is.EqualTo("queue"));
-        Assert.That(action.IsFound, Is.False);
-        Assert.That(action.Message, Is.Null);
+        AssertError(ErrorCodes.Broker, action);
     }
 
     /// <summary>
@@ -73,32 +84,21 @@ public sealed class ReceiveActionTests : RabbitMqActionFixture
     }
 
     /// <summary>
-    ///     Rejects a poll without the channel that owns deliveries.
+    ///     Distinguishes an empty queue from a successful delivery.
     /// </summary>
     [Test]
-    public void Execute_WhenConnectionIsMissing_ReportsInvalidArgument()
+    public void Execute_WhenQueueIsEmpty_ReturnsNotFound()
     {
-        var action = new ReceiveAction
-        {
-            Queue = "queue"
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
-    }
-
-    /// <summary>
-    ///     Reports an I/O failure rather than an empty queue.
-    /// </summary>
-    [Test]
-    public void Execute_WhenIoFails_ReportsBrokerError()
-    {
-        Client.Failure = new IOException("disconnected");
         var action = new ReceiveAction
         {
             Connection = Connection,
             Queue = "queue"
         };
 
-        AssertError(ErrorCodes.Broker, action);
+        RunAction(action);
+
+        Assert.That(Client.Queue, Is.EqualTo("queue"));
+        Assert.That(action.IsFound, Is.False);
+        Assert.That(action.Message, Is.Null);
     }
 }

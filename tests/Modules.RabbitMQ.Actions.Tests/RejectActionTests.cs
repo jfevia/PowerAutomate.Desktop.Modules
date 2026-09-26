@@ -9,6 +9,17 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class RejectActionTests : RabbitMqActionFixture
 {
     /// <summary>
+    ///     Requires a delivery before sending a broker rejection.
+    /// </summary>
+    [Test]
+    public void Execute_WhenMessageIsMissing_ReportsInvalidArgument()
+    {
+        var action = new RejectAction();
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
     ///     Preserves whether the flow opted into redelivery.
     /// </summary>
     /// <param name="allowRequeue">Whether the broker should requeue.</param>
@@ -28,16 +39,5 @@ public sealed class RejectActionTests : RabbitMqActionFixture
         Assert.That(Client.RejectedTag, Is.EqualTo(7));
         Assert.That(Client.IsRequeued, Is.EqualTo(allowRequeue));
         Assert.That(message.IsSettled, Is.True);
-    }
-
-    /// <summary>
-    ///     Requires a delivery before sending a broker rejection.
-    /// </summary>
-    [Test]
-    public void Execute_WhenMessageIsMissing_ReportsInvalidArgument()
-    {
-        var action = new RejectAction();
-
-        AssertError(ErrorCodes.InvalidArgument, action);
     }
 }

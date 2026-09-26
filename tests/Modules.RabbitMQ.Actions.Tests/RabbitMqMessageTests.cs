@@ -51,18 +51,6 @@ public sealed class RabbitMqMessageTests : RabbitMqActionFixture
     }
 
     /// <summary>
-    ///     Displays a queue name without leaking the payload.
-    /// </summary>
-    [Test]
-    public void ToString_WhenMessageIsReceived_DisplaysQueueOnly()
-    {
-        var message = CreateMessage();
-
-        Assert.That(message.ToString(), Is.EqualTo("RabbitMQ message from queue"));
-        Assert.That(message.IsSettled, Is.False);
-    }
-
-    /// <summary>
     ///     Leaves the message unsettled if the operation is canceled first.
     /// </summary>
     [Test]
@@ -74,6 +62,18 @@ public sealed class RabbitMqMessageTests : RabbitMqActionFixture
         var task = message.SettleAsync(false, false, cancellation.Token);
 
         Assert.That(() => task.GetAwaiter().GetResult(), Throws.InstanceOf<OperationCanceledException>());
+        Assert.That(message.IsSettled, Is.False);
+    }
+
+    /// <summary>
+    ///     Displays a queue name without leaking the payload.
+    /// </summary>
+    [Test]
+    public void ToString_WhenMessageIsReceived_DisplaysQueueOnly()
+    {
+        var message = CreateMessage();
+
+        Assert.That(message.ToString(), Is.EqualTo("RabbitMQ message from queue"));
         Assert.That(message.IsSettled, Is.False);
     }
 }

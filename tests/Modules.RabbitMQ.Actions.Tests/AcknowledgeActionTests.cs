@@ -12,30 +12,6 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class AcknowledgeActionTests : RabbitMqActionFixture
 {
     /// <summary>
-    ///     Confirms one delivery and prevents either settlement path repeating.
-    /// </summary>
-    [Test]
-    public void Execute_WhenDeliveryIsAcknowledged_PreventsDuplicateSettlement()
-    {
-        var message = CreateMessage();
-        var action = new AcknowledgeAction
-        {
-            Message = message
-        };
-
-        RunAction(action);
-
-        Assert.That(Client.AcknowledgedTag, Is.EqualTo(7));
-        Assert.That(message.IsSettled, Is.True);
-        AssertError(ErrorCodes.MessageSettled, action);
-        var rejection = new RejectAction
-        {
-            Message = message
-        };
-        AssertError(ErrorCodes.MessageSettled, rejection);
-    }
-
-    /// <summary>
     ///     Leaves a message available for retry if the broker rejects acknowledgement.
     /// </summary>
     [Test]
@@ -92,6 +68,30 @@ public sealed class AcknowledgeActionTests : RabbitMqActionFixture
         }
 
         Assert.That(Client.AcknowledgedCount, Is.EqualTo(1));
+    }
+
+    /// <summary>
+    ///     Confirms one delivery and prevents either settlement path repeating.
+    /// </summary>
+    [Test]
+    public void Execute_WhenDeliveryIsAcknowledged_PreventsDuplicateSettlement()
+    {
+        var message = CreateMessage();
+        var action = new AcknowledgeAction
+        {
+            Message = message
+        };
+
+        RunAction(action);
+
+        Assert.That(Client.AcknowledgedTag, Is.EqualTo(7));
+        Assert.That(message.IsSettled, Is.True);
+        AssertError(ErrorCodes.MessageSettled, action);
+        var rejection = new RejectAction
+        {
+            Message = message
+        };
+        AssertError(ErrorCodes.MessageSettled, rejection);
     }
 
     /// <summary>

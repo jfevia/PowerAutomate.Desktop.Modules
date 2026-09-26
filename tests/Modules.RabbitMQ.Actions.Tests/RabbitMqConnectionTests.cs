@@ -41,16 +41,6 @@ public sealed class RabbitMqConnectionTests : RabbitMqActionFixture
     }
 
     /// <summary>
-    ///     Does not display passwords from broker URIs.
-    /// </summary>
-    [Test]
-    public void ToString_WhenConnectionIsOpen_DisplaysEndpoint()
-    {
-        Assert.That(Connection.ToString(), Is.EqualTo("rabbit.example:5672"));
-        Assert.That(Connection.IsClosed, Is.False);
-    }
-
-    /// <summary>
     ///     Honors cancellation before a queue poll starts.
     /// </summary>
     [Test]
@@ -88,5 +78,15 @@ public sealed class RabbitMqConnectionTests : RabbitMqActionFixture
 
         var error = Assert.Throws<ObjectDisposedException>(() => task.GetAwaiter().GetResult());
         Assert.That(error?.ObjectName, Is.EqualTo(nameof(RabbitMqConnection)));
+    }
+
+    /// <summary>
+    ///     Does not display passwords from broker URIs.
+    /// </summary>
+    [Test]
+    public void ToString_WhenConnectionIsOpen_DisplaysEndpoint()
+    {
+        Assert.That(Connection.ToString(), Is.EqualTo("rabbit.example:5672"));
+        Assert.That(Connection.IsClosed, Is.False);
     }
 }

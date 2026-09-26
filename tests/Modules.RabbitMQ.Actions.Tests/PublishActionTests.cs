@@ -12,27 +12,6 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class PublishActionTests : RabbitMqActionFixture
 {
     /// <summary>
-    ///     Keeps persistent publication enabled by default.
-    /// </summary>
-    [Test]
-    public void Execute_WhenDefaultExchangeIsUsed_PublishesPersistentUtf8()
-    {
-        var action = new PublishAction
-        {
-            Connection = Connection,
-            RoutingKey = "queue",
-            Body = "Hello"
-        };
-
-        RunAction(action);
-
-        Assert.That(Client.Exchange, Is.Empty);
-        Assert.That(Client.RoutingKey, Is.EqualTo("queue"));
-        Assert.That(Client.Body, Is.EqualTo(Encoding.UTF8.GetBytes("Hello")));
-        Assert.That(Client.IsPersistent, Is.True);
-    }
-
-    /// <summary>
     ///     Permits empty payloads and a nonpersistent custom exchange.
     /// </summary>
     [Test]
@@ -52,54 +31,6 @@ public sealed class PublishActionTests : RabbitMqActionFixture
         Assert.That(Client.Exchange, Is.EqualTo("events"));
         Assert.That(Client.Body, Is.Empty);
         Assert.That(Client.IsPersistent, Is.False);
-    }
-
-    /// <summary>
-    ///     Rejects publication without a broker connection.
-    /// </summary>
-    [Test]
-    public void Execute_WhenConnectionIsMissing_ReportsInvalidArgument()
-    {
-        var action = new PublishAction
-        {
-            RoutingKey = "queue",
-            Body = "text"
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
-    }
-
-    /// <summary>
-    ///     Rejects an empty routing key before contacting the broker.
-    /// </summary>
-    [Test]
-    public void Execute_WhenRoutingKeyIsBlank_ReportsInvalidArgument()
-    {
-        var action = new PublishAction
-        {
-            Body = "text",
-            Connection = Connection,
-            RoutingKey = " "
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
-    }
-
-    /// <summary>
-    ///     Rejects a missing exchange instead of choosing an unintended one.
-    /// </summary>
-    [Test]
-    public void Execute_WhenExchangeIsNull_ReportsInvalidArgument()
-    {
-        var action = new PublishAction
-        {
-            Body = "text",
-            Connection = Connection,
-            Exchange = null,
-            RoutingKey = "queue"
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
     }
 
     /// <summary>
@@ -135,10 +66,25 @@ public sealed class PublishActionTests : RabbitMqActionFixture
     }
 
     /// <summary>
+    ///     Rejects publication without a broker connection.
+    /// </summary>
+    [Test]
+    public void Execute_WhenConnectionIsMissing_ReportsInvalidArgument()
+    {
+        var action = new PublishAction
+        {
+            RoutingKey = "queue",
+            Body = "text"
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
     ///     Avoids deadlocking the PAD caller's synchronization context.
     /// </summary>
     [Test]
-    public void Execute_WhenCallerHasSynchronizationContext_UsesWorkerThread()
+    public void Execute_WhenContextIsCaptured_UsesWorkerThread()
     {
         var original = SynchronizationContext.Current;
         var throwing = new ThrowingSynchronizationContext();
@@ -160,5 +106,59 @@ public sealed class PublishActionTests : RabbitMqActionFixture
         }
 
         Assert.That(Client.RoutingKey, Is.EqualTo("queue"));
+    }
+
+    /// <summary>
+    ///     Keeps persistent publication enabled by default.
+    /// </summary>
+    [Test]
+    public void Execute_WhenExchangeIsDefault_PublishesPersistentUtf8()
+    {
+        var action = new PublishAction
+        {
+            Connection = Connection,
+            RoutingKey = "queue",
+            Body = "Hello"
+        };
+
+        RunAction(action);
+
+        Assert.That(Client.Exchange, Is.Empty);
+        Assert.That(Client.RoutingKey, Is.EqualTo("queue"));
+        Assert.That(Client.Body, Is.EqualTo(Encoding.UTF8.GetBytes("Hello")));
+        Assert.That(Client.IsPersistent, Is.True);
+    }
+
+    /// <summary>
+    ///     Rejects a missing exchange instead of choosing an unintended one.
+    /// </summary>
+    [Test]
+    public void Execute_WhenExchangeIsNull_ReportsInvalidArgument()
+    {
+        var action = new PublishAction
+        {
+            Body = "text",
+            Connection = Connection,
+            Exchange = null,
+            RoutingKey = "queue"
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
+    ///     Rejects an empty routing key before contacting the broker.
+    /// </summary>
+    [Test]
+    public void Execute_WhenKeyIsBlank_ReportsInvalidArgument()
+    {
+        var action = new PublishAction
+        {
+            Body = "text",
+            Connection = Connection,
+            RoutingKey = " "
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
     }
 }

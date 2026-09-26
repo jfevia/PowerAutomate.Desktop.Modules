@@ -12,28 +12,6 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class ConnectActionTests : RabbitMqActionFixture
 {
     /// <summary>
-    ///     Keeps URI credentials out of the resulting connection variable.
-    /// </summary>
-    /// <param name="address">The broker URI to connect to.</param>
-    /// <param name="endpoint">The expected credential-free endpoint.</param>
-    [TestCase("amqp://example:example@rabbit.example:5672/vhost", "rabbit.example:5672")]
-    [TestCase("amqps://example:example@rabbit.example:5671/vhost", "rabbit.example:5671")]
-    public void Execute_WhenUriHasCredentials_HidesThem(string address, string endpoint)
-    {
-        var factory = new RabbitMqClientFactoryStub(Client);
-        var action = new StubConnectAction(factory)
-        {
-            Address = address
-        };
-
-        RunAction(action);
-
-        Assert.That(factory.GetAddress()?.AbsoluteUri, Is.EqualTo(address));
-        Assert.That(action.Connection?.Endpoint, Is.EqualTo(endpoint));
-        Assert.That(action.Connection?.ToString(), Does.Not.Contain("example:example"));
-    }
-
-    /// <summary>
     ///     Does not invent a connection before the flow executes.
     /// </summary>
     [Test]
@@ -110,5 +88,27 @@ public sealed class ConnectActionTests : RabbitMqActionFixture
         };
 
         AssertError(ErrorCodes.Broker, action);
+    }
+
+    /// <summary>
+    ///     Keeps URI credentials out of the resulting connection variable.
+    /// </summary>
+    /// <param name="address">The broker URI to connect to.</param>
+    /// <param name="endpoint">The expected credential-free endpoint.</param>
+    [TestCase("amqp://example:example@rabbit.example:5672/vhost", "rabbit.example:5672")]
+    [TestCase("amqps://example:example@rabbit.example:5671/vhost", "rabbit.example:5671")]
+    public void Execute_WhenUriHasCredentials_HidesThem(string address, string endpoint)
+    {
+        var factory = new RabbitMqClientFactoryStub(Client);
+        var action = new StubConnectAction(factory)
+        {
+            Address = address
+        };
+
+        RunAction(action);
+
+        Assert.That(factory.GetAddress()?.AbsoluteUri, Is.EqualTo(address));
+        Assert.That(action.Connection?.Endpoint, Is.EqualTo(endpoint));
+        Assert.That(action.Connection?.ToString(), Does.Not.Contain("example:example"));
     }
 }

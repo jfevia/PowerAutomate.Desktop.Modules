@@ -10,6 +10,26 @@ namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Tests;
 public sealed class CloseActionTests : RabbitMqActionFixture
 {
     /// <summary>
+    ///     Allows a retry if channel shutdown fails.
+    /// </summary>
+    [Test]
+    public void Execute_WhenBrokerFails_RemainsOpenForRetry()
+    {
+        Client.Failure = new IOException("close failed");
+        var action = new CloseAction
+        {
+            Connection = Connection
+        };
+
+        AssertError(ErrorCodes.Broker, action);
+        Assert.That(Connection.IsClosed, Is.False);
+
+        Client.Failure = null;
+        RunAction(action);
+        Assert.That(Connection.IsClosed, Is.True);
+    }
+
+    /// <summary>
     ///     Closes once and rejects subsequent operations on the channel.
     /// </summary>
     [Test]
@@ -38,26 +58,6 @@ public sealed class CloseActionTests : RabbitMqActionFixture
             Body = "text"
         };
         AssertError(ErrorCodes.ClosedConnection, publish);
-    }
-
-    /// <summary>
-    ///     Allows a retry if channel shutdown fails.
-    /// </summary>
-    [Test]
-    public void Execute_WhenBrokerFails_RemainsOpenForRetry()
-    {
-        Client.Failure = new IOException("close failed");
-        var action = new CloseAction
-        {
-            Connection = Connection
-        };
-
-        AssertError(ErrorCodes.Broker, action);
-        Assert.That(Connection.IsClosed, Is.False);
-
-        Client.Failure = null;
-        RunAction(action);
-        Assert.That(Connection.IsClosed, Is.True);
     }
 
     /// <summary>
