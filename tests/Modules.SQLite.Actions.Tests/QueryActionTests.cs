@@ -13,27 +13,6 @@ namespace PowerAutomate.Desktop.Modules.SQLite.Actions.Tests;
 public sealed class QueryActionTests : SQLiteDatabaseFixture
 {
     /// <summary>
-    ///     Preserves database-null values in the returned DataTable.
-    /// </summary>
-    [Test]
-    public void Execute_WhenValueIsNull_ReturnsDatabaseNull()
-    {
-        CreateDatabase();
-        var parameters = CreateParameters("$value", DBNull.Value);
-        var action = new QueryAction
-        {
-            DatabasePath = DatabasePath,
-            Sql = "SELECT $value AS value",
-            Parameters = parameters
-        };
-
-        RunAction(action);
-
-        Assert.That(action.Result.Rows.Count, Is.EqualTo(1));
-        Assert.That(action.Result.Rows[0].IsNull("value"), Is.True);
-    }
-
-    /// <summary>
     ///     Does not create a missing database during a read.
     /// </summary>
     [Test]
@@ -48,6 +27,26 @@ public sealed class QueryActionTests : SQLiteDatabaseFixture
         var error = Assert.Throws<ActionException>(() => RunAction(action))!;
         Assert.That(error.Name, Is.EqualTo(ErrorCodes.Database));
         Assert.That(File.Exists(DatabasePath), Is.False);
+    }
+
+    /// <summary>
+    ///     Rejects parameter rows missing the Name column.
+    /// </summary>
+    [Test]
+    public void Execute_WhenNameColumnMissing_ReportsInvalidArgument()
+    {
+        CreateDatabase();
+        var parameters = new DataTable();
+        parameters.Columns.Add("Value", typeof(object));
+        var action = new QueryAction
+        {
+            DatabasePath = DatabasePath,
+            Sql = "SELECT 1",
+            Parameters = parameters
+        };
+
+        var error = Assert.Throws<ActionException>(() => RunAction(action))!;
+        Assert.That(error.Name, Is.EqualTo(ErrorCodes.InvalidArgument));
     }
 
     /// <summary>
@@ -71,7 +70,7 @@ public sealed class QueryActionTests : SQLiteDatabaseFixture
     ///     Rejects parameter rows missing the Value column.
     /// </summary>
     [Test]
-    public void Execute_WhenValueColumnIsMissing_ReportsInvalidArgument()
+    public void Execute_WhenValueColumnMissing_ReportsInvalidArgument()
     {
         CreateDatabase();
         var parameters = new DataTable();
@@ -88,22 +87,23 @@ public sealed class QueryActionTests : SQLiteDatabaseFixture
     }
 
     /// <summary>
-    ///     Rejects parameter rows missing the Name column.
+    ///     Preserves database-null values in the returned DataTable.
     /// </summary>
     [Test]
-    public void Execute_WhenNameColumnIsMissing_ReportsInvalidArgument()
+    public void Execute_WhenValueIsNull_ReturnsDatabaseNull()
     {
         CreateDatabase();
-        var parameters = new DataTable();
-        parameters.Columns.Add("Value", typeof(object));
+        var parameters = CreateParameters("$value", DBNull.Value);
         var action = new QueryAction
         {
             DatabasePath = DatabasePath,
-            Sql = "SELECT 1",
+            Sql = "SELECT $value AS value",
             Parameters = parameters
         };
 
-        var error = Assert.Throws<ActionException>(() => RunAction(action))!;
-        Assert.That(error.Name, Is.EqualTo(ErrorCodes.InvalidArgument));
+        RunAction(action);
+
+        Assert.That(action.Result.Rows.Count, Is.EqualTo(1));
+        Assert.That(action.Result.Rows[0].IsNull("value"), Is.True);
     }
 }
