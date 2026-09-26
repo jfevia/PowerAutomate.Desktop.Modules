@@ -11,24 +11,38 @@ namespace PowerAutomate.Desktop.Modules.PostgreSQL.Actions.Tests;
 public sealed class ExecuteActionTests : PostgreSqlActionFixture
 {
     /// <summary>
-    ///     Keeps SQL database nulls distinct from empty strings.
+    ///     Rejects empty parameter names before running a command.
     /// </summary>
     [Test]
-    public void Execute_WhenParameterIsDatabaseNull_ReturnsAffectedRows()
+    public void Execute_WhenNameIsEmpty_ReportsInvalidArgument()
     {
-        Client.AffectedRows = 3;
-        var parameters = CreateParameters("@value", DBNull.Value);
+        var parameters = CreateParameters(string.Empty, 1);
         var action = new StubExecuteAction(Client)
         {
             ConnectionString = "Host=localhost",
-            Sql = "UPDATE records SET value = @value",
+            Sql = "SELECT 1",
             Parameters = parameters
         };
 
-        RunAction(action);
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
 
-        Assert.That(action.AffectedRows, Is.EqualTo(3));
-        Assert.That(Client.ParameterValue, Is.EqualTo(DBNull.Value));
+    /// <summary>
+    ///     Rejects database-null parameter names.
+    /// </summary>
+    [Test]
+    public void Execute_WhenNameIsNull_ReportsInvalidArgument()
+    {
+        var parameters = CreateParameterTable();
+        parameters.Rows.Add(DBNull.Value, 1);
+        var action = new StubExecuteAction(Client)
+        {
+            ConnectionString = "Host=localhost",
+            Sql = "SELECT 1",
+            Parameters = parameters
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
     }
 
     /// <summary>
@@ -51,30 +65,20 @@ public sealed class ExecuteActionTests : PostgreSqlActionFixture
     }
 
     /// <summary>
-    ///     Uses the default timeout until a flow changes it.
+    ///     Surfaces server failures instead of a zero-row result.
     /// </summary>
     [Test]
-    public void ExecuteAction_WhenCreated_HasSafeDefaults()
+    public void Execute_WhenServerFails_ReportsDatabaseError()
     {
-        var action = new ExecuteAction();
-
-        Assert.That(action.AffectedRows, Is.Zero);
-        Assert.That(action.TimeoutSeconds, Is.EqualTo(30));
-    }
-
-    /// <summary>
-    ///     Rejects a missing injected client before opening a connection.
-    /// </summary>
-    [Test]
-    public void ExecuteAction_WhenClientIsNull_Throws()
-    {
-        var error = Assert.Throws<ArgumentNullException>(() =>
+        var failure = new NpgsqlException("server unavailable");
+        Client.Failure = failure;
+        var action = new StubExecuteAction(Client)
         {
-            var action = new StubExecuteAction(null);
-            Assert.Fail($"Unexpected action: {action}");
-        });
+            ConnectionString = "Host=localhost",
+            Sql = "SELECT 1"
+        };
 
-        Assert.That(error?.ParamName, Is.EqualTo("client"));
+        AssertError(ErrorCodes.Database, action);
     }
 
     /// <summary>
@@ -111,54 +115,50 @@ public sealed class ExecuteActionTests : PostgreSqlActionFixture
     }
 
     /// <summary>
-    ///     Rejects empty parameter names before running a command.
+    ///     Keeps SQL database nulls distinct from empty strings.
     /// </summary>
     [Test]
-    public void Execute_WhenParameterNameIsEmpty_ReportsInvalidArgument()
+    public void Execute_WhenValueIsNull_ReturnsAffectedRows()
     {
-        var parameters = CreateParameters(string.Empty, 1);
+        Client.AffectedRows = 3;
+        var parameters = CreateParameters("@value", DBNull.Value);
         var action = new StubExecuteAction(Client)
         {
             ConnectionString = "Host=localhost",
-            Sql = "SELECT 1",
+            Sql = "UPDATE records SET value = @value",
             Parameters = parameters
         };
 
-        AssertError(ErrorCodes.InvalidArgument, action);
+        RunAction(action);
+
+        Assert.That(action.AffectedRows, Is.EqualTo(3));
+        Assert.That(Client.ParameterValue, Is.EqualTo(DBNull.Value));
     }
 
     /// <summary>
-    ///     Rejects database-null parameter names.
+    ///     Rejects a missing injected client before opening a connection.
     /// </summary>
     [Test]
-    public void Execute_WhenParameterNameIsDatabaseNull_ReportsInvalidArgument()
+    public void ExecuteAction_WhenClientIsNull_Throws()
     {
-        var parameters = CreateParameterTable();
-        parameters.Rows.Add(DBNull.Value, 1);
-        var action = new StubExecuteAction(Client)
+        var error = Assert.Throws<ArgumentNullException>(() =>
         {
-            ConnectionString = "Host=localhost",
-            Sql = "SELECT 1",
-            Parameters = parameters
-        };
+            var action = new StubExecuteAction(null);
+            Assert.Fail($"Unexpected action: {action}");
+        });
 
-        AssertError(ErrorCodes.InvalidArgument, action);
+        Assert.That(error?.ParamName, Is.EqualTo("client"));
     }
 
     /// <summary>
-    ///     Surfaces server failures instead of a zero-row result.
+    ///     Uses the default timeout until a flow changes it.
     /// </summary>
     [Test]
-    public void Execute_WhenServerFails_ReportsDatabaseError()
+    public void ExecuteAction_WhenCreated_HasSafeDefaults()
     {
-        var failure = new NpgsqlException("server unavailable");
-        Client.Failure = failure;
-        var action = new StubExecuteAction(Client)
-        {
-            ConnectionString = "Host=localhost",
-            Sql = "SELECT 1"
-        };
+        var action = new ExecuteAction();
 
-        AssertError(ErrorCodes.Database, action);
+        Assert.That(action.AffectedRows, Is.Zero);
+        Assert.That(action.TimeoutSeconds, Is.EqualTo(30));
     }
 }

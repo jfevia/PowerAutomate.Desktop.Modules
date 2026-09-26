@@ -12,6 +12,41 @@ namespace PowerAutomate.Desktop.Modules.PostgreSQL.Actions.Tests;
 public sealed class QueryActionTests : PostgreSqlActionFixture
 {
     /// <summary>
+    ///     Rejects a missing connection string before creating a command.
+    /// </summary>
+    /// <param name="connectionString">The missing connection settings.</param>
+    [TestCase("")]
+    [TestCase(" ")]
+    public void Execute_WhenConnectionIsBlank_ReportsInvalidArgument(string connectionString)
+    {
+        var action = new StubQueryAction(Client)
+        {
+            ConnectionString = connectionString,
+            Sql = "SELECT 1"
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
+    ///     Rejects parameter rows without a Name column.
+    /// </summary>
+    [Test]
+    public void Execute_WhenNameColumnMissing_ReportsInvalidArgument()
+    {
+        var parameters = new DataTable();
+        parameters.Columns.Add("Value", typeof(object));
+        var action = new StubQueryAction(Client)
+        {
+            ConnectionString = "Host=localhost",
+            Sql = "SELECT 1",
+            Parameters = parameters
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
     ///     Sends a bound value with the requested command timeout.
     /// </summary>
     [Test]
@@ -56,47 +91,20 @@ public sealed class QueryActionTests : PostgreSqlActionFixture
     }
 
     /// <summary>
-    ///     Initializes the output table before the flow executes.
+    ///     Surfaces a database failure rather than an empty result.
     /// </summary>
     [Test]
-    public void QueryAction_WhenCreated_HasEmptyResult()
+    public void Execute_WhenServerFails_ReportsDatabaseError()
     {
-        var action = new QueryAction();
-
-        Assert.That(action.Result.Rows.Count, Is.Zero);
-        Assert.That(action.TimeoutSeconds, Is.EqualTo(30));
-    }
-
-    /// <summary>
-    ///     Rejects a missing injected client before running SQL.
-    /// </summary>
-    [Test]
-    public void QueryAction_WhenClientIsNull_Throws()
-    {
-        var error = Assert.Throws<ArgumentNullException>(() =>
-        {
-            var action = new StubQueryAction(null);
-            Assert.Fail($"Unexpected action: {action}");
-        });
-
-        Assert.That(error?.ParamName, Is.EqualTo("client"));
-    }
-
-    /// <summary>
-    ///     Rejects a missing connection string before creating a command.
-    /// </summary>
-    /// <param name="connectionString">The missing connection settings.</param>
-    [TestCase("")]
-    [TestCase(" ")]
-    public void Execute_WhenConnectionStringIsBlank_ReportsInvalidArgument(string connectionString)
-    {
+        var failure = new NpgsqlException("server unavailable");
+        Client.Failure = failure;
         var action = new StubQueryAction(Client)
         {
-            ConnectionString = connectionString,
+            ConnectionString = "Host=localhost",
             Sql = "SELECT 1"
         };
 
-        AssertError(ErrorCodes.InvalidArgument, action);
+        AssertError(ErrorCodes.Database, action);
     }
 
     /// <summary>
@@ -116,28 +124,10 @@ public sealed class QueryActionTests : PostgreSqlActionFixture
     }
 
     /// <summary>
-    ///     Rejects parameter rows without a Name column.
-    /// </summary>
-    [Test]
-    public void Execute_WhenNameColumnIsMissing_ReportsInvalidArgument()
-    {
-        var parameters = new DataTable();
-        parameters.Columns.Add("Value", typeof(object));
-        var action = new StubQueryAction(Client)
-        {
-            ConnectionString = "Host=localhost",
-            Sql = "SELECT 1",
-            Parameters = parameters
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
-    }
-
-    /// <summary>
     ///     Rejects parameter rows without a Value column.
     /// </summary>
     [Test]
-    public void Execute_WhenValueColumnIsMissing_ReportsInvalidArgument()
+    public void Execute_WhenValueColumnMissing_ReportsInvalidArgument()
     {
         var parameters = new DataTable();
         parameters.Columns.Add("Name", typeof(string));
@@ -152,19 +142,29 @@ public sealed class QueryActionTests : PostgreSqlActionFixture
     }
 
     /// <summary>
-    ///     Surfaces a database failure rather than an empty result.
+    ///     Rejects a missing injected client before running SQL.
     /// </summary>
     [Test]
-    public void Execute_WhenServerFails_ReportsDatabaseError()
+    public void QueryAction_WhenClientIsNull_Throws()
     {
-        var failure = new NpgsqlException("server unavailable");
-        Client.Failure = failure;
-        var action = new StubQueryAction(Client)
+        var error = Assert.Throws<ArgumentNullException>(() =>
         {
-            ConnectionString = "Host=localhost",
-            Sql = "SELECT 1"
-        };
+            var action = new StubQueryAction(null);
+            Assert.Fail($"Unexpected action: {action}");
+        });
 
-        AssertError(ErrorCodes.Database, action);
+        Assert.That(error?.ParamName, Is.EqualTo("client"));
+    }
+
+    /// <summary>
+    ///     Initializes the output table before the flow executes.
+    /// </summary>
+    [Test]
+    public void QueryAction_WhenCreated_HasEmptyResult()
+    {
+        var action = new QueryAction();
+
+        Assert.That(action.Result.Rows.Count, Is.Zero);
+        Assert.That(action.TimeoutSeconds, Is.EqualTo(30));
     }
 }
