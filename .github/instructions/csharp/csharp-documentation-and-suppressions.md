@@ -1,0 +1,309 @@
+﻿# C# Documentation and Suppressions
+
+Examples show complete documentation blocks and the code they describe.
+
+## Implementation comments are replaced by structure
+
+Plain `//` and `/* */` comments **MUST NOT** be used.
+
+**Good**
+
+```csharp
+public void Save(Order order)
+{
+    ValidateBeforeSaving(order);
+    repository.Save(order);
+}
+
+private void ValidateBeforeSaving(Order order)
+{
+    order.EnsureValid();
+}
+```
+
+**Bad**
+
+```csharp
+public void Save(Order order)
+{
+    // Validate first because the repository assumes a complete order.
+    order.EnsureValid();
+    repository.Save(order);
+}
+```
+
+## Public contracts have summaries
+
+Every public or protected declaration **MUST** have a `<summary>`.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Saves validated orders.
+/// </summary>
+public sealed class OrderService
+{
+    /// <summary>
+    ///     Saves one order.
+    /// </summary>
+    public void Save(Order order)
+    {
+        repository.Save(order);
+    }
+}
+```
+
+**Bad**
+
+```csharp
+public sealed class OrderService
+{
+    public void Save(Order order)
+    {
+        repository.Save(order);
+    }
+}
+```
+
+## Parameters are documented
+
+Every public or protected parameter **MUST** have a matching `<param>` entry.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Loads one order.
+/// </summary>
+/// <param name="orderId">The order identifier.</param>
+/// <returns>The matching order.</returns>
+public Order Load(Guid orderId)
+{
+    return repository.Load(orderId);
+}
+```
+
+**Bad**
+
+```csharp
+/// <summary>
+///     Loads one order.
+/// </summary>
+/// <returns>The matching order.</returns>
+public Order Load(Guid orderId)
+{
+    return repository.Load(orderId);
+}
+```
+
+## Return values are documented
+
+Every public or protected non-void method **MUST** have a `<returns>` entry.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Loads one order.
+/// </summary>
+/// <param name="orderId">The order identifier.</param>
+/// <returns>The matching order.</returns>
+public Order Load(Guid orderId)
+{
+    return repository.Load(orderId);
+}
+```
+
+**Bad**
+
+```csharp
+/// <summary>
+///     Loads one order.
+/// </summary>
+/// <param name="orderId">The order identifier.</param>
+public Order Load(Guid orderId)
+{
+    return repository.Load(orderId);
+}
+```
+
+## Summary text has canonical layout
+
+`<summary>` text **MUST** start on a new line with four spaces after `///`.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Saves one order.
+/// </summary>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+**Bad**
+
+```csharp
+/// <summary>Saves one order.</summary>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+## Documentation stays concise
+
+Each documentation entry **MUST NOT** exceed 150 characters.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Saves one validated order.
+/// </summary>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+**Bad**
+
+```csharp
+/// <summary>
+///     Saves one validated order after checking every field and relationship so callers can rely on persistence, notification, auditing, and reporting behavior.
+/// </summary>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+## Remarks are folded into summaries
+
+`<remarks>` **MUST NOT** be used.
+
+**Good**
+
+```csharp
+/// <summary>
+///     Saves one order after validation.
+/// </summary>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+**Bad**
+
+```csharp
+/// <summary>
+///     Saves one order.
+/// </summary>
+/// <remarks>Validation runs before persistence.</remarks>
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+## Compiler warnings remain visible
+
+`#pragma warning disable` **MUST NOT** be used.
+
+**Good**
+
+```csharp
+public string Normalize(string? value)
+{
+    return value ?? string.Empty;
+}
+```
+
+**Bad**
+
+```csharp
+#pragma warning disable CS8603
+public string Normalize(string? value)
+{
+    return value;
+}
+#pragma warning restore CS8603
+```
+
+## ReSharper findings remain visible
+
+ReSharper suppression comments **MUST NOT** be used.
+
+**Good**
+
+```csharp
+public void Save(Order order)
+{
+    ValidateOrder(order);
+    repository.Save(order);
+}
+```
+
+**Bad**
+
+```csharp
+// ReSharper disable once UnusedParameter.Global
+public void Save(Order order)
+{
+    repository.SaveDefault();
+}
+```
+
+## Diagnostic attributes are prohibited
+
+`[SuppressMessage]` **MUST NOT** be used.
+
+**Good**
+
+```csharp
+public void Save(Order order)
+{
+    order.EnsureValid();
+    repository.Save(order);
+}
+```
+
+**Bad**
+
+```csharp
+[SuppressMessage("Design", "CA1062")]
+public void Save(Order order)
+{
+    repository.Save(order);
+}
+```
+
+## Hand-written files stay visible to checks
+
+Hand-written source files **MUST NOT** use generated-code markers or generated-code file endings.
+
+**Good - `OrderService.cs`**
+
+```csharp
+namespace Orders;
+
+public sealed class OrderService
+{
+}
+```
+
+**Bad - `OrderService.generated.cs`**
+
+```csharp
+// <auto-generated>
+namespace Orders;
+
+public sealed class OrderService
+{
+}
+```
