@@ -27,6 +27,7 @@ Custom actions in Power Automate for desktop are a way to create reusable action
 ## Contributing
 
 Pull requests for bug fixes, enhancements, and documentation are welcome.
+See the [coding-agent instructions](.github/instructions/README.md) for repository guidance.
 
 ## See also
 * [Samples](/samples)
