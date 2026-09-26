@@ -1,18 +1,34 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using RabbitMQ.Client.Exceptions;
 
 namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions;
 
+/// <summary>
+///     Runs async broker work without capturing the PAD synchronization context.
+/// </summary>
 public abstract class RabbitMqActionBase : ActionBase
 {
+    /// <summary>
+    ///     Performs the action-specific broker operation.
+    /// </summary>
+    /// <param name="context">The desktop-flow action context.</param>
+    /// <param name="cancellationToken">Cancels the broker operation.</param>
+    /// <returns>The broker operation.</returns>
+    protected abstract Task RunAsync(ActionContext context, CancellationToken cancellationToken);
+
+    /// <summary>
+    ///     Maps broker failures to desktop-flow error categories.
+    /// </summary>
+    /// <param name="context">The desktop-flow action context.</param>
     public override void Execute(ActionContext context)
     {
         try
         {
-            Task.Run(() => RunAsync(context)).GetAwaiter().GetResult();
+            Task.Run(() => RunAsync(context, CancellationToken.None)).GetAwaiter().GetResult();
         }
         catch (ArgumentException exception)
         {
@@ -36,9 +52,43 @@ public abstract class RabbitMqActionBase : ActionBase
         }
     }
 
-    protected abstract Task RunAsync(ActionContext context);
+    /// <summary>
+    ///     Validates a connection supplied by an earlier action.
+    /// </summary>
+    /// <param name="connection">The broker connection supplied by the flow.</param>
+    /// <returns>The required broker connection.</returns>
+    protected RabbitMqConnection RequireConnection(RabbitMqConnection? connection)
+    {
+        if (connection is null)
+        {
+            throw new ArgumentException("A RabbitMQ connection is required.", nameof(connection));
+        }
 
-    protected static string RequireValue(string? value, string name)
+        return connection;
+    }
+
+    /// <summary>
+    ///     Validates a message supplied by the receive action.
+    /// </summary>
+    /// <param name="message">The message to acknowledge or reject.</param>
+    /// <returns>The required message.</returns>
+    protected RabbitMqMessage RequireMessage(RabbitMqMessage? message)
+    {
+        if (message is null)
+        {
+            throw new ArgumentException("A RabbitMQ message is required.", nameof(message));
+        }
+
+        return message;
+    }
+
+    /// <summary>
+    ///     Rejects blank routing keys and queue names.
+    /// </summary>
+    /// <param name="value">The text supplied by the flow.</param>
+    /// <param name="name">The name shown for an invalid input.</param>
+    /// <returns>A nonblank string.</returns>
+    protected string RequireValue(string? value, string name)
     {
         if (string.IsNullOrWhiteSpace(value))
         {
@@ -47,10 +97,4 @@ public abstract class RabbitMqActionBase : ActionBase
 
         return value!;
     }
-
-    protected static RabbitMqSession RequireSession(RabbitMqSession? session) =>
-        session ?? throw new ArgumentException("A RabbitMQ session is required.", nameof(session));
-
-    protected static RabbitMqMessage RequireMessage(RabbitMqMessage? message) =>
-        message ?? throw new ArgumentException("A RabbitMQ message is required.", nameof(message));
 }

@@ -1,60 +1,49 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Threading;
 using System.Threading.Tasks;
 using RabbitMQ.Client;
 
 namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions;
 
+/// <summary>
+///     Forwards channel operations to the RabbitMQ SDK.
+/// </summary>
 [ExcludeFromCodeCoverage]
-internal sealed class RabbitMqClient : IRabbitMqClient
+public sealed class RabbitMqClient : IRabbitMqClient
 {
     private readonly IConnection connection;
     private readonly IChannel channel;
 
-    private RabbitMqClient(IConnection connection, IChannel channel)
+    /// <summary>
+    ///     Owns both transport resources needed to settle deliveries.
+    /// </summary>
+    /// <param name="connection">The broker connection.</param>
+    /// <param name="channel">The broker channel.</param>
+    public RabbitMqClient(IConnection connection, IChannel channel)
     {
         this.connection = connection;
         this.channel = channel;
     }
 
-    internal static async Task<IRabbitMqClient> ConnectAsync(Uri address)
+    /// <summary>
+    ///     Confirms processing only after the flow completes its work.
+    /// </summary>
+    /// <param name="deliveryTag">The broker's delivery tag.</param>
+    /// <param name="cancellationToken">Cancels the acknowledgement request.</param>
+    /// <returns>The broker operation.</returns>
+    public async Task AcknowledgeAsync(ulong deliveryTag, CancellationToken cancellationToken)
     {
-        var connection = await new ConnectionFactory { Uri = address }.CreateConnectionAsync().ConfigureAwait(false);
-        IChannel? channel = null;
-        try
-        {
-            channel = await connection.CreateChannelAsync(new CreateChannelOptions(true, true)).ConfigureAwait(false);
-            return new RabbitMqClient(connection, channel);
-        }
-        finally
-        {
-            if (channel == null)
-            {
-                await connection.DisposeAsync().ConfigureAwait(false);
-            }
-        }
+        await channel.BasicAckAsync(deliveryTag, false, cancellationToken).ConfigureAwait(false);
     }
 
-    public async Task PublishAsync(string exchange, string routingKey, byte[] body, bool persistent)
+    /// <summary>
+    ///     Releases both broker resources even if channel disposal fails.
+    /// </summary>
+    /// <param name="cancellationToken">Cancels before shutdown begins.</param>
+    /// <returns>The completed disposal operation.</returns>
+    public async Task CloseAsync(CancellationToken cancellationToken)
     {
-        var properties = new BasicProperties { Persistent = persistent, ContentType = "text/plain", ContentEncoding = "utf-8" };
-        await channel.BasicPublishAsync(exchange, routingKey, true, properties, body).ConfigureAwait(false);
-    }
-
-    public async Task<RabbitMqDelivery?> ReceiveAsync(string queue)
-    {
-        var result = await channel.BasicGetAsync(queue, false).ConfigureAwait(false);
-        return result == null ? null : new RabbitMqDelivery(result.DeliveryTag, result.Body.ToArray(), result.Redelivered);
-    }
-
-    public async Task AcknowledgeAsync(ulong deliveryTag) =>
-        await channel.BasicAckAsync(deliveryTag, false).ConfigureAwait(false);
-
-    public async Task RejectAsync(ulong deliveryTag, bool requeue) =>
-        await channel.BasicNackAsync(deliveryTag, false, requeue).ConfigureAwait(false);
-
-    public async Task CloseAsync()
-    {
+        cancellationToken.ThrowIfCancellationRequested();
         try
         {
             await channel.DisposeAsync().ConfigureAwait(false);
@@ -63,5 +52,53 @@ internal sealed class RabbitMqClient : IRabbitMqClient
         {
             await connection.DisposeAsync().ConfigureAwait(false);
         }
+    }
+
+    /// <summary>
+    ///     Publishes with mandatory routing and broker confirmations.
+    /// </summary>
+    /// <param name="request">The destination and message bytes.</param>
+    /// <param name="cancellationToken">Cancels the publish request.</param>
+    /// <returns>The broker-confirmed operation.</returns>
+    public async Task PublishAsync(RabbitMqPublishRequest request, CancellationToken cancellationToken)
+    {
+        var properties = new BasicProperties
+        {
+            Persistent = request.IsPersistent,
+            ContentType = "text/plain",
+            ContentEncoding = "utf-8"
+        };
+        await channel.BasicPublishAsync(request.Exchange, request.RoutingKey, true, properties, request.Body, cancellationToken)
+            .ConfigureAwait(false);
+    }
+
+    /// <summary>
+    ///     Copies a polled payload before the broker reuses its memory.
+    /// </summary>
+    /// <param name="queue">The existing queue to poll once.</param>
+    /// <param name="cancellationToken">Cancels the broker request.</param>
+    /// <returns>A delivery or null when no message is available.</returns>
+    public async Task<RabbitMqDelivery?> ReceiveAsync(string queue, CancellationToken cancellationToken)
+    {
+        var result = await channel.BasicGetAsync(queue, false, cancellationToken).ConfigureAwait(false);
+        if (result is null)
+        {
+            return null;
+        }
+
+        var body = result.Body.ToArray();
+        return new RabbitMqDelivery(result.DeliveryTag, body, result.Redelivered);
+    }
+
+    /// <summary>
+    ///     Rejects a delivery without requeue unless explicitly requested.
+    /// </summary>
+    /// <param name="deliveryTag">The broker's delivery tag.</param>
+    /// <param name="allowRequeue">Whether redelivery is allowed.</param>
+    /// <param name="cancellationToken">Cancels the rejection request.</param>
+    /// <returns>The broker operation.</returns>
+    public async Task RejectAsync(ulong deliveryTag, bool allowRequeue, CancellationToken cancellationToken)
+    {
+        await channel.BasicNackAsync(deliveryTag, false, allowRequeue, cancellationToken).ConfigureAwait(false);
     }
 }

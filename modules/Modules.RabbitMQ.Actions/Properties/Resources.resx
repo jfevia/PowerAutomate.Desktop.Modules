@@ -6,39 +6,39 @@
     <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
     <data name="RabbitMQ_FriendlyName" xml:space="preserve"><value>RabbitMQ</value></data>
     <data name="RabbitMQ_Description" xml:space="preserve"><value>Publish and receive RabbitMQ messages.</value></data>
-    <data name="RabbitMqSession_FriendlyName" xml:space="preserve"><value>RabbitMQ session</value></data>
-    <data name="RabbitMqSession_FriendlyNamePlural" xml:space="preserve"><value>RabbitMQ sessions</value></data>
+    <data name="RabbitMqConnection_FriendlyName" xml:space="preserve"><value>RabbitMQ connection</value></data>
+    <data name="RabbitMqConnection_FriendlyNamePlural" xml:space="preserve"><value>RabbitMQ connections</value></data>
     <data name="RabbitMqMessage_FriendlyName" xml:space="preserve"><value>RabbitMQ message</value></data>
     <data name="RabbitMqMessage_FriendlyNamePlural" xml:space="preserve"><value>RabbitMQ messages</value></data>
     <data name="ConnectRabbitMq_FriendlyName" xml:space="preserve"><value>Connect to RabbitMQ</value></data>
     <data name="ConnectRabbitMq_Description" xml:space="preserve"><value>Open a connection to a RabbitMQ broker.</value></data>
-    <data name="ConnectRabbitMq_Summary" xml:space="preserve"><value>Open a RabbitMQ session.</value></data>
+    <data name="ConnectRabbitMq_Summary" xml:space="preserve"><value>Open a RabbitMQ connection.</value></data>
     <data name="ConnectRabbitMq_Address_FriendlyName" xml:space="preserve"><value>Broker address</value></data>
     <data name="ConnectRabbitMq_Address_Description" xml:space="preserve"><value>Absolute amqp or amqps URI of the broker.</value></data>
-    <data name="ConnectRabbitMq_Session_FriendlyName" xml:space="preserve"><value>Session</value></data>
-    <data name="ConnectRabbitMq_Session_Description" xml:space="preserve"><value>Connection used by RabbitMQ actions.</value></data>
+    <data name="ConnectRabbitMq_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
+    <data name="ConnectRabbitMq_Connection_Description" xml:space="preserve"><value>Connection used by RabbitMQ actions.</value></data>
     <data name="PublishMessage_FriendlyName" xml:space="preserve"><value>Publish RabbitMQ message</value></data>
     <data name="PublishMessage_Description" xml:space="preserve"><value>Publish a UTF-8 message and await broker confirmation.</value></data>
     <data name="PublishMessage_Summary" xml:space="preserve"><value>Publish a message to an exchange.</value></data>
-    <data name="PublishMessage_Session_FriendlyName" xml:space="preserve"><value>Session</value></data>
-    <data name="PublishMessage_Session_Description" xml:space="preserve"><value>An open RabbitMQ session.</value></data>
+    <data name="PublishMessage_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
+    <data name="PublishMessage_Connection_Description" xml:space="preserve"><value>An open RabbitMQ connection.</value></data>
     <data name="PublishMessage_Exchange_FriendlyName" xml:space="preserve"><value>Exchange</value></data>
     <data name="PublishMessage_Exchange_Description" xml:space="preserve"><value>Exchange name; empty means the default exchange.</value></data>
     <data name="PublishMessage_RoutingKey_FriendlyName" xml:space="preserve"><value>Routing key</value></data>
     <data name="PublishMessage_RoutingKey_Description" xml:space="preserve"><value>Routing key or queue name when using the default exchange.</value></data>
     <data name="PublishMessage_Body_FriendlyName" xml:space="preserve"><value>Message body</value></data>
     <data name="PublishMessage_Body_Description" xml:space="preserve"><value>UTF-8 text to publish; empty text is allowed.</value></data>
-    <data name="PublishMessage_Persistent_FriendlyName" xml:space="preserve"><value>Persistent</value></data>
-    <data name="PublishMessage_Persistent_Description" xml:space="preserve"><value>Mark the message persistent for durable queues.</value></data>
+    <data name="PublishMessage_IsPersistent_FriendlyName" xml:space="preserve"><value>Persistent</value></data>
+    <data name="PublishMessage_IsPersistent_Description" xml:space="preserve"><value>Mark the message persistent for durable queues.</value></data>
     <data name="ReceiveMessage_FriendlyName" xml:space="preserve"><value>Get RabbitMQ message</value></data>
     <data name="ReceiveMessage_Description" xml:space="preserve"><value>Poll a queue once without acknowledging the delivery.</value></data>
     <data name="ReceiveMessage_Summary" xml:space="preserve"><value>Get one message from a queue.</value></data>
-    <data name="ReceiveMessage_Session_FriendlyName" xml:space="preserve"><value>Session</value></data>
-    <data name="ReceiveMessage_Session_Description" xml:space="preserve"><value>An open RabbitMQ session.</value></data>
+    <data name="ReceiveMessage_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
+    <data name="ReceiveMessage_Connection_Description" xml:space="preserve"><value>An open RabbitMQ connection.</value></data>
     <data name="ReceiveMessage_Queue_FriendlyName" xml:space="preserve"><value>Queue</value></data>
     <data name="ReceiveMessage_Queue_Description" xml:space="preserve"><value>Name of an existing queue to poll once.</value></data>
-    <data name="ReceiveMessage_Found_FriendlyName" xml:space="preserve"><value>Found</value></data>
-    <data name="ReceiveMessage_Found_Description" xml:space="preserve"><value>Whether a message was available.</value></data>
+    <data name="ReceiveMessage_IsFound_FriendlyName" xml:space="preserve"><value>Found</value></data>
+    <data name="ReceiveMessage_IsFound_Description" xml:space="preserve"><value>Whether a message was available.</value></data>
     <data name="ReceiveMessage_Message_FriendlyName" xml:space="preserve"><value>Message</value></data>
     <data name="ReceiveMessage_Message_Description" xml:space="preserve"><value>Unacknowledged delivery to process and settle.</value></data>
     <data name="AcknowledgeMessage_FriendlyName" xml:space="preserve"><value>Acknowledge RabbitMQ message</value></data>
@@ -51,13 +51,13 @@
     <data name="RejectMessage_Summary" xml:space="preserve"><value>Reject a received message.</value></data>
     <data name="RejectMessage_Message_FriendlyName" xml:space="preserve"><value>Message</value></data>
     <data name="RejectMessage_Message_Description" xml:space="preserve"><value>Unsettled RabbitMQ message to reject.</value></data>
-    <data name="RejectMessage_Requeue_FriendlyName" xml:space="preserve"><value>Requeue</value></data>
-    <data name="RejectMessage_Requeue_Description" xml:space="preserve"><value>Return the delivery to the queue; defaults to false.</value></data>
-    <data name="CloseRabbitMq_FriendlyName" xml:space="preserve"><value>Close RabbitMQ session</value></data>
+    <data name="RejectMessage_AllowRequeue_FriendlyName" xml:space="preserve"><value>Requeue</value></data>
+    <data name="RejectMessage_AllowRequeue_Description" xml:space="preserve"><value>Return the delivery to the queue; defaults to false.</value></data>
+    <data name="CloseRabbitMq_FriendlyName" xml:space="preserve"><value>Close RabbitMQ connection</value></data>
     <data name="CloseRabbitMq_Description" xml:space="preserve"><value>Release a RabbitMQ connection and channel.</value></data>
-    <data name="CloseRabbitMq_Summary" xml:space="preserve"><value>Close the RabbitMQ session.</value></data>
-    <data name="CloseRabbitMq_Session_FriendlyName" xml:space="preserve"><value>Session</value></data>
-    <data name="CloseRabbitMq_Session_Description" xml:space="preserve"><value>RabbitMQ session to close.</value></data>
+    <data name="CloseRabbitMq_Summary" xml:space="preserve"><value>Close the RabbitMQ connection.</value></data>
+    <data name="CloseRabbitMq_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
+    <data name="CloseRabbitMq_Connection_Description" xml:space="preserve"><value>RabbitMQ connection to close.</value></data>
     <data name="Error_InvalidArgumentError_FriendlyName" xml:space="preserve"><value>Invalid input</value></data>
     <data name="Error_InvalidArgumentError_Description" xml:space="preserve"><value>A required URI, session, queue, routing key, or message is invalid.</value></data>
     <data name="Error_ClosedConnectionError_FriendlyName" xml:space="preserve"><value>Connection closed</value></data>

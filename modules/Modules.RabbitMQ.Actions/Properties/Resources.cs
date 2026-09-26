@@ -2,8 +2,33 @@
 
 namespace PowerAutomate.Desktop.Modules.RabbitMQ.Actions.Properties;
 
+/// <summary>
+///     Exposes metadata labels required by the PAD module loader.
+/// </summary>
 public sealed class Resources
 {
-    public static ResourceManager ResourceManager { get; } =
-        new ResourceManager(typeof(Resources).FullName!, typeof(Resources).Assembly);
+    private static readonly ResourceManager resourceManager;
+
+    /// <summary>
+    ///     Resolves localized action and error labels.
+    /// </summary>
+    public static ResourceManager ResourceManager
+    {
+        get
+        {
+            return resourceManager;
+        }
+    }
+
+    static Resources()
+    {
+        resourceManager = new ResourceManager(typeof(Resources).FullName!, typeof(Resources).Assembly);
+    }
+
+    /// <summary>
+    ///     Lets the module loader instantiate resource metadata.
+    /// </summary>
+    public Resources()
+    {
+    }
 }
