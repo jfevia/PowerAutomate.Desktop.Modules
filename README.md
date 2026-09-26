@@ -19,6 +19,7 @@ Custom actions in Power Automate for desktop are a way to create reusable action
 * [Identity](/modules/Modules.Identity.Actions) — Acquires Microsoft Entra ID access tokens via MSAL.NET.
 * [OpenTibia](/modules/Modules.OpenTibia.Actions) — Automates an OpenTibia protocol 8.60 game client: login, characters, entering/exiting the game, and client/server messages.
 * [PowerFx](/modules/Modules.PowerFx.Actions) — Evaluates Power Fx expressions.
+* [PostgreSQL](/modules/Modules.PostgreSQL.Actions) — Runs parameterized PostgreSQL queries and statements with Npgsql.
 * [WindowsInputSimulation](/modules/Modules.Windows.InputSimulation.Actions) — Simulates UI input against Win32 controls.
 * [WindowsNotifications](/modules/Modules.Windows.Notifications.Actions) — Shows Windows toast notifications.
 * [WindowsRegistry](/modules/Modules.Windows.Registry.Actions) — Reads and writes Windows Registry keys and values.
