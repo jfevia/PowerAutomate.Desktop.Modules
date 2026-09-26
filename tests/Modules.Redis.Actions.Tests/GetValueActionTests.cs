@@ -10,6 +10,51 @@ namespace PowerAutomate.Desktop.Modules.Redis.Actions.Tests;
 public sealed class GetValueActionTests : RedisActionFixture
 {
     /// <summary>
+    ///     Prevents reads after the multiplexer has been disposed.
+    /// </summary>
+    [Test]
+    public void Execute_WhenConnectionIsClosed_ReportsClosedConnection()
+    {
+        Connection.Dispose();
+        var action = new GetValueAction
+        {
+            Connection = Connection,
+            Key = "name"
+        };
+
+        AssertError(ErrorCodes.ClosedConnection, action);
+    }
+
+    /// <summary>
+    ///     Rejects a read without a shared connection.
+    /// </summary>
+    [Test]
+    public void Execute_WhenConnectionIsMissing_ReportsInvalidInput()
+    {
+        var action = new GetValueAction
+        {
+            Key = "name"
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
+    ///     Rejects keys without a name before querying Redis.
+    /// </summary>
+    [Test]
+    public void Execute_WhenKeyIsBlank_ReportsInvalidInput()
+    {
+        var action = new GetValueAction
+        {
+            Connection = Connection,
+            Key = " "
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
     ///     Distinguishes a missing key from an empty stored string.
     /// </summary>
     /// <param name="value">The value returned by the stub.</param>
@@ -31,51 +76,6 @@ public sealed class GetValueActionTests : RedisActionFixture
         Assert.That(action.Value, Is.EqualTo(value));
         Assert.That(action.IsFound, Is.EqualTo(isFound));
         Assert.That(Client.LastKey, Is.EqualTo("name"));
-    }
-
-    /// <summary>
-    ///     Rejects a read without a shared connection.
-    /// </summary>
-    [Test]
-    public void Execute_WhenConnectionIsMissing_ReportsInvalidInput()
-    {
-        var action = new GetValueAction
-        {
-            Key = "name"
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
-    }
-
-    /// <summary>
-    ///     Prevents reads after the multiplexer has been disposed.
-    /// </summary>
-    [Test]
-    public void Execute_WhenConnectionIsClosed_ReportsClosedConnection()
-    {
-        Connection.Dispose();
-        var action = new GetValueAction
-        {
-            Connection = Connection,
-            Key = "name"
-        };
-
-        AssertError(ErrorCodes.ClosedConnection, action);
-    }
-
-    /// <summary>
-    ///     Rejects keys without a name before querying Redis.
-    /// </summary>
-    [Test]
-    public void Execute_WhenKeyIsBlank_ReportsInvalidInput()
-    {
-        var action = new GetValueAction
-        {
-            Connection = Connection,
-            Key = " "
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
     }
 
     /// <summary>

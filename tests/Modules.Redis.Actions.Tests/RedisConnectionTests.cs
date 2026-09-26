@@ -10,18 +10,15 @@ namespace PowerAutomate.Desktop.Modules.Redis.Actions.Tests;
 public sealed class RedisConnectionTests : RedisActionFixture
 {
     /// <summary>
-    ///     Requires a real client before exposing the connection variable.
+    ///     Prevents reuse of a released multiplexer.
     /// </summary>
     [Test]
-    public void RedisConnection_WhenClientIsNull_Throws()
+    public void GetClient_WhenConnectionIsClosed_Throws()
     {
-        var error = Assert.Throws<ArgumentNullException>(() =>
-        {
-            var connection = new RedisConnection(null, 0);
-            Assert.Fail($"Unexpected connection: {connection}");
-        });
+        Connection.Dispose();
 
-        Assert.That(error?.ParamName, Is.EqualTo("client"));
+        var error = Assert.Throws<ObjectDisposedException>(() => Connection.GetClient());
+        Assert.That(error?.ObjectName, Is.EqualTo(nameof(RedisConnection)));
     }
 
     /// <summary>
@@ -35,14 +32,17 @@ public sealed class RedisConnectionTests : RedisActionFixture
     }
 
     /// <summary>
-    ///     Prevents reuse of a released multiplexer.
+    ///     Requires a real client before exposing the connection variable.
     /// </summary>
     [Test]
-    public void GetClient_WhenConnectionIsClosed_Throws()
+    public void RedisConnection_WhenClientIsNull_Throws()
     {
-        Connection.Dispose();
+        var error = Assert.Throws<ArgumentNullException>(() =>
+        {
+            var connection = new RedisConnection(null, 0);
+            Assert.Fail($"Unexpected connection: {connection}");
+        });
 
-        var error = Assert.Throws<ObjectDisposedException>(() => Connection.GetClient());
-        Assert.That(error?.ObjectName, Is.EqualTo(nameof(RedisConnection)));
+        Assert.That(error?.ParamName, Is.EqualTo("client"));
     }
 }

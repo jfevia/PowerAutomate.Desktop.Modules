@@ -35,21 +35,20 @@ public sealed class SetValueActionTests : RedisActionFixture
     }
 
     /// <summary>
-    ///     Reports a rejected write rather than claiming success.
+    ///     Prevents negative expiration values from reaching Redis.
     /// </summary>
     [Test]
-    public void Execute_WhenServerDoesNotStoreValue_ReturnsFalse()
+    public void Execute_WhenExpiryIsNegative_ReportsInvalidInput()
     {
         var action = new SetValueAction
         {
             Connection = Connection,
             Key = "name",
-            Value = "value"
+            Value = "value",
+            ExpirySeconds = -1
         };
 
-        RunAction(action);
-
-        Assert.That(action.IsStored, Is.False);
+        AssertError(ErrorCodes.InvalidArgument, action);
     }
 
     /// <summary>
@@ -83,19 +82,20 @@ public sealed class SetValueActionTests : RedisActionFixture
     }
 
     /// <summary>
-    ///     Prevents negative expiration values from reaching Redis.
+    ///     Reports a rejected write rather than claiming success.
     /// </summary>
     [Test]
-    public void Execute_WhenExpiryIsNegative_ReportsInvalidInput()
+    public void Execute_WhenWriteIsRejected_ReportsNotStored()
     {
         var action = new SetValueAction
         {
             Connection = Connection,
             Key = "name",
-            Value = "value",
-            ExpirySeconds = -1
+            Value = "value"
         };
 
-        AssertError(ErrorCodes.InvalidArgument, action);
+        RunAction(action);
+
+        Assert.That(action.IsStored, Is.False);
     }
 }

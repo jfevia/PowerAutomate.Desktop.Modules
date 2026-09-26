@@ -9,6 +9,21 @@ namespace PowerAutomate.Desktop.Modules.Redis.Actions.Tests;
 public sealed class DeleteKeyActionTests : RedisActionFixture
 {
     /// <summary>
+    ///     Rejects a delete with no key name.
+    /// </summary>
+    [Test]
+    public void Execute_WhenKeyIsBlank_ReportsInvalidInput()
+    {
+        var action = new DeleteKeyAction
+        {
+            Connection = Connection,
+            Key = " "
+        };
+
+        AssertError(ErrorCodes.InvalidArgument, action);
+    }
+
+    /// <summary>
     ///     Preserves whether a key actually existed.
     /// </summary>
     /// <param name="isDeleted">The result supplied by the stub.</param>
@@ -27,20 +42,5 @@ public sealed class DeleteKeyActionTests : RedisActionFixture
 
         Assert.That(action.IsDeleted, Is.EqualTo(isDeleted));
         Assert.That(Client.LastKey, Is.EqualTo("name"));
-    }
-
-    /// <summary>
-    ///     Rejects a delete with no key name.
-    /// </summary>
-    [Test]
-    public void Execute_WhenKeyIsBlank_ReportsInvalidInput()
-    {
-        var action = new DeleteKeyAction
-        {
-            Connection = Connection,
-            Key = " "
-        };
-
-        AssertError(ErrorCodes.InvalidArgument, action);
     }
 }
