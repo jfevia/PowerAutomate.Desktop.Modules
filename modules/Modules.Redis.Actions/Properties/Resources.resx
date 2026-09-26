@@ -26,8 +26,8 @@
     <data name="GetValue_Key_Description" xml:space="preserve"><value>Redis key to read.</value></data>
     <data name="GetValue_Value_FriendlyName" xml:space="preserve"><value>Value</value></data>
     <data name="GetValue_Value_Description" xml:space="preserve"><value>Stored string value; null when the key is missing.</value></data>
-    <data name="GetValue_Found_FriendlyName" xml:space="preserve"><value>Found</value></data>
-    <data name="GetValue_Found_Description" xml:space="preserve"><value>Whether the key exists.</value></data>
+    <data name="GetValue_IsFound_FriendlyName" xml:space="preserve"><value>Found</value></data>
+    <data name="GetValue_IsFound_Description" xml:space="preserve"><value>Whether the key exists.</value></data>
     <data name="SetValue_FriendlyName" xml:space="preserve"><value>Set Redis value</value></data>
     <data name="SetValue_Description" xml:space="preserve"><value>Store a string value under a Redis key.</value></data>
     <data name="SetValue_Summary" xml:space="preserve"><value>Write a Redis string key.</value></data>
@@ -39,8 +39,8 @@
     <data name="SetValue_Value_Description" xml:space="preserve"><value>String value to store, including the empty string.</value></data>
     <data name="SetValue_ExpirySeconds_FriendlyName" xml:space="preserve"><value>Expiry in seconds</value></data>
     <data name="SetValue_ExpirySeconds_Description" xml:space="preserve"><value>Seconds until expiry; zero means no expiry.</value></data>
-    <data name="SetValue_WasSet_FriendlyName" xml:space="preserve"><value>Was set</value></data>
-    <data name="SetValue_WasSet_Description" xml:space="preserve"><value>Whether the server stored the value.</value></data>
+    <data name="SetValue_IsStored_FriendlyName" xml:space="preserve"><value>Was set</value></data>
+    <data name="SetValue_IsStored_Description" xml:space="preserve"><value>Whether the server stored the value.</value></data>
     <data name="DeleteKey_FriendlyName" xml:space="preserve"><value>Delete Redis key</value></data>
     <data name="DeleteKey_Description" xml:space="preserve"><value>Delete a key from Redis.</value></data>
     <data name="DeleteKey_Summary" xml:space="preserve"><value>Remove a Redis key.</value></data>
@@ -48,8 +48,8 @@
     <data name="DeleteKey_Connection_Description" xml:space="preserve"><value>An open Redis connection.</value></data>
     <data name="DeleteKey_Key_FriendlyName" xml:space="preserve"><value>Key</value></data>
     <data name="DeleteKey_Key_Description" xml:space="preserve"><value>Redis key to delete.</value></data>
-    <data name="DeleteKey_Deleted_FriendlyName" xml:space="preserve"><value>Deleted</value></data>
-    <data name="DeleteKey_Deleted_Description" xml:space="preserve"><value>Whether an existing key was deleted.</value></data>
+    <data name="DeleteKey_IsDeleted_FriendlyName" xml:space="preserve"><value>Deleted</value></data>
+    <data name="DeleteKey_IsDeleted_Description" xml:space="preserve"><value>Whether an existing key was deleted.</value></data>
     <data name="CloseConnection_FriendlyName" xml:space="preserve"><value>Close Redis connection</value></data>
     <data name="CloseConnection_Description" xml:space="preserve"><value>Release an open Redis connection.</value></data>
     <data name="CloseConnection_Summary" xml:space="preserve"><value>Close a Redis connection.</value></data>
