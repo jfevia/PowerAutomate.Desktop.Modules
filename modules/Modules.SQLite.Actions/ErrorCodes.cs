@@ -1,7 +1,17 @@
 ﻿namespace PowerAutomate.Desktop.Modules.SQLite.Actions;
 
-internal static class ErrorCodes
+/// <summary>
+///     Identifies errors that desktop flows can handle separately.
+/// </summary>
+public static class ErrorCodes
 {
-    internal const string InvalidArgument = "InvalidArgumentError";
-    internal const string Database = "DatabaseError";
+    /// <summary>
+    ///     Reports a failure returned by SQLite.
+    /// </summary>
+    public const string Database = "DatabaseError";
+
+    /// <summary>
+    ///     Reports invalid database input before a connection opens.
+    /// </summary>
+    public const string InvalidArgument = "InvalidArgumentError";
 }

@@ -6,10 +6,27 @@ using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 
 namespace PowerAutomate.Desktop.Modules.SQLite.Actions;
 
+/// <summary>
+///     Translates SQLite and validation failures into desktop-flow errors.
+/// </summary>
 public abstract class SQLiteActionBase : ActionBase
 {
-    static SQLiteActionBase() => SQLitePCL.raw.SetProvider(new SQLitePCL.SQLite3Provider_winsqlite3());
+    /// <summary>
+    ///     Performs the action-specific database operation.
+    /// </summary>
+    /// <param name="context">The desktop-flow action context.</param>
+    protected abstract void Run(ActionContext context);
 
+    static SQLiteActionBase()
+    {
+        var provider = new SQLitePCL.SQLite3Provider_winsqlite3();
+        SQLitePCL.raw.SetProvider(provider);
+    }
+
+    /// <summary>
+    ///     Runs the operation and preserves its failure category.
+    /// </summary>
+    /// <param name="context">The desktop-flow action context.</param>
     public override void Execute(ActionContext context)
     {
         try
@@ -26,26 +43,14 @@ public abstract class SQLiteActionBase : ActionBase
         }
     }
 
-    protected abstract void Run(ActionContext context);
-
-    protected static SqliteConnection CreateConnection(string databasePath, bool createIfMissing)
-    {
-        if (string.IsNullOrWhiteSpace(databasePath) || !Path.IsPathRooted(databasePath) ||
-            Path.GetPathRoot(databasePath)!.Length < 3)
-        {
-            throw new ArgumentException("An absolute database file path is required.", nameof(databasePath));
-        }
-
-        var options = new SqliteConnectionStringBuilder
-        {
-            DataSource = databasePath,
-            Mode = createIfMissing ? SqliteOpenMode.ReadWriteCreate : SqliteOpenMode.ReadWrite,
-            Pooling = false
-        };
-        return new SqliteConnection(options.ToString());
-    }
-
-    protected static SqliteCommand CreateCommand(SqliteConnection connection, string sql, DataTable? parameters)
+    /// <summary>
+    ///     Validates and binds parameters before opening the database.
+    /// </summary>
+    /// <param name="connection">The connection to use for the command.</param>
+    /// <param name="sql">The SQL containing named placeholders.</param>
+    /// <param name="parameters">Optional Name and Value parameter rows.</param>
+    /// <returns>A command ready for execution.</returns>
+    protected SqliteCommand CreateCommand(SqliteConnection connection, string sql, DataTable? parameters)
     {
         if (string.IsNullOrWhiteSpace(sql))
         {
@@ -68,8 +73,7 @@ public abstract class SQLiteActionBase : ActionBase
 
             foreach (DataRow row in parameters.Rows)
             {
-                var name = row["Name"] as string;
-                if (string.IsNullOrWhiteSpace(name))
+                if (row["Name"] is not string name || string.IsNullOrWhiteSpace(name))
                 {
                     throw new ArgumentException("Each parameter must have a name.", nameof(parameters));
                 }
@@ -84,5 +88,28 @@ public abstract class SQLiteActionBase : ActionBase
             command.Dispose();
             throw;
         }
+    }
+
+    /// <summary>
+    ///     Creates a connection without opening the database file.
+    /// </summary>
+    /// <param name="databasePath">The absolute path to the database file.</param>
+    /// <param name="allowCreate">Whether a missing database may be created.</param>
+    /// <returns>An unopened, unpooled SQLite connection.</returns>
+    protected SqliteConnection CreateConnection(string databasePath, bool allowCreate)
+    {
+        if (string.IsNullOrWhiteSpace(databasePath) || !Path.IsPathRooted(databasePath) ||
+            Path.GetPathRoot(databasePath)!.Length < 3)
+        {
+            throw new ArgumentException("An absolute database file path is required.", nameof(databasePath));
+        }
+
+        var options = new SqliteConnectionStringBuilder
+        {
+            DataSource = databasePath,
+            Mode = allowCreate ? SqliteOpenMode.ReadWriteCreate : SqliteOpenMode.ReadWrite,
+            Pooling = false
+        };
+        return new SqliteConnection(options.ToString());
     }
 }

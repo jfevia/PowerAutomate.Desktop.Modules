@@ -26,8 +26,8 @@
     <data name="Execute_Sql_Description" xml:space="preserve"><value>SQL statement with optional named placeholders.</value></data>
     <data name="Execute_Parameters_FriendlyName" xml:space="preserve"><value>Parameters</value></data>
     <data name="Execute_Parameters_Description" xml:space="preserve"><value>Optional data table with Name and Value columns for bound parameters.</value></data>
-    <data name="Execute_CreateIfMissing_FriendlyName" xml:space="preserve"><value>Create database if missing</value></data>
-    <data name="Execute_CreateIfMissing_Description" xml:space="preserve"><value>Allow creation of the database file if it does not exist.</value></data>
+    <data name="Execute_AllowCreate_FriendlyName" xml:space="preserve"><value>Create database if missing</value></data>
+    <data name="Execute_AllowCreate_Description" xml:space="preserve"><value>Allow creation of the database file if it does not exist.</value></data>
     <data name="Execute_AffectedRows_FriendlyName" xml:space="preserve"><value>Affected rows</value></data>
     <data name="Execute_AffectedRows_Description" xml:space="preserve"><value>Number of rows changed by the statement.</value></data>
     <data name="Error_InvalidArgumentError_FriendlyName" xml:space="preserve"><value>Invalid input</value></data>
