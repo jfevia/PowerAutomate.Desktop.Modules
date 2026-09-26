@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <AssemblyTitle>RabbitMQ</AssemblyTitle>
+        <TargetFramework>net472</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <PackCustomModule Condition=" '$(Configuration)' == 'Debug' ">true</PackCustomModule>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="RabbitMQ.Client" />
+        <PackageReference Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" />
+    </ItemGroup>
+</Project>
