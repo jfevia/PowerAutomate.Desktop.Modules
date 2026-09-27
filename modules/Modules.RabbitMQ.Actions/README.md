@@ -16,3 +16,4 @@ For the default exchange, leave **Exchange** empty and set **Routing key** to an
 **Get RabbitMQ message** polls once without waiting for a new arrival. If **Found** is false, **Message** is null. Its `BodyBase64` preserves arbitrary binary payloads; decode it when the flow expects text. After successfully processing a message, use **Acknowledge**. On failure, use **Reject**; **Requeue** defaults to false so a poison message does not loop indefinitely. Closing a channel requeues any still-unacknowledged deliveries. Always close the connection in the flow's cleanup path.
 
 Polling is appropriate for occasional desktop operations, not high-throughput subscriptions. Queue and exchange declaration are deliberately outside this module.
+The module binds compatible packaged dependency versions without requiring changes to the desktop-flow host's configuration.

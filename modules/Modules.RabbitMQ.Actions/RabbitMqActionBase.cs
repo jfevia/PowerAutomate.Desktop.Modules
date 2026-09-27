@@ -20,6 +20,11 @@ public abstract class RabbitMqActionBase : ActionBase
     /// <returns>The broker operation.</returns>
     protected abstract Task RunAsync(ActionContext context, CancellationToken cancellationToken);
 
+    static RabbitMqActionBase()
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += RabbitMqAssemblyResolver.Resolve;
+    }
+
     /// <summary>
     ///     Maps broker failures to desktop-flow error categories.
     /// </summary>
