@@ -17,6 +17,11 @@ public abstract class PostgreSqlActionBase : ActionBase
     /// <param name="context">The desktop-flow action context.</param>
     protected abstract void Run(ActionContext context);
 
+    static PostgreSqlActionBase()
+    {
+        AppDomain.CurrentDomain.AssemblyResolve += PostgreSqlAssemblyResolver.Resolve;
+    }
+
     /// <summary>
     ///     Runs the operation with a stable failure category.
     /// </summary>
