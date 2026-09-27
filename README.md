@@ -20,6 +20,7 @@ Custom actions in Power Automate for desktop are a way to create reusable action
 * [OpenTibia](/modules/Modules.OpenTibia.Actions) — Automates an OpenTibia protocol 8.60 game client: login, characters, entering/exiting the game, and client/server messages.
 * [PowerFx](/modules/Modules.PowerFx.Actions) — Evaluates Power Fx expressions.
 * [PostgreSQL](/modules/Modules.PostgreSQL.Actions) — Runs parameterized PostgreSQL queries and statements with Npgsql.
+* [SQLite](/modules/Modules.SQLite.Actions) — Runs parameterized queries and statements against local SQLite databases.
 * [WindowsInputSimulation](/modules/Modules.Windows.InputSimulation.Actions) — Simulates UI input against Win32 controls.
 * [WindowsNotifications](/modules/Modules.Windows.Notifications.Actions) — Shows Windows toast notifications.
 * [WindowsRegistry](/modules/Modules.Windows.Registry.Actions) — Reads and writes Windows Registry keys and values.
