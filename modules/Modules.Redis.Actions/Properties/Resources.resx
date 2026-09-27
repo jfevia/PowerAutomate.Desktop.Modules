@@ -1,64 +1,296 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-    <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
-    <resheader name="version"><value>2.0</value></resheader>
-    <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
-    <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
-    <data name="Redis_FriendlyName" xml:space="preserve"><value>Redis</value></data>
-    <data name="Redis_Description" xml:space="preserve"><value>Work with Redis string keys.</value></data>
-    <data name="RedisConnection_FriendlyName" xml:space="preserve"><value>Redis connection</value></data>
-    <data name="RedisConnection_FriendlyNamePlural" xml:space="preserve"><value>Redis connections</value></data>
-    <data name="Connect_FriendlyName" xml:space="preserve"><value>Connect to Redis</value></data>
-    <data name="Connect_Description" xml:space="preserve"><value>Open a reusable connection to a Redis server.</value></data>
-    <data name="Connect_Summary" xml:space="preserve"><value>Connect to Redis.</value></data>
-    <data name="Connect_Configuration_FriendlyName" xml:space="preserve"><value>Configuration</value></data>
-    <data name="Connect_Configuration_Description" xml:space="preserve"><value>StackExchange.Redis configuration string, including the endpoint.</value></data>
-    <data name="Connect_DatabaseNumber_FriendlyName" xml:space="preserve"><value>Database number</value></data>
-    <data name="Connect_DatabaseNumber_Description" xml:space="preserve"><value>Redis database index; -1 uses the configured default.</value></data>
-    <data name="Connect_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
-    <data name="Connect_Connection_Description" xml:space="preserve"><value>Reusable connection for subsequent Redis actions.</value></data>
-    <data name="GetValue_FriendlyName" xml:space="preserve"><value>Get Redis value</value></data>
-    <data name="GetValue_Description" xml:space="preserve"><value>Read a string value from a Redis key.</value></data>
-    <data name="GetValue_Summary" xml:space="preserve"><value>Read a Redis string key.</value></data>
-    <data name="GetValue_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
-    <data name="GetValue_Connection_Description" xml:space="preserve"><value>An open Redis connection.</value></data>
-    <data name="GetValue_Key_FriendlyName" xml:space="preserve"><value>Key</value></data>
-    <data name="GetValue_Key_Description" xml:space="preserve"><value>Redis key to read.</value></data>
-    <data name="GetValue_Value_FriendlyName" xml:space="preserve"><value>Value</value></data>
-    <data name="GetValue_Value_Description" xml:space="preserve"><value>Stored string value; null when the key is missing.</value></data>
-    <data name="GetValue_IsFound_FriendlyName" xml:space="preserve"><value>Found</value></data>
-    <data name="GetValue_IsFound_Description" xml:space="preserve"><value>Whether the key exists.</value></data>
-    <data name="SetValue_FriendlyName" xml:space="preserve"><value>Set Redis value</value></data>
-    <data name="SetValue_Description" xml:space="preserve"><value>Store a string value under a Redis key.</value></data>
-    <data name="SetValue_Summary" xml:space="preserve"><value>Write a Redis string key.</value></data>
-    <data name="SetValue_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
-    <data name="SetValue_Connection_Description" xml:space="preserve"><value>An open Redis connection.</value></data>
-    <data name="SetValue_Key_FriendlyName" xml:space="preserve"><value>Key</value></data>
-    <data name="SetValue_Key_Description" xml:space="preserve"><value>Redis key to write.</value></data>
-    <data name="SetValue_Value_FriendlyName" xml:space="preserve"><value>Value</value></data>
-    <data name="SetValue_Value_Description" xml:space="preserve"><value>String value to store, including the empty string.</value></data>
-    <data name="SetValue_ExpirySeconds_FriendlyName" xml:space="preserve"><value>Expiry in seconds</value></data>
-    <data name="SetValue_ExpirySeconds_Description" xml:space="preserve"><value>Seconds until expiry; zero means no expiry.</value></data>
-    <data name="SetValue_IsStored_FriendlyName" xml:space="preserve"><value>Was set</value></data>
-    <data name="SetValue_IsStored_Description" xml:space="preserve"><value>Whether the server stored the value.</value></data>
-    <data name="DeleteKey_FriendlyName" xml:space="preserve"><value>Delete Redis key</value></data>
-    <data name="DeleteKey_Description" xml:space="preserve"><value>Delete a key from Redis.</value></data>
-    <data name="DeleteKey_Summary" xml:space="preserve"><value>Remove a Redis key.</value></data>
-    <data name="DeleteKey_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
-    <data name="DeleteKey_Connection_Description" xml:space="preserve"><value>An open Redis connection.</value></data>
-    <data name="DeleteKey_Key_FriendlyName" xml:space="preserve"><value>Key</value></data>
-    <data name="DeleteKey_Key_Description" xml:space="preserve"><value>Redis key to delete.</value></data>
-    <data name="DeleteKey_IsDeleted_FriendlyName" xml:space="preserve"><value>Deleted</value></data>
-    <data name="DeleteKey_IsDeleted_Description" xml:space="preserve"><value>Whether an existing key was deleted.</value></data>
-    <data name="CloseConnection_FriendlyName" xml:space="preserve"><value>Close Redis connection</value></data>
-    <data name="CloseConnection_Description" xml:space="preserve"><value>Release an open Redis connection.</value></data>
-    <data name="CloseConnection_Summary" xml:space="preserve"><value>Close a Redis connection.</value></data>
-    <data name="CloseConnection_Connection_FriendlyName" xml:space="preserve"><value>Connection</value></data>
-    <data name="CloseConnection_Connection_Description" xml:space="preserve"><value>The Redis connection to close.</value></data>
-    <data name="Error_InvalidArgumentError_FriendlyName" xml:space="preserve"><value>Invalid input</value></data>
-    <data name="Error_InvalidArgumentError_Description" xml:space="preserve"><value>A required connection or input is invalid.</value></data>
-    <data name="Error_ClosedConnectionError_FriendlyName" xml:space="preserve"><value>Connection closed</value></data>
-    <data name="Error_ClosedConnectionError_Description" xml:space="preserve"><value>The Redis connection has already been closed.</value></data>
-    <data name="Error_RedisError_FriendlyName" xml:space="preserve"><value>Redis error</value></data>
-    <data name="Error_RedisError_Description" xml:space="preserve"><value>Redis rejected the operation or the connection failed.</value></data>
+    <!--
+      Microsoft ResX Schema
+
+      Version 2.0
+
+      The primary goals of this format is to allow a simple XML format
+      that is mostly human readable. The generation and parsing of the
+      various data types are done through the TypeConverter classes
+      associated with the data types.
+
+      Example:
+
+      ... ado.net/XML headers & schema ...
+      <resheader name="resmimetype">text/microsoft-resx</resheader>
+      <resheader name="version">2.0</resheader>
+      <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+      <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+      <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+      <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+      <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+          <value>[base64 mime encoded serialized .NET Framework object]</value>
+      </data>
+      <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+          <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+          <comment>This is a comment</comment>
+      </data>
+
+      There are any number of "resheader" rows that contain simple
+      name/value pairs.
+
+      Each data row contains a name, and value. The row also contains a
+      type or mimetype. Type corresponds to a .NET class that support
+      text/value conversion through the TypeConverter architecture.
+      Classes that don't support this are serialized and stored with the
+      mimetype set.
+
+      The mimetype is used for serialized objects, and tells the
+      ResXResourceReader how to depersist the object. This is currently not
+      extensible. For a given mimetype the value must be set accordingly:
+
+      Note - application/x-microsoft.net.object.binary.base64 is the format
+      that the ResXResourceWriter will generate, however the reader can
+      read any of the formats listed below.
+
+      mimetype: application/x-microsoft.net.object.binary.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.soap.base64
+      value   : The object must be serialized with
+              : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+              : and then encoded with base64 encoding.
+
+      mimetype: application/x-microsoft.net.object.bytearray.base64
+      value   : The object must be serialized into a byte array
+              : using a System.ComponentModel.TypeConverter
+              : and then encoded with base64 encoding.
+      -->
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+        <xsd:element name="root" msdata:IsDataSet="true">
+            <xsd:complexType>
+                <xsd:choice maxOccurs="unbounded">
+                    <xsd:element name="metadata">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" use="required" type="xsd:string" />
+                            <xsd:attribute name="type" type="xsd:string" />
+                            <xsd:attribute name="mimetype" type="xsd:string" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="assembly">
+                        <xsd:complexType>
+                            <xsd:attribute name="alias" type="xsd:string" />
+                            <xsd:attribute name="name" type="xsd:string" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="data">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+                            <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+                            <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+                            <xsd:attribute ref="xml:space" />
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="resheader">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                            </xsd:sequence>
+                            <xsd:attribute name="name" type="xsd:string" use="required" />
+                        </xsd:complexType>
+                    </xsd:element>
+                </xsd:choice>
+            </xsd:complexType>
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral,
+            PublicKeyToken=b77a5c561934e089
+        </value>
+    </resheader>
+    <data name="Redis_FriendlyName" xml:space="preserve">
+        <value>Redis</value>
+    </data>
+    <data name="Redis_Description" xml:space="preserve">
+        <value>Work with Redis string keys.</value>
+    </data>
+    <data name="RedisConnection_FriendlyName" xml:space="preserve">
+        <value>Redis connection</value>
+    </data>
+    <data name="RedisConnection_FriendlyNamePlural" xml:space="preserve">
+        <value>Redis connections</value>
+    </data>
+    <data name="Connect_FriendlyName" xml:space="preserve">
+        <value>Connect to Redis</value>
+    </data>
+    <data name="Connect_Description" xml:space="preserve">
+        <value>Open a reusable connection to a Redis server.</value>
+    </data>
+    <data name="Connect_Summary" xml:space="preserve">
+        <value>Connect to Redis.</value>
+    </data>
+    <data name="Connect_Configuration_FriendlyName" xml:space="preserve">
+        <value>Configuration</value>
+    </data>
+    <data name="Connect_Configuration_Description" xml:space="preserve">
+        <value>StackExchange.Redis configuration string, including the endpoint.</value>
+    </data>
+    <data name="Connect_DatabaseNumber_FriendlyName" xml:space="preserve">
+        <value>Database number</value>
+    </data>
+    <data name="Connect_DatabaseNumber_Description" xml:space="preserve">
+        <value>Redis database index; -1 uses the configured default.</value>
+    </data>
+    <data name="Connect_Connection_FriendlyName" xml:space="preserve">
+        <value>Connection</value>
+    </data>
+    <data name="Connect_Connection_Description" xml:space="preserve">
+        <value>Reusable connection for subsequent Redis actions.</value>
+    </data>
+    <data name="GetValue_FriendlyName" xml:space="preserve">
+        <value>Get Redis value</value>
+    </data>
+    <data name="GetValue_Description" xml:space="preserve">
+        <value>Read a string value from a Redis key.</value>
+    </data>
+    <data name="GetValue_Summary" xml:space="preserve">
+        <value>Read a Redis string key.</value>
+    </data>
+    <data name="GetValue_Connection_FriendlyName" xml:space="preserve">
+        <value>Connection</value>
+    </data>
+    <data name="GetValue_Connection_Description" xml:space="preserve">
+        <value>An open Redis connection.</value>
+    </data>
+    <data name="GetValue_Key_FriendlyName" xml:space="preserve">
+        <value>Key</value>
+    </data>
+    <data name="GetValue_Key_Description" xml:space="preserve">
+        <value>Redis key to read.</value>
+    </data>
+    <data name="GetValue_Value_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="GetValue_Value_Description" xml:space="preserve">
+        <value>Stored string value; null when the key is missing.</value>
+    </data>
+    <data name="GetValue_IsFound_FriendlyName" xml:space="preserve">
+        <value>Found</value>
+    </data>
+    <data name="GetValue_IsFound_Description" xml:space="preserve">
+        <value>Whether the key exists.</value>
+    </data>
+    <data name="SetValue_FriendlyName" xml:space="preserve">
+        <value>Set Redis value</value>
+    </data>
+    <data name="SetValue_Description" xml:space="preserve">
+        <value>Store a string value under a Redis key.</value>
+    </data>
+    <data name="SetValue_Summary" xml:space="preserve">
+        <value>Write a Redis string key.</value>
+    </data>
+    <data name="SetValue_Connection_FriendlyName" xml:space="preserve">
+        <value>Connection</value>
+    </data>
+    <data name="SetValue_Connection_Description" xml:space="preserve">
+        <value>An open Redis connection.</value>
+    </data>
+    <data name="SetValue_Key_FriendlyName" xml:space="preserve">
+        <value>Key</value>
+    </data>
+    <data name="SetValue_Key_Description" xml:space="preserve">
+        <value>Redis key to write.</value>
+    </data>
+    <data name="SetValue_Value_FriendlyName" xml:space="preserve">
+        <value>Value</value>
+    </data>
+    <data name="SetValue_Value_Description" xml:space="preserve">
+        <value>String value to store, including the empty string.</value>
+    </data>
+    <data name="SetValue_ExpirySeconds_FriendlyName" xml:space="preserve">
+        <value>Expiry in seconds</value>
+    </data>
+    <data name="SetValue_ExpirySeconds_Description" xml:space="preserve">
+        <value>Seconds until expiry; zero means no expiry.</value>
+    </data>
+    <data name="SetValue_IsStored_FriendlyName" xml:space="preserve">
+        <value>Was set</value>
+    </data>
+    <data name="SetValue_IsStored_Description" xml:space="preserve">
+        <value>Whether the server stored the value.</value>
+    </data>
+    <data name="DeleteKey_FriendlyName" xml:space="preserve">
+        <value>Delete Redis key</value>
+    </data>
+    <data name="DeleteKey_Description" xml:space="preserve">
+        <value>Delete a key from Redis.</value>
+    </data>
+    <data name="DeleteKey_Summary" xml:space="preserve">
+        <value>Remove a Redis key.</value>
+    </data>
+    <data name="DeleteKey_Connection_FriendlyName" xml:space="preserve">
+        <value>Connection</value>
+    </data>
+    <data name="DeleteKey_Connection_Description" xml:space="preserve">
+        <value>An open Redis connection.</value>
+    </data>
+    <data name="DeleteKey_Key_FriendlyName" xml:space="preserve">
+        <value>Key</value>
+    </data>
+    <data name="DeleteKey_Key_Description" xml:space="preserve">
+        <value>Redis key to delete.</value>
+    </data>
+    <data name="DeleteKey_IsDeleted_FriendlyName" xml:space="preserve">
+        <value>Deleted</value>
+    </data>
+    <data name="DeleteKey_IsDeleted_Description" xml:space="preserve">
+        <value>Whether an existing key was deleted.</value>
+    </data>
+    <data name="CloseConnection_FriendlyName" xml:space="preserve">
+        <value>Close Redis connection</value>
+    </data>
+    <data name="CloseConnection_Description" xml:space="preserve">
+        <value>Release an open Redis connection.</value>
+    </data>
+    <data name="CloseConnection_Summary" xml:space="preserve">
+        <value>Close a Redis connection.</value>
+    </data>
+    <data name="CloseConnection_Connection_FriendlyName" xml:space="preserve">
+        <value>Connection</value>
+    </data>
+    <data name="CloseConnection_Connection_Description" xml:space="preserve">
+        <value>The Redis connection to close.</value>
+    </data>
+    <data name="Error_InvalidArgumentError_FriendlyName" xml:space="preserve">
+        <value>Invalid input</value>
+    </data>
+    <data name="Error_InvalidArgumentError_Description" xml:space="preserve">
+        <value>A required connection or input is invalid.</value>
+    </data>
+    <data name="Error_ClosedConnectionError_FriendlyName" xml:space="preserve">
+        <value>Connection closed</value>
+    </data>
+    <data name="Error_ClosedConnectionError_Description" xml:space="preserve">
+        <value>The Redis connection has already been closed.</value>
+    </data>
+    <data name="Error_RedisError_FriendlyName" xml:space="preserve">
+        <value>Redis error</value>
+    </data>
+    <data name="Error_RedisError_Description" xml:space="preserve">
+        <value>Redis rejected the operation or the connection failed.</value>
+    </data>
 </root>
