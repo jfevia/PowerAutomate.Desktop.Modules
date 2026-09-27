@@ -22,6 +22,7 @@
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageVersion Include="Npgsql" Version="8.0.9" />
     <PackageVersion Include="NSwag.ApiDescription.Client" Version="14.0.8" />
+    <PackageVersion Include="RabbitMQ.Client" Version="7.2.2" />
     <PackageVersion Include="NUnit" Version="4.1.0" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
     <!-- Native-only 2.1.13 fixes the 2.1.12 net461 target's missing win-arm file. -->
