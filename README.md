@@ -21,6 +21,7 @@ Custom actions in Power Automate for desktop are a way to create reusable action
 * [PowerFx](/modules/Modules.PowerFx.Actions) — Evaluates Power Fx expressions.
 * [PostgreSQL](/modules/Modules.PostgreSQL.Actions) — Runs parameterized PostgreSQL queries and statements with Npgsql.
 * [RabbitMQ](/modules/Modules.RabbitMQ.Actions) — Publishes and receives messages with explicit acknowledgements.
+* [Redis](/modules/Modules.Redis.Actions) — Connects to Redis to get, set, and delete keys.
 * [SQLite](/modules/Modules.SQLite.Actions) — Runs parameterized queries and statements against local SQLite databases.
 * [WindowsInputSimulation](/modules/Modules.Windows.InputSimulation.Actions) — Simulates UI input against Win32 controls.
 * [WindowsNotifications](/modules/Modules.Windows.Notifications.Actions) — Shows Windows toast notifications.
