@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 using System.IO;
+using System.Text;
 using Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK;
 using NUnit.Framework;
 
@@ -12,6 +14,61 @@ namespace PowerAutomate.Desktop.Modules.SQLite.Actions.Tests;
 [TestFixture]
 public sealed class ExecuteActionTests : SQLiteDatabaseFixture
 {
+    private const string CleanHostScript = @"
+        $ErrorActionPreference = 'Stop'
+        [Reflection.Assembly]::LoadFrom($env:PAD_TEST_SDK) | Out-Null
+        [Reflection.Assembly]::LoadFrom($env:PAD_TEST_MODULE) | Out-Null
+        $context = New-Object Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.ActionContext
+        $execute = New-Object PowerAutomate.Desktop.Modules.SQLite.Actions.ExecuteAction
+        $execute.DatabasePath = $env:PAD_TEST_DATABASE
+        $execute.AllowCreate = $true
+        $execute.Sql = 'CREATE TABLE smoke (value INTEGER)'
+        $execute.Execute($context)
+        $query = New-Object PowerAutomate.Desktop.Modules.SQLite.Actions.QueryAction
+        $query.DatabasePath = $env:PAD_TEST_DATABASE
+        $query.Sql = 'SELECT count(*) AS rows FROM smoke'
+        $query.Execute($context)
+        if ($query.Result.Rows[0]['rows'] -ne 0) {
+            throw 'Unexpected SQLite query result'
+        }";
+
+    /// <summary>
+    ///     Opens SQLite without test-runner binding redirects in both process architectures.
+    /// </summary>
+    /// <param name="systemDirectory">The Windows PowerShell architecture directory.</param>
+    [TestCase("System32")]
+    [TestCase("SysWOW64")]
+    public void Execute_WhenLoadedInCleanHost_OpensAndQueriesDatabase(string systemDirectory)
+    {
+        var host = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows),
+            systemDirectory, "WindowsPowerShell", "v1.0", "powershell.exe");
+        var output = TestContext.CurrentContext.TestDirectory;
+        var startInfo = new ProcessStartInfo
+        {
+            FileName = host,
+            Arguments = "-NoProfile -NonInteractive -EncodedCommand " +
+                Convert.ToBase64String(Encoding.Unicode.GetBytes(CleanHostScript)),
+            RedirectStandardError = true,
+            UseShellExecute = false
+        };
+        startInfo.EnvironmentVariables["PAD_TEST_SDK"] = Path.Combine(output,
+            "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll");
+        startInfo.EnvironmentVariables["PAD_TEST_MODULE"] = Path.Combine(output,
+            "PowerAutomate.Desktop.Modules.SQLite.Actions.dll");
+        startInfo.EnvironmentVariables["PAD_TEST_DATABASE"] = DatabasePath;
+
+        using var process = Process.Start(startInfo);
+        Assert.That(process, Is.Not.Null);
+        if (!process!.WaitForExit(30_000))
+        {
+            process.Kill();
+            Assert.Fail("The clean SQLite host did not finish.");
+        }
+
+        Assert.That(process.ExitCode, Is.Zero, process.StandardError.ReadToEnd());
+        Assert.That(File.Exists(DatabasePath), Is.True);
+    }
+
     /// <summary>
     ///     Prevents a new database file unless the flow opts in.
     /// </summary>

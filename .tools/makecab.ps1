@@ -1,4 +1,4 @@
-param(
+﻿param(
     [ValidateScript({Test-Path $_ -PathType Container})]
 	[string]
 	$SourceDirectory,
@@ -26,7 +26,13 @@ $ddf = ".OPTION EXPLICIT
 "
 $ddfpath = ($env:TEMP + "\" + [System.IO.Path]::GetFileNameWithoutExtension($OutputFileName) + ".ddf")
 $sourceDirLength = $SourceDirectory.Length;
-$ddf += (Get-ChildItem $SourceDirectory -Filter "*.dll" | Where-Object { (!$_.PSIsContainer) -and ($_.Name -ne "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll") } | Select-Object -ExpandProperty FullName | ForEach-Object { '"' + $_ + '" "' + ($_.Substring($sourceDirLength)) + '"' }) -join "`r`n"
+$moduleFiles = @(Get-ChildItem $SourceDirectory -Filter "*.dll" -File | Where-Object { $_.Name -ne "Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK.dll" })
+$runtimeDirectory = Join-Path $SourceDirectory "runtimes"
+$runtimeFiles = @()
+if (Test-Path $runtimeDirectory -PathType Container) {
+    $runtimeFiles = @(Get-ChildItem $runtimeDirectory -Filter "*.dll" -File -Recurse)
+}
+$ddf += (($moduleFiles + $runtimeFiles) | Select-Object -ExpandProperty FullName | ForEach-Object { '"' + $_ + '" "' + ($_.Substring($sourceDirLength)) + '"' }) -join "`r`n"
 $ddf | Out-File -Encoding UTF8 $ddfpath
 makecab.exe /F $ddfpath
 Remove-Item $ddfpath

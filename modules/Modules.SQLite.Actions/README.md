@@ -1,6 +1,6 @@
 ﻿# SQLite actions
 
-Use these actions for local SQLite databases without installing an ODBC driver. This module uses Windows' `winsqlite3.dll`; desktop flows must run on a Windows version that provides it.
+Use these actions for local SQLite databases without installing an ODBC driver. The module CAB includes the native SQLite library for 32-bit and 64-bit Windows.
 
 | Action | Purpose |
 | --- | --- |

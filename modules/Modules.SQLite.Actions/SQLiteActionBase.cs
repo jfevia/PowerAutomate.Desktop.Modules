@@ -17,12 +17,6 @@ public abstract class SQLiteActionBase : ActionBase
     /// <param name="context">The desktop-flow action context.</param>
     protected abstract void Run(ActionContext context);
 
-    static SQLiteActionBase()
-    {
-        var provider = new SQLitePCL.SQLite3Provider_winsqlite3();
-        SQLitePCL.raw.SetProvider(provider);
-    }
-
     /// <summary>
     ///     Runs the operation and preserves its failure category.
     /// </summary>
