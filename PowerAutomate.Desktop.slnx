@@ -13,6 +13,7 @@
     <Project Path="modules/Modules.Identity.Actions/Modules.Identity.Actions.csproj" />
     <Project Path="modules/Modules.OpenTibia.Actions/Modules.OpenTibia.Actions.csproj" />
     <Project Path="modules/Modules.PowerFx.Actions/Modules.PowerFx.Actions.csproj" />
+    <Project Path="modules/Modules.PostgreSQL.Actions/Modules.PostgreSQL.Actions.csproj" />
     <Project Path="modules/Modules.SQLite.Actions/Modules.SQLite.Actions.csproj" />
     <Project Path="modules/OpenTibia.Client/OpenTibia.Client.csproj" />
     <Project Path="modules/OpenTibia.Protocol/OpenTibia.Protocol.csproj" />
@@ -39,6 +40,7 @@
     <Project Path="tests/Modules.Identity.Actions.Tests/Modules.Identity.Actions.Tests.csproj" />
     <Project Path="tests/Modules.OpenTibia.Actions.Tests/Modules.OpenTibia.Actions.Tests.csproj" />
     <Project Path="tests/Modules.PowerFx.Actions.Tests/Modules.PowerFx.Actions.Tests.csproj" />
+    <Project Path="tests/Modules.PostgreSQL.Actions.Tests/Modules.PostgreSQL.Actions.Tests.csproj" />
     <Project Path="tests/Modules.SQLite.Actions.Tests/Modules.SQLite.Actions.Tests.csproj" />
     <Project Path="tests/OpenTibia.Client.Tests/OpenTibia.Client.Tests.csproj" />
     <Project Path="tests/OpenTibia.Protocol.Tests/OpenTibia.Protocol.Tests.csproj" />

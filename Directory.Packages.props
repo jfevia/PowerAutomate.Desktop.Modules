@@ -20,6 +20,7 @@
     <PackageVersion Include="Microsoft.PowerPlatform.PowerAutomate.Desktop.Actions.SDK" Version="1.5.255.25087" />
     <PackageVersion Include="Microsoft.Windows.SDK.Contracts" Version="10.0.26100.1" />
     <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Npgsql" Version="8.0.9" />
     <PackageVersion Include="NSwag.ApiDescription.Client" Version="14.0.8" />
     <PackageVersion Include="NUnit" Version="4.1.0" />
     <PackageVersion Include="NUnit3TestAdapter" Version="4.5.0" />
